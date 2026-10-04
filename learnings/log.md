@@ -33,7 +33,7 @@
   - new rubric checks for exact text and logo fidelity
   - overlay stays as the documented fallback
 - **User:** "use full level of creativity: colours, gradients, visuals." v3 was rewritten before sending: luminous blue→teal gradient backgrounds, gradient glass, light trails and caustics, a low-angle hero view, with the headline kept on the bright top-left.
-- **User rules:** posts must be minimal, professional, premium, visually attractive, built around a visual, and readable. v3 was revised again before sending: one hero object in the gradient on a luminous gradient ground, busy effects removed (bokeh, trails, glints), and high-contrast text on a clean area. The rules are now `STYLE_GUIDE.md` §5.0.
+- **User rules:** posts must be minimal, professional, premium, visually attractive, built around a visual, and readable. v3 was revised again before sending: one hero object in the gradient on a luminous gradient ground, busy effects removed (bokeh, trails, glints), and high-contrast text on a clean area. The rules are now `STYLE_GUIDE.md` §5.0, plus "every post and carousel looks made by a professional graphic design team".
 - The prompts went to v3. v2 was never run.
 
 ### 2026-10-04 · Flow aspect ratios

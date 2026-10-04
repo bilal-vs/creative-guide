@@ -310,6 +310,7 @@ Every post is:
 4. **Visually attractive.** Full use of colour and the brand gradient.
 5. **Built around a visual.** Never text alone on a flat background, except Proof quote cards.
 6. **Readable.** High-contrast text on a clean area, legible on a phone.
+7. **Designer-made.** Every post and every carousel slide looks like a professional graphic design team made it: a deliberate grid, consistent margins, a clear type hierarchy, nothing that looks template-generated or AI-generic.
 
 These are binary checks in the QA rubric (§8).
 
@@ -451,7 +452,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
-| 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable | User decision |
+| 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable, designer-made (posts and carousels) | User decision |
 | 2026-10-04 | §5.5: complete posts generated in-model (text + logo via REF-PACK-v1); overlay is the fallback | User decision |
 | 2026-10-04 | §6: generate at 3:4 and crop to 4:5 (Flow has no 4:5) | Flow error message |
 | 2026-10-04 | §5 → PALETTE-v2: slate blue and sage teal fixed (user decision); light and dark themes with new neutrals; theme-by-pillar proposed | User decision; contrast computed |
