@@ -25,18 +25,17 @@
 
 ## Log
 
-### 2026-10-04 · Extended palette (v3)
-- **User:** don't be bound to the two colours; choose others that match and improve the overall look.
-- **Mine:**
-  - **Midnight #142B40:** depth, in the brand-blue hue.
-  - **Deep Teal #2C6A6C:** finally a teal that's legible as text on light.
-  - **Glacier #BFE3DE:** luminous light and glows.
-  - **One warm Coral spark #E8876A:** the complement of blue and teal. Limited to ≤5% so posts stay minimal and premium.
-  - **Ice #EAF4F3:** a neutral.
-  - **Four named gradients:** brand, daylight, depth, glow.
-  - **Rule:** at most 2 extended colours per post.
-- Recorded as `PALETTE-v3` in `STYLE_GUIDE.md` §5.1; sheet in `brand/palette-v3.png`.
-- The v3 prompts (unsent) will take these colours when the user says go.
+### 2026-10-04 · Extended palette (v3 → v4)
+- **User:** don't be bound to the two colours; add matching ones, minimal and similar.
+- **v3 (mine):** Midnight, Deep Teal, Glacier, a Coral spark, the Ice neutral, four gradients.
+- **User feedback:** no orange or coral; more minimal blues; the rest liked.
+- **v4:**
+  - **Blue family on the core's hue (209):** Midnight #142B40, Harbor #2A4D6E, Slate Blue (core), Ocean #5F88AE, Steel #8FA9BF, Sky #ADC6DD, Haze #DDE7F0, Frost #EEF3F8.
+  - **Teal family:** Deep Teal #2C6A6C, Sage Teal (core), Glacier #BFE3DE, Ice #EAF4F3.
+  - **Six gradients:** brand, daylight, frost, depth, ocean, glow.
+  - **Rule:** at most 2 non-core family tones per post.
+- **Lesson:** this brand wants a fully cool palette. Warm accents are out, even as a small spark.
+- Recorded as `PALETTE-v4` in `STYLE_GUIDE.md` §5.1; sheet in `brand/palette-v4.png`.
 
 ### 2026-10-04 · Complete posts, not backgrounds
 - **User decision:** the model generates the whole post (headline, subline, URL, logo), not a background for overlay.

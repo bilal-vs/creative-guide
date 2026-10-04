@@ -314,52 +314,63 @@ Every post is:
 
 These are binary checks in the QA rubric (§8).
 
-### 5.1 Palette: two fixed colours, an extended set, two themes
-- `[decided]` (user, 2026-10-04): **slate blue and sage teal stay exactly as they are.** The user then asked for more colours that match and improve the overall look.
-- **The extended set below was chosen by Claude** under that delegation, the same day.
-- Posts come in a **light** theme and a **dark** theme. Every text pair listed passes WCAG contrast.
-- Visual sheet: `brand/palette-v3.png`.
+### 5.1 Palette: two fixed colours, two cool families, two themes
+- `[decided]` (user, 2026-10-04): **slate blue and sage teal stay exactly as they are.**
+- The user asked for more matching colours, minimal and similar, and approved the result:
+  - **no orange or coral**
+  - **more minimal blues**
+  - the rest as proposed
+- Everything sits in two cool families: blue (hue 209) and teal. Posts come in a **light** and a **dark** theme. Every text pair listed passes WCAG contrast.
+- Visual sheet: `brand/palette-v4.png`.
 
-<!-- id: PALETTE-v3 -->
+<!-- id: PALETTE-v4 -->
 ```yaml
-core:                        # fixed, never altered
-  slate-blue: "#416D95"      # gradient start; highlight words on light (5.1:1 on Mist)
-  sage-teal:  "#74AFAD"      # gradient end; highlight words on dark (7.1:1 on Deep Slate); never text on light
-extended:                    # new in v3
-  midnight:   "#142B40"      # depth: dark grounds and deep gradients (brand-blue hue, not royal navy)
-  deep-teal:  "#2C6A6C"      # the text-safe teal on light (5.8:1 on Mist); white text on it 6.2:1
-  glacier:    "#BFE3DE"      # luminous glow, light gradients, small text on dark (11.9:1 vs ink)
-  coral:      "#E8876A"      # the warm spark: ONE small accent, ≤5% of the canvas; text only on dark (6.8:1)
+blue:                          # hue 209, dark → light
+  midnight:   "#142B40"        # dark grounds, depth
+  harbor:     "#2A4D6E"        # strong highlight on light (8.2:1 on Mist), gradient midpoint
+  slate-blue: "#416D95"        # CORE, fixed: gradient start; highlight on light (5.1:1)
+  ocean:      "#5F88AE"        # shapes; text on dark (4.7:1); on light only 24px+ (3.5:1)
+  steel:      "#8FA9BF"        # lines, icons, secondary shapes; text only on dark (7.2:1)
+  sky:        "#ADC6DD"        # soft shapes, glows
+  haze:       "#DDE7F0"        # pale grounds and panels
+  frost:      "#EEF3F8"        # lightest cool ground
+teal:                          # dark → light
+  deep-teal:  "#2C6A6C"        # text-safe teal on light (5.8:1); white text on it 6.2:1
+  sage-teal:  "#74AFAD"        # CORE, fixed: gradient end; highlight on dark (7.1:1); never text on light
+  glacier:    "#BFE3DE"        # glow; small text on dark
+  ice:        "#EAF4F3"        # pale teal ground
 neutrals:
   white: "#FFFFFF"
   mist:  "#F4F7F8"
-  ice:   "#EAF4F3"
-  ink:   "#13212C"
-  deep-slate: "#0E1A23"
+  ink:   "#13212C"             # headlines on light (15.2:1 on Mist)
+  deep-slate: "#0E1A23"        # darkest ground
   body-light: "#3E4C58"
   muted-light: "#66737E"
+  text-dark: "#F1F5F7"
   body-dark: "#B6C3CC"
   muted-dark: "#8494A0"
 gradients:
-  brand:    ["#416D95", "#74AFAD"]               # fixed: logo, hero objects, bars
-  daylight: ["#FFFFFF", "#EAF4F3", "#BFE3DE"]    # light grounds, white top-left → glacier bottom-right
-  depth:    ["#0E1A23", "#142B40", "#416D95"]    # dark grounds
-  glow:     ["#74AFAD", "#BFE3DE"]               # light and glows on dark
+  brand:    ["#416D95", "#74AFAD"]                       # fixed: logo, hero objects
+  daylight: ["#FFFFFF", "#EAF4F3", "#BFE3DE"]            # light grounds (teal-leaning)
+  frost:    ["#FFFFFF", "#EEF3F8", "#DDE7F0"]            # light grounds (blue-leaning)
+  depth:    ["#0E1A23", "#142B40", "#416D95"]            # dark grounds
+  ocean:    ["#2A4D6E", "#416D95", "#5F88AE", "#ADC6DD"] # blue-range objects and shapes
+  glow:     ["#74AFAD", "#BFE3DE"]                       # light and glows on dark
 light:
-  ground: [mist, white, ice, daylight]
+  ground: [white, mist, frost, haze, ice, daylight, frost-gradient]
   text: { headline: ink, body: body-light, caption: muted-light }
-  highlight: [slate-blue, deep-teal]
+  highlight: [slate-blue, harbor, deep-teal]
   logo: verdant-logo-gradient
 dark:
   ground: [deep-slate, midnight, depth]
-  text: { headline: "#F1F5F7", body: body-dark, caption: muted-dark }
-  highlight: [sage-teal, glacier]
+  text: { headline: text-dark, body: body-dark, caption: muted-dark }
+  highlight: [sage-teal, glacier, ocean (24px+)]
   logo: verdant-logo-white
 rules:
-  - "Per post: neutrals + core + at most 2 extended colours (keeps it minimal)."
-  - "Coral is a spark: one small element (a dot, a thin line, one small shape), never a background, never text on light."
-  - "Never white text on sage-teal or coral; use ink."
-  - "Never: green as the brand colour, yellow, purple, royal navy."
+  - "Per post: neutrals + the two core colours + at most 2 other family tones (keeps it minimal)."
+  - "Light tones (steel, sky, haze, frost, glacier, ice) and sage-teal are never text on light grounds."
+  - "Never white text on sage-teal, glacier or the light blues; use ink."
+  - "Never: green as the brand colour, yellow, orange or coral, purple, royal navy."
 ```
 
 `[proposed]` **Theme by pillar** (about 4 light and 3 dark a week):
@@ -466,7 +477,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
-| 2026-10-04 | §5.1 → PALETTE-v3: extended set (Midnight, Deep Teal, Glacier, Coral spark), Ice neutral, four named gradients, per-post colour limit | User delegated the choice; contrast computed; `brand/palette-v3.png` |
+| 2026-10-04 | §5.1 → PALETTE-v4: blue family (Midnight, Harbor, Slate Blue, Ocean, Steel, Sky, Haze, Frost), teal family (Deep Teal, Sage Teal, Glacier, Ice), six gradients; coral dropped (user) | User feedback; contrast computed; `brand/palette-v4.png` |
 | 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable, designer-made (posts and carousels) | User decision |
 | 2026-10-04 | §5.5: complete posts generated in-model (text + logo via REF-PACK-v1); overlay is the fallback | User decision |
 | 2026-10-04 | §6: generate at 3:4 and crop to 4:5 (Flow has no 4:5) | Flow error message |
