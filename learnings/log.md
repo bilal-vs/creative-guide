@@ -32,6 +32,7 @@
   - text is kept to three short exact lines to limit spelling risk
   - new rubric checks for exact text and logo fidelity
   - overlay stays as the documented fallback
+- **User:** "use full level of creativity: colours, gradients, visuals." v3 was rewritten before sending: luminous blue→teal gradient backgrounds, gradient glass, light trails and caustics, a low-angle hero view, with the headline kept on the bright top-left.
 - The prompts went to v3. v2 was never run.
 
 ### 2026-10-04 · Flow aspect ratios
