@@ -8,7 +8,7 @@
   - `FACTS-v2`, `PUBLIC-PROOF-v2`
   - `PALETTE-v2`: light and dark themes; slate blue and sage teal fixed
   - strategy v1
-- **NOW: direction test sent.** `posts/2026-10-04-direction-test-built-to-scale.md` has 6 prompts (3 directions × light/dark) on one topic.
+- **NOW: light-theme direction test.** The user is running only the 3 light prompts (v1-A/B/C-light) in `posts/2026-10-04-direction-test-built-to-scale.md`. The dark prompts are deferred until a light direction wins.
   - Waiting on: the user runs each in Google Flow (Nano Banana 2, 4:5, 4 outputs) exactly as written and pastes **all** outputs, labelled by prompt.
 - **Next:** review each output in the rubric table and classify failures. The best direction becomes the first `TPL-*` template, then gets tested across pillars and topics.
 - **Still open** (in `brand/strategy.md` §14; not blocking the visual tests):

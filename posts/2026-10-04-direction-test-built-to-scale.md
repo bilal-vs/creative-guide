@@ -30,6 +30,8 @@ status: iterating
 - wordless surfaces
 - ends with the aspect ratio
 
+**Run order (user, 2026-10-04): light theme first.** Only v1-A-light, v1-B-light and v1-C-light are being run now. The dark prompts wait until a light direction is chosen.
+
 **Settings (all six):** Google Flow · Nano Banana 2 · aspect ratio `4:5` (if Flow doesn't offer 4:5, use the closest portrait ratio and say which) · outputs `4` · resolution `default` · no reference images.
 
 ## Prompt v1-A-light
@@ -79,19 +81,19 @@ An output passes only if every binary check passes and scroll-stop is ≥ 3.
 _Waiting for outputs._
 
 ### Review v1-A-dark
-_Waiting for outputs._
+_Deferred: light theme first._
 
 ### Review v1-B-light
 _Waiting for outputs._
 
 ### Review v1-B-dark
-_Waiting for outputs._
+_Deferred: light theme first._
 
 ### Review v1-C-light
 _Waiting for outputs._
 
 ### Review v1-C-dark
-_Waiting for outputs._
+_Deferred: light theme first._
 
 ## Captions (for the eventual post; facts F02, F04, F06, F11, F14)
 **Instagram**
