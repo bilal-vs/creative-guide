@@ -385,7 +385,46 @@ Viewed as a member ("View as member"), so admin-only data is not recorded.
 **Format counts (rows 00–18):** image 11 (single 7, multi-image 4) · document carousel 4 · video 2 · text + link 2 (one with a link card).
 
 ## 10. Instagram
-Not captured yet. The site footer links to https://www.instagram.com/verdant_soft/.
+
+**Account exists.** Found through the site footer link. Profile page text read in Chrome on 2026-10-04 while logged in. The "Followed by …" line is left out.
+
+- **Handle / URL:** @verdant_soft · https://www.instagram.com/verdant_soft/
+- **Name:** Verdant Soft · **Category:** Software Company
+- **Counts:** 104 posts · 146 followers · 2 following
+- **Bio:** "Engineering Tomorrow’s Tech Today!" / "772A, Block G4, Johar Town, Lahore, Pakistan 54782" / link "verdant-soft.com"
+- **Profile picture:** gradient VS mark on white, circular
+- **Story highlights:** "📽️" · "Life @ VS" · "Careers" · "Events". Covers are teal-blue circles with white line icons (ticket, laptop, lightbulb); "Events" is blank/dark.
+- **Last post:** 2026-09-30, Reel. Caption (from the tile link text): "Designers know the struggle 🤧 #verdantsoft #officehumor #techlife #vsteam #officereels". URL https://www.instagram.com/p/Dd53_UJMI_-/
+
+**Grid, first 20 tiles** (newest first; `(transcribed)` from screenshots; ▶ = Reel, ▣ = carousel icon shown):
+1. ▶ Office photo of two women at a laptop; sticker-style white text on a blue banner "THE FEEDBACK DESIGNER KNOW TOO WELL" + 😅
+2. ▣ "TECH ? MYTHS" navy carousel, the same creative as LinkedIn row 00
+3. ▶ Young man at a desk in a blue-tinted office; "YOU DO THE JOBS AI CAN'T" + 😅
+4. ▣ "Is Your Business Ready for its Next Growth Phase?", the same as LinkedIn row 01
+5. ▶ Black-and-white photo of three men in a meeting room; "THEM 🤍"
+6. Flat illustration of three frustrated people at a round table; "Things That Annoy Every Team in the Office!"
+7. ▶ Office scene; "Calmly talking to my coworder about my dreams" (spelling as shown)
+8. Independence Day: green Pakistan map, "14th AUG", Urdu "یومِ آزادی", "On this Independence Day, let's celebrate the sacrifices of our heroes and work together for a brighter future. Happy 14th August!"
+9. ▶ Laptop with a sunflower skin; "Office mein kaam karnay ka tareeka" + emoji
+10. White/teal services graphic, cropped "…LVING REAL …OBLEMS …ROUGH …CHNOLOGY" with a large VS mark; tiles "DevOps & Cloud Engineering", "Dedicated Teams", "Product & MVP Development"; "Your vision. Our engineering. Real impact."; "Let's build something great together."; footer chips Innovation · Quality · Collaboration · Delivery; laptop with code
+11. ▶ Five men crowding around a laptop; "When manager is explaining you tasks:"
+12. ▣ "mango day" yellow carousel, the same as LinkedIn row 05
+13. ▶ "Every office story" with labels "Junior" / "Senior"
+14. Event poster: "CEID & RSCI brings you … OPEN HOUSE & RECRUITMENT DRIVE 20…" "COMPANY: Verdant Soft" (Riphah branding)
+15. ▶ "Corporate office morning routine"
+16. ▣ "Team Collaboration in Challenging Projects", the same as LinkedIn row 07
+17. Quote card: "The biggest risk is not taking any risk. In a world that's changing quickly, the only strategy that is guaranteed to fail is not taking risks." with a photo, attributed "Mark Zuckerberg"
+18. "AI Agents and the Future of Remote Work": teal/white graphic with a robot illustration
+19. ▶ A man presenting to colleagues; overlay text includes "Manage!"
+20. ▣ "Top 5 DevOps Practices for 2026": white/teal "short tips" graphic
+
+**Grid look (raw):**
+- A mix of office-humour Reels: real staff photos, white/blue sticker text, emoji, some Urdu/Roman-Urdu.
+- Branded carousels, mostly reused from LinkedIn: navy, white and yellow templates.
+- Flat illustrations, national-day graphics and quote cards.
+- No single repeating colour or layout across the grid.
+
+Screenshots: `brand/audit/screens/ig-header.jpg`, `ig-grid-01.jpg` (tiles 1–8), `ig-grid-02.jpg` (tiles 9–20).
 
 ## 11. Clutch, Upwork, Fiverr
 Not captured yet.
