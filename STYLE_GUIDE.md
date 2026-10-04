@@ -314,38 +314,52 @@ Every post is:
 
 These are binary checks in the QA rubric (§8).
 
-### 5.1 Palette: two fixed colours, two themes
-`[decided]` (user, 2026-10-04): **slate blue and sage teal stay exactly as they are.** Everything else is a theme colour and may change.
-- Posts come in a **light** theme and a **dark** theme.
-- The dark ground is a deep slate in the brand blue's own hue (H206), not the old royal navy (H219, very saturated).
-- Every text pair below passes WCAG contrast. Machine-readable copy: `brand/brand-guide/project/tokens.json`.
+### 5.1 Palette: two fixed colours, an extended set, two themes
+- `[decided]` (user, 2026-10-04): **slate blue and sage teal stay exactly as they are.** The user then asked for more colours that match and improve the overall look.
+- **The extended set below was chosen by Claude** under that delegation, the same day.
+- Posts come in a **light** theme and a **dark** theme. Every text pair listed passes WCAG contrast.
+- Visual sheet: `brand/palette-v3.png`.
 
-<!-- id: PALETTE-v2 -->
+<!-- id: PALETTE-v3 -->
 ```yaml
-fixed:                       # identical in both themes; never altered
-  slate-blue: "#416D95"
-  sage-teal:  "#74AFAD"
-  brand-gradient: "linear-gradient(102.32deg, #416D95, #74AFAD)"
-light:                       # calm, airy, like the website
-  bg:      "#F4F7F8"         # Mist
-  surface: "#FFFFFF"         # cards, panels
-  ink:     "#13212C"         # headlines, 15.2:1 on bg
-  body:    "#3E4C58"         # copy, 8.2:1
-  muted:   "#66737E"         # caption line, 4.5:1
-  line:    "#DDE5E9"
-  highlight: slate-blue      # 5.1:1; sage-teal is never text on light (2.3:1)
+core:                        # fixed, never altered
+  slate-blue: "#416D95"      # gradient start; highlight words on light (5.1:1 on Mist)
+  sage-teal:  "#74AFAD"      # gradient end; highlight words on dark (7.1:1 on Deep Slate); never text on light
+extended:                    # new in v3
+  midnight:   "#142B40"      # depth: dark grounds and deep gradients (brand-blue hue, not royal navy)
+  deep-teal:  "#2C6A6C"      # the text-safe teal on light (5.8:1 on Mist); white text on it 6.2:1
+  glacier:    "#BFE3DE"      # luminous glow, light gradients, small text on dark (11.9:1 vs ink)
+  coral:      "#E8876A"      # the warm spark: ONE small accent, ≤5% of the canvas; text only on dark (6.8:1)
+neutrals:
+  white: "#FFFFFF"
+  mist:  "#F4F7F8"
+  ice:   "#EAF4F3"
+  ink:   "#13212C"
+  deep-slate: "#0E1A23"
+  body-light: "#3E4C58"
+  muted-light: "#66737E"
+  body-dark: "#B6C3CC"
+  muted-dark: "#8494A0"
+gradients:
+  brand:    ["#416D95", "#74AFAD"]               # fixed: logo, hero objects, bars
+  daylight: ["#FFFFFF", "#EAF4F3", "#BFE3DE"]    # light grounds, white top-left → glacier bottom-right
+  depth:    ["#0E1A23", "#142B40", "#416D95"]    # dark grounds
+  glow:     ["#74AFAD", "#BFE3DE"]               # light and glows on dark
+light:
+  ground: [mist, white, ice, daylight]
+  text: { headline: ink, body: body-light, caption: muted-light }
+  highlight: [slate-blue, deep-teal]
   logo: verdant-logo-gradient
-dark:                        # focused, technical
-  bg:      "#0E1A23"         # Deep Slate
-  surface: "#162632"
-  ink:     "#F1F5F7"         # 16.1:1 on bg
-  body:    "#B6C3CC"         # 9.8:1
-  muted:   "#8494A0"         # 5.6:1
-  line:    "#26394A"
-  highlight: sage-teal       # 7.1:1; slate-blue text only at 24px+ (3.2:1); gradient text allowed at 24px+
+dark:
+  ground: [deep-slate, midnight, depth]
+  text: { headline: "#F1F5F7", body: body-dark, caption: muted-dark }
+  highlight: [sage-teal, glacier]
   logo: verdant-logo-white
-on-fills: { on-slate-blue: "#FFFFFF", on-sage-teal: "#13212C" }   # never white on sage teal (2.5:1)
-never: [green as the brand colour, yellow, royal navy, pure black grounds]
+rules:
+  - "Per post: neutrals + core + at most 2 extended colours (keeps it minimal)."
+  - "Coral is a spark: one small element (a dot, a thin line, one small shape), never a background, never text on light."
+  - "Never white text on sage-teal or coral; use ink."
+  - "Never: green as the brand colour, yellow, purple, royal navy."
 ```
 
 `[proposed]` **Theme by pillar** (about 4 light and 3 dark a week):
@@ -452,6 +466,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-04 | §5.1 → PALETTE-v3: extended set (Midnight, Deep Teal, Glacier, Coral spark), Ice neutral, four named gradients, per-post colour limit | User delegated the choice; contrast computed; `brand/palette-v3.png` |
 | 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable, designer-made (posts and carousels) | User decision |
 | 2026-10-04 | §5.5: complete posts generated in-model (text + logo via REF-PACK-v1); overlay is the fallback | User decision |
 | 2026-10-04 | §6: generate at 3:4 and crop to 4:5 (Flow has no 4:5) | Flow error message |

@@ -25,6 +25,19 @@
 
 ## Log
 
+### 2026-10-04 · Extended palette (v3)
+- **User:** don't be bound to the two colours; choose others that match and improve the overall look.
+- **Mine:**
+  - **Midnight #142B40:** depth, in the brand-blue hue.
+  - **Deep Teal #2C6A6C:** finally a teal that's legible as text on light.
+  - **Glacier #BFE3DE:** luminous light and glows.
+  - **One warm Coral spark #E8876A:** the complement of blue and teal. Limited to ≤5% so posts stay minimal and premium.
+  - **Ice #EAF4F3:** a neutral.
+  - **Four named gradients:** brand, daylight, depth, glow.
+  - **Rule:** at most 2 extended colours per post.
+- Recorded as `PALETTE-v3` in `STYLE_GUIDE.md` §5.1; sheet in `brand/palette-v3.png`.
+- The v3 prompts (unsent) will take these colours when the user says go.
+
 ### 2026-10-04 · Complete posts, not backgrounds
 - **User decision:** the model generates the whole post (headline, subline, URL, logo), not a background for overlay.
 - **Mine:**
