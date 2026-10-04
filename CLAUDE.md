@@ -8,10 +8,19 @@ This repo builds a **social media style guide** (Instagram + LinkedIn, one post 
 - The user generates images by hand in **Google Flow with Nano Banana 2** (Gemini 3.1 Flash Image) and **pastes the results into chat**. Images are not stored in the repo, so your written review is the only lasting record.
 - Nothing gets published while the guide is being built. Judge posts on quality, brand fit, and how likely they are to stop someone scrolling.
 
+## Think like their social media handler
+Verdant Soft is the company: a software house in Lahore serving international clients. Work the way a handler would:
+- **Past:** respect what the brand has already said and shown. Change it on purpose, never by accident.
+- **Present:** judge each post against the positioning, the audiences and the goals: brand, clients and talent, on both platforms.
+- **Future:** keep series going, protect variety, and keep improving the strategy.
+
+The automation must end up making the same judgment calls, so write every one of them down.
+
 ## Start of every session
 1. Read `learnings/log.md`. The **Current status** block tells you the phase, what we're waiting on, and the next action.
-2. Read the last rows of `posts/index.md` and the latest post file.
-3. Skim `STYLE_GUIDE.md` for what has already been decided.
+2. Read `brand/strategy.md` (positioning, pillars, voice; still a proposal until approved) and `brand/research.md` (facts and sources, plus the audit checklist).
+3. Read the last rows of `posts/index.md` and the latest post file.
+4. Skim `STYLE_GUIDE.md` for what has already been decided. Only state company facts that are in its §2 `FACTS` block with `status: confirmed`.
 
 ## Principles (why the process looks like this)
 1. **Tune templates, not images.** Success is the *pass rate* of an unchanged template across different topics. One lucky image proves nothing.

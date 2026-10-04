@@ -2,16 +2,51 @@
 
 ## Current status
 - **Phase:** 1, Foundation
-- **Waiting on:** the user's description of the company and the types of posts they want
-- **Next action:** record it in `brand/brief.md`, then propose content pillars and 2–3 distinct visual directions, tested on one shared topic
+- **Done:** public-source research (`brand/research.md`) and the handler strategy proposal (`brand/strategy.md`)
+- **NEXT ACTION (new session): run the audit.** Work through the checklist in `brand/research.md` → "Audit TODO". It needs browser access, which can come from:
+  - Claude in Chrome. The user connected it after the 2026-10-04 session had started, so it never attached there. If a cloud session doesn't get the tools, use Claude Code on the user's machine.
+  - Or `verdant-soft.com`, `www.verdant-soft.com` and `clutch.co` allowed in the environment's network settings.
+  - Or the user pastes screenshots of LinkedIn and Instagram.
+
+  The audit captures the palette, fonts, logo, verbatim testimonials and past LinkedIn/Instagram posts. Write the Keep / Fix / Drop / Gaps summary, then revise `brand/strategy.md`.
+- **Then:** the user reviews the strategy (questions in `brand/strategy.md` §14). Then Phase 1 visual directions: 2–3 directions inside "Growth, engineered", tested on one shared topic.
 - **Open questions:**
-  - Which aspect ratios does Flow offer for Nano Banana 2 images? (We want 4:5 for both platforms; if Flow lacks it, decide on a substitute and note the API difference.)
-  - How many outputs per generation will the user run? (We want 4, so we can measure pass rate.)
-  - Does the brand have a logo, hex palette, and fonts? (This decides the overlay spec.)
+  - Which aspect ratios does Flow offer for Nano Banana 2 images? (We want 4:5 for both platforms.)
+  - How many outputs per generation? (We want 4, to measure pass rate.)
+  - Should the repo be made private? It's public right now, so only public-safe info goes in.
+  - Confirm: the tagline "Engineering tomorrow's tech today!", the founding year 2019, and the spelling of "Alogirft".
 
 ---
 
 ## Log
+
+### 2026-10-04 · Company research + handler strategy
+**What happened**
+- Researched Verdant Soft through web search. Direct fetches of their site, Clutch, Glassdoor, G2 and Rozee were blocked by the network policy.
+- Findings, with sources and confidence tags, are in `brand/research.md`.
+- No colours, logo, fonts or past posts could be retrieved.
+
+**Decisions (user)**
+- Both platforms serve **brand, clients and talent**.
+- Publicly available clients and testimonials may be used, **but not too much**.
+- Brand assets come from a browser pass over the live site.
+
+**Decisions (mine, recorded as proposals in `brand/strategy.md`)**
+- Positioning: *the engineering partner that owns the outcome*. Every public testimonial says on time, responsive, reliable, ownership.
+- Creative platform: **"Growth, engineered."** The name means growth, and the idea covers clients (products that scale), brand (point of view) and talent (careers that grow).
+- 5 pillars with a 7-day rotation. v1 = one cross-posted image per day with separate captions per platform.
+- Input priority: news inbox > calendar > series > evergreen.
+- New guardrails: no AI-generated "staff"; pre-approved templates for national and religious days; a fact bank as the only source of claims; proof capped at 1 per week, with no client repeated within 30 days.
+
+**Guide changes**
+- §2 drafted with `FACTS-v1` and `PUBLIC-PROOF-v1`.
+- §3 widened to content strategy.
+- §9 guardrails tagged `[decided]` or `[proposed]`.
+- §11 Memory and adaptation added.
+- Ledger columns widened.
+
+**Lesson**
+- Search snippets give paraphrases, not quotes. **Never quote a testimonial from a search result.** Capture the verbatim text from the source page.
 
 ### 2026-10-04 · Project setup
 **Decisions**
