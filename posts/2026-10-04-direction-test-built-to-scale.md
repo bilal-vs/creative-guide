@@ -83,6 +83,33 @@ Change from v1: aspect ratio 4:5 → 3:4 (the Flow setting and the prompt's last
 An image for an Instagram and LinkedIn post by Verdant Soft, a B2B software engineering company. An editorial still life of thin rectangular panes of frosted glass with softly rounded corners, standing in a gentle staircase that fans upward from the lower right of the frame, like the layers of a well-built digital product. Some panes are clear, some are tinted muted slate blue (#416D95) and some soft sage teal (#74AFAD); every pane is completely blank. Soft directional daylight passes through the glass and casts long, coloured, translucent shadows across a seamless off-white surface (#F4F7F8). Shot from a three-quarter high angle with a 70mm lens, with crisp focus on the front edges of the glass. The upper half and the left side of the frame are open, smooth, evenly lit background with nothing in it, leaving clear room for a headline. All surfaces are clean and wordless. Serene, refined, modern. Portrait image, 3:4 aspect ratio.
 ```
 
+## v3: complete posts (user decision, 2026-10-04)
+The user wants **complete posts** from the model: headline, subline, URL and logo inside the image, not a background for overlay.
+- **Logo:** comes from a reference image. **REF-PACK-v1** = `brand/brand-guide/png/verdant-logo-gradient.png` (852×204, transparent), attached in Flow on every run, and the same file in the API pipeline.
+- **Text:** rendered by the model and judged for exact spelling. Overlay stays as the fallback if text accuracy fails.
+- **What changed from v2:** the subject moved into a full layout. Logo top-left from the reference; headline, subline and URL as exact quoted text in theme colours (light). Directions and palette are unchanged.
+
+**Settings (v3):** Google Flow · Nano Banana 2 · aspect ratio `3:4` · outputs `4` · resolution `default` · **reference image: REF-PACK-v1 (logo)**. Crop to 4:5 after generation.
+**Extra rubric checks for v3:**
+- **Text exact:** every word spelled as written, nothing extra.
+- **Logo faithful:** the logo matches the reference, not redrawn.
+- **Layout:** margins, hierarchy, highlight words in slate blue.
+
+## Prompt v3-A-light
+```text
+A finished Instagram and LinkedIn post for Verdant Soft, a B2B software engineering company, designed as a clean, premium portrait social media graphic. The background is a seamless pale grey-white studio surface (#F4F7F8). In the lower right, a precise architectural scale model made of modular blocks that rise in steps from left to right, as if the structure is growing while it is being built: matte off-white and frosted-glass blocks, with a few in muted slate blue (#416D95) and a few in soft sage teal (#74AFAD), lit by soft diffused daylight from the upper left with gentle, clean shadows. In the top-left corner, small, place the attached Verdant Soft logo exactly as provided, in its original colours. Below the logo, left-aligned, the headline in a clean modern sans-serif like Inter, bold, in dark slate ink (#13212C): "Built for the next stage of growth", with the words "next stage" in slate blue (#416D95). Under it, one smaller line in medium weight, slate grey (#3E4C58): "Software that scales with your business." At the bottom left, small, muted grey (#66737E): "verdant-soft.com". These three lines are the only text in the image, spelled exactly as written. Generous margins on every side, a calm grid, and plenty of breathing room between the text and the artwork. Calm, modern, premium, quietly confident. Portrait image, 3:4 aspect ratio.
+```
+
+## Prompt v3-B-light
+```text
+A finished Instagram and LinkedIn post for Verdant Soft, a B2B software engineering company, designed as a clean, premium portrait social media graphic. The background is bright, seamless off-white (#F4F7F8). In the lower right, a delicate three-dimensional network of fine, straight threads and small spherical nodes that branches upward and outward, like a system growing as it scales: small matte spheres in muted slate blue (#416D95), soft sage teal (#74AFAD) and white, joined by thin, precise lines, under soft even studio light with a shallow depth of field. In the top-left corner, small, place the attached Verdant Soft logo exactly as provided, in its original colours. Below the logo, left-aligned, the headline in a clean modern sans-serif like Inter, bold, in dark slate ink (#13212C): "Built for the next stage of growth", with the words "next stage" in slate blue (#416D95). Under it, one smaller line in medium weight, slate grey (#3E4C58): "Software that scales with your business." At the bottom left, small, muted grey (#66737E): "verdant-soft.com". These three lines are the only text in the image, spelled exactly as written. Generous margins on every side, a calm grid, and plenty of breathing room between the text and the artwork. Airy, precise, optimistic. Portrait image, 3:4 aspect ratio.
+```
+
+## Prompt v3-C-light
+```text
+A finished Instagram and LinkedIn post for Verdant Soft, a B2B software engineering company, designed as a clean, premium portrait social media graphic. The background is a seamless off-white surface (#F4F7F8). In the lower right, an editorial still life of thin rectangular panes of frosted glass with softly rounded corners, standing in a gentle staircase that fans upward, like the layers of a well-built digital product: some clear, some tinted muted slate blue (#416D95) and some soft sage teal (#74AFAD), every pane blank, with soft daylight passing through and casting long, coloured, translucent shadows. In the top-left corner, small, place the attached Verdant Soft logo exactly as provided, in its original colours. Below the logo, left-aligned, the headline in a clean modern sans-serif like Inter, bold, in dark slate ink (#13212C): "Built for the next stage of growth", with the words "next stage" in slate blue (#416D95). Under it, one smaller line in medium weight, slate grey (#3E4C58): "Software that scales with your business." At the bottom left, small, muted grey (#66737E): "verdant-soft.com". These three lines are the only text in the image, spelled exactly as written. Generous margins on every side, a calm grid, and plenty of breathing room between the text and the artwork. Serene, refined, modern. Portrait image, 3:4 aspect ratio.
+```
+
 ## Reviews
 Paste all outputs per prompt. Each output is scored on:
 - **Brief fit**
@@ -100,6 +127,9 @@ An output passes only if every binary check passes and scroll-stop is ≥ 3.
 _Not run (4:5 unsupported in Flow)._
 
 ### Review v2-A-light
+_Not run (superseded by v3 complete posts)._
+
+### Review v3-A-light
 _Waiting for outputs._
 
 ### Review v1-A-dark
@@ -109,6 +139,9 @@ _Deferred: light theme first._
 _Not run (4:5 unsupported in Flow)._
 
 ### Review v2-B-light
+_Not run (superseded by v3 complete posts)._
+
+### Review v3-B-light
 _Waiting for outputs._
 
 ### Review v1-B-dark
@@ -118,6 +151,9 @@ _Deferred: light theme first._
 _Not run (4:5 unsupported in Flow)._
 
 ### Review v2-C-light
+_Not run (superseded by v3 complete posts)._
+
+### Review v3-C-light
 _Waiting for outputs._
 
 ### Review v1-C-dark

@@ -8,7 +8,7 @@
   - `FACTS-v2`, `PUBLIC-PROOF-v2`
   - `PALETTE-v2`: light and dark themes; slate blue and sage teal fixed
   - strategy v1
-- **NOW: light-theme direction test.** The user is running the 3 light prompts as **v2** (3:4) in `posts/2026-10-04-direction-test-built-to-scale.md`. The dark prompts are deferred until a light direction wins.
+- **NOW: light-theme direction test, complete posts.** The user is running the 3 light prompts as **v3** in `posts/2026-10-04-direction-test-built-to-scale.md`: full post with headline, subline, URL, and the logo from REF-PACK-v1; 3:4. The dark prompts are deferred until a light direction wins.
   - Waiting on: the user runs each in Google Flow (Nano Banana 2, 4:5, 4 outputs) exactly as written and pastes **all** outputs, labelled by prompt.
 - **Next:** review each output in the rubric table and classify failures. The best direction becomes the first `TPL-*` template, then gets tested across pillars and topics.
 - **Still open** (in `brand/strategy.md` §14; not blocking the visual tests):
@@ -24,6 +24,15 @@
 ---
 
 ## Log
+
+### 2026-10-04 · Complete posts, not backgrounds
+- **User decision:** the model generates the whole post (headline, subline, URL, logo), not a background for overlay.
+- **Mine:**
+  - the logo comes from a fixed reference image (REF-PACK-v1, the gradient lockup PNG) so it isn't redrawn
+  - text is kept to three short exact lines to limit spelling risk
+  - new rubric checks for exact text and logo fidelity
+  - overlay stays as the documented fallback
+- The prompts went to v3. v2 was never run.
 
 ### 2026-10-04 · Flow aspect ratios
 - Flow rejected 4:5. Nano Banana 2 in Flow offers only 1:1, 16:9, 9:16, 4:3 and 3:4.

@@ -372,7 +372,12 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 - A fine grey-blue line-and-node mesh (site hero).
 - Generous open space with rounded `surface` panels, in the light (Mist) or dark (Deep Slate) theme (§5.1).
 
-### 5.5 Still TBD
+### 5.5 Text and logo policy
+- `[decided]` (user, 2026-10-04): **posts are generated complete.** The model renders the headline, subline and URL (exact quoted text) and places the logo from a fixed reference image (**REF-PACK-v1**: `brand/brand-guide/png/verdant-logo-gradient.png` for light posts).
+- Every output is checked for exact spelling and logo fidelity.
+- If text or logo accuracy fails repeatedly, fall back to generating the background and overlaying the text and logo (principle 5).
+
+### 5.6 Still TBD
 - **Fixed elements** (never vary): lighting, medium/style, mood
 - **Variable elements** (vary daily within limits): subject, setting, composition, metaphor
 - Composition and negative-space zones reserved for overlays
@@ -435,6 +440,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-04 | §5.5: complete posts generated in-model (text + logo via REF-PACK-v1); overlay is the fallback | User decision |
 | 2026-10-04 | §6: generate at 3:4 and crop to 4:5 (Flow has no 4:5) | Flow error message |
 | 2026-10-04 | §5 → PALETTE-v2: slate blue and sage teal fixed (user decision); light and dark themes with new neutrals; theme-by-pillar proposed | User decision; contrast computed |
 | 2026-10-04 | Audit: §2 → FACTS-v2 (tagline confirmed, UI/UX process corrected to 6 steps, contact/CTA/payment/engagement facts, 10 case studies, self-reported numbers held as pending) and PUBLIC-PROOF-v2 (verbatim quotes; 6 quotable entries from 5 clients; `client_key` so caps count per person; P01 and P04 are one client; P02 held until the client is confirmed). §5 palette, type and logo files measured from the website. §9 proof cap per `client_key`; no self-reported numbers | `brand/audit-raw.md`, `brand/research.md` → Audit results |
