@@ -1,0 +1,59 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verdant Soft</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap">
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden; }
+  .cover { position: relative; height: 288px; overflow: hidden; }
+  .art { position: absolute; top: 0; left: 480px; width: 480px; height: 288px; overflow: hidden; }
+  .art svg { display: block; width: 480px; height: 288px; }
+  .blue { fill: var(--slate-blue); }
+  .teal { fill: var(--sage-teal); }
+  .deep { fill: var(--ink); }
+  .tint { fill: var(--line); }
+  .node { fill: var(--on-blue); }
+  .link { stroke: var(--on-blue); stroke-opacity: .55; }
+  .blk { rx: var(--radius-md); }
+  .sm { rx: var(--radius-sm); }
+  .words { position: absolute; left: 32px; bottom: 32px; max-width: 440px; }
+  .name { margin: 0; font-size: 96px; line-height: .92; font-weight: 700; letter-spacing: -.02em; color: var(--ink); }
+  .tag { margin: 12px 0 0 4px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      slate-blue 176×256 slab bled off the top (the brand's lead colour, largest) · sage-teal 144×168 · ink 152×224 bled off the right edge (the deep ground) · line 144×56 tint for relief — about 40% of 960×288
+  arrangement one tall slab with satellites; bottoms on one line space-m above the edge; gutters space-s
+  pattern     a node mesh: on-blue nodes at a space-m pitch cut into the slab, three links between them — from the website's line-and-node hero mesh and the brand's "precise, technical" engineering voice
+  scales      pitch space-m (32); gutters space-s (16); corners radius-md (28) on blocks, radius-sm (12) on the tint
+-->
+<rect class="blue blk" x="16" y="-28" width="176" height="284" rx="28"/>
+<rect class="tint sm" x="208" y="16" width="144" height="56" rx="12"/>
+<rect class="teal blk" x="208" y="88" width="144" height="168" rx="28"/>
+<rect class="deep blk" x="368" y="32" width="152" height="224" rx="28"/>
+<g class="link" stroke-width="1.5" fill="none">
+  <path d="M56 80 L120 144 L152 112"/>
+  <path d="M88 208 L120 144"/>
+</g>
+<circle class="node" cx="56" cy="48" r="3"/><circle class="node" cx="88" cy="48" r="3"/><circle class="node" cx="120" cy="48" r="3"/><circle class="node" cx="152" cy="48" r="3"/>
+<circle class="node" cx="56" cy="80" r="5"/><circle class="node" cx="88" cy="80" r="3"/><circle class="node" cx="120" cy="80" r="3"/><circle class="node" cx="152" cy="80" r="3"/>
+<circle class="node" cx="56" cy="112" r="3"/><circle class="node" cx="88" cy="112" r="3"/><circle class="node" cx="120" cy="112" r="3"/><circle class="node" cx="152" cy="112" r="5"/>
+<circle class="node" cx="56" cy="144" r="3"/><circle class="node" cx="88" cy="144" r="3"/><circle class="node" cx="120" cy="144" r="6"/><circle class="node" cx="152" cy="144" r="3"/>
+<circle class="node" cx="56" cy="176" r="3"/><circle class="node" cx="88" cy="176" r="3"/><circle class="node" cx="120" cy="176" r="3"/><circle class="node" cx="152" cy="176" r="3"/>
+<circle class="node" cx="56" cy="208" r="3"/><circle class="node" cx="88" cy="208" r="5"/><circle class="node" cx="120" cy="208" r="3"/><circle class="node" cx="152" cy="208" r="3"/>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">Verdant<br>Soft</h1>
+<p class="tag">Engineering Tomorrow’s Tech Today!</p>
+</div>
+</div>
+</body>
+</html>

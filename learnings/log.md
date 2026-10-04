@@ -1,29 +1,44 @@
 # Learnings & decision log
 
 ## Current status
-- **Phase:** 1, Foundation
+- **Phase:** 1, Foundation → visual directions
 - **Branch:** `claude/social-media-style-guide-665rja`
 - **Done:**
-  - public-source research
-  - the audit: local Chrome capture (`brand/audit-raw.md`) and cloud write-up (`brand/research.md` → "Audit results", with Keep / Fix / Drop / Gaps)
-  - `STYLE_GUIDE.md` §2 (`FACTS-v2`, `PUBLIC-PROOF-v2`) and §5 (palette, type, logo files)
-  - `brand/strategy.md` v1
-- **NEXT ACTION: the user answers `brand/strategy.md` §14.** The answers that unblock the most:
-  1. Approve the visual move to the website look (and the retirement of the navy and yellow templates).
-  2. Which numbers, if any, posts may state.
-  3. Attribution for Shervin Khanzadi, and whether Elia Essen can be quoted.
-  4. The founding year.
-  5. Buyer markets.
-  6. The news-inbox owner.
-- **Then:** fold the answers in, and move approved strategy rules into `STYLE_GUIDE.md` §3 and §11. Then Phase 1 visual directions: 2–3 directions inside "Growth, engineered", all in the website palette, tested on one shared topic.
-- **Open questions:**
-  - Which aspect ratios does Flow offer for Nano Banana 2 images? (We want 4:5 for both platforms.)
-  - How many outputs per generation? (We want 4, to measure pass rate.)
-  - Should the repo be made private? It's public, and the audit screenshots show staff faces and names from past posts.
+  - audit and write-up
+  - `FACTS-v2`, `PUBLIC-PROOF-v2`
+  - `PALETTE-v2`: light and dark themes; slate blue and sage teal fixed
+  - strategy v1
+- **NOW: direction test sent.** `posts/2026-10-04-direction-test-built-to-scale.md` has 6 prompts (3 directions × light/dark) on one topic.
+  - Waiting on: the user runs each in Google Flow (Nano Banana 2, 4:5, 4 outputs) exactly as written and pastes **all** outputs, labelled by prompt.
+- **Next:** review each output in the rubric table and classify failures. The best direction becomes the first `TPL-*` template, then gets tested across pillars and topics.
+- **Still open** (in `brand/strategy.md` §14; not blocking the visual tests):
+  - numbers allowed in posts
+  - Shervin Khanzadi's attribution; Elia Essen's company
+  - founding year
+  - buyer markets
+  - news-inbox owner
+  - Instagram Reels
+  - repo privacy
+- **Flow questions to answer during the test:** does Flow offer 4:5 for Nano Banana 2, and how many outputs per run?
 
 ---
 
 ## Log
+
+### 2026-10-04 · Palette themes + first direction test
+**Decisions (user)**
+- **Keep slate blue #416D95 and sage teal #74AFAD exactly.** All other colours may change. Posts get a light theme and a dark theme.
+- No formal brand-guide page is needed for now. Go straight to prompts.
+
+**Decisions (mine)**
+- **Light theme:** Mist #F4F7F8, ink #13212C, slate-blue highlights.
+- **Dark theme:** Deep Slate #0E1A23 (the brand blue's hue, not royal navy), near-white ink, sage-teal highlights.
+- All text pairs pass WCAG. Proposed theme by pillar: insight and brand world dark, the rest light.
+- **First test:** 3 directions (architectural model, living network, layered glass) × 2 themes, on one shared topic, with an identical prompt spine. This isolates the direction as the variable.
+
+**Guide changes**
+- §5 → `PALETTE-v2`. `TYPE-v1` colour names aligned.
+- A half-built design-system page is kept as source files in `brand/brand-guide/` (tokens, README, post mockups). It isn't published; the user said it isn't needed now.
 
 ### 2026-10-04 · Audit write-up (cloud)
 **What happened**

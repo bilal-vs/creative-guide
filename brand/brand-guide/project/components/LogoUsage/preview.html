@@ -1,0 +1,33 @@
+<!-- @dsCard group="Foundations" height=330 subtitle="Which lockup on which ground" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Logo usage</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  html, body { margin: 0; font-family: var(--font-sans); }
+  .grid { display: flex; flex-wrap: wrap; gap: 16px; padding: 8px 0; }
+  .tile { flex: 1 1 280px; min-width: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .art { display: flex; align-items: center; justify-content: center; height: 150px; }
+  .clear { padding: 30px; outline: 1.5px dashed var(--line); outline-offset: 0; border-radius: 4px; }
+  .lockup { height: 52px; width: auto; display: block; }
+  .marks { display: flex; gap: 14px; align-items: center; }
+  .mark { height: 44px; width: auto; }
+  .cap { font-size: 13px; line-height: 19px; color: var(--body); margin: 0; }
+  .cap b { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <section class="tile" data-theme="light">
+    <div class="art"><div class="clear"><img class="lockup" src="/_blob/133873762134b1f4119e3385aeed971a" alt="Verdant Soft gradient logo"></div></div>
+    <div class="marks"><img class="mark" src="/_blob/643df60cd18ee90544d0bbc8c3faf818" alt="VS mark, gradient"><p class="cap"><b>Light theme</b> · gradient lockup <code>verdant-logo-gradient.png</code>. Dashed box = clear space, at least the V's height.</p></div>
+  </section>
+  <section class="tile" data-theme="dark">
+    <div class="art"><div class="clear"><img class="lockup" src="/_blob/fbc70bf08f74fcb98c944b635ba04ea9" alt="Verdant Soft white logo"></div></div>
+    <div class="marks"><img class="mark" src="/_blob/f3052630ade752eedf6d6ad3807c8cc9" alt="VS mark, white"><p class="cap"><b>Dark theme</b> · white lockup <code>verdant-logo-white.png</code>. Never recolour, outline or put the logo on a busy image area.</p></div>
+  </section>
+</div>
+</body>
+</html>

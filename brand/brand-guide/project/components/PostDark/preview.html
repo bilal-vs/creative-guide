@@ -1,0 +1,81 @@
+<!-- @dsCard group="Post templates" height=580 subtitle="Dark theme · Engineering insight" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dark post</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  html, body { margin: 0; background: var(--bg); }
+  .motif { position: absolute; right: -260px; bottom: -120px; width: 980px; height: auto; opacity: .05; z-index: 2; }
+  .f-teal { fill: var(--sage-teal); }
+  .f-blue { fill: var(--slate-blue); }
+  .f-surface { fill: var(--surface); }
+  .s-teal { stroke: var(--sage-teal); }
+  .s-blue { stroke: var(--slate-blue); }
+  .s-line { stroke: var(--line); }
+</style>
+</head>
+<body>
+<div class="vs-stage">
+  <div class="vs-frame" data-theme="dark">
+    <div class="vs-post">
+      <div class="vs-art" aria-hidden="true">
+        <svg viewBox="0 0 1080 1350" preserveAspectRatio="none">
+          <defs>
+            <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" style="stop-color: var(--sage-teal); stop-opacity: .35"/>
+              <stop offset="1" style="stop-color: var(--sage-teal); stop-opacity: 0"/>
+            </radialGradient>
+            <radialGradient id="glowb" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" style="stop-color: var(--slate-blue); stop-opacity: .45"/>
+              <stop offset="1" style="stop-color: var(--slate-blue); stop-opacity: 0"/>
+            </radialGradient>
+          </defs>
+          <!-- generated-image zone, sketched: a network of tenants, lit from within -->
+          <circle cx="760" cy="430" r="300" fill="url(#glow)"/>
+          <circle cx="470" cy="300" r="200" fill="url(#glowb)"/>
+          <g class="s-line" stroke-width="3" fill="none">
+            <path d="M760 430 L560 300 M760 430 L960 290 M760 430 L940 600 M760 430 L600 620 M560 300 L470 300 M960 290 L1080 220 M940 600 L1080 650"/>
+          </g>
+          <g class="s-teal" stroke-width="3" fill="none" opacity=".8">
+            <path d="M760 430 L560 300 M760 430 L940 600"/>
+          </g>
+          <circle class="f-teal" cx="760" cy="430" r="34"/>
+          <circle class="f-surface s-teal" cx="560" cy="300" r="18" stroke-width="5"/>
+          <circle class="f-surface s-blue" cx="960" cy="290" r="18" stroke-width="5"/>
+          <circle class="f-surface s-teal" cx="940" cy="600" r="18" stroke-width="5"/>
+          <circle class="f-surface s-blue" cx="600" cy="620" r="18" stroke-width="5"/>
+          <circle class="f-blue" cx="470" cy="300" r="12"/>
+        </svg>
+      </div>
+      <img class="motif" src="/_blob/f3052630ade752eedf6d6ad3807c8cc9" alt="">
+      <img class="vs-logo" src="/_blob/fbc70bf08f74fcb98c944b635ba04ea9" alt="Verdant Soft">
+      <div class="vs-text" style="bottom: 262px;">
+        <p class="vs-label">Build Notes · 04</p>
+        <h2 class="vs-headline">Multi-tenant ETL starts with <span class="vs-grad">clean isolation</span></h2>
+        <p class="vs-sub">Notes from a data-sync platform we helped build.</p>
+      </div>
+      <div class="vs-caption"><span>verdant-soft.com</span><span>@verdant_soft</span></div>
+    </div>
+  </div>
+  <div class="vs-notes">
+    <h4>Dark theme</h4>
+    <ul>
+      <li>Ground <code>bg</code> Deep Slate #0E1A23: the brand blue's hue, not royal navy.</li>
+      <li>Headline <code>ink</code> (near-white); highlight in <code>highlight</code> = sage teal, or gradient text at 24px+.</li>
+      <li>Slate blue for fills, glows and large type only.</li>
+      <li>White lockup; optional oversized VS mark in the background at about 5%.</li>
+    </ul>
+    <h4>Used for</h4>
+    <ul>
+      <li>Engineering insight, Brand world.</li>
+    </ul>
+    <h4>Image zone</h4>
+    <ul>
+      <li>Low-key, glowing from within, deep slate negative space where the text block sits.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

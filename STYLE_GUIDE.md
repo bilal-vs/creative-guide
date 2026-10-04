@@ -302,40 +302,45 @@ User decision: clients and testimonials that are **publicly available** may be u
 > - **Proposed, not yet approved:** moving social onto the website system and dropping the past royal-navy and yellow social templates (`brand/strategy.md` v1 §3).
 > - **Not decided yet:** how the colours are worded in prompts. That waits for the Phase 1 tests.
 
-### 5.1 Palette
-The brand colour is a **slate blue → sage teal gradient**. The site's CSS calls it `--color-green-gradient`, but it is **not green**. Everything else is neutral.
+### 5.1 Palette: two fixed colours, two themes
+`[decided]` (user, 2026-10-04): **slate blue and sage teal stay exactly as they are.** Everything else is a theme colour and may change.
+- Posts come in a **light** theme and a **dark** theme.
+- The dark ground is a deep slate in the brand blue's own hue (H206), not the old royal navy (H219, very saturated).
+- Every text pair below passes WCAG contrast. Machine-readable copy: `brand/brand-guide/project/tokens.json`.
 
-<!-- id: PALETTE-v1 -->
+<!-- id: PALETTE-v2 -->
 ```yaml
-- id: blue
-  hex: "#416D95"
-  role: "gradient start; the blue of the logo"
-- id: teal
-  hex: "#74AFAD"
-  role: "gradient end; the teal of the logo"
-- id: gradient
-  css: "linear-gradient(102.32deg, #416D95, #74AFAD)"
-  role: "logo; highlighted words in headlines"
-- id: ink
-  hex: "#1B1B1B"
-  role: "headlines; dark backgrounds (site footer); dark buttons"
-- id: body-grey
-  hex: "#5E5E5E"
-  role: "body text"
-- id: muted-grey
-  hex: "#707070"
-  role: "secondary text"
-- id: canvas
-  hex: "#F9F9F9"
-  role: "light panels and light backgrounds"
-- id: white
-  hex: "#FFFFFF"
-  role: "page background; text on ink"
-# Not brand colours (seen, excluded): #FDC700 (rating stars), #000000 (icons), #D1D5DC (UI lines),
-# #406C94 and #26615E (one site element each, purpose unknown), and the royal navy + yellow of past social templates.
+fixed:                       # identical in both themes; never altered
+  slate-blue: "#416D95"
+  sage-teal:  "#74AFAD"
+  brand-gradient: "linear-gradient(102.32deg, #416D95, #74AFAD)"
+light:                       # calm, airy, like the website
+  bg:      "#F4F7F8"         # Mist
+  surface: "#FFFFFF"         # cards, panels
+  ink:     "#13212C"         # headlines, 15.2:1 on bg
+  body:    "#3E4C58"         # copy, 8.2:1
+  muted:   "#66737E"         # caption line, 4.5:1
+  line:    "#DDE5E9"
+  highlight: slate-blue      # 5.1:1; sage-teal is never text on light (2.3:1)
+  logo: verdant-logo-gradient
+dark:                        # focused, technical
+  bg:      "#0E1A23"         # Deep Slate
+  surface: "#162632"
+  ink:     "#F1F5F7"         # 16.1:1 on bg
+  body:    "#B6C3CC"         # 9.8:1
+  muted:   "#8494A0"         # 5.6:1
+  line:    "#26394A"
+  highlight: sage-teal       # 7.1:1; slate-blue text only at 24px+ (3.2:1); gradient text allowed at 24px+
+  logo: verdant-logo-white
+on-fills: { on-slate-blue: "#FFFFFF", on-sage-teal: "#13212C" }   # never white on sage teal (2.5:1)
+never: [green as the brand colour, yellow, royal navy, pure black grounds]
 ```
 
-**Prompt wording:** TBD (Phase 1). Starting hypothesis to test: describe the colours as "muted slate blue to soft sage teal" with the hex codes, and never as "green", which is likely to pull the model toward saturated greens.
+`[proposed]` **Theme by pillar** (about 4 light and 3 dark a week):
+- **Dark:** Engineering insight (Mon, Wed) and Brand world (Sat).
+- **Light:** How we work (Tue, Sun), Proof (Thu) and Grow with us (Fri).
+
+**Prompt wording:** TBD, being tested in `posts/2026-10-04-direction-test-built-to-scale.md`. Hypothesis: name the colours with their hex codes ("muted slate blue (#416D95)", "soft sage teal (#74AFAD)") and never say "green".
 
 ### 5.2 Typography (overlays only; the model never renders brand text)
 <!-- id: TYPE-v1 -->
@@ -343,11 +348,11 @@ The brand colour is a **slate blue → sage teal gradient**. The site's CSS call
 family: "Inter"            # the site self-hosts it; open-source (SIL OFL), so the pipeline can bundle it
 headline: { weight: 700, colour: ink, highlight: gradient }
 subhead:  { weight: 600, colour: ink }
-body:     { weight: 500, colour: body-grey }
-small:    { weight: 400, colour: muted-grey }
+body:     { weight: 500, colour: body }
+small:    { weight: 400, colour: muted }
 letter_spacing: normal
 case: "sentence case, as on the site; never all caps"   # [proposed]: past social used all-caps templates
-signature: "set 1–3 key words of a headline in the brand gradient; the rest in ink (or white on ink)"
+signature: "set 1–3 key words of a headline in `highlight` (light: slate-blue; dark: sage-teal or gradient text); the rest in ink"
 ```
 
 ### 5.3 Logo files (`brand/assets/`)
@@ -365,7 +370,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 - Headline words highlighted in the gradient (§5.2 signature).
 - An oversized, cropped, faint VS mark as a background shape (site footer). It's an overlay asset, not generated.
 - A fine grey-blue line-and-node mesh (site hero).
-- Generous off-white space with rounded `#F9F9F9` panels. The light theme is the default; the ink (`#1B1B1B`) theme is for contrast days.
+- Generous open space with rounded `surface` panels, in the light (Mist) or dark (Deep Slate) theme (§5.1).
 
 ### 5.5 Still TBD
 - **Fixed elements** (never vary): lighting, medium/style, mood
@@ -429,4 +434,5 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-04 | §5 → PALETTE-v2: slate blue and sage teal fixed (user decision); light and dark themes with new neutrals; theme-by-pillar proposed | User decision; contrast computed |
 | 2026-10-04 | Audit: §2 → FACTS-v2 (tagline confirmed, UI/UX process corrected to 6 steps, contact/CTA/payment/engagement facts, 10 case studies, self-reported numbers held as pending) and PUBLIC-PROOF-v2 (verbatim quotes; 6 quotable entries from 5 clients; `client_key` so caps count per person; P01 and P04 are one client; P02 held until the client is confirmed). §5 palette, type and logo files measured from the website. §9 proof cap per `client_key`; no self-reported numbers | `brand/audit-raw.md`, `brand/research.md` → Audit results |

@@ -1,0 +1,57 @@
+<!-- @dsCard group="Post templates" height=580 subtitle="Light theme · Proof: client words" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Client words post</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  html, body { margin: 0; background: var(--bg); }
+  .panel { position: absolute; left: var(--safe-x); right: var(--safe-x); top: 300px; bottom: 260px; background: var(--surface); border-radius: var(--radius-md); z-index: 2; }
+  .mark { position: absolute; left: 136px; top: 356px; width: 120px; height: 96px; z-index: 3; }
+  .qtext { position: absolute; left: 136px; right: 136px; top: 500px; z-index: 3; display: flex; flex-direction: column; gap: var(--space-m); }
+  .who { font-size: 30px; line-height: 40px; font-weight: 600; color: var(--body); margin: 0; }
+  .motif { position: absolute; left: 0; right: 0; bottom: 0; height: 260px; z-index: 1; }
+  .s-motif { stroke: var(--motif); }
+  .f-motif { fill: var(--motif); }
+</style>
+</head>
+<body>
+<div class="vs-stage">
+  <div class="vs-frame" data-theme="light">
+    <div class="vs-post">
+      <svg class="motif" viewBox="0 0 1080 260" aria-hidden="true">
+        <g class="s-motif" stroke-width="3" fill="none"><path d="M0 200 L180 120 L360 180 L540 90 L720 160 L900 70 L1080 130"/></g>
+        <g class="f-motif"><circle cx="180" cy="120" r="10"/><circle cx="360" cy="180" r="10"/><circle cx="540" cy="90" r="10"/><circle cx="720" cy="160" r="10"/><circle cx="900" cy="70" r="10"/></g>
+      </svg>
+      <img class="vs-logo" src="/_blob/133873762134b1f4119e3385aeed971a" alt="Verdant Soft">
+      <p class="vs-label" style="position:absolute; right: var(--safe-x); top: 151px; z-index:3;">Client words</p>
+      <div class="panel"></div>
+      <svg class="mark" viewBox="0 0 120 96" aria-hidden="true">
+        <defs><linearGradient id="qg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" style="stop-color: var(--slate-blue)"/><stop offset="1" style="stop-color: var(--sage-teal)"/></linearGradient></defs>
+        <path fill="url(#qg)" d="M0 96V58C0 26 14 8 44 0l6 12C34 18 27 30 26 46h22v50H0zm70 0V58C70 26 84 8 114 0l6 12c-16 6-23 18-24 34h22v50H70z"/>
+      </svg>
+      <div class="qtext">
+        <p class="vs-quote">They quickly understood our problem, collaborated effectively with our team, and delivered a solid solution.</p>
+        <p class="who">Isana Sebastian</p>
+      </div>
+      <div class="vs-caption"><span>verdant-soft.com</span><span>@verdant_soft</span></div>
+    </div>
+  </div>
+  <div class="vs-notes">
+    <h4>Proof post: client words</h4>
+    <ul>
+      <li>Quote exactly as written in the proof bank (<code>quote_verbatim</code> / <code>alt_quotes</code>), never edited.</li>
+      <li>Attribution printed exactly; no star ratings.</li>
+      <li>Panel on <code>surface</code>, <code>radius-md</code>; quote in <code>quote</code> style, <code>ink</code>.</li>
+      <li>The quotation mark is a graphic in <code>brand-gradient</code>, the one place the gradient sits near text on light.</li>
+      <li>No generated image: the words are the picture. The mesh line at the bottom is <code>motif</code>.</li>
+    </ul>
+    <h4>Caps</h4>
+    <ul>
+      <li>At most one proof post a week; the same client not again within 30 days.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!-- @dsCard group="Foundations" height=430 subtitle="Text-on-ground pairs that pass, per theme" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colour pairings</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  html, body { margin: 0; font-family: var(--font-sans); }
+  .grid { display: flex; flex-wrap: wrap; gap: 16px; padding: 8px 0; }
+  .theme { flex: 1 1 300px; min-width: 0; background: var(--bg); color: var(--ink); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--line); }
+  .theme h3 { margin: 0 0 4px; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .row:last-child { border-bottom: 0; }
+  .aa { font-size: 22px; line-height: 28px; font-weight: 700; }
+  .meta { font-size: 12px; line-height: 16px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .chip { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; }
+  .fills { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px; }
+  .bad { text-decoration: line-through; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <section class="theme" data-theme="light">
+    <h3>Light · on bg #F4F7F8</h3>
+    <div class="row"><span class="aa" style="color: var(--ink)">Aa ink</span><span class="meta">headlines · 15.2:1</span></div>
+    <div class="row"><span class="aa" style="color: var(--body)">Aa body</span><span class="meta">copy · 8.2:1</span></div>
+    <div class="row"><span class="aa" style="color: var(--muted)">Aa muted</span><span class="meta">captions · 4.5:1</span></div>
+    <div class="row"><span class="aa" style="color: var(--highlight)">Aa highlight</span><span class="meta">slate blue · 5.1:1</span></div>
+    <div class="fills">
+      <span class="chip" style="background: var(--slate-blue); color: var(--on-blue)">on-blue 5.5:1</span>
+      <span class="chip" style="background: var(--sage-teal); color: var(--on-teal)">on-teal 6.6:1</span>
+      <span class="chip" style="background: var(--wash-blue); color: var(--ink)">wash-blue</span>
+      <span class="chip bad" style="background: var(--sage-teal); color: #FFFFFF">white on teal 2.5:1 ✕</span>
+    </div>
+  </section>
+  <section class="theme" data-theme="dark">
+    <h3>Dark · on bg #0E1A23</h3>
+    <div class="row"><span class="aa" style="color: var(--ink)">Aa ink</span><span class="meta">headlines · 16.1:1</span></div>
+    <div class="row"><span class="aa" style="color: var(--body)">Aa body</span><span class="meta">copy · 9.8:1</span></div>
+    <div class="row"><span class="aa" style="color: var(--muted)">Aa muted</span><span class="meta">captions · 5.6:1</span></div>
+    <div class="row"><span class="aa" style="color: var(--highlight)">Aa highlight</span><span class="meta">sage teal · 7.1:1</span></div>
+    <div class="fills">
+      <span class="chip" style="background: var(--sage-teal); color: var(--on-teal)">on-teal 7.1:1</span>
+      <span class="chip" style="background: var(--slate-blue); color: var(--on-blue)">on-blue 5.5:1</span>
+      <span class="chip" style="background: var(--wash-teal); color: var(--ink)">wash-teal</span>
+      <span class="chip" style="background: var(--bg); color: var(--slate-blue); border: 1px solid var(--line)">slate blue text: 24px+ only</span>
+    </div>
+  </section>
+</div>
+</body>
+</html>
