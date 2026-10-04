@@ -5,7 +5,8 @@
 - **Text** was copied from the page text or DOM in Chrome, unless marked `(transcribed)` (typed from a screenshot).
 - **Relative dates** ("2w", "8mo") are as LinkedIn displayed them on 2026-10-04.
 - **Left out on purpose** (repo rules): employee counts, team-size figures, connection names, admin-only stats.
-- **Status:** website and LinkedIn are complete (19 posts in full, plus 2 partial rows). Instagram, Clutch, Upwork and Fiverr: see §10–11.
+- **Scope change (user decision, 2026-10-04):** business info only. LinkedIn posts, Instagram, Upwork and Fiverr were skipped. The LinkedIn posts and Instagram data below were captured before the change and are kept as they are.
+- **Status:** done. Website, LinkedIn About and Clutch are complete.
 
 ---
 
@@ -299,9 +300,9 @@ The Clutch review (research P01) is not on the website.
 
 | Item | As displayed | Where |
 |---|---|---|
-| Tagline "Engineering tomorrow's tech today!" | **Not found on verdant-soft.com** (all pages in §1). On LinkedIn the tagline under the page name reads "Engineering Tomorrow’s Tech Today!" (curly apostrophe, title case), and the banner image reads "ENGINEERING TOMORROW’S TECH TODAY!" `(transcribed)`. | https://www.linkedin.com/company/verdant-soft/ |
-| Founding year (2019?) | **Not shown on the website.** The closest item is the homepage counter "5+ Years of expertise". LinkedIn About shows no "Founded" field. | https://www.verdant-soft.com/ ; https://www.linkedin.com/company/verdant-soft/about/ |
-| "Alogirft" | Shown exactly as "CEO Alogirft" under Shervin Khanzadi. Possible typo. | https://www.verdant-soft.com/ (testimonials) |
+| Tagline "Engineering tomorrow's tech today!" | **Not found on verdant-soft.com** (all pages in §1). LinkedIn tagline: "Engineering Tomorrow’s Tech Today!" (curly apostrophe, title case). LinkedIn banner: "ENGINEERING TOMORROW’S TECH TODAY!" `(transcribed)`. Instagram bio: "Engineering Tomorrow’s Tech Today!". Clutch profile: "Engineering tomorrow’s tech today!" (sentence case, curly apostrophe). | https://www.linkedin.com/company/verdant-soft/ ; https://www.instagram.com/verdant_soft/ ; https://clutch.co/profile/verdant-soft |
+| Founding year (2019?) | Clutch: "Year founded" / "Founded 2019". **Not shown on the website**; the closest item is the homepage counter "5+ Years of expertise". LinkedIn About has no "Founded" field. | https://clutch.co/profile/verdant-soft ; https://www.verdant-soft.com/ ; https://www.linkedin.com/company/verdant-soft/about/ |
+| "Alogirft" | Website: "CEO Alogirft" under Shervin Khanzadi; possible typo. The Clutch review by Shervin Khanzadi ("Director, Sweet Round Pty Ltd") spells the platform "AlgoRift" six times. | https://www.verdant-soft.com/ (testimonials) ; https://clutch.co/profile/verdant-soft |
 
 Other on-site spellings, recorded as shown (possible typos):
 - "Custom Software Developement Technologies"
@@ -342,6 +343,8 @@ Viewed as a member ("View as member"), so admin-only data is not recorded.
 - **Screenshot:** `brand/audit/screens/linkedin-header.jpg` (cropped to the page card).
 
 ### 9.1 Posts (last ~20, in feed order; captured 2026-10-04)
+
+**Skipped (user decision).** No further post capture. The rows below were captured before the scope change.
 
 **How this was captured**
 - Captions come from each post's own page (`https://www.linkedin.com/feed/update/urn:li:activity:<id>/`), copied verbatim. Some captions use Unicode "bold" letters (e.g. 𝗟𝗲𝘁’𝘀), kept as posted.
@@ -386,6 +389,8 @@ Viewed as a member ("View as member"), so admin-only data is not recorded.
 
 ## 10. Instagram
 
+**Skipped (user decision).** The profile data below was captured before the scope change.
+
 **Account exists.** Found through the site footer link. Profile page text read in Chrome on 2026-10-04 while logged in. The "Followed by …" line is left out.
 
 - **Handle / URL:** @verdant_soft · https://www.instagram.com/verdant_soft/
@@ -427,4 +432,109 @@ Viewed as a member ("View as member"), so admin-only data is not recorded.
 Screenshots: `brand/audit/screens/ig-header.jpg`, `ig-grid-01.jpg` (tiles 1–8), `ig-grid-02.jpg` (tiles 9–20).
 
 ## 11. Clutch, Upwork, Fiverr
-Not captured yet.
+
+### 11.1 Clutch
+Read in Chrome on 2026-10-04: https://clutch.co/profile/verdant-soft
+
+**Profile text (verbatim)**
+- Tagline: "Engineering tomorrow’s tech today!"
+- Description: "At Verdant Soft, we are committed to driving innovation and excellence in the world of IT. As a dynamic and forward-thinking software company, we specialize in providing top-tier IT solutions and services designed to meet the evolving needs of businesses across various sectors." (This is identical to the LinkedIn Overview.)
+- Year founded: "Founded 2019"
+- The profile also has "Min project size", "Hourly rate" and "Employees" fields. Their values are left out under the repo rules (rates, pricing, team size).
+- Page title: "Verdant Soft Reviews (1), Pricing, Services & Verified Ratings". The page shows "Showing 1-1 of 1 Reviews".
+
+**The one review (verbatim, full review expanded)**
+
+- Title: "Custom Software Dev for E-Commerce Management Company"
+- Services: Custom Software Development · Web Development · Amazon Application Development Framework
+- Budget: Confidential · Project dates: Aug. - Oct. 2024
+- Overall rating: 4.5 · Quality 5.0 · Schedule 5.0 · Cost 5.0 · Willing to Refer 5.0
+- Pull quote: "Their dedication to maximizing value while managing costs truly set them apart."
+- Review date: Oct 26, 2024
+- Reviewer: Shervin Khanzadi, "Director, Sweet Round Pty Ltd" · eCommerce · Brisbane, Australia · 1-10 Employees · Online Review · Verified
+- Project summary: "Verdant Soft helped an e-commerce management company develop a communication system for their platform. The team integrated a chat system and implemented UI customization."
+- Feedback summary: "Verdant Soft successfully completed the MVP on time. The chat system functioned seamlessly and enabled real-time communication across the platform. The team was efficient, responsive, and receptive to feedback. Their unwavering commitment and dedication were impressive."
+- "The client submitted this review online."
+
+> **BACKGROUND**
+>
+> Please describe your company and position.
+>
+> I am the Director of Sweet Round Pty Ltd
+>
+> Describe what your company does in a single sentence.
+>
+> We help Amazon sellers to grow their business using Affiliate marketing
+>
+> **OPPORTUNITY / CHALLENGE**
+>
+> What specific goals or objectives did you hire Verdant Soft to accomplish?
+>
+> Develop a communication system for our platform
+>
+> **SOLUTION**
+>
+> How did you find Verdant Soft?
+>
+> Online Search
+>
+> Why did you select Verdant Soft over others?
+>
+> Pricing fit our budget
+> Good value for cost
+> Previous similar experience
+>
+> How many teammates from Verdant Soft were assigned to this project?
+>
+> 1 Employee
+>
+> Describe the scope of work in detail. Please include a summary of key deliverables.
+>
+> Our developer played an essential role in enhancing AlgoRift's customer experience by implementing a robust and user-centric chat system. This system was integral in creating a streamlined communication channel across AlgoRift's ecosystem, which includes sellers, affiliates, buyers, and resellers.
+>
+> The deliverables for this project encompassed:
+>
+> Chat Integration and Setup: Designing and implementing an intuitive chat system to facilitate direct communication between buyers, affiliates, and sellers, which is crucial for seamless collaboration and resolving customer queries.
+>
+> User Interface Customization: Tailoring the chat interface to align with AlgoRift's unique branding and user experience guidelines, ensuring that all users could easily navigate and access the chat features without disruption.
+>
+> Real-time Messaging and Notifications: Developing a system to support real-time message exchange and notifications, helping users stay engaged and informed about ongoing conversations and activities on the platform.
+>
+> User Access Controls: Implementing access and privacy controls to ensure secure messaging for each user type, whether they are buyers, affiliates, or sellers, thus aligning with AlgoRift's compliance standards and maintaining user confidentiality.
+>
+> Analytics and User Engagement Tracking: Integrating basic analytics to monitor usage patterns and engagement within the chat system, which provides insights for further enhancement and contributes to data-driven decisions on platform updates.
+>
+> The developer’s work has significantly contributed to the collaborative experience on AlgoRift, empowering users with reliable, instant communication. This advancement aligns with our mission to simplify e-commerce management for Amazon sellers and to foster growth through efficient affiliate and customer interactions.
+>
+> **RESULTS & FEEDBACK**
+>
+> What were the measurable outcomes from the project that demonstrate progress or success?
+>
+> With the completion of our MVP, the chat system now functions seamlessly, enabling real-time communication across our platform. This development marked a major milestone in establishing effective, direct engagement between users, which is crucial for fostering collaboration within AlgoRift’s ecosystem of sellers, affiliates, and buyers. The chat system is now fully operational, meeting all performance expectations and positioning us well for further user feedback and engagement growth as we move beyond the MVP stage.
+>
+> Describe their project management. Did they deliver items on time? How did they respond to your needs?
+>
+> Their project management was efficient and responsive, consistently delivering milestones on time. They quickly adapted to our needs, incorporating feedback seamlessly to ensure the final product aligned perfectly with our expectations.
+>
+> What was your primary form of communication with Verdant Soft?
+>
+> Virtual Meeting
+> Email or Messaging App
+>
+> What did you find most impressive or unique about this company?
+>
+> What impressed us most about this company was their unwavering commitment to delivering high-quality work within our budget constraints. They prioritized resource efficiency without compromising on functionality, ensuring we stayed on track financially while meeting all project requirements. Their dedication to maximizing value while managing costs truly set them apart.
+>
+> Are there any areas for improvement or something Verdant Soft could have done differently?
+>
+> No, but we will use them for our updates and upgrades in our chat communication system in future.
+>
+> **RATINGS** 4.5 · Quality 5.0 (SERVICE & DELIVERABLES) · Schedule 5.0 (ON TIME / DEADLINES) · Cost 5.0 (VALUE / WITHIN ESTIMATES) · Willing to Refer 5.0 (NPS)
+
+Not captured on Clutch (out of the narrowed scope): the service-focus breakdown and the portfolio items.
+
+### 11.2 Upwork
+Skipped (user decision).
+
+### 11.3 Fiverr
+Skipped (user decision).

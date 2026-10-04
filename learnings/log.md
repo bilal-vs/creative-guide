@@ -4,6 +4,7 @@
 - **Phase:** 1, Foundation
 - **Done:** public-source research (`brand/research.md`) and the handler strategy proposal (`brand/strategy.md`)
 - **Branch:** `claude/social-media-style-guide-665rja`
+- Local capture done 2026-10-04; cloud write-up next. (Scope narrowed by user to business info: LinkedIn posts, Instagram, Upwork and Fiverr skipped. See `brand/audit-raw.md`.)
 - **NEXT ACTION: the audit, in two steps** (user decision; details in `brand/research.md` → "Audit TODO" → "Split" and "Capture spec"):
   1. **Local capture (user's machine).** Run Claude Code with Chrome connected (`claude --chrome`), logged in to LinkedIn, on the branch above. Follow the capture spec: raw verbatim facts go into `brand/audit-raw.md`, logos into `brand/assets/`, reference screenshots into `brand/audit/screens/`. Commit and push. No analysis in this step.
   2. **Cloud write-up.** Read `brand/audit-raw.md` and the screenshots. Then write the audit results and the Keep / Fix / Drop / Gaps summary in `brand/research.md`; update `STYLE_GUIDE.md` §2 (`FACTS-v2`, `PUBLIC-PROOF-v2`) and §5 (palette, fonts, logo); revise `brand/strategy.md` to v1; update the log; push; summarise for the user.

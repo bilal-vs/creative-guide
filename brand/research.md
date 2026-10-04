@@ -124,24 +124,24 @@ Cloud sessions can't use Claude in Chrome, and their network policy blocks these
 - When done, tick the boxes below that the capture covers, and add a line under "Current status" in `learnings/log.md`: "Local capture done YYYY-MM-DD; cloud write-up next."
 
 **Website (verdant-soft.com)**
-- [ ] Brand palette: read the computed CSS colours (primary, secondary, accent, background, text) as hex codes
-- [ ] Fonts: headings and body (family names, weights)
-- [ ] Logo: URL, format (SVG/PNG), variants (light/dark, icon-only). Ask the user to upload the files to `brand/assets/` if the container can't download them
-- [ ] Imagery style currently used (photos, illustration, 3D, stock?)
-- [ ] Every page: home, services (each one), hire-us, career, about, case studies or portfolio, blog. Note the pages that exist and their key claims
-- [ ] **Verbatim** testimonial text plus the person's name, title and company, so P01–P04 can be marked quotable
-- [ ] Confirm the tagline, the founding year, and the "Alogirft" spelling
+- [x] Brand palette: read the computed CSS colours (primary, secondary, accent, background, text) as hex codes
+- [x] Fonts: headings and body (family names, weights)
+- [x] Logo: URL, format (SVG/PNG), variants (light/dark, icon-only). Ask the user to upload the files to `brand/assets/` if the container can't download them
+- [x] Imagery style currently used (photos, illustration, 3D, stock?)
+- [x] Every page: home, services (each one), hire-us, career, about, case studies or portfolio, blog. Note the pages that exist and their key claims
+- [x] **Verbatim** testimonial text plus the person's name, title and company, so P01–P04 can be marked quotable
+- [x] Confirm the tagline, the founding year, and the "Alogirft" spelling
 
 **LinkedIn company page** (this is the brand's past)
-- [ ] URL, follower count, about text, specialties
-- [ ] The last ~20 posts: date, format (image, carousel, text, video), topic, visual style, caption style, rough engagement
+- [x] URL, follower count, about text, specialties
+- [x] The last ~20 posts: date, format (image, carousel, text, video), topic, visual style, caption style, rough engagement (19 posts captured; then skipped by user decision)
 - [ ] What gets the most engagement, and what gets none
 
 **Instagram**
-- [ ] Does an account exist? Handle, followers, grid style, last post date
+- [x] Does an account exist? Handle, followers, grid style, last post date
 
 **Clutch / Upwork / Fiverr**
-- [ ] Profile copy, services listed, full review text, any portfolio items
+- [ ] Profile copy, services listed, full review text, any portfolio items (partial: Clutch profile text + full review captured; Upwork/Fiverr skipped by user decision)
 
 **Output**
 - [ ] Keep / Fix / Drop / Gaps summary below
