@@ -3,12 +3,12 @@
 ## Current status
 - **Phase:** 1, Foundation
 - **Done:** public-source research (`brand/research.md`) and the handler strategy proposal (`brand/strategy.md`)
-- **NEXT ACTION (new session): run the audit.** Work through the checklist in `brand/research.md` → "Audit TODO". It needs browser access, which can come from:
-  - Claude in Chrome. The user connected it after the 2026-10-04 session had started, so it never attached there. If a cloud session doesn't get the tools, use Claude Code on the user's machine.
-  - Or `verdant-soft.com`, `www.verdant-soft.com` and `clutch.co` allowed in the environment's network settings.
-  - Or the user pastes screenshots of LinkedIn and Instagram.
+- **Branch:** `claude/social-media-style-guide-665rja`
+- **NEXT ACTION: the audit, in two steps** (user decision; details in `brand/research.md` → "Audit TODO" → "Split" and "Capture spec"):
+  1. **Local capture (user's machine).** Run Claude Code with Chrome connected (`claude --chrome`), logged in to LinkedIn, on the branch above. Follow the capture spec: raw verbatim facts go into `brand/audit-raw.md`, logos into `brand/assets/`, reference screenshots into `brand/audit/screens/`. Commit and push. No analysis in this step.
+  2. **Cloud write-up.** Read `brand/audit-raw.md` and the screenshots. Then write the audit results and the Keep / Fix / Drop / Gaps summary in `brand/research.md`; update `STYLE_GUIDE.md` §2 (`FACTS-v2`, `PUBLIC-PROOF-v2`) and §5 (palette, fonts, logo); revise `brand/strategy.md` to v1; update the log; push; summarise for the user.
 
-  The audit captures the palette, fonts, logo, verbatim testimonials and past LinkedIn/Instagram posts. Write the Keep / Fix / Drop / Gaps summary, then revise `brand/strategy.md`.
+  Cloud sessions can't do step 1: no Claude in Chrome, and the network policy blocks the sites (see the 2026-10-04 "Audit attempt (cloud)" entry).
 - **Then:** the user reviews the strategy (questions in `brand/strategy.md` §14). Then Phase 1 visual directions: 2–3 directions inside "Growth, engineered", tested on one shared topic.
 - **Open questions:**
   - Which aspect ratios does Flow offer for Nano Banana 2 images? (We want 4:5 for both platforms.)
@@ -19,6 +19,23 @@
 ---
 
 ## Log
+
+### 2026-10-04 · Audit attempt (cloud): blocked → split workflow
+**What happened**
+- A new cloud session tried to run the audit. It had **no Claude in Chrome tools** (none attached, and no connector or local session to reach).
+- Egress was blocked for every target: the proxy returned `403` on `verdant-soft.com`, `clutch.co`, `linkedin.com`, `instagram.com`, `upwork.com` and `fiverr.com`, and WebFetch returned `EGRESS_BLOCKED`.
+- WebSearch still works but only returns paraphrases. It found no LinkedIn company URL, no Upwork or Fiverr profile, and no Instagram account. These must come from the site's footer or from LinkedIn itself.
+
+**Decisions (user)**
+- **Research locally, then write up in the cloud.** The local Claude Code session with Chrome only captures raw facts into `brand/audit-raw.md`, plus logos and reference screenshots. The cloud session then does the analysis and all edits to the guide and strategy.
+
+**Guide changes**
+- None. `brand/research.md` gained the split note and a capture spec under "Audit TODO".
+
+**Lessons**
+- **Cloud sessions never get Claude in Chrome.** It only attaches to Claude Code running on the user's machine. Plan any browser work as a local step.
+- **Fallback for public pages:** allow the domains in the environment's network settings, then use the headless Chromium that's pre-installed in the cloud container (Playwright, `/opt/pw-browsers`). It can read computed styles, fonts and the DOM. It won't get past LinkedIn, Instagram, Upwork or Fiverr login walls; those still need Chrome or screenshots.
+- **Reference screenshots of past brand material may live in the repo** (`brand/audit/screens/`). The "no images in the repo" rule covers generated outputs.
 
 ### 2026-10-04 · Company research + handler strategy
 **What happened**

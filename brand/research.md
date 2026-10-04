@@ -89,6 +89,40 @@ From their own business-development job posts ([Glassdoor](https://www.glassdoor
 ## Audit TODO (next session, browser access needed)
 Run this with Chrome (or with these domains allowed in network settings). Record results above, then write a **Keep / Fix / Drop / Gaps** summary at the end.
 
+### Split: capture locally, write up in cloud (user decision, 2026-10-04)
+Cloud sessions can't use Claude in Chrome, and their network policy blocks these sites. So the audit runs in two steps:
+1. **Local capture.** Claude Code on the user's machine with Chrome connected (`claude --chrome`), logged in to LinkedIn (and Upwork/Fiverr if possible). It **only records raw facts** following the capture spec below, then commits and pushes. It does not analyse, and does not edit `STYLE_GUIDE.md`, `brand/strategy.md` or the sections above.
+2. **Cloud write-up.** A cloud session reads `brand/audit-raw.md` and the screenshots, then does the judgment work: the results and Keep / Fix / Drop / Gaps below, the guide updates, and the strategy revision.
+
+### Capture spec (for the local agent)
+**Branch:** `claude/social-media-style-guide-665rja`. Commit and push there when done, and push partial work if the session runs long.
+
+**Output file: `brand/audit-raw.md`.** Raw facts only, with no opinions or recommendations. Use these sections in this order, and write "not found" (plus where you looked) rather than leaving a section out.
+
+1. **Pages crawled.** Start from `sitemap.xml` (if any) plus every header and footer nav link. For each page: URL, H1/H2s, key claims (verbatim), CTAs (button text and target).
+2. **Palette.** Run JS in the page: computed `color`, `background-color`, `border-color` and SVG `fill` across all visible elements, plus every `:root` CSS custom property. One row per distinct colour: hex, CSS source (variable name or selector), where it's used (buttons, headings, backgrounds, links…), and its rough share of screen area. Check the logo SVG fills too.
+3. **Fonts.** Computed `font-family` and `font-weight` for h1, h2, h3, body text, buttons and nav. Note the source: Google Fonts link, self-hosted `@font-face`, or system font.
+4. **Logo.** Every logo file: URL, format (SVG/PNG/…), where it's used (header, footer, favicon, apple-touch-icon, `og:image`) and variant (full or icon-only, light or dark background). **Download the files into `brand/assets/`**, keeping the original file names.
+5. **Imagery.** For each page, a short description of the images: photo, illustration, 3D, icons or stock; subjects; colour treatment.
+6. **Testimonials, verbatim.** Read them from the DOM, including hidden carousel slides. For each one: the exact text (copy and paste, no tidying, keep the original punctuation and typos), name, title, company, and the page URL.
+7. **Fact checks**, recorded exactly as displayed and with the URL where seen: the tagline "Engineering tomorrow's tech today!", the founding year (2019?), and the client company spelled "Alogirft". If it looks like a typo on the site, record it as shown and add "possible typo". Don't correct it.
+8. **Social links** from the site footer and header: every URL.
+9. **LinkedIn company page:**
+   - URL, follower count, about text (verbatim), specialties, industry, website.
+   - A table of the **last ~20 posts**: date, format (image / carousel / document / text / video / reshare), topic, visual description (what's in the image, colours, text on the image, template or one-off), the first line of the caption (verbatim), caption length (short / medium / long), hashtags and emoji used, reactions, comments, reposts.
+10. **Instagram.** Search Instagram and check the site's links. If an account exists: handle, followers, post count, date of the last post, and a description of the grid's look. Otherwise: "no account found", plus where you looked.
+11. **Clutch, Upwork, Fiverr.** For each: profile URL, profile copy (verbatim), services listed, portfolio items, and **the full text of every review** with reviewer name and role, company, date, rating and project.
+
+**Assets:**
+- Logo files go in `brand/assets/`.
+- Reference screenshots go in `brand/audit/screens/`: the homepage, the LinkedIn page header, and the past posts (one per post, or grids). Save them as compressed JPG and keep the total under ~10 MB. This is an exception to "images aren't stored in the repo": that rule covers generated output, and these are reference copies of past brand material.
+
+**Rules:**
+- Copy text verbatim. Anything typed out from a screenshot rather than copied gets marked `(transcribed)`.
+- The repo is public. Never record Glassdoor or other employee ratings, team size, rates or pricing, private messages, or anything from behind a login that isn't visible to the public.
+- Don't guess. A blank marked "not found" is better than a plausible value.
+- When done, tick the boxes below that the capture covers, and add a line under "Current status" in `learnings/log.md`: "Local capture done YYYY-MM-DD; cloud write-up next."
+
 **Website (verdant-soft.com)**
 - [ ] Brand palette: read the computed CSS colours (primary, secondary, accent, background, text) as hex codes
 - [ ] Fonts: headings and body (family names, weights)
