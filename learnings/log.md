@@ -2,24 +2,65 @@
 
 ## Current status
 - **Phase:** 1, Foundation
-- **Done:** public-source research (`brand/research.md`) and the handler strategy proposal (`brand/strategy.md`)
 - **Branch:** `claude/social-media-style-guide-665rja`
-- Local capture done 2026-10-04; cloud write-up next. (Scope narrowed by user to business info: LinkedIn posts, Instagram, Upwork and Fiverr skipped. See `brand/audit-raw.md`.)
-- **NEXT ACTION: the audit, in two steps** (user decision; details in `brand/research.md` → "Audit TODO" → "Split" and "Capture spec"):
-  1. **Local capture (user's machine).** Run Claude Code with Chrome connected (`claude --chrome`), logged in to LinkedIn, on the branch above. Follow the capture spec: raw verbatim facts go into `brand/audit-raw.md`, logos into `brand/assets/`, reference screenshots into `brand/audit/screens/`. Commit and push. No analysis in this step.
-  2. **Cloud write-up.** Read `brand/audit-raw.md` and the screenshots. Then write the audit results and the Keep / Fix / Drop / Gaps summary in `brand/research.md`; update `STYLE_GUIDE.md` §2 (`FACTS-v2`, `PUBLIC-PROOF-v2`) and §5 (palette, fonts, logo); revise `brand/strategy.md` to v1; update the log; push; summarise for the user.
-
-  Cloud sessions can't do step 1: no Claude in Chrome, and the network policy blocks the sites (see the 2026-10-04 "Audit attempt (cloud)" entry).
-- **Then:** the user reviews the strategy (questions in `brand/strategy.md` §14). Then Phase 1 visual directions: 2–3 directions inside "Growth, engineered", tested on one shared topic.
+- **Done:**
+  - public-source research
+  - the audit: local Chrome capture (`brand/audit-raw.md`) and cloud write-up (`brand/research.md` → "Audit results", with Keep / Fix / Drop / Gaps)
+  - `STYLE_GUIDE.md` §2 (`FACTS-v2`, `PUBLIC-PROOF-v2`) and §5 (palette, type, logo files)
+  - `brand/strategy.md` v1
+- **NEXT ACTION: the user answers `brand/strategy.md` §14.** The answers that unblock the most:
+  1. Approve the visual move to the website look (and the retirement of the navy and yellow templates).
+  2. Which numbers, if any, posts may state.
+  3. Attribution for Shervin Khanzadi, and whether Elia Essen can be quoted.
+  4. The founding year.
+  5. Buyer markets.
+  6. The news-inbox owner.
+- **Then:** fold the answers in, and move approved strategy rules into `STYLE_GUIDE.md` §3 and §11. Then Phase 1 visual directions: 2–3 directions inside "Growth, engineered", all in the website palette, tested on one shared topic.
 - **Open questions:**
   - Which aspect ratios does Flow offer for Nano Banana 2 images? (We want 4:5 for both platforms.)
   - How many outputs per generation? (We want 4, to measure pass rate.)
-  - Should the repo be made private? It's public right now, so only public-safe info goes in.
-  - Confirm: the tagline "Engineering tomorrow's tech today!", the founding year 2019, and the spelling of "Alogirft".
+  - Should the repo be made private? It's public, and the audit screenshots show staff faces and names from past posts.
 
 ---
 
 ## Log
+
+### 2026-10-04 · Audit write-up (cloud)
+**What happened**
+- A local Claude Code session with Chrome captured the website, the LinkedIn About page and Clutch. It also captured 19 LinkedIn posts and the Instagram profile before the user narrowed the scope to business info. Upwork and Fiverr were skipped.
+- The cloud session reviewed the screenshots and ran three independent checks: pixel sampling of the logos and past posts, web research on the named clients, and a separate business read. Then it wrote everything up.
+
+**Findings that changed things**
+- **The brand colour is a slate blue → sage teal gradient (#416D95 → #74AFAD), not green.** The CSS names it "green-gradient". The logo files match it exactly.
+- **Past social posts use a different, more saturated royal navy** (about #194493) **with yellow.** Neither is a brand colour, and the font isn't Inter.
+- The website is the cleanest expression of the brand: off-white and ink, Inter, gradient-highlighted words, a line-and-node mesh, and an oversized VS mark.
+- **The tagline is confirmed** on LinkedIn, Instagram and Clutch, but it isn't on the website. **Founded 2019** appears only on Clutch.
+- **"Alogirft" is a website typo for AlgoRift.** Shervin Khanzadi wrote both the website testimonial and the Clutch review, so P01 and P04 are one client.
+- **Clients:** AlgoRift / Sweet Round (Australia), Wemasy (Netherlands), Nedjmati (Algeria). No public link was found between "Elia Essen" and an AI SaaS company, so P02 is held.
+- **The numbers disagree across channels:** homepage counters, LinkedIn stats and Clutch's team range.
+- **Engagement (19 posts):** real-people posts got about 36 reactions on average; generic insight posts got about 7.
+
+**Decisions (mine, as proposals in `brand/strategy.md` v1)**
+- Move social onto the website system and retire the navy and yellow templates, AI robots and stock "staff".
+- Insight posts must come from their own projects. Proof alternates Client words and Project spotlight.
+- Inbox items with real people take the day. Hiring roles come only from the inbox, because the careers job list is broken.
+- No self-reported numbers. Caption reset: 3–5 hashtags, no Unicode bold, a hook first.
+- The employee repost kit moves up to launch.
+
+**Guide changes**
+- §2 → `FACTS-v2`:
+  - tagline confirmed; UI/UX process corrected from seven steps to six
+  - new facts: CTAs, milestone payments, engagement models, ten case studies
+  - F50–F52 numbers pending
+- §2 → `PUBLIC-PROOF-v2`: verbatim text, `client_key`, six quotable entries.
+- §5: `PALETTE-v1`, `TYPE-v1`, logo file table, candidate motifs.
+- §9: the proof cap counts per `client_key`, and the no-numbers rule.
+
+**Lessons**
+- **Sample colours from opaque pixels only.** Semi-transparent PNG pixels read as false colours (#307080). Composite onto white, or mask the edges, before sampling.
+- **Scope words matter.** Case studies say "contributed to" or "built the … modules". Past posts inflated that ("redefined…"). Facts must carry the scope word.
+- **A testimonial on the site isn't the same as verifiable proof.** Check that the name maps to a real client before the pipeline quotes it.
+- **Keep the local capture narrow.** The user only wanted business facts; the local session over-built tooling and drifted into social. Next time, give a short capture spec with a hard scope.
 
 ### 2026-10-04 · Audit attempt (cloud): blocked → split workflow
 **What happened**

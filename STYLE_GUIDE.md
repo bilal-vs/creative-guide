@@ -24,86 +24,263 @@
 11. Log the post to the history, with every field §11 requires
 
 ## 2. Brand foundation
-> **DRAFT: researched from public sources on 2026-10-04 and not yet confirmed by the user.** Full sources: `brand/research.md`. The handler's proposal for positioning, audiences and voice is in `brand/strategy.md`. It moves here once approved.
+> **Audited 2026-10-04.** Website, LinkedIn About and Clutch were read in Chrome; raw evidence is in `brand/audit-raw.md` and the summary in `brand/research.md` → "Audit results". The handler's proposal for positioning, audiences and voice is `brand/strategy.md` (v1). It moves here once the user approves it.
 
-**Company:** Verdant Soft (verdant-soft.com), a software company in Lahore, Pakistan, serving international clients.
+**Company:** Verdant Soft (verdant-soft.com), a software company in Lahore, Pakistan, serving international clients. Client evidence so far: Australia, the Netherlands and Algeria.
 **Service lines:** Custom Software Development · Cloud & DevOps · IT Team Outsourcing (dedicated teams) · UI/UX Design. Builds web and mobile applications.
 **Goals of the accounts (user decision):** both Instagram and LinkedIn serve **brand, clients and talent**.
 **Audiences, positioning, voice:** TBD, pending approval of `brand/strategy.md` §3–5.
 
 ### Fact bank
 The pipeline may state a company fact **only if it appears below with `status: confirmed`**. Anything else, including facts that are true but not listed, must not be stated.
+- `confirmed`: usable. The fact may be reworded, but names, numbers and scope words ("built", "contributed to", "modules") must stay as written.
+- `pending`: waiting on the user. Don't state it.
+- Case-study facts (F30–F39) never name a client. The case-study pages don't name one either.
 
-<!-- id: FACTS-v1 -->
+<!-- id: FACTS-v2 -->
 ```yaml
 - id: F01
   fact: "Verdant Soft is a software company based in Lahore, Pakistan."
   status: confirmed
-  source: verdant-soft.com; clutch.co/profile/verdant-soft
+  source: verdant-soft.com; clutch.co/profile/verdant-soft; linkedin.com/company/verdant-soft
 - id: F02
   fact: "Verdant Soft offers custom software development, cloud & DevOps, IT team outsourcing (dedicated teams), and UI/UX design."
   status: confirmed
-  source: verdant-soft.com
+  source: verdant-soft.com (Services menu and service pages)
 - id: F03
   fact: "Verdant Soft builds web and mobile applications."
   status: confirmed
-  source: verdant-soft.com
+  source: verdant-soft.com (site description)
 - id: F04
-  fact: "Verdant Soft's UI/UX process: research & discovery, personas & journey maps, information architecture & wireframes, design & prototyping, usability testing, developer collaboration, post-launch iteration."
+  fact: "Verdant Soft's UI/UX process has six steps: research & discovery, user personas, architecture & wireframing, design & prototyping, testing & validation, implementation & iteration."
   status: confirmed
   source: verdant-soft.com/services/ui-ux-design
+  note: "v2 corrects v1, which listed seven steps taken from search snippets."
 - id: F05
-  fact: "Verdant Soft works with the MERN stack and React."
+  fact: "Verdant Soft works with the MERN stack and React, and lists Next.js, Vue, NestJS, Express, Django, Node.js, Python and PHP among its technologies, with MySQL, PostgreSQL, MongoDB, Amazon Aurora and SQLite databases."
   status: confirmed
-  source: client testimonial on verdant-soft.com
+  source: verdant-soft.com/services/custom-software; case-study pages; client testimonial on verdant-soft.com
 - id: F06
-  fact: "Verdant Soft's cloud & DevOps work uses AWS, Docker, Kubernetes, Terraform, Ansible and CI/CD pipelines."
+  fact: "Verdant Soft's cloud & DevOps work covers AWS, Azure, Google Cloud, DigitalOcean and Alibaba Cloud; CI/CD with GitHub, GitLab, Bitbucket, Jenkins and CircleCI; Docker, Kubernetes and OpenShift; Terraform, CloudFormation and Ansible; and monitoring with Datadog, Prometheus, Grafana, Elasticsearch and Dynatrace."
   status: confirmed
-  source: Verdant Soft DevOps job posts
+  source: verdant-soft.com/services/cloud-devops
 - id: F07
   fact: "Verdant Soft has delivered features for an AI SaaS platform."
   status: confirmed
-  source: client testimonial on verdant-soft.com
+  source: client testimonial on verdant-soft.com (P02)
 - id: F08
   fact: "Verdant Soft was founded in 2019."
-  status: pending        # single source (Clutch); user to confirm
+  status: pending        # stated only on Clutch (a field the company fills in); the site says "5+ Years of expertise"; user to confirm
   source: clutch.co/profile/verdant-soft
 - id: F09
-  fact: "Tagline: Engineering tomorrow's tech today!"
-  status: pending        # unverified; confirm on live site
-  source: search summary only
-# Never state: team size, rates, minimum project size, employee reviews.
+  fact: "Verdant Soft's tagline is: Engineering Tomorrow’s Tech Today!"
+  exact_text: "Engineering Tomorrow’s Tech Today!"   # use this exact string (title case, curly apostrophe) wherever the tagline appears
+  status: confirmed
+  source: LinkedIn tagline and banner; Instagram bio; Clutch (sentence case). Not on the website.
+- id: F10
+  fact: "Verdant Soft's website is verdant-soft.com and its public email is info@verdant-soft.com."
+  status: confirmed
+  source: verdant-soft.com (footer, /hire-us, /contact-us)
+- id: F11
+  fact: "Prospective clients can book a meeting from the verdant-soft.com homepage, or start a project at verdant-soft.com/hire-us."
+  status: confirmed
+  source: verdant-soft.com ("Book a Meeting" opens a Calendly booking; "Hire an Expert" → /hire-us)
+- id: F12
+  fact: "Verdant Soft works on a milestone-based payment schedule, with payments at project initiation, key development phases, and final delivery."
+  status: confirmed
+  source: verdant-soft.com FAQ ("How do payments work?")
+- id: F13
+  fact: "Verdant Soft's IT team outsourcing comes as dedicated teams, project-based outsourcing, managed IT services, or offshore development, with full-time, part-time or project-based engagement."
+  status: confirmed
+  source: verdant-soft.com/services/it-team-outsourcing
+- id: F14
+  fact: "Verdant Soft describes its work as full-cycle: strategy, design, development and deployment."
+  status: confirmed
+  source: verdant-soft.com/blogs/design-to-deployment
+- id: F15
+  fact: "Clients can request a single service (for example DevOps, web development, UI/UX design or IT team outsourcing) rather than a full package."
+  status: confirmed
+  source: verdant-soft.com FAQ ("Can I request just one service?")
+- id: F16
+  fact: "Verdant Soft has 5+ years of expertise."
+  status: confirmed
+  source: verdant-soft.com homepage counter
+- id: F17
+  fact: "Verdant Soft has a verified client review on Clutch, rated 4.5 overall with 5.0 for quality, schedule, cost and willingness to refer."
+  status: confirmed
+  source: clutch.co/profile/verdant-soft (review dated 2024-10-26)
+- id: F18
+  fact: "Verdant Soft's social accounts: LinkedIn linkedin.com/company/verdant-soft, Instagram @verdant_soft."
+  status: confirmed
+  source: verdant-soft.com footer links
+
+# Case studies (from verdant-soft.com/case-study/web/<slug>; no client names)
+- id: F30
+  fact: "Verdant Soft built the medications, allergies, visits and lab-orders modules of a healthcare management system for a psychiatrist and therapist clinic (Next.js, Node.js, Express, PostgreSQL)."
+  status: confirmed
+  source: /case-study/web/psychiatric-clinic
+- id: F31
+  fact: "Verdant Soft developed a role-based e-commerce CMS platform for managing the backend operations of online stores (Next.js, Node.js, NestJS, PostgreSQL)."
+  status: confirmed
+  source: /case-study/web/e-commerce
+- id: F32
+  fact: "Verdant Soft developed a real estate platform that simplifies the property transaction experience (React, Python, Django, MongoDB)."
+  status: confirmed
+  source: /case-study/web/real-estate
+- id: F33
+  fact: "Verdant Soft developed a zone-based parking application for managing parking sessions (React, Node.js, Express, PostgreSQL)."
+  status: confirmed
+  source: /case-study/web/parking-app
+- id: F34
+  fact: "Verdant Soft developed a VPN browser extension with subscription management (React, TypeScript)."
+  status: confirmed
+  source: /case-study/web/vpn-extension
+- id: F35
+  fact: "Verdant Soft built a digital platform for the dental industry that brings together patient services, professional education and digital consent management (Next.js, TypeScript, PostgreSQL)."
+  status: confirmed
+  source: /case-study/web/dental-care
+- id: F36
+  fact: "Verdant Soft built a real-time sync of products, collections and orders between a Shopify store and a Vue.js application."
+  status: confirmed
+  source: /case-study/web/shopify
+- id: F37
+  fact: "Verdant Soft developed a clinic management platform that streamlines clinic operations and patient booking (React, Node.js, NestJS, PostgreSQL)."
+  status: confirmed
+  source: /case-study/web/clinic-management
+- id: F38
+  fact: "Verdant Soft developed a browser-based design canvas inspired by tools like Figma, using Vue.js and Konva.js."
+  status: confirmed
+  source: /case-study/web/canvas
+- id: F39
+  fact: "Verdant Soft contributed to a scalable, multi-tenant integration platform for data synchronization and ETL workflows (Python)."
+  status: confirmed
+  source: /case-study/web/etl-management-system
+
+# Self-reported numbers: NOT usable until the user confirms them (they disagree with each other across channels).
+- id: F50
+  fact: "500+ successful projects; 36+ active clients; 95% client satisfaction rate."
+  status: pending        # homepage counters; conflicts with F51
+  source: verdant-soft.com homepage
+- id: F51
+  fact: "50+ scalable & secure solutions; 1M+ global users reached; 69+ websites launched."
+  status: pending        # LinkedIn post 2026-01-20; conflicts with F50
+  source: linkedin.com/company/verdant-soft (post)
+- id: F52
+  fact: "Clients reduced monthly cloud costs by up to 40%."
+  status: pending        # blog claim, no client or context named
+  source: verdant-soft.com/blogs/cloud-optimization
+
+# Never state: team size or headcount (a past LinkedIn post's figure contradicts Clutch's range), rates, minimum project size, employee reviews.
+# Never quote: the case-study "The Process" text (identical boilerplate on every case study; mentions teams that aren't Verdant Soft's).
 ```
 
 ### Public proof
-User decision: clients and testimonials that are **publicly available** may be used, **sparingly** (caps in §9). The pipeline may quote **only** `quote_verbatim` text from entries with `status: quotable`. Every entry below is still waiting for its exact wording to be captured.
+User decision: clients and testimonials that are **publicly available** may be used, **sparingly** (caps in §9). Rules for the pipeline:
+- Quote **only** text that appears in an entry's `quote_verbatim` or `alt_quotes`, **character for character**. Never correct, trim inside or merge quotes. Each one is an exact substring of `full_text`, which is the testimonial as displayed.
+- Use only entries with `status: quotable`. `reference-only` entries inform positioning but are never quoted. `pending-confirmation` and `pending-transcript` entries are never quoted.
+- Print the `attribution` exactly. Never print star ratings.
+- Proof caps (§9) count per **`client_key`**, not per entry. P01 and P04 are the same person.
 
-<!-- id: PUBLIC-PROOF-v1 -->
+<!-- id: PUBLIC-PROOF-v2 -->
 ```yaml
 - id: P01
-  who: "E-commerce management company (unnamed on Clutch)"
-  gist: "Built a communication system with real-time chat and UI customisation; MVP delivered on time; 5.0 for quality, schedule, cost and willingness to refer."
-  quote_verbatim: null
+  client_key: shervin-khanzadi
+  attribution: "Shervin Khanzadi, Director, Sweet Round Pty Ltd"
+  context: "Chat system for AlgoRift, a platform for Amazon sellers (MVP, Aug–Oct 2024). Verified Clutch review."
+  quote_verbatim: "Their dedication to maximizing value while managing costs truly set them apart."
+  alt_quotes:
+    - "Their project management was efficient and responsive, consistently delivering milestones on time."
+    - "They quickly adapted to our needs, incorporating feedback seamlessly to ensure the final product aligned perfectly with our expectations."
+  full_text: "see brand/audit-raw.md §11.1 (full review; long)"
   source: https://clutch.co/profile/verdant-soft
-  status: pending-verbatim
+  status: quotable
 - id: P02
-  who: "Elia Essen"
-  gist: "Took full ownership of an AI SaaS platform; MERN/React; scalable, visually strong features."
-  quote_verbatim: null
+  client_key: elia-essen
+  attribution: "Elia Essen"
+  context: "AI SaaS platform; MERN / React."
+  quote_verbatim: "They took full ownership of our AI SaaS platform, delivering high-quality, scalable, and visually stunning features that exceeded our expectations."
+  alt_quotes:
+    - "Working with Verdant Soft has been an absolute pleasure."
+  full_text: "Working with Verdant Soft has been an absolute pleasure. Their expertise in the MERN stack, especially React. js, is truly impressive. They took full ownership of our AI SaaS platform, delivering high-quality, scalable, and visually stunning features that exceeded our expectations."
+  note: "Never quote the sentence containing 'React. js' (typo in the source)."
   source: https://www.verdant-soft.com/
-  status: pending-verbatim
+  status: pending-confirmation   # no public link found between this name and an AI SaaS company; user to confirm client and company before it's quoted
 - id: P03
-  who: "Nick Kuijpers, CEO, WEMASY"
-  gist: "Supportive, reliable partner; dependable full-stack team."
-  quote_verbatim: null
-  source: https://www.verdant-soft.com/
-  status: pending-verbatim
+  client_key: nick-kuijpers
+  attribution: "Nick Kuijpers, CEO, Wemasy"
+  context: "Wemasy: Dutch website-builder SaaS."
+  quote_verbatim: "Verdant Soft has proven to be a highly supportive and reliable partner in the development of our company. Their team takes a thoughtful approach to analyzing issues and delivering effective solutions."
+  alt_quotes:
+    - "Verdant Soft has proven to be a highly supportive and reliable partner in the development of our company."
+    - "Their team takes a thoughtful approach to analyzing issues and delivering effective solutions."
+  full_text: "Verdant Soft has proven to be a highly supportive and reliable partner in the development of our company. Their team takes a thoughtful approach to analyzing issues and delivering effective solutions."
+  source: https://www.verdant-soft.com/   # displayed as "CEO Wemasy"
+  status: quotable
 - id: P04
-  who: "Shervin Khanzadi, CEO, Alogirft (spelling unverified)"
-  gist: "Highly professional front-end team with a diverse skill set."
-  quote_verbatim: null
+  client_key: shervin-khanzadi      # same person as P01
+  attribution: "Shervin Khanzadi"   # name only: the site shows "CEO Alogirft" (typo for AlgoRift); Clutch shows "Director, Sweet Round Pty Ltd"; public profiles say founder of AlgoRift. User to confirm.
+  context: "Front-end development."
+  quote_verbatim: "Verdant Soft is a team of highly professional front-end developers with a strong and diverse skill set."
+  alt_quotes:
+    - "Their commitment to delivering high-quality results was evident throughout our collaboration."
+  full_text: "Verdant Soft is a team of highly professional front-end developers with a strong and diverse skill set. Their commitment to delivering high-quality results was evident throughout our collaboration."
   source: https://www.verdant-soft.com/
-  status: pending-verbatim
+  status: quotable
+- id: P05
+  client_key: hesham-elkouha
+  attribution: "Hesham Elkouha"
+  quote_verbatim: null
+  alt_quotes: []
+  full_text: "It was a pleasure working with Verdant Soft very professional and delivered the work as expected. Their response time was also amazing."
+  note: "Run-on first sentence; the only clean sentence is weak on its own."
+  source: https://www.verdant-soft.com/
+  status: reference-only
+- id: P06
+  client_key: waqas-zahoor-pal
+  attribution: "Waqas Zahoor Pal"
+  context: "Emergency task."
+  quote_verbatim: "The job was completed perfectly with full cooperation and professional conduct."
+  alt_quotes: []
+  full_text: "The job was completed perfectly with full cooperation and professional conduct. I never expected an emergency task to be handled this efficiently, but Verdant Soft demonstrated that with hard work and dedication, anything is possible."
+  note: "The second sentence is not quoted (its ending reads as hype)."
+  source: https://www.verdant-soft.com/
+  status: quotable
+- id: P07
+  client_key: isana-sebastian
+  attribution: "Isana Sebastian"
+  quote_verbatim: "They quickly understood our problem, collaborated effectively with our team, and delivered a solid solution."
+  alt_quotes:
+    - "Their proactive communication, thoughtful suggestions, and flexibility made the process smooth."
+    - "Working with Verdant Soft was a great experience."
+  full_text: "Working with Verdant Soft was a great experience. They quickly understood our problem, collaborated effectively with our team, and delivered a solid solution. Their proactive communication, thoughtful suggestions, and flexibility made the process smooth."
+  source: https://www.verdant-soft.com/
+  status: quotable
+- id: P08
+  client_key: ben-kemboi
+  attribution: "Ben Kemboi"
+  quote_verbatim: "The team sought a clear understanding before starting the work."
+  alt_quotes:
+    - "Verdant Soft completed the work in a timely manner."
+    - "They maintained positive communication and were ready to edit the work when asked to do so."
+  full_text: "Verdant Soft completed the work in a timely manner. The team sought a clear understanding before starting the work. They maintained positive communication and were ready to edit the work when asked to do so."
+  source: https://www.verdant-soft.com/
+  status: quotable
+- id: P09
+  client_key: ilyes-abderrezak
+  attribution: "Ilyes Abderrezak, Product Owner"   # from the video poster; LinkedIn post tags Nedjmati
+  quote_verbatim: null
+  alt_quotes: []
+  full_text: null
+  source: https://www.verdant-soft.com/ (video /videos/nedjimeti.mp4)
+  status: pending-transcript
+- id: P10
+  client_key: unknown-video-1
+  attribution: null
+  quote_verbatim: null
+  alt_quotes: []
+  full_text: null
+  source: https://www.verdant-soft.com/ (video /videos/alex-video-3.mp4)
+  status: pending-transcript
 ```
 
 ## 3. Content strategy: pillars, rotation, series, inputs, calendar
@@ -120,13 +297,82 @@ User decision: clients and testimonials that are **publicly available** may be u
 **TBD.** One recipe per pillar: the concept pattern, template ID, slot rules, and caption template.
 
 ## 5. Visual identity
-**TBD.**
-- **Fixed elements** (never vary): palette, lighting, medium/style, mood
+> **Measured 2026-10-04** from verdant-soft.com (computed styles and logo files; `brand/audit-raw.md` §2–4).
+> - **Brand source of truth:** the palette, type and logo below. Every overlay and template uses only these.
+> - **Proposed, not yet approved:** moving social onto the website system and dropping the past royal-navy and yellow social templates (`brand/strategy.md` v1 §3).
+> - **Not decided yet:** how the colours are worded in prompts. That waits for the Phase 1 tests.
+
+### 5.1 Palette
+The brand colour is a **slate blue → sage teal gradient**. The site's CSS calls it `--color-green-gradient`, but it is **not green**. Everything else is neutral.
+
+<!-- id: PALETTE-v1 -->
+```yaml
+- id: blue
+  hex: "#416D95"
+  role: "gradient start; the blue of the logo"
+- id: teal
+  hex: "#74AFAD"
+  role: "gradient end; the teal of the logo"
+- id: gradient
+  css: "linear-gradient(102.32deg, #416D95, #74AFAD)"
+  role: "logo; highlighted words in headlines"
+- id: ink
+  hex: "#1B1B1B"
+  role: "headlines; dark backgrounds (site footer); dark buttons"
+- id: body-grey
+  hex: "#5E5E5E"
+  role: "body text"
+- id: muted-grey
+  hex: "#707070"
+  role: "secondary text"
+- id: canvas
+  hex: "#F9F9F9"
+  role: "light panels and light backgrounds"
+- id: white
+  hex: "#FFFFFF"
+  role: "page background; text on ink"
+# Not brand colours (seen, excluded): #FDC700 (rating stars), #000000 (icons), #D1D5DC (UI lines),
+# #406C94 and #26615E (one site element each, purpose unknown), and the royal navy + yellow of past social templates.
+```
+
+**Prompt wording:** TBD (Phase 1). Starting hypothesis to test: describe the colours as "muted slate blue to soft sage teal" with the hex codes, and never as "green", which is likely to pull the model toward saturated greens.
+
+### 5.2 Typography (overlays only; the model never renders brand text)
+<!-- id: TYPE-v1 -->
+```yaml
+family: "Inter"            # the site self-hosts it; open-source (SIL OFL), so the pipeline can bundle it
+headline: { weight: 700, colour: ink, highlight: gradient }
+subhead:  { weight: 600, colour: ink }
+body:     { weight: 500, colour: body-grey }
+small:    { weight: 400, colour: muted-grey }
+letter_spacing: normal
+case: "sentence case, as on the site; never all caps"   # [proposed]: past social used all-caps templates
+signature: "set 1–3 key words of a headline in the brand gradient; the rest in ink (or white on ink)"
+```
+
+### 5.3 Logo files (`brand/assets/`)
+| Use | File | Notes |
+|---|---|---|
+| Light background, full lockup | `verdant-green-logo.8bcaebdb.svg` | Gradient VS mark + "Verdant Soft". Embedded PNG, 852×204. Keep it ≤ ~400 px wide on a 1080 px post |
+| Dark background, full lockup | `verdant-white-logo.e0d6cd95.svg` | All white. Embedded PNG, 4096×981 |
+| Mark only, white | `VS.05a1a937.svg` | The only true vector file |
+| Mark only, gradient | `VS-Green.770a6db3.svg`, `VerdantLogoLeft.ee8822eb.png` | PNG 2160×2160 (the Left file has the mark offset in a transparent square) |
+| Small icon | `apple-touch-icon.png` (180×180), `favicon.png`, `favicon.ico` | Gradient mark |
+
+Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or Figma) before the overlay spec is final.
+
+### 5.4 Brand motifs from the website (candidates for templates; untested)
+- Headline words highlighted in the gradient (§5.2 signature).
+- An oversized, cropped, faint VS mark as a background shape (site footer). It's an overlay asset, not generated.
+- A fine grey-blue line-and-node mesh (site hero).
+- Generous off-white space with rounded `#F9F9F9` panels. The light theme is the default; the ink (`#1B1B1B`) theme is for contrast days.
+
+### 5.5 Still TBD
+- **Fixed elements** (never vary): lighting, medium/style, mood
 - **Variable elements** (vary daily within limits): subject, setting, composition, metaphor
-- Palette: hex values plus the exact wording to use in prompts
 - Composition and negative-space zones reserved for overlays
 - Text-in-image policy (what the model may render vs. what is overlaid)
-- Overlay spec: logo, headline, positions, sizes, fonts
+- Overlay spec: logo position and size, headline position, safe margins
 
 ## 6. Image prompt system
 **TBD.**
@@ -157,7 +403,8 @@ User decision: clients and testimonials that are **publicly available** may be u
 `[decided]` means the user agreed it. `[proposed]` means it's waiting for the user's approval in `brand/strategy.md` §10.
 
 - `[decided]` **Facts:** state company facts only from §2 `FACTS` with `status: confirmed`. Never invent metrics, client names, awards, years or team size.
-- `[decided]` **Public proof, used sparingly:** quote only `quote_verbatim` text from §2 `PUBLIC-PROOF` with `status: quotable`. `[proposed]` caps: at most **1 proof post per week**, and the **same client not again within 30 days**.
+- `[decided]` **Public proof, used sparingly:** quote only `quote_verbatim` or `alt_quotes` text from §2 `PUBLIC-PROOF` with `status: quotable`, character for character. `[proposed]` caps: at most **1 proof post per week**, and the **same `client_key` not again within 30 days**.
+- `[proposed]` **No self-reported numbers:** project counts, client counts, satisfaction rates, user reach or savings percentages are stated only once they appear in §2 `FACTS` as `confirmed`. Today none do (F50–F52 are pending).
 - `[proposed]` **No AI-generated people presented as Verdant Soft staff, clients or events.** Talent and culture visuals are conceptual, or show people who can't be identified (hands, silhouettes, shot from behind, out of focus). Real photos come only from the news inbox.
 - `[proposed]` **National and religious days:** use only the pre-approved templates. Never generate Arabic or Urdu script, religious figures, or sacred sites.
 - `[proposed]` **No third-party logos or trademarks** in images. Tech names in captions are fine.
@@ -182,3 +429,4 @@ User decision: clients and testimonials that are **publicly available** may be u
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-04 | Audit: §2 → FACTS-v2 (tagline confirmed, UI/UX process corrected to 6 steps, contact/CTA/payment/engagement facts, 10 case studies, self-reported numbers held as pending) and PUBLIC-PROOF-v2 (verbatim quotes; 6 quotable entries from 5 clients; `client_key` so caps count per person; P01 and P04 are one client; P02 held until the client is confirmed). §5 palette, type and logo files measured from the website. §9 proof cap per `client_key`; no self-reported numbers | `brand/audit-raw.md`, `brand/research.md` → Audit results |
