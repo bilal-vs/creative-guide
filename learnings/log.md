@@ -35,7 +35,17 @@
   - **Six gradients:** brand, daylight, frost, depth, ocean, glow.
   - **Rule:** at most 2 non-core family tones per post.
 - **Lesson:** this brand wants a fully cool palette. Warm accents are out, even as a small spark.
-- Recorded as `PALETTE-v4` in `STYLE_GUIDE.md` §5.1; sheet in `brand/palette-v4.png`.
+- Recorded as `PALETTE-v4`, then replaced by v5 (below).
+- **User on v4:** too much blue; overall dull and boring. Think about the best overall palette and range; the core stays.
+- **v5:**
+  - the muted core is the *material*
+  - two luminous accents, Azure #3F8EE0 and Aqua #2EC4B4, are the *light*
+  - soft tints: Sky, Mint and a little Lilac
+  - a warm Linen #F7F3ED ground; a Midnight #0F2236 dark ground
+  - gradients: brand, lagoon, aurora, dawn, deep-sea, signal
+  - rule: one luminous accent per post
+- **Lesson:** a palette of only muted, cool, mid-saturation colours reads as dull, however well it harmonises. It needs a luminous accent and a warm-white ground for life and contrast.
+- Recorded as `PALETTE-v5` in `STYLE_GUIDE.md` §5.1; sheet in `brand/palette-v5.png`.
 
 ### 2026-10-04 · Complete posts, not backgrounds
 - **User decision:** the model generates the whole post (headline, subline, URL, logo), not a background for overlay.

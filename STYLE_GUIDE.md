@@ -314,63 +314,61 @@ Every post is:
 
 These are binary checks in the QA rubric (§8).
 
-### 5.1 Palette: two fixed colours, two cool families, two themes
+### 5.1 Palette: muted core, luminous accents, two themes
 - `[decided]` (user, 2026-10-04): **slate blue and sage teal stay exactly as they are.**
-- The user asked for more matching colours, minimal and similar, and approved the result:
-  - **no orange or coral**
-  - **more minimal blues**
-  - the rest as proposed
-- Everything sits in two cool families: blue (hue 209) and teal. Posts come in a **light** and a **dark** theme. Every text pair listed passes WCAG contrast.
-- Visual sheet: `brand/palette-v4.png`.
+- v4 was all-muted cool tones, and the user found it dull, boring and too blue. They asked for the best overall palette and colour range around the core.
+- **No orange or coral** (user).
+- **v5 logic:**
+  - the core stays muted and acts as the *material*
+  - two **luminous accents** bring the *light and life*
+  - soft tints add airy colour
+  - a warm-white ground stops the cool colours looking grey
+- Posts come in a **light** and a **dark** theme. Every text pair listed passes WCAG contrast. Visual sheet: `brand/palette-v5.png`.
 
-<!-- id: PALETTE-v4 -->
+<!-- id: PALETTE-v5 -->
 ```yaml
-blue:                          # hue 209, dark → light
-  midnight:   "#142B40"        # dark grounds, depth
-  harbor:     "#2A4D6E"        # strong highlight on light (8.2:1 on Mist), gradient midpoint
-  slate-blue: "#416D95"        # CORE, fixed: gradient start; highlight on light (5.1:1)
-  ocean:      "#5F88AE"        # shapes; text on dark (4.7:1); on light only 24px+ (3.5:1)
-  steel:      "#8FA9BF"        # lines, icons, secondary shapes; text only on dark (7.2:1)
-  sky:        "#ADC6DD"        # soft shapes, glows
-  haze:       "#DDE7F0"        # pale grounds and panels
-  frost:      "#EEF3F8"        # lightest cool ground
-teal:                          # dark → light
-  deep-teal:  "#2C6A6C"        # text-safe teal on light (5.8:1); white text on it 6.2:1
-  sage-teal:  "#74AFAD"        # CORE, fixed: gradient end; highlight on dark (7.1:1); never text on light
-  glacier:    "#BFE3DE"        # glow; small text on dark
-  ice:        "#EAF4F3"        # pale teal ground
-neutrals:
-  white: "#FFFFFF"
-  mist:  "#F4F7F8"
-  ink:   "#13212C"             # headlines on light (15.2:1 on Mist)
-  deep-slate: "#0E1A23"        # darkest ground
+core:                         # fixed, never altered: the brand's "material"
+  slate-blue: "#416D95"       # text on light 4.9:1 (Linen) / 5.5:1 (White)
+  sage-teal:  "#74AFAD"       # text on dark 7.1:1; never text on light
+luminous:                     # the life: light, glow, hero highlights; used sparingly
+  azure: "#3F8EE0"            # vivid blue; text on dark 4.7:1; white text on it only 24px+ (3.4:1)
+  aqua:  "#2EC4B4"            # vivid teal; text/highlight on dark 7.4:1; ink text on it 7.6:1
+soft:                         # airy colour for grounds, panels, glass tints
+  sky:   "#CFE2F7"
+  mint:  "#C6EDE6"
+  lilac: "#B8B4EC"            # pastel, ≤10% of a post; tints only
+grounds:
+  linen:    "#F7F3ED"         # warm white, default light ground
+  white:    "#FFFFFF"
+  midnight: "#0F2236"         # default dark ground
+text:
+  ink:       "#13212C"        # headlines on light (14.8:1 on Linen)
+  deep-teal: "#1F6E6A"        # teal text on light (5.4:1 on Linen)
   body-light: "#3E4C58"
   muted-light: "#66737E"
-  text-dark: "#F1F5F7"
-  body-dark: "#B6C3CC"
-  muted-dark: "#8494A0"
+  on-dark: "#FFFFFF"
+  body-dark: "#C3D2DE"
+  muted-dark: "#AFC3D6"
 gradients:
-  brand:    ["#416D95", "#74AFAD"]                       # fixed: logo, hero objects
-  daylight: ["#FFFFFF", "#EAF4F3", "#BFE3DE"]            # light grounds (teal-leaning)
-  frost:    ["#FFFFFF", "#EEF3F8", "#DDE7F0"]            # light grounds (blue-leaning)
-  depth:    ["#0E1A23", "#142B40", "#416D95"]            # dark grounds
-  ocean:    ["#2A4D6E", "#416D95", "#5F88AE", "#ADC6DD"] # blue-range objects and shapes
-  glow:     ["#74AFAD", "#BFE3DE"]                       # light and glows on dark
+  brand:    ["#416D95", "#74AFAD"]               # fixed: logo
+  lagoon:   ["#3F8EE0", "#2EC4B4"]               # hero objects, glows
+  aurora:   ["#C6EDE6", "#CFE2F7", "#B8B4EC"]    # light grounds, glass tints
+  dawn:     ["#F7F3ED", "#FFFFFF", "#CFE2F7"]    # warm light grounds
+  deep-sea: ["#0F2236", "#1D4A6E", "#416D95"]    # dark grounds
+  signal:   ["#416D95", "#3F8EE0", "#2EC4B4"]    # accent bars, lines, glows
 light:
-  ground: [white, mist, frost, haze, ice, daylight, frost-gradient]
-  text: { headline: ink, body: body-light, caption: muted-light }
-  highlight: [slate-blue, harbor, deep-teal]
+  ground: [linen, white, dawn, aurora]
+  highlight: [slate-blue, deep-teal]
   logo: verdant-logo-gradient
 dark:
-  ground: [deep-slate, midnight, depth]
-  text: { headline: text-dark, body: body-dark, caption: muted-dark }
-  highlight: [sage-teal, glacier, ocean (24px+)]
+  ground: [midnight, deep-sea]
+  highlight: [aqua]
   logo: verdant-logo-white
 rules:
-  - "Per post: neutrals + the two core colours + at most 2 other family tones (keeps it minimal)."
-  - "Light tones (steel, sky, haze, frost, glacier, ice) and sage-teal are never text on light grounds."
-  - "Never white text on sage-teal, glacier or the light blues; use ink."
-  - "Never: green as the brand colour, yellow, orange or coral, purple, royal navy."
+  - "Per post: one ground + the core + ONE luminous accent (azure or aqua) + at most one soft tint."
+  - "Luminous colours are light and glow (hero highlights, glows, bars), never large flat fills."
+  - "Highlight words: slate-blue or deep-teal on light; aqua on dark."
+  - "Never: orange or coral, yellow, green as the brand colour."
 ```
 
 `[proposed]` **Theme by pillar** (about 4 light and 3 dark a week):
@@ -477,7 +475,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
-| 2026-10-04 | §5.1 → PALETTE-v4: blue family (Midnight, Harbor, Slate Blue, Ocean, Steel, Sky, Haze, Frost), teal family (Deep Teal, Sage Teal, Glacier, Ice), six gradients; coral dropped (user) | User feedback; contrast computed; `brand/palette-v4.png` |
+| 2026-10-04 | §5.1 → PALETTE-v5: muted core + luminous accents (Azure, Aqua), soft tints (Sky, Mint, Lilac), warm Linen ground, Midnight dark, six gradients. Replaces the dull all-muted v4 (user) | User feedback; contrast computed; `brand/palette-v5.png` |
 | 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable, designer-made (posts and carousels) | User decision |
 | 2026-10-04 | §5.5: complete posts generated in-model (text + logo via REF-PACK-v1); overlay is the fallback | User decision |
 | 2026-10-04 | §6: generate at 3:4 and crop to 4:5 (Flow has no 4:5) | Flow error message |
