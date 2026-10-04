@@ -381,6 +381,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 
 ## 6. Image prompt system
 **TBD.**
+- `[decided]` **Aspect ratio:** Google Flow offers Nano Banana 2 only 1:1, 16:9, 9:16, 4:3 and 3:4 (no 4:5). Generate at **3:4**, end every prompt with "Portrait image, 3:4 aspect ratio.", and crop deterministically to the 4:5 post (1080×1440 → 1080×1350, 45px off the top and bottom). The API pipeline uses the same 3:4 + crop, for parity. Evidence: Flow error, 2026-10-04.
 - Master prompt template with `{slots}`
 - Fixed style block (verbatim)
 - Slot-filling rules
@@ -434,5 +435,6 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-04 | §6: generate at 3:4 and crop to 4:5 (Flow has no 4:5) | Flow error message |
 | 2026-10-04 | §5 → PALETTE-v2: slate blue and sage teal fixed (user decision); light and dark themes with new neutrals; theme-by-pillar proposed | User decision; contrast computed |
 | 2026-10-04 | Audit: §2 → FACTS-v2 (tagline confirmed, UI/UX process corrected to 6 steps, contact/CTA/payment/engagement facts, 10 case studies, self-reported numbers held as pending) and PUBLIC-PROOF-v2 (verbatim quotes; 6 quotable entries from 5 clients; `client_key` so caps count per person; P01 and P04 are one client; P02 held until the client is confirmed). §5 palette, type and logo files measured from the website. §9 proof cap per `client_key`; no self-reported numbers | `brand/audit-raw.md`, `brand/research.md` → Audit results |

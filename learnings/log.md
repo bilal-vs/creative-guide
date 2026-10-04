@@ -8,7 +8,7 @@
   - `FACTS-v2`, `PUBLIC-PROOF-v2`
   - `PALETTE-v2`: light and dark themes; slate blue and sage teal fixed
   - strategy v1
-- **NOW: light-theme direction test.** The user is running only the 3 light prompts (v1-A/B/C-light) in `posts/2026-10-04-direction-test-built-to-scale.md`. The dark prompts are deferred until a light direction wins.
+- **NOW: light-theme direction test.** The user is running the 3 light prompts as **v2** (3:4) in `posts/2026-10-04-direction-test-built-to-scale.md`. The dark prompts are deferred until a light direction wins.
   - Waiting on: the user runs each in Google Flow (Nano Banana 2, 4:5, 4 outputs) exactly as written and pastes **all** outputs, labelled by prompt.
 - **Next:** review each output in the rubric table and classify failures. The best direction becomes the first `TPL-*` template, then gets tested across pillars and topics.
 - **Still open** (in `brand/strategy.md` §14; not blocking the visual tests):
@@ -19,11 +19,16 @@
   - news-inbox owner
   - Instagram Reels
   - repo privacy
-- **Flow questions to answer during the test:** does Flow offer 4:5 for Nano Banana 2, and how many outputs per run?
+- **Flow:** no 4:5 option (1:1, 16:9, 9:16, 4:3, 3:4), so we generate at 3:4 and crop to 4:5. Still unknown: how many outputs per run.
 
 ---
 
 ## Log
+
+### 2026-10-04 · Flow aspect ratios
+- Flow rejected 4:5. Nano Banana 2 in Flow offers only 1:1, 16:9, 9:16, 4:3 and 3:4.
+- **Decision:** generate at 3:4, say "3:4 aspect ratio" in the prompt, and crop to 4:5 deterministically (45px off the top and bottom at 1080 wide). The pipeline does the same, for parity.
+- The prompts went to v2 (aspect ratio only). v1 was never run. Rule followed: never edit a sent prompt.
 
 ### 2026-10-04 · Palette themes + first direction test
 **Decisions (user)**
