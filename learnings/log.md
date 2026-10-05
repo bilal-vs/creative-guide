@@ -25,6 +25,26 @@
 
 ## Log
 
+### 2026-10-05 · Light theme v2 as a system
+- **User:**
+  - v1 was improved but not good enough: the heading doesn't pop, and it's too light overall
+  - build the overall theme, not three posts
+- **Diagnosis:**
+  - the royal-blue highlight is mid-tone, so it's weak on white
+  - mostly white with pale glows reads as washed out
+  - there was no system, only one-offs
+- **LIGHT-THEME-v2:**
+  - tinted ice ground
+  - **exactly one saturated colour block per post** (cobalt → royal with a cyan glow), which holds the hero
+  - 100 px headline with **gradient highlight words** (#2F62C8 → #0088AA, ≥4:1)
+  - gradient label pill, accent bar
+  - component kit
+  - **7 templates:** L-HERO, L-GLASS, L-QUOTE, L-LIST, L-COVER, L-SLIDE, L-PEOPLE
+  - do/don't rules
+- **Renderer:** `brand/theme/render_light.py`; sheets in `brand/theme/`.
+- **Lesson:** "pop" on light grounds comes from one saturated mass plus a vivid gradient on the key words, not from more pale glows.
+- **Next:** rebuild the test prompts from the templates (L-HERO, L-GLASS, L-QUOTE) when the user says go; the dark theme gets the same treatment.
+
 ### 2026-10-05 · Light theme improved
 - **User:** loves palette v6; improve the light-theme posts.
 - **Diagnosis:** the light sample was flat (plain white, flat bars, no depth).

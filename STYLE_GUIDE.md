@@ -367,23 +367,39 @@ rules:
   - "Never: yellow, lime, orange, coral, or green as the brand colour."
 ```
 
-### 5.1a Light theme recipe (user approved the direction, 2026-10-05)
-The light posts used to look flat. This recipe gives them depth while staying minimal. Mockups: `brand/palette/v6-4-light-posts.png`.
+### 5.1a Light theme v2: the system (user: "build the overall theme")
+- One grid, one component kit and seven templates. Every light post is built from these, never designed from scratch.
+- Reference sheets: `brand/theme/light-1-anatomy.png`, `light-2-templates.png`, `light-3-rules.png`. Regenerate them with `python3 brand/theme/render_light.py`.
+- The mockups use a stand-in font. The real headline face is Inter (Syne for headlines is still an open question).
 
-<!-- id: LIGHT-THEME-v1 -->
+<!-- id: LIGHT-THEME-v2 -->
 ```yaml
-ground: "bright white with a soft pale aurora: polar #E9FFFC glow top-left; sky #A6CAEC + faint cyan #09CACC haze lower-right"
-hero: "ONE object in the lower right, filled with lagoon/ocean gradients (#34CCA4, #09CACC, #0088AA → #3C6EB7), glossy, with a soft cyan glow beneath it"
-glass: "optional frosted-glass card(s): white ~60%, blurred background, thin white edge, soft royal-blue shadow"
-text:
-  logo: top-left (REF-PACK-v1)
-  label: "small rounded pill, polar #E9FFFC fill, steel navy #42658A text (series or topic name)"
-  headline: "bold modern sans, deep navy-black #050816; 1–3 words in royal blue #3C6EB7"
-  accent: "short gradient bar royal blue → cyan under the headline"
-  subline: "one line, steel navy #42658A"
-  footer: "verdant-soft.com in steel navy, bottom-left"
-layout: "text block top-left; hero lower-right; generous margins; nothing else"
-never: [gradient text on light, cyan or teal text on light, more than one hero object, busy effects]
+canvas: { size: "1080x1350 (4:5)", generate_at: "3:4, crop to 4:5", safe_x: 84, safe_y: 110 }
+ground: "tinted ice gradient #F4F9FC → #E6F1F8 → #D6E7F4 with a polar #E9FFFC glow top-left; never flat white"
+components:
+  logo:      "real gradient lockup (REF-PACK-v1), top-left at safe_x/safe_y, 52 px tall"
+  pill:      "label pill: gradient #2F62C8 → #0088AA, white bold 26 px, names the series or topic"
+  headline:  "bold 88–100 px, abyss #050816, max 3 lines, sentence case, left-aligned"
+  highlight: "1–3 words in gradient #2F62C8 → #0088AA (≥4:1 on the ground)"
+  accent:    "bar 110×10, gradient royal → cyan, under the headline"
+  subline:   "one line, 32 px regular, steel #42658A"
+  block:     "EXACTLY ONE saturated colour block per post: cobalt #151754 → #21387B → royal #3C6EB7, cyan #09CACC glow inside, radius 44, soft royal shadow, bleeds off an edge"
+  hero:      "one object inside the block: glossy gradient bars | node network | glass stack | quote mark | real photo frame"
+  glass:     "frosted panels (white 20–55%, thin white edge); on or near the block only; max 3"
+  list_row:  "glass row, gradient number disc, bold 40 px text; max 4 rows"
+  counter:   "carousel '02 / 05' top-right in steel; progress dots bottom-right (active = gradient bar)"
+  footer:    "verdant-soft.com, bold 24 px, steel (white when it sits on the block)"
+templates:
+  L-HERO:   { use: [how-we-work, brand-world], layout: "text top-left; block lower-right with hero object" }
+  L-GLASS:  { use: [how-we-work], layout: "text top-left; block lower-right with a stack of up to 3 glass cards" }
+  L-QUOTE:  { use: [proof], layout: "block top-right holding the quote mark; verbatim quote 60–64 px below; 1–3 words highlighted; attribution in steel" }
+  L-LIST:   { use: [how-we-work, insight], layout: "text top-left; 3–4 glass list rows; block as a bottom band carrying the footer" }
+  L-COVER:  { use: [series, carousel-cover], layout: "pill with series + episode; question headline; block lower-right; progress dots" }
+  L-SLIDE:  { use: [carousel-inner], layout: "counter top-right; short headline; block as the content panel with glass rows; dots" }
+  L-PEOPLE: { use: [grow-with-us], layout: "text top-left; block lower-right holding a REAL inbox photo in a white-edged frame; name + role" }
+rules:
+  do: ["one colour block with a job", "one hero object", "gradient highlight on 1–3 words", "pill names the series or topic", "real people only from real photos"]
+  dont: ["cyan/mint/sage/polar as text on light", "two blocks", "gradient text in body or subline", "centred headline over the hero", "stock people, robots, generic tech icons", "yellow, lime, orange, coral, green-as-brand", "text inside the block under 36 px", "bokeh, sparkles, lens flares"]
 ```
 
 `[proposed]` **Theme by pillar** (about 4 light and 3 dark a week):
@@ -490,7 +506,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
-| 2026-10-05 | §5.1a LIGHT-THEME-v1: pale aurora ground, one gradient hero with cyan glow, optional frosted glass, pill label, royal-blue highlight, gradient accent bar | User: "improve light theme posts"; mockups `brand/palette/v6-4-light-posts.png` |
+| 2026-10-05 | §5.1a → LIGHT-THEME-v2: grid, component kit, 7 templates (hero, glass, quote, list, carousel cover/slide, people), do/don't rules. Text pops via gradient highlights; one saturated colour block per post | User: "text doesn't pop", "build the overall theme"; `brand/theme/` |
 | 2026-10-05 | §5.1 → PALETTE-v6 "deep ocean" from the user's reference boards and hex picks: deep navy/cobalt grounds, ocean teals, royal blue, polar lights, six gradients + aurora mesh; no yellow or lime | User references; contrast computed; `brand/palette/` |
 | 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable, designer-made (posts and carousels) | User decision |
 | 2026-10-04 | §5.5: complete posts generated in-model (text + logo via REF-PACK-v1); overlay is the fallback | User decision |
