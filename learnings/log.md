@@ -25,6 +25,15 @@
 
 ## Log
 
+### 2026-10-05 · Colour guidelines book (16 pages)
+- **User:** a multi-page guidelines book: overall, then dark theme, then light theme. Mid-build: **"colour guide only, not about visuals."** Writing and visuals get their own practice later.
+- **Built** `brand/guidelines/verdant-soft-colour-guidelines.pdf` (pages in `brand/guidelines/pages/`; script `brand/guidelines/build.py`):
+  - **Overall:** principles, core colours, full palette with HEX and RGB, 10 gradients, proportions, computed contrast pairs, logo colours.
+  - **Dark and light themes:** colour roles, grounds and gradients, text colour and rules.
+- **Fonts:** real Inter and Syne (OFL) were added in `brand/fonts/` from npm (@fontsource), converted from woff2. Inter's latin subset has no → or ≥, so the copy avoids them.
+- **Palette → v7:** Royal Deep #2F62C8; named theme gradients; per-theme roles and proportions.
+- **Kit:** the dark-theme templates now exist in `brand/theme/kit.py` (D-*), mirroring L-*, for the visuals stage.
+
 ### 2026-10-05 · Light theme v2 as a system
 - **User:**
   - v1 was improved but not good enough: the heading doesn't pop, and it's too light overall

@@ -321,7 +321,7 @@ These are binary checks in the QA rubric (§8).
 - **No yellow or lime** (from reference 2), and **no orange or coral**.
 - Every text pair listed passes WCAG contrast. Visual pages: `brand/palette/v6-1-colours.png`, `v6-2-gradients.png`, `v6-3-in-use.png`.
 
-<!-- id: PALETTE-v6 -->
+<!-- id: PALETTE-v7 -->
 ```yaml
 core:                          # fixed, never altered
   slate-blue: "#416D95"        # text on light 5.5:1 (white)
@@ -337,7 +337,8 @@ teals:                         # the energy (user's picks)
   cyan:      "#09CACC"         # highlight on dark 9.8:1
   ocean:     "#0088AA"         # deep teal-blue; text on light only 24px+ (4.1:1)
 blues:
-  royal-blue: "#3C6EB7"        # highlight on light 5.1:1; gradient end
+  royal-blue: "#3C6EB7"        # gradient end; colour block
+  royal-deep: "#2F62C8"        # light-theme highlight gradient start (4.9:1 on the ice ground)
   steel-navy: "#42658A"        # text on light 6.1:1
 lights:
   sky:   "#A6CAEC"             # soft light, glows
@@ -351,16 +352,30 @@ gradients:
   daybreak: ["#EBF5F7", "#A6CAEC", "#3C6EB7"]    # light grounds
   ocean:    ["#34CCA4", "#00ACB3", "#0088AA"]    # teal objects, bars
   aurora-mesh: { base: "#050816", glows: ["#151754", "#0088AA", "#09CACC", "#3C6EB7", "#00A598"] }  # signature blurred backdrop
+  highlight-light: ["#2F62C8", "#0088AA"]        # 1–3 headline words on light
+  highlight-dark:  ["#09CACC", "#34CCA4"]        # 1–3 headline words on dark; pill and accent on dark
+  ice-ground:      ["#F4F9FC", "#E6F1F8", "#D6E7F4"]  # light-theme ground (+ polar glow top-left)
+  abyss-ground:    ["#050816", "#070C20", "#0B1530"]  # dark-theme ground (+ cobalt-night glow top-left)
+  aurora-panel:    ["#0B1A3A", "#21387B", "#1D4A8A"]  # dark-theme colour mass; cyan + royal glows; polar edge at 35%
 light:
-  ground: [white, ice, polar, daybreak]
-  text: { headline: abyss, body: steel-navy }
-  highlight: [royal-blue, slate-blue, steel-navy]
+  ground: ice-ground
+  colour-mass: cobalt              # one block per post, cyan glow inside
+  text: { headline: abyss, supporting: steel-navy }
+  highlight: highlight-light
+  pill: { fill: highlight-light, text: "#FFFFFF" }
+  accent-bar: ["#2F62C8", "#09CACC"]
+  lines: "#B9CDE0"
   logo: verdant-logo-gradient
 dark:
-  ground: [abyss, navy, cobalt-night, abyss-gradient, cobalt-gradient, aurora-mesh]
-  text: { headline: "#FFFFFF", body: sky }
-  highlight: [cyan, mint-jade, sage-teal]
+  ground: abyss-ground
+  colour-mass: aurora-panel        # one panel per post
+  text: { headline: "#FFFFFF", supporting: sky }
+  highlight: highlight-dark
+  pill: { fill: highlight-dark, text: abyss }
+  accent-bar: highlight-dark
+  lines: "#2A3B5C"
   logo: verdant-logo-white
+proportions: { light: "ground 60 / colour block 25 / text 10 / highlight 5", dark: "ground 65 / aurora panel 20 / text 10 / highlight 5" }
 rules:
   - "Per post: one ground (light or deep) + the core + ONE accent family (teals or blues) + at most one light tone."
   - "Bright teals and cyans are never text on light grounds."
@@ -506,6 +521,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-05 | §5.1 → PALETTE-v7: Royal Deep added; named theme gradients (highlight-light/dark, ice-ground, abyss-ground, aurora-panel); per-theme colour roles and proportions. Colour guidelines book: `brand/guidelines/verdant-soft-colour-guidelines.pdf` | User: multi-page guidelines, colour only |
 | 2026-10-05 | §5.1a → LIGHT-THEME-v2: grid, component kit, 7 templates (hero, glass, quote, list, carousel cover/slide, people), do/don't rules. Text pops via gradient highlights; one saturated colour block per post | User: "text doesn't pop", "build the overall theme"; `brand/theme/` |
 | 2026-10-05 | §5.1 → PALETTE-v6 "deep ocean" from the user's reference boards and hex picks: deep navy/cobalt grounds, ocean teals, royal blue, polar lights, six gradients + aurora mesh; no yellow or lime | User references; contrast computed; `brand/palette/` |
 | 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable, designer-made (posts and carousels) | User decision |
