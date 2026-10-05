@@ -1,25 +1,24 @@
 # Learnings & decision log
 
 ## Current status
-- **Phase:** 1, Foundation → visual directions
+- **Phase:** 1, Foundation
 - **Branch:** `claude/social-media-style-guide-665rja`
+- **ROADMAP (user, 2026-10-05), in this order:**
+  1. **Writing practice** (now): headlines → captions (LinkedIn and Instagram) → carousel copy → alt text and hashtags. Codify the winners into `STYLE_GUIDE.md` §7. Files in `writing/`.
+  2. **Visuals**: discuss and train. Templates and kit are in `brand/theme/` (7 templates × 4 moods). The prompts in `posts/2026-10-04-direction-test-built-to-scale.md` (v3, unsent) get rebuilt from the templates.
+  3. **Revise the colour guide** from what the visuals teach (`brand/theme/colours.py` → `python3 brand/guidelines/build.py`).
+- **NOW:** writing round 1 (headlines) is in `writing/round-01-headlines.md`, waiting for the user's keep/kill notes.
 - **Done:**
-  - audit and write-up
-  - `FACTS-v2`, `PUBLIC-PROOF-v2`
-  - `PALETTE-v2`: light and dark themes; slate blue and sage teal fixed
+  - audit
+  - FACTS-v2 and PUBLIC-PROOF-v2
   - strategy v1
-- **NOW: light-theme direction test, complete posts.** The user is running the 3 light prompts as **v3** in `posts/2026-10-04-direction-test-built-to-scale.md`: full post with headline, subline, URL, and the logo from REF-PACK-v1; 3:4. The dark prompts are deferred until a light direction wins.
-  - Waiting on: the user runs each in Google Flow (Nano Banana 2, 4:5, 4 outputs) exactly as written and pastes **all** outputs, labelled by prompt.
-- **Next:** review each output in the rubric table and classify failures. The best direction becomes the first `TPL-*` template, then gets tested across pillars and topics.
-- **Still open** (in `brand/strategy.md` §14; not blocking the visual tests):
-  - numbers allowed in posts
-  - Shervin Khanzadi's attribution; Elia Essen's company
-  - founding year
-  - buyer markets
-  - news-inbox owner
-  - Instagram Reels
-  - repo privacy
-- **Flow:** no 4:5 option (1:1, 16:9, 9:16, 4:3, 3:4), so we generate at 3:4 and crop to 4:5. Still unknown: how many outputs per run.
+  - colour system v8 (PALETTE-v8 + THEMES-v1) and the 25-page colour book
+  - LIGHT-THEME-v2 templates
+  - post rules §5.0
+- **Still open:**
+  - `brand/strategy.md` §14 (numbers, Shervin Khanzadi's attribution, Elia Essen, founding year, markets, news-inbox owner, repo privacy)
+  - Syne for headlines?
+  - Flow outputs per run
 
 ---
 
