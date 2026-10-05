@@ -367,6 +367,25 @@ rules:
   - "Never: yellow, lime, orange, coral, or green as the brand colour."
 ```
 
+### 5.1a Light theme recipe (user approved the direction, 2026-10-05)
+The light posts used to look flat. This recipe gives them depth while staying minimal. Mockups: `brand/palette/v6-4-light-posts.png`.
+
+<!-- id: LIGHT-THEME-v1 -->
+```yaml
+ground: "bright white with a soft pale aurora: polar #E9FFFC glow top-left; sky #A6CAEC + faint cyan #09CACC haze lower-right"
+hero: "ONE object in the lower right, filled with lagoon/ocean gradients (#34CCA4, #09CACC, #0088AA → #3C6EB7), glossy, with a soft cyan glow beneath it"
+glass: "optional frosted-glass card(s): white ~60%, blurred background, thin white edge, soft royal-blue shadow"
+text:
+  logo: top-left (REF-PACK-v1)
+  label: "small rounded pill, polar #E9FFFC fill, steel navy #42658A text (series or topic name)"
+  headline: "bold modern sans, deep navy-black #050816; 1–3 words in royal blue #3C6EB7"
+  accent: "short gradient bar royal blue → cyan under the headline"
+  subline: "one line, steel navy #42658A"
+  footer: "verdant-soft.com in steel navy, bottom-left"
+layout: "text block top-left; hero lower-right; generous margins; nothing else"
+never: [gradient text on light, cyan or teal text on light, more than one hero object, busy effects]
+```
+
 `[proposed]` **Theme by pillar** (about 4 light and 3 dark a week):
 - **Dark:** Engineering insight (Mon, Wed) and Brand world (Sat).
 - **Light:** How we work (Tue, Sun), Proof (Thu) and Grow with us (Fri).
@@ -471,6 +490,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-05 | §5.1a LIGHT-THEME-v1: pale aurora ground, one gradient hero with cyan glow, optional frosted glass, pill label, royal-blue highlight, gradient accent bar | User: "improve light theme posts"; mockups `brand/palette/v6-4-light-posts.png` |
 | 2026-10-05 | §5.1 → PALETTE-v6 "deep ocean" from the user's reference boards and hex picks: deep navy/cobalt grounds, ocean teals, royal blue, polar lights, six gradients + aurora mesh; no yellow or lime | User references; contrast computed; `brand/palette/` |
 | 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable, designer-made (posts and carousels) | User decision |
 | 2026-10-04 | §5.5: complete posts generated in-model (text + logo via REF-PACK-v1); overlay is the fallback | User decision |

@@ -25,6 +25,17 @@
 
 ## Log
 
+### 2026-10-05 · Light theme improved
+- **User:** loves palette v6; improve the light-theme posts.
+- **Diagnosis:** the light sample was flat (plain white, flat bars, no depth).
+- **Fix (LIGHT-THEME-v1):**
+  - white with a pale aurora (polar, sky, faint cyan)
+  - one glossy gradient hero in the teals → royal blue, with a soft cyan glow
+  - optional frosted glass
+  - text: polar pill label; deep navy-black headline with royal-blue highlight; a short gradient accent bar instead of an underline (the underline cut through descenders); steel-navy subline and URL
+- **Mockups:** `brand/palette/v6-4-light-posts.png`.
+- The unsent v3 light prompts were rewritten to this recipe and palette.
+
 ### 2026-10-05 · Palette v6 "deep ocean" (from user references)
 - **User:**
   - shared 5 reference boards: Monestra greens, a navy/indigo/lime board, an aurora blur, a gradient board, Syne + Inter type
