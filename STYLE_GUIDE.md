@@ -314,78 +314,180 @@ Every post is:
 
 These are binary checks in the QA rubric (§8).
 
-### 5.1 Palette: deep ocean (v6)
-- `[decided]` (user, 2026-10-04/05): **slate blue and sage teal stay exactly as they are.**
-- v6 is built from the user's reference boards (deep navy and cobalt, electric teals and cyans, polar light, aurora mesh gradients) and the user's own picks: #34CCA4 #00ACB3 #0088AA #42658A #00A598 #09CACC.
-- The gradients follow the user's favourite reference: abyss → royal, cobalt → royal, teal → royal, white → royal, and a mesh.
-- **No yellow or lime** (from reference 2), and **no orange or coral**.
-- Every text pair listed passes WCAG contrast. Visual pages: `brand/palette/v6-1-colours.png`, `v6-2-gradients.png`, `v6-3-in-use.png`.
+### 5.1 Colour system v8: palette + two themes × four moods
+- `[decided]` (user): **slate blue and sage teal stay exactly as they are**; the palette grew from the user's references (v6), then became a full theme system.
+- **v8 (2026-10-05) came from three independent designer proposals and Claude's synthesis.** Light posts stay light: their colour mass is a bright mid-tone (Royal Tide / Lagoon Tide), never a dark cobalt block.
+- **The highlight and pill colours were fixed** after the old Ocean end failed contrast: Ocean was 3.3:1 on the darkest light ground, and white text on it was 4.1:1.
+- **The pillar picks the mood.**
+- **Source of truth:** `brand/theme/colours.py`. Book: `brand/guidelines/verdant-soft-colour-guidelines.pdf` (25 pages).
 
-<!-- id: PALETTE-v7 -->
+<!-- id: PALETTE-v8 -->
 ```yaml
-core:                          # fixed, never altered
-  slate-blue: "#416D95"        # text on light 5.5:1 (white)
-  sage-teal:  "#74AFAD"        # text on dark 8.0:1 (abyss); never text on light
-deep:                          # dark grounds
-  abyss:        "#050816"      # darkest ground; also ink on light (20:1 on white)
-  navy:         "#1E3058"
-  cobalt-night: "#151754"
-teals:                         # the energy (user's picks)
-  mint-jade: "#34CCA4"         # glow; text on dark 9.8:1
-  jade:      "#00A598"         # fills; text on dark 6.5:1
-  lagoon:    "#00ACB3"         # fills; text on dark 7.2:1
-  cyan:      "#09CACC"         # highlight on dark 9.8:1
-  ocean:     "#0088AA"         # deep teal-blue; text on light only 24px+ (4.1:1)
-blues:
-  royal-blue: "#3C6EB7"        # gradient end; colour block
-  royal-deep: "#2F62C8"        # light-theme highlight gradient start (4.9:1 on the ice ground)
-  steel-navy: "#42658A"        # text on light 6.1:1
-lights:
-  sky:   "#A6CAEC"             # soft light, glows
-  ice:   "#EBF5F7"             # light ground
-  polar: "#E9FFFC"             # light ground, glow
-gradients:
-  brand:    ["#416D95", "#74AFAD"]               # fixed: logo
-  abyss:    ["#050816", "#1E3058", "#3C6EB7"]    # dark grounds
-  cobalt:   ["#151754", "#21387B", "#3C6EB7"]    # rich dark grounds
-  lagoon:   ["#74AFAD", "#09CACC", "#3C6EB7"]    # core teal → cyan → royal: hero objects
-  daybreak: ["#EBF5F7", "#A6CAEC", "#3C6EB7"]    # light grounds
-  ocean:    ["#34CCA4", "#00ACB3", "#0088AA"]    # teal objects, bars
-  aurora-mesh: { base: "#050816", glows: ["#151754", "#0088AA", "#09CACC", "#3C6EB7", "#00A598"] }  # signature blurred backdrop
-  highlight-light: ["#2F62C8", "#0088AA"]        # 1–3 headline words on light
-  highlight-dark:  ["#09CACC", "#34CCA4"]        # 1–3 headline words on dark; pill and accent on dark
-  ice-ground:      ["#F4F9FC", "#E6F1F8", "#D6E7F4"]  # light-theme ground (+ polar glow top-left)
-  abyss-ground:    ["#050816", "#070C20", "#0B1530"]  # dark-theme ground (+ cobalt-night glow top-left)
-  aurora-panel:    ["#0B1A3A", "#21387B", "#1D4A8A"]  # dark-theme colour mass; cyan + royal glows; polar edge at 35%
-light:
-  ground: ice-ground
-  colour-mass: cobalt              # one block per post, cyan glow inside
-  text: { headline: abyss, supporting: steel-navy }
-  highlight: highlight-light
-  pill: { fill: highlight-light, text: "#FFFFFF" }
-  accent-bar: ["#2F62C8", "#09CACC"]
-  lines: "#B9CDE0"
-  logo: verdant-logo-gradient
-dark:
-  ground: abyss-ground
-  colour-mass: aurora-panel        # one panel per post
-  text: { headline: "#FFFFFF", supporting: sky }
-  highlight: highlight-dark
-  pill: { fill: highlight-dark, text: abyss }
-  accent-bar: highlight-dark
-  lines: "#2A3B5C"
-  logo: verdant-logo-white
-proportions: { light: "ground 60 / colour block 25 / text 10 / highlight 5", dark: "ground 65 / aurora panel 20 / text 10 / highlight 5" }
-rules:
-  - "Per post: one ground (light or deep) + the core + ONE accent family (teals or blues) + at most one light tone."
-  - "Bright teals and cyans are never text on light grounds."
-  - "Never: yellow, lime, orange, coral, or green as the brand colour."
+palette:
+  core:
+    slate-blue: "#416D95"
+    sage-teal: "#74AFAD"
+  deep:
+    abyss: "#050816"
+    navy: "#1E3058"
+    cobalt-night: "#151754"
+    teal-night: "#061A22"
+  blues:
+    electric-royal: "#2457D6"
+    royal-blue: "#3C6EB7"
+    steel-navy: "#42658A"
+    sky: "#A6CAEC"
+  teals:
+    deep-lagoon: "#00727F"
+    deep-ocean: "#007A9E"
+    ocean: "#0088AA"
+    lagoon: "#00ACB3"
+    cyan: "#09CACC"
+    mint-jade: "#34CCA4"
+  lights:
+    mist: "#F5F9FD"
+    ice: "#EBF5F7"
+    polar: "#E9FFFC"
+    white: "#FFFFFF"
+  brand-gradient: ["#416D95", "#74AFAD"]   # logo + accent bar on every post
+  retired: { royal-deep: "#2F62C8" }
+```
+
+<!-- id: THEMES-v1 -->
+```yaml
+moods:
+  light-royal:
+    name: Light Royal
+    theme: light
+    pillars: How we work (Tue, Sun) · Proof (Thu)
+    ground: ['#F5F9FD', '#E8F0F8', '#DAE6F2']
+    ground_glow: ['#E9FFFC', 70, top-left]
+    surface:
+      fill: '#FFFFFF'
+      border: '#C9DCEC'
+      shadow: ['#1E3058', 8, 8, 24]
+    raised:
+      fill: white 88% glass
+      border: '#FFFFFF'
+      shadow: ['#1E3058', 16, 24, 60]
+    mass: ['#2457D6', '#3C6EB7']
+    mass_name: Royal Tide
+    mass_glows:
+    - ['#09CACC', 40, centre-right]
+    - ['#A6CAEC', 30, top edge sheen]
+    mass_shadow: ['#2457D6', 28, 30, 70]
+    mass_edge: null
+    headline: '#050816'
+    supporting: '#42658A'
+    meta: '#42658A'
+    highlight: ['#2457D6', '#007A9E']
+    pill: ['#2457D6', '#007A9E']
+    pill_text: '#FFFFFF'
+    lines: '#C9DCEC'
+    logo: gradient lockup
+    text_on_mass: '#FFFFFF'
+  light-lagoon:
+    name: Light Lagoon
+    theme: light
+    pillars: Grow with us (Fri)
+    ground: ['#F2FAFA', '#E3F3F3', '#D2EBEC']
+    ground_glow: ['#E9FFFC', 70, top-left]
+    surface:
+      fill: '#FFFFFF'
+      border: '#BFDDE0'
+      shadow: ['#062A33', 8, 8, 24]
+    raised:
+      fill: white 88% glass
+      border: '#FFFFFF'
+      shadow: ['#062A33', 14, 24, 60]
+    mass: ['#00727F', '#0088AA', '#00ACB3']
+    mass_name: Lagoon Tide
+    mass_glows:
+    - ['#34CCA4', 35, centre]
+    - ['#E9FFFC', 30, top edge sheen]
+    mass_shadow: ['#00727F', 26, 30, 70]
+    mass_edge: null
+    headline: '#050816'
+    supporting: '#42658A'
+    meta: '#42658A'
+    highlight: ['#007A9E', '#00727F']
+    pill: ['#00727F', '#007A9E']
+    pill_text: '#FFFFFF'
+    lines: '#BFDDE0'
+    logo: gradient lockup
+    text_on_mass: '#FFFFFF'
+  dark-royal:
+    name: Dark Royal
+    theme: dark
+    pillars: Engineering insight (Mon, Wed)
+    ground: ['#050816', '#0A1030', '#12164A']
+    ground_glow: ['#21387B', 60, top-left]
+    surface: {fill: '#0B1530', border: '#1C2B4E', shadow: null}
+    raised: {fill: white 8% glass, border: Polar 12% inner top edge, shadow: null}
+    mass: ['#0B1A3A', '#21387B', '#2457D6']
+    mass_name: Royal Aurora
+    mass_glows:
+    - ['#09CACC', 35, centre-right]
+    - ['#3C6EB7', 40, top-right]
+    mass_shadow: null
+    mass_edge: ['#E9FFFC', 25]
+    headline: '#FFFFFF'
+    supporting: '#A6CAEC'
+    meta: '#74AFAD'
+    highlight: ['#A6CAEC', '#09CACC']
+    pill: ['#09CACC']
+    pill_text: '#050816'
+    lines: '#1C2B4E'
+    logo: white lockup
+    text_on_mass: '#FFFFFF'
+  dark-lagoon:
+    name: Dark Lagoon
+    theme: dark
+    pillars: Brand world (Sat)
+    ground: ['#040C12', '#061A22', '#08262F']
+    ground_glow: ['#0088AA', 35, top-left]
+    surface: {fill: '#0A2028', border: '#163A42', shadow: null}
+    raised: {fill: white 8% glass, border: Polar 12% inner top edge, shadow: null}
+    mass: ['#062A33', '#00727F', '#0088AA']
+    mass_name: Lagoon Aurora
+    mass_glows:
+    - ['#34CCA4', 35, centre]
+    - ['#09CACC', 30, top-right]
+    mass_shadow: null
+    mass_edge: ['#E9FFFC', 25]
+    headline: '#FFFFFF'
+    supporting: '#74AFAD'
+    meta: '#A6CAEC'
+    highlight: ['#09CACC', '#34CCA4']
+    pill: ['#34CCA4']
+    pill_text: '#050816'
+    lines: '#163A42'
+    logo: white lockup
+    text_on_mass: '#FFFFFF'
+week:
+- {day: Mon, mood: dark-royal, pillar: Insight}
+- {day: Tue, mood: light-royal, pillar: How we work}
+- {day: Wed, mood: dark-royal, pillar: Insight}
+- {day: Thu, mood: light-royal, pillar: Proof}
+- {day: Fri, mood: light-lagoon, pillar: Grow with us}
+- {day: Sat, mood: dark-lagoon, pillar: Brand world}
+- {day: Sun, mood: light-royal, pillar: How we work}
+gates:
+  light: [Mean luminance of the image at least 0.55, At most 6% of pixels darker than luminance 0.10, 'No fill darker than the mood’s darkest
+      mass stop, except text']
+  dark: [Mean luminance of the image at most 0.15, At least 2% of pixels brighter than luminance 0.50 (the glow), Glow and highlight together
+      cover at most 25% of the frame]
+rules: ['exactly one colour mass per post, 25–40% of the frame', highlight on 1–3 words, 'accent bar = brand gradient #416D95 → #74AFAD', 'light
+    posts: no Cobalt Night, Navy or Abyss fills', 'dark posts: no drop shadows; edges and glow', 'shadows and borders tinted, never grey', no
+    two consecutive posts share theme + mood]
 ```
 
 ### 5.1a Light theme v2: the system (user: "build the overall theme")
 - One grid, one component kit and seven templates. Every light post is built from these, never designed from scratch.
 - Reference sheets: `brand/theme/light-1-anatomy.png`, `light-2-templates.png`, `light-3-rules.png`. Regenerate them with `python3 brand/theme/render_light.py`.
 - The mockups use a stand-in font. The real headline face is Inter (Syne for headlines is still an open question).
+
+> **Colours superseded by THEMES-v1 (§5.1):** the light colour mass is now the mood's Tide (Royal or Lagoon), not Cobalt, and the highlight and pill use the v8 gradients. The layout and components below still apply.
 
 <!-- id: LIGHT-THEME-v2 -->
 ```yaml
@@ -417,9 +519,7 @@ rules:
   dont: ["cyan/mint/sage/polar as text on light", "two blocks", "gradient text in body or subline", "centred headline over the hero", "stock people, robots, generic tech icons", "yellow, lime, orange, coral, green-as-brand", "text inside the block under 36 px", "bokeh, sparkles, lens flares"]
 ```
 
-`[proposed]` **Theme by pillar** (about 4 light and 3 dark a week):
-- **Dark:** Engineering insight (Mon, Wed) and Brand world (Sat).
-- **Light:** How we work (Tue, Sun), Proof (Thu) and Grow with us (Fri).
+`[proposed]` **Theme and mood by pillar:** see `THEMES-v1` → `week` (Mon/Wed Dark Royal · Tue/Thu/Sun Light Royal · Fri Light Lagoon · Sat Dark Lagoon).
 
 **Prompt wording:** TBD, being tested in `posts/2026-10-04-direction-test-built-to-scale.md`. Hypothesis: name the colours with their hex codes ("muted slate blue (#416D95)", "soft sage teal (#74AFAD)") and never say "green".
 
@@ -521,6 +621,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-05 | §5.1 → PALETTE-v8 + THEMES-v1: Electric Royal, Deep Ocean, Deep Lagoon, Teal Night, Mist added; Royal Deep retired; two themes × four moods by pillar; elevation; tinted shadows; automatic light/dark checks. Light colour mass is now bright (no cobalt) | Three-designer panel + synthesis; contrast computed; 25-page book |
 | 2026-10-05 | §5.1 → PALETTE-v7: Royal Deep added; named theme gradients (highlight-light/dark, ice-ground, abyss-ground, aurora-panel); per-theme colour roles and proportions. Colour guidelines book: `brand/guidelines/verdant-soft-colour-guidelines.pdf` | User: multi-page guidelines, colour only |
 | 2026-10-05 | §5.1a → LIGHT-THEME-v2: grid, component kit, 7 templates (hero, glass, quote, list, carousel cover/slide, people), do/don't rules. Text pops via gradient highlights; one saturated colour block per post | User: "text doesn't pop", "build the overall theme"; `brand/theme/` |
 | 2026-10-05 | §5.1 → PALETTE-v6 "deep ocean" from the user's reference boards and hex picks: deep navy/cobalt grounds, ocean teals, royal blue, polar lights, six gradients + aurora mesh; no yellow or lime | User references; contrast computed; `brand/palette/` |

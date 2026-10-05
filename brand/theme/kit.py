@@ -55,28 +55,46 @@ def gtext(im, xy, text, fnt, stops):
 
 
 # ---------- themes ----------
-def _light_ground():
+def _light_ground_v6():
     im = grad(PW, PH, ['#F4F9FC', '#E6F1F8', '#D6E7F4'], 'a')
     glow(im, (-250, -250, 450, 350), C['polar'], 255, 110)
     return im
 
 
-def _dark_ground():
+def _dark_ground_v6():
     im = grad(PW, PH, ['#050816', '#070C20', '#0B1530'], 'a')
     glow(im, (-300, -300, 500, 380), C['cobalt'], 200, 140)
     return im
 
 
-LIGHT = dict(name='light', ground=_light_ground, ink=C['abyss'], hl=[C['royal_deep'], C['ocean']], sub=C['steel'],
-             footer=C['steel'], pill=[C['royal_deep'], C['ocean']], pill_fg=C['white'], accent=[C['royal_deep'], C['cyan']],
-             logo='brand/brand-guide/png/verdant-logo-gradient.png', block=[C['cobalt'], C['navy2'], C['royal']],
-             block_glow=C['cyan'], shadow=C['royal'], shadow_a=110, row_glass=.55, row_ink=C['abyss'],
-             dot='#B9CDE0', quote=[C['polar'], C['cyan']], edge=None)
-DARK = dict(name='dark', ground=_dark_ground, ink=C['white'], hl=[C['cyan'], C['mint']], sub=C['sky'],
-            footer=C['sky'], pill=[C['cyan'], C['mint']], pill_fg=C['abyss'], accent=[C['cyan'], C['mint']],
-            logo='brand/brand-guide/png/verdant-logo-white.png', block=['#0B1A3A', C['navy2'], '#1D4A8A'],
-            block_glow=C['cyan'], shadow=C['cyan'], shadow_a=70, row_glass=.10, row_ink=C['white'],
-            dot='#2A3B5C', quote=[C['cyan'], C['mint']], edge=(150, 220, 240))
+from colours import MOODS
+
+
+def _ground_fn(mood):
+    def f():
+        im = grad(PW, PH, mood['ground'], 'a')
+        c, a, _ = mood['ground_glow']
+        glow(im, (-250, -250, 450, 350), c, int(255 * a / 100), 120)
+        return im
+    return f
+
+
+def theme_from_mood(key):
+    """Kit theme for one of the four colour moods (brand/theme/colours.py)."""
+    m = MOODS[key]; dark = m['theme'] == 'dark'
+    pill = m['pill'] if len(m['pill']) > 1 else m['pill'] * 2
+    return dict(name='dark' if dark else 'light', mood=key, ground=_ground_fn(m), ink=m['headline'], hl=m['highlight'],
+                sub=m['supporting'], footer=m['supporting'], pill=pill, pill_fg=m['pill_text'], accent=['#416D95', '#74AFAD'],
+                logo='brand/brand-guide/png/verdant-logo-white.png' if dark else 'brand/brand-guide/png/verdant-logo-gradient.png',
+                block=m['mass'], block_glow=m['mass_glows'][0][0],
+                shadow=(m['mass_shadow'] or ('#000000', 0))[0], shadow_a=0 if dark else 110,
+                row_glass=.10 if dark else .55, row_ink=m['headline'], dot=m['lines'],
+                quote=[C['cyan'], C['mint']] if dark else [C['polar'], C['cyan']],
+                edge=(150, 220, 240) if dark else None)
+
+
+LIGHT, LIGHT_LAGOON = theme_from_mood('light-royal'), theme_from_mood('light-lagoon')
+DARK, DARK_LAGOON = theme_from_mood('dark-royal'), theme_from_mood('dark-lagoon')
 
 
 # ---------- components ----------

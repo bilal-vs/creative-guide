@@ -25,6 +25,24 @@
 
 ## Log
 
+### 2026-10-05 · Colour system v8: two themes × four moods (detailed book)
+- **User:**
+  - improve the dark and light themes, mainly light, and make the guide detailed
+  - think deeply first
+- **Method:** three independent designer agents (moods by pillar; luminous light; editorial elevation), then my synthesis. Every pair is contrast-checked in code.
+- **Key findings:**
+  - Light posts got all their punch from a DARK cobalt block, so they felt half-dark and alike.
+  - The old highlight end Ocean was only 3.3:1 on the darkest light ground.
+  - White on the Ocean pill was 4.1:1, which fails for small text.
+- **v8:**
+  - **Light Royal** (How we work, Proof) and **Light Lagoon** (Grow with us): bright Royal Tide / Lagoon Tide masses with tinted shadows; mist and polar grounds; highlight Electric Royal → Deep Ocean, or Deep Ocean → Deep Lagoon.
+  - **Dark Royal** (Insight) and **Dark Lagoon** (Brand world): aurora masses with a polar edge and no drop shadows; Sky → Cyan or Cyan → Mint highlights.
+  - L0–L3 elevation; brand-gradient accent bar on every post (both core colours on every post).
+  - Automatic image checks: light needs mean luminance ≥ 0.55 and ≤ 6% dark pixels; dark needs ≤ 0.15 plus a glow.
+- **New colours:** Electric Royal #2457D6, Deep Ocean #007A9E, Deep Lagoon #00727F, Teal Night #061A22, Mist #F5F9FD. Royal Deep retired.
+- **Source of truth:** `brand/theme/colours.py` (the book and kit read from it). Guide: PALETTE-v8 + THEMES-v1 (YAML generated from the source). Book: 25 pages.
+- **Lesson:** compute contrast at the worst stop of every gradient, not the average; that's where the old highlight failed.
+
 ### 2026-10-05 · Colour guidelines book (16 pages)
 - **User:** a multi-page guidelines book: overall, then dark theme, then light theme. Mid-build: **"colour guide only, not about visuals."** Writing and visuals get their own practice later.
 - **Built** `brand/guidelines/verdant-soft-colour-guidelines.pdf` (pages in `brand/guidelines/pages/`; script `brand/guidelines/build.py`):
