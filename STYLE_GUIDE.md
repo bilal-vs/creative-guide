@@ -314,61 +314,57 @@ Every post is:
 
 These are binary checks in the QA rubric (§8).
 
-### 5.1 Palette: muted core, luminous accents, two themes
-- `[decided]` (user, 2026-10-04): **slate blue and sage teal stay exactly as they are.**
-- v4 was all-muted cool tones, and the user found it dull, boring and too blue. They asked for the best overall palette and colour range around the core.
-- **No orange or coral** (user).
-- **v5 logic:**
-  - the core stays muted and acts as the *material*
-  - two **luminous accents** bring the *light and life*
-  - soft tints add airy colour
-  - a warm-white ground stops the cool colours looking grey
-- Posts come in a **light** and a **dark** theme. Every text pair listed passes WCAG contrast. Visual sheet: `brand/palette-v5.png`.
+### 5.1 Palette: deep ocean (v6)
+- `[decided]` (user, 2026-10-04/05): **slate blue and sage teal stay exactly as they are.**
+- v6 is built from the user's reference boards (deep navy and cobalt, electric teals and cyans, polar light, aurora mesh gradients) and the user's own picks: #34CCA4 #00ACB3 #0088AA #42658A #00A598 #09CACC.
+- The gradients follow the user's favourite reference: abyss → royal, cobalt → royal, teal → royal, white → royal, and a mesh.
+- **No yellow or lime** (from reference 2), and **no orange or coral**.
+- Every text pair listed passes WCAG contrast. Visual pages: `brand/palette/v6-1-colours.png`, `v6-2-gradients.png`, `v6-3-in-use.png`.
 
-<!-- id: PALETTE-v5 -->
+<!-- id: PALETTE-v6 -->
 ```yaml
-core:                         # fixed, never altered: the brand's "material"
-  slate-blue: "#416D95"       # text on light 4.9:1 (Linen) / 5.5:1 (White)
-  sage-teal:  "#74AFAD"       # text on dark 7.1:1; never text on light
-luminous:                     # the life: light, glow, hero highlights; used sparingly
-  azure: "#3F8EE0"            # vivid blue; text on dark 4.7:1; white text on it only 24px+ (3.4:1)
-  aqua:  "#2EC4B4"            # vivid teal; text/highlight on dark 7.4:1; ink text on it 7.6:1
-soft:                         # airy colour for grounds, panels, glass tints
-  sky:   "#CFE2F7"
-  mint:  "#C6EDE6"
-  lilac: "#B8B4EC"            # pastel, ≤10% of a post; tints only
-grounds:
-  linen:    "#F7F3ED"         # warm white, default light ground
-  white:    "#FFFFFF"
-  midnight: "#0F2236"         # default dark ground
-text:
-  ink:       "#13212C"        # headlines on light (14.8:1 on Linen)
-  deep-teal: "#1F6E6A"        # teal text on light (5.4:1 on Linen)
-  body-light: "#3E4C58"
-  muted-light: "#66737E"
-  on-dark: "#FFFFFF"
-  body-dark: "#C3D2DE"
-  muted-dark: "#AFC3D6"
+core:                          # fixed, never altered
+  slate-blue: "#416D95"        # text on light 5.5:1 (white)
+  sage-teal:  "#74AFAD"        # text on dark 8.0:1 (abyss); never text on light
+deep:                          # dark grounds
+  abyss:        "#050816"      # darkest ground; also ink on light (20:1 on white)
+  navy:         "#1E3058"
+  cobalt-night: "#151754"
+teals:                         # the energy (user's picks)
+  mint-jade: "#34CCA4"         # glow; text on dark 9.8:1
+  jade:      "#00A598"         # fills; text on dark 6.5:1
+  lagoon:    "#00ACB3"         # fills; text on dark 7.2:1
+  cyan:      "#09CACC"         # highlight on dark 9.8:1
+  ocean:     "#0088AA"         # deep teal-blue; text on light only 24px+ (4.1:1)
+blues:
+  royal-blue: "#3C6EB7"        # highlight on light 5.1:1; gradient end
+  steel-navy: "#42658A"        # text on light 6.1:1
+lights:
+  sky:   "#A6CAEC"             # soft light, glows
+  ice:   "#EBF5F7"             # light ground
+  polar: "#E9FFFC"             # light ground, glow
 gradients:
   brand:    ["#416D95", "#74AFAD"]               # fixed: logo
-  lagoon:   ["#3F8EE0", "#2EC4B4"]               # hero objects, glows
-  aurora:   ["#C6EDE6", "#CFE2F7", "#B8B4EC"]    # light grounds, glass tints
-  dawn:     ["#F7F3ED", "#FFFFFF", "#CFE2F7"]    # warm light grounds
-  deep-sea: ["#0F2236", "#1D4A6E", "#416D95"]    # dark grounds
-  signal:   ["#416D95", "#3F8EE0", "#2EC4B4"]    # accent bars, lines, glows
+  abyss:    ["#050816", "#1E3058", "#3C6EB7"]    # dark grounds
+  cobalt:   ["#151754", "#21387B", "#3C6EB7"]    # rich dark grounds
+  lagoon:   ["#74AFAD", "#09CACC", "#3C6EB7"]    # core teal → cyan → royal: hero objects
+  daybreak: ["#EBF5F7", "#A6CAEC", "#3C6EB7"]    # light grounds
+  ocean:    ["#34CCA4", "#00ACB3", "#0088AA"]    # teal objects, bars
+  aurora-mesh: { base: "#050816", glows: ["#151754", "#0088AA", "#09CACC", "#3C6EB7", "#00A598"] }  # signature blurred backdrop
 light:
-  ground: [linen, white, dawn, aurora]
-  highlight: [slate-blue, deep-teal]
+  ground: [white, ice, polar, daybreak]
+  text: { headline: abyss, body: steel-navy }
+  highlight: [royal-blue, slate-blue, steel-navy]
   logo: verdant-logo-gradient
 dark:
-  ground: [midnight, deep-sea]
-  highlight: [aqua]
+  ground: [abyss, navy, cobalt-night, abyss-gradient, cobalt-gradient, aurora-mesh]
+  text: { headline: "#FFFFFF", body: sky }
+  highlight: [cyan, mint-jade, sage-teal]
   logo: verdant-logo-white
 rules:
-  - "Per post: one ground + the core + ONE luminous accent (azure or aqua) + at most one soft tint."
-  - "Luminous colours are light and glow (hero highlights, glows, bars), never large flat fills."
-  - "Highlight words: slate-blue or deep-teal on light; aqua on dark."
-  - "Never: orange or coral, yellow, green as the brand colour."
+  - "Per post: one ground (light or deep) + the core + ONE accent family (teals or blues) + at most one light tone."
+  - "Bright teals and cyans are never text on light grounds."
+  - "Never: yellow, lime, orange, coral, or green as the brand colour."
 ```
 
 `[proposed]` **Theme by pillar** (about 4 light and 3 dark a week):
@@ -475,7 +471,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
-| 2026-10-04 | §5.1 → PALETTE-v5: muted core + luminous accents (Azure, Aqua), soft tints (Sky, Mint, Lilac), warm Linen ground, Midnight dark, six gradients. Replaces the dull all-muted v4 (user) | User feedback; contrast computed; `brand/palette-v5.png` |
+| 2026-10-05 | §5.1 → PALETTE-v6 "deep ocean" from the user's reference boards and hex picks: deep navy/cobalt grounds, ocean teals, royal blue, polar lights, six gradients + aurora mesh; no yellow or lime | User references; contrast computed; `brand/palette/` |
 | 2026-10-04 | §5.0 post rules: minimal, professional, premium, attractive, visual, readable, designer-made (posts and carousels) | User decision |
 | 2026-10-04 | §5.5: complete posts generated in-model (text + logo via REF-PACK-v1); overlay is the fallback | User decision |
 | 2026-10-04 | §6: generate at 3:4 and crop to 4:5 (Flow has no 4:5) | Flow error message |

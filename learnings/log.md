@@ -25,6 +25,22 @@
 
 ## Log
 
+### 2026-10-05 · Palette v6 "deep ocean" (from user references)
+- **User:**
+  - shared 5 reference boards: Monestra greens, a navy/indigo/lime board, an aurora blur, a gradient board, Syne + Inter type
+  - shared their own hexes: #34CCA4 #00ACB3 #0088AA #42658A #00A598 #09CACC
+  - liked the 4th board's gradients; no yellow (from the 2nd)
+- **Mine:**
+  - sampled the reference colours
+  - **deep grounds:** Abyss #050816, Navy #1E3058, Cobalt Night #151754
+  - **the user's teals as the energy:** Mint Jade, Jade, Lagoon, Cyan, Ocean
+  - **blues:** Royal #3C6EB7 (the reference's blue), Steel Navy #42658A
+  - **lights:** Sky #A6CAEC, Ice #EBF5F7, Polar #E9FFFC
+  - **gradients rebuilt from board 4:** abyss, cobalt, lagoon (starting from the core sage teal), daybreak, ocean, plus an aurora mesh
+  - **rule:** one accent family per post
+- The sheets are split into 3 pages in `brand/palette/` (user: "you can make multiple pages").
+- **Open:** board 5 suggests Syne for headlines with Inter for body. Not adopted yet; ask the user.
+
 ### 2026-10-04 · Extended palette (v3 → v4)
 - **User:** don't be bound to the two colours; add matching ones, minimal and similar.
 - **v3 (mine):** Midnight, Deep Teal, Glacier, a Coral spark, the Ice neutral, four gradients.
