@@ -296,6 +296,56 @@ User decision: clients and testimonials that are **publicly available** may be u
 ## 4. Post formats
 **TBD.** One recipe per pillar: the concept pattern, template ID, slot rules, and caption template.
 
+### 4.1 Carousels (v1, 2026-10-06)
+Adapted from the user's carousel checklist and *The Carousel Playbook* (@adarshxdesign). The full reasoning is in `writing/carousel-playbook.md`; a worked example is in `writing/carousel-01-before-the-code.md`.
+
+<!-- id: CAROUSEL-v1 -->
+```yaml
+length: { min: 6, max: 8 }
+slides:
+  - { role: cover,   job: "open a loop: claim + tension, never the answer", headline_max_words: 8, subline_max_words: 8, extras: [swipe-cue], drives: swipe-rate }
+  - { role: payoff,  job: "why it matters to the reader + first real answer; a second cover", headline_max_words: 6, body_max_words: 35, drives: dwell }
+  - { role: step,    repeat: "1–4", job: "one idea per slide; end with a bridge line", headline_max_words: 6, body_max_words: 30, bridge_max_words: 8, drives: completion }
+  - { role: proof,   job: "a fact (FACTS), case study (F30–F39) or verbatim client quote (PUBLIC-PROOF)", drives: trust }
+  - { role: cta,     job: "one action: book a call | follow the series | save", headline_max_words: 6, drives: action }
+  - { role: receipt, job: "the carousel in one savable frame + soft CTA line + logo", list_max_items: 6, drives: saves-and-shares }
+copy:
+  highlight: "1–3 words per slide"
+  text_levels_max: 3
+  body_min_px_at_1080: 32
+  numbers: "only as step counters, or from FACTS with status confirmed"
+  alt_text: "one plain sentence per slide (Instagram); LinkedIn document title = cover headline"
+cta:
+  allowed: [book a call at verdant-soft.com, follow the series, save this]
+  banned: ["comment KEYWORD for a DM (needs a human responder)", "engagement bait", "more than one action per slide"]
+hooks:
+  rule: "a claim, not a topic; one tension word (costing, breaks, quietly, before, nobody, stop, wrong); must be true for us to say"
+  banned: ["invented statistics or percentages", "fake experiments (I tested X for 30 days)", "creator bragging"]
+  formulas: see writing/carousel-playbook.md §3 (25 formulas in 5 families)
+design:
+  mood: "one theme + mood for the whole carousel, chosen by pillar (THEMES-v1)"
+  cover: "carries the colour mass and hero visual"
+  inner: "text-led, small motif"
+  fixed_positions: { logo: top-left, counter: top-right "02 / 08", dots: bottom-right, footer: bottom-left }
+  format: "4:5, 1080x1350; LinkedIn = PDF document, Instagram = image carousel"
+checklist:   # all must pass; any fail = revise
+  - "hook: slide 1 is a claim + tension, ≤8 words, makes you swipe"
+  - "one clear idea, graspable in 3 seconds"
+  - "structure: cover, payoff, steps, proof, cta, receipt (6–8 slides)"
+  - "every slide teaches, explains, proves or moves forward"
+  - "every step slide ends with a bridge"
+  - "readable: body ≥32 px, ≤30 words"
+  - "hierarchy: obvious read order; one highlight per slide"
+  - "minimal: nothing without a job; ≤1 visual per slide"
+  - "consistent: one mood, one type scale, fixed positions"
+  - "receipt slide worth saving on its own"
+  - "one clear CTA on the second-last slide, soft repeat on the last"
+  - "true: every claim in FACTS or PUBLIC-PROOF; quotes verbatim; no invented numbers"
+  - "voice: no buzzwords; engineer talking to a founder"
+  - "theme: mood matches pillar; contrast and automatic image checks pass"
+three_second_test: [readable without trying, one focal point, a claim not decoration, "≤8 words", you would stop scrolling, true for us to say]
+```
+
 ## 5. Visual identity
 > **Measured 2026-10-04** from verdant-soft.com (computed styles and logo files; `brand/audit-raw.md` §2–4).
 > - **Brand source of truth:** the palette, type and logo below. Every overlay and template uses only these.
@@ -621,6 +671,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
+| 2026-10-06 | §4.1 CAROUSEL-v1: slide roles and limits, hook rules, CTA rules, 14-point checklist, 3-second test (adapted from the user's checklist + Carousel Playbook) | User-supplied playbook; `writing/carousel-playbook.md` |
 | 2026-10-05 | §5.1 → PALETTE-v8 + THEMES-v1: Electric Royal, Deep Ocean, Deep Lagoon, Teal Night, Mist added; Royal Deep retired; two themes × four moods by pillar; elevation; tinted shadows; automatic light/dark checks. Light colour mass is now bright (no cobalt) | Three-designer panel + synthesis; contrast computed; 25-page book |
 | 2026-10-05 | §5.1 → PALETTE-v7: Royal Deep added; named theme gradients (highlight-light/dark, ice-ground, abyss-ground, aurora-panel); per-theme colour roles and proportions. Colour guidelines book: `brand/guidelines/verdant-soft-colour-guidelines.pdf` | User: multi-page guidelines, colour only |
 | 2026-10-05 | §5.1a → LIGHT-THEME-v2: grid, component kit, 7 templates (hero, glass, quote, list, carousel cover/slide, people), do/don't rules. Text pops via gradient highlights; one saturated colour block per post | User: "text doesn't pop", "build the overall theme"; `brand/theme/` |

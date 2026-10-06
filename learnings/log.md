@@ -7,7 +7,7 @@
   1. **Writing practice** (now): headlines → captions (LinkedIn and Instagram) → carousel copy → alt text and hashtags. Codify the winners into `STYLE_GUIDE.md` §7. Files in `writing/`.
   2. **Visuals**: discuss and train. Templates and kit are in `brand/theme/` (7 templates × 4 moods). The prompts in `posts/2026-10-04-direction-test-built-to-scale.md` (v3, unsent) get rebuilt from the templates.
   3. **Revise the colour guide** from what the visuals teach (`brand/theme/colours.py` → `python3 brand/guidelines/build.py`).
-- **NOW:** writing round 1 (headlines) is in `writing/round-01-headlines.md`, waiting for the user's keep/kill notes.
+- **NOW:** two pieces wait for the user's notes: writing round 1 (headlines, `writing/round-01-headlines.md`) and the carousel playbook with example 01 (`writing/carousel-playbook.md`, `writing/carousel-01-before-the-code.md`).
 - **Done:**
   - audit
   - FACTS-v2 and PUBLIC-PROOF-v2
@@ -23,6 +23,18 @@
 ---
 
 ## Log
+
+### 2026-10-06 · Carousel playbook
+- **User:** shared *The Carousel Playbook* (@adarshxdesign: 25 hook formulas, cover checklist, slide jobs, 3-second test) and a 10-point checklist. Use it, or make it better.
+- **Adapted for a B2B engineering brand with automated posting:**
+  - structure Cover → Payoff → Steps → **Proof** → CTA → **Receipt** (6–8 slides)
+  - main CTA on the second-last slide, with a soft repeat on the receipt (reconciles both sources)
+  - hook formulas rewritten without invented numbers; proof hooks come only from FACTS and PUBLIC-PROOF
+  - "comment PDF" CTAs dropped (the automation can't send DMs)
+  - checklist grown to 14 points with a **brand and truth** group
+  - a sixth question in the 3-second test: "true for us to say?"
+- **Codified:** `STYLE_GUIDE.md` §4.1 `CAROUSEL-v1`.
+- **Worked example:** "The costliest bugs are written before the code" (8 slides, F04 + P08 verbatim).
 
 ### 2026-10-05 · Colour system v8: two themes × four moods (detailed book)
 - **User:**
