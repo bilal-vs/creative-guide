@@ -3,7 +3,7 @@
 - **Pillar:** How we work · **Series:** Wireframe to Production · **Mood:** Light Royal (`THEMES-v1`) · **Slides:** 8
 - **Facts used:** F04 (UI/UX six steps), F11 (book a meeting). Proof: P08 (Ben Kemboi, verbatim).
 - **Step descriptions:** paraphrased closely from verdant-soft.com/services/ui-ux-design (`brand/audit-raw.md` §1.5).
-- **Status:** practice draft for the user's review. It is not a scheduled post.
+- **Status:** **approved by the user as the model** for Verdant carousels (2026-10-06). It is not a scheduled post.
 
 | # | Role | Headline (highlight in [brackets]) | Body | Bridge / extra |
 |---|---|---|---|---|
@@ -33,4 +33,6 @@
 **3-second test (cover):** 6/6. "The costliest bugs are written before the code" is 8 words, a claim with tension ("costliest", "before"), and an opinion we can stand behind.
 
 ## Feedback
-_Waiting for the user's notes._
+**User, 2026-10-06:** "Approve as the model". Structure, tone and length are right; use it as the reference for Verdant carousels.
+- `STYLE_GUIDE.md` §4.1 `CAROUSEL-v2` keeps this structure as the `verdant` variant.
+- It adds `external` and `roundup` variants for Tech, Explained.

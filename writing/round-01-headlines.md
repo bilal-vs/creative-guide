@@ -51,4 +51,12 @@ For everyone; this sets the brand's point of view.
 **My pick: C3.** It's short, it's a point of view, and it's ownable. It also fits the creative platform "Growth, engineered."
 
 ## Feedback
-_Waiting for the user's notes._
+**User, 2026-10-06** (answered in plan mode):
+- **Default style: problem/curiosity**, the B5 type ("Where multi-tenant platforms [break first]"), at about 60% of headlines.
+- **The other styles** (opinion claim C3, imperative B2, rhythm A2) fill the rest.
+- **Highlights:** keep one highlight (1–3 words) per headline.
+
+**Codified:** `brand/strategy.md` v2 §5 and `STYLE_GUIDE.md` §7 (decided rules).
+- **Variety:** never the same formula three days running, and never the same opening word two days running `[decided · CD]`.
+
+**Next:** round 2 tests these choices across all lanes (`writing/round-02-lane-packs.md`).

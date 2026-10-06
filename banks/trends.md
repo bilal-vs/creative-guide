@@ -87,6 +87,34 @@ That's why this drop is lopsided:
   take_hint: "Adoption is high, trust is lower. Build review into how your team uses AI."
   note: "Search summaries quote AI-usage percentages from this post. None may be used until the page itself is read (stackoverflow.blog was blocked). When the 2026 survey results publish, they become a By the Numbers source in their own right."
 
+- id: T-2026-10-06-05
+  lane: trends
+  claim: "OpenAI held DevDay 2026 on 29 September in San Francisco, and the announcements centred on agents that keep working on ongoing tasks rather than single prompt-and-response exchanges."
+  why_it_matters_to_founders: "Products are moving from 'ask and answer' to 'delegate and check'. That changes what you design, test and pay for."
+  source_name: "OpenAI"
+  source_url: "https://openai.com/index/devday-2026-recap/"
+  source_type: official
+  published: "2026-09-29"
+  retrieved: null
+  expires: "2026-10-13"
+  status: pending-check
+  take_hint: "An agent is only as good as its limits: what it may touch, when it must ask, how you check its work."
+  note: "Found via search results only; openai.com was blocked. Model names, user numbers and prices from the summaries must not be used until the recap page is read."
+
+- id: T-2026-10-06-06
+  lane: trends
+  claim: "From 30 September, Google requires verified-developer registration for installing and updating apps from participating stores on certified Android devices in Brazil, Indonesia, Singapore and Thailand."
+  why_it_matters_to_founders: "If you ship an Android app, developer identity is becoming part of distribution, starting in four countries."
+  source_name: "Google (Android Developers)"
+  source_url: null            # primary page not yet read
+  source_type: official
+  published: "2026-09-30"     # effective date per search summaries; confirm on the primary page
+  retrieved: null
+  expires: "2026-10-14"
+  status: pending-check
+  take_hint: "Put store accounts and signing keys in the company's name, not a freelancer's."
+  note: "Found via a search summary only. Confirm the countries, the date and the scope on Google's own Android developer pages before use."
+
 - id: T-2026-10-06-R1
   lane: ai
   claim: "Google announced a model called 'Gemini 4 Argon' on 30 September 2026."

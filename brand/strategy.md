@@ -188,7 +188,7 @@ It's written the way a social media handler thinks: **past** (what the brand has
 - **Headlines:**
   - **Problem/curiosity** leads, about 60% ("Where multi-tenant platforms [break first]").
   - **Other styles** fill the rest: opinion claim, imperative lesson, rhythm, plain fact for By the Numbers.
-  - **Variety:** never the same formula two days running `[decided · CD]`.
+  - **Variety:** never the same formula three days running, and never the same opening word two days running `[decided · CD]`.
   - **Highlight:** one per headline (1–3 words).
 
 (Exact caption templates are decided in `STYLE_GUIDE.md` §7 after testing.)
@@ -215,8 +215,8 @@ It's written the way a social media handler thinks: **past** (what the brand has
 |---|---|---|---|---|---|---|
 | **This Week in Tech** (roundup carousel) | wk A: **How we work** · wk B: **Build Notes** | **AI, Explained** | wk A: **Proof** · wk B: **Grow with us** | **Founder Notes** | **By the Numbers** | **Under the Hood** |
 
-- **Week A and week B:** alternate by ISO week number; even weeks are A.
-- **Carousel cycle:** (ISO week − anchor) mod 3, where the anchor is the launch week.
+- **Week A and week B:** count whole weeks from an anchor Monday (the launch Monday; practice uses 2026-10-12). Even-numbered weeks are A, so the alternation survives the new year.
+- **Carousel cycle:** the same week count mod 3.
   - Cycle week 1: Mon + Wed
   - Cycle week 2: Mon + Tue
   - Cycle week 3: Mon + Fri + Sun
@@ -267,6 +267,7 @@ Priority order. The first one that applies wins.
 **Research that feeds the banks:**
 - **Now:** a scheduled run every Saturday (09:59 PKT) adds 3–5 checked trend items from primary sources. Trend items expire after 14 days.
 - **At launch:** a daily run adds 1–3 items, plus major breaking news. The Saturday run then picks the week's best 3–5 for Monday's roundup.
+- **The day before every post** (user, 2026-10-06): research that post. Re-open its sources, look for newer developments, check that nothing in the news makes it wrong for tomorrow, then go / update / swap / hold. The result goes in the post file. No research, no publish.
 - **Evergreen bank:** refreshed monthly.
 - **Rules:** `STYLE_GUIDE.md` §2.3 `EXTERNAL-SOURCES-v1`.
 

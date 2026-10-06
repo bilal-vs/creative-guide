@@ -9,8 +9,15 @@
 ---
 
 ## 1. How the pipeline uses this guide
-**TBD.** The daily procedure, in order:
+**TBD.** The daily procedure, in order. Steps 0–4 run **the day before** the post (D−1); steps 5–11 run on the day.
 
+0. **Research the post the day before** `[decided]` (user, 2026-10-06). On D−1:
+   - Decide tomorrow's slot and topic (steps 1–3).
+   - Re-open every source the post will cite, and confirm the claim and numbers are unchanged and the page is live.
+   - Search primary sources for newer developments on the topic. Add 1–3 new trend items to the bank.
+   - Run a sensitivity check: is there any news, outage, tragedy or national moment that would make tomorrow's post wrong?
+   - Record the results in the post file's **Research** section (`posts/_template.md`).
+   - Decide: go / update / swap to evergreen / hold. A post with no D−1 research is not published.
 1. **Read memory:** the post history (`posts/index.md` schema, §11), the news inbox (`inbox/`), the source banks (`banks/`), and today's calendar moments
 2. **Decide today's post** using `CONTENT-MIX-v1` (§3): today's slot, then the priority inbox > calendar > timely trend item > series episode > evergreen, while respecting the Verdant band, caps and no-repeat windows (§3, §9, §11)
 3. Pick the topic and its facts (Verdant facts only from §2 `FACTS` and `PUBLIC-PROOF`; external facts only from checked, unexpired bank items under §2.3 `EXTERNAL-SOURCES-v1`)
@@ -393,12 +400,13 @@ no_repeat:                                       # [decided · CD]
   lane_topic_days: 90
   trend_item: "never twice; one follow-up explainer in another lane is allowed"
   company_as_main_subject_per_week: 2
-  headline_formula: "never the same formula on consecutive days"
+  headline_formula: "never the same formula three days running; never the same opening word two days running"   # revised 2026-10-06: the stricter version capped problem/curiosity below the user's 60%
   proof_client_key_days: 30
 research:
   saturday_run: "every Saturday 09:59 PKT: 3–5 checked trend items into banks/trends.md; marks expired items"
   daily_run: "from launch: 1–3 items a day plus major breaking news; the Saturday run then picks the week's best 3–5 for Monday"
   evergreen_refresh: monthly
+  pre_post: "D-1 [decided, user 2026-10-06]: the day before every post, re-open its sources, check for newer developments and sensitivity, log it in the post file's Research section, then go / update / swap / hold. No D-1 research, no publish. Monday's roundup is researched on Sunday, from the Saturday drop."
 ```
 
 ## 4. Post formats
@@ -790,7 +798,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
   - LinkedIn ends with "Source: Name · URL" before the hashtags.
   - Instagram gives "Source: Name" with no URL `[decided · CD]`.
   - The URLs allowed in captions are source URLs and verdant-soft.com.
-- `[decided]` **Headlines:** problem/curiosity about 60%. Never the same formula on consecutive days `[decided · CD]`. One highlight.
+- `[decided]` **Headlines:** problem/curiosity about 60%. Never the same formula three days running, never the same opening word two days running `[decided · CD]`. One highlight.
 - **Alt text** `[decided · CD]`:
   - **Single posts:** one or two plain sentences. Say what the image is, and quote the on-image headline exactly.
   - **Carousels:** one sentence per slide.
@@ -879,6 +887,7 @@ This is how the pipeline behaves like a handler: it keeps track of the past and 
 - **Research runs:**
   - `[decided]` A **Saturday run** at 09:59 PKT, starting now: 3–5 checked trend items, and expired items get marked.
   - `[decided]` A **daily run from launch:** 1–3 items plus major breaking news. The Saturday run then picks the week's best 3–5 for Monday's roundup.
+  - `[decided]` **D−1 research for every post** (user, 2026-10-06): the day before each post, the run re-checks that post's sources, looks for newer developments and runs a sensitivity check. It records the result in the post file. At launch, this is the daily run's first job; Monday's roundup is researched on Sunday, from the Saturday drop.
   - Runs commit to the repo, so the history is the audit trail.
 - **News inbox** (`[decided]`): optional, at `inbox/` (format in `inbox/README.md`).
   - Items replace that day's external post.
