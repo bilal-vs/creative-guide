@@ -38,6 +38,7 @@ def main(path, kind='single'):
     for b in BANNED:
         if re.search(r'\b%s\b' % re.escape(b), low): errs.append(f'banned prompt word "{b}"')
     if not prompt.endswith('Portrait image, 3:4 aspect ratio.'): errs.append('must end with "Portrait image, 3:4 aspect ratio."')
+    if re.search(r'\{[a-zA-Z_]+\}', prompt): errs.append('unfilled {slot} in prompt: ' + ', '.join(sorted(set(re.findall(r'\{[a-zA-Z_]+\}', prompt)))))
     if 'attached image' not in low: errs.append('no logo reference instruction')
     print(f'{path}: {"PASS" if not errs else "FAIL"} · ' + '; '.join(info))
     for e in errs: print('  x', e)
