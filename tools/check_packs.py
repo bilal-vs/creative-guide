@@ -16,6 +16,15 @@ def block(block_id):
     return yaml.safe_load(m.group(1))
 
 
+def block_or_none(block_id):
+    try:
+        return block(block_id)
+    except AttributeError:
+        return None
+
+
+ON_IMAGE = block_or_none('ON-IMAGE-v1') or {}
+OI_LIMITS = ON_IMAGE.get('hard_limits', {})
 HASHTAGS = block('HASHTAGS-v1')
 BANNED = block('BANNED-WORDS-v1')
 CAROUSEL = block('CAROUSEL-v2')
@@ -104,9 +113,29 @@ def check_pack(p):
     if p['format'] == 'single':
         oi = p['on_image']
         check_headline('headline', oi['headline'], errs, quote=(p['headline_formula'] == 'quote'))
-        if oi.get('subline') and len(words(oi['subline'])) > 12 and p['headline_formula'] != 'quote':
-            errs.append('subline > 12 words')
+        smax = OI_LIMITS.get('subline_words_max', 12)
+        if oi.get('subline') and len(words(oi['subline'])) > smax and p['headline_formula'] != 'quote':
+            errs.append(f'subline > {smax} words')
         if lane == 'numbers' and not oi.get('source_line'): errs.append('numbers post without source line')
+        info = oi.get('info')
+        if OI_LIMITS:
+            if not info:
+                errs.append('single post without an on-image info block (ON-IMAGE-v1)')
+            else:
+                items = info.get('items', [])
+                lo, hi = OI_LIMITS.get('info_items_min', 1), OI_LIMITS.get('info_items_max', 99)
+                if not lo <= len(items) <= hi: errs.append(f'info block has {len(items)} items ({lo}-{hi})')
+                wmax = OI_LIMITS.get('words_per_item_max')
+                for it in items:
+                    if wmax and len(words(it)) > wmax: errs.append(f'info item over {wmax} words: "{it}"')
+                tmax = OI_LIMITS.get('info_title_words_max')
+                if tmax and info.get('title') and len(words(info['title'])) > tmax: errs.append('info title too long')
+            total = sum(len(words(strip_hl(str(oi.get(k) or '')))) for k in ('pill', 'headline', 'subline', 'source_line'))
+            if info:
+                total += sum(len(words(str(x))) for x in [info.get('title') or '', info.get('footer') or ''] + list(info.get('items', [])))
+            tw = OI_LIMITS.get('image_total_words_max')
+            if tw and total > tw: errs.append(f'image text {total} words > {tw}')
+            warns.append(f'image words: {total}')
     else:
         slides = p['slides']
         if not 6 <= len(slides) <= 8: errs.append(f'{len(slides)} slides (6-8)')

@@ -517,4 +517,8 @@ alt_text:
 ---
 
 ## Feedback
-_Waiting for the user's marks on the review page. Results are copied here after the review._
+**User, 2026-10-06 (first pass):**
+- **Chat:** "it is alright, but some Verdant posts' main content is too little. The post must have some info rather than all info in captions."
+- **Review page, P6 on-image:** "too less details".
+
+**Action:** single posts get an on-image information block (`STYLE_GUIDE.md` §4 `ON-IMAGE-v1`). P3–P9 are rewritten below as **round 2 v2**; the carousels P1–P2 are unchanged.

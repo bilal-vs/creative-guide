@@ -92,6 +92,12 @@ section.pack{border-top:1px solid var(--line);padding-block:28px 8px;display:gri
 .post .bridge{color:var(--accent-2);font-weight:600;font-size:13px}
 .post .src{margin-top:auto;font-size:11px;color:var(--muted)}
 .post ol{margin:0;padding-left:20px;font-size:13px;display:grid;gap:4px}
+.post .info{border:1px solid var(--line);background:var(--sunk);border-radius:8px;padding:10px 12px;display:grid;gap:6px}
+.post .info-t{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.post .info ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.post .info li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:6px;font-size:12.5px;line-height:1.35}
+.post .info li .n{color:var(--accent-2);font-weight:700;font-variant-numeric:tabular-nums}
+.post .info-f{font-size:12px;color:var(--muted);margin:0}
 .post .foot{margin-top:auto;display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
 .cap h4{margin:0 0 6px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
 .cap h4 span{color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
@@ -169,6 +175,16 @@ function slideCard(p, s, n) {
     </div>${control(key, `Slide ${s.n} · ${s.role.replace("-", " ")}`)}</div>`;
 }
 
+function infoBlock(i) {
+  const numbered = /step|timeline|sequence|process|numbered|checklist|test/i.test(i.type || "");
+  const items = (i.items || []).map((t, n) => {
+    const m = String(t).match(/^([^:]{1,24}):\s*(.+)$/);
+    const body = m ? `<b>${esc(m[1])}</b> ${esc(m[2])}` : esc(t);
+    return `<li><span class="n">${numbered ? String(n + 1).padStart(2, "0") : "•"}</span><span>${body}</span></li>`;
+  }).join("");
+  return `<div class="info">${i.title ? `<span class="info-t">${esc(i.title)}</span>` : ""}<ul>${items}</ul>${i.footer ? `<p class="info-f">${esc(i.footer)}</p>` : ""}</div>`;
+}
+
 function singleCard(p) {
   const o = p.on_image, key = `${p.id}-img`;
   const cls = p.headline_formula === "quote" ? "quote" : (/^\[?\d+%?\]?$/.test(o.headline) ? "big" : "");
@@ -177,6 +193,7 @@ function singleCard(p) {
       <span class="pill">${esc(o.pill)}</span>
       <h3 class="${cls}">${hl(o.headline)}</h3>
       ${o.subline ? `<p>${esc(o.subline)}</p>` : ""}
+      ${o.info ? infoBlock(o.info) : ""}
       ${o.source_line ? `<p class="src">${esc(o.source_line)}</p>` : `<div class="foot"><span>verdant-soft.com</span></div>`}
     </div>${control(key, "On-image text")}</div>`;
 }
