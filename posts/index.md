@@ -1,12 +1,17 @@
 # Post ledger
 
-One row per post. This is the pipeline's **memory** (`STYLE_GUIDE.md` §11). Before choosing today's post, it checks the ledger for no-repeat windows (topic, visual subject, composition), proof caps (client named), and the next series episode.
+One row per post. This is the pipeline's **memory** (`STYLE_GUIDE.md` §11). Before choosing today's post, it checks the ledger for no-repeat windows (topic, visual subject, composition, trend item, company as main subject, headline formula), proof caps (client named), the month's Verdant share, and the next series episode.
 
-| Date | File | Pillar | Series # | Topic | Visual subject | Composition | Client named | Facts used | Template | Final prompt | Passed / total | Verdict |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | Built to scale | Architectural model of rising blocks, off-white studio | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-A-light-v1 | v3-A-light (complete post, 3:4, REF-PACK-v1) | — | waiting |
-| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | Built to scale | Architectural model, glowing blocks, deep slate | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-A-dark-v1 | v1-A-dark | — | deferred (light first) |
-| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | Built to scale | Node-and-thread network, off-white | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-B-light-v1 | v3-B-light (complete post, 3:4, REF-PACK-v1) | — | waiting |
-| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | Built to scale | Glowing node network, deep slate | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-B-dark-v1 | v1-B-dark | — | deferred (light first) |
-| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | Built to scale | Frosted glass panes, staircase, off-white | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-C-light-v1 | v3-C-light (complete post, 3:4, REF-PACK-v1) | — | waiting |
-| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | Built to scale | Smoked glass panes, glow, deep slate | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-C-dark-v1 | v1-C-dark | — | deferred (light first) |
+- **Lane / series #:** lane id from `CONTENT-MIX-v1` plus the series episode, e.g. `ai · AI, Explained #3`
+- **Format:** `single` or `carousel`
+- **Timely:** a trend id from `banks/trends.md`, or `evergreen`
+- **Sources:** bank ids (`T-…`, `E-…`, `V-…`) and FACTS/PUBLIC-PROOF ids used
+
+| Date | File | Pillar | Lane / series # | Format | Timely | Sources | Topic | Visual subject | Composition | Client named | Facts used | Template | Final prompt | Passed / total | Verdict |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | single | evergreen | — | Built to scale | Architectural model of rising blocks, off-white studio | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-A-light-v1 | v3-A-light (complete post, 3:4, REF-PACK-v1) | — | waiting |
+| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | single | evergreen | — | Built to scale | Architectural model, glowing blocks, deep slate | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-A-dark-v1 | v1-A-dark | — | deferred (light first) |
+| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | single | evergreen | — | Built to scale | Node-and-thread network, off-white | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-B-light-v1 | v3-B-light (complete post, 3:4, REF-PACK-v1) | — | waiting |
+| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | single | evergreen | — | Built to scale | Glowing node network, deep slate | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-B-dark-v1 | v1-B-dark | — | deferred (light first) |
+| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | single | evergreen | — | Built to scale | Frosted glass panes, staircase, off-white | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-C-light-v1 | v3-C-light (complete post, 3:4, REF-PACK-v1) | — | waiting |
+| 2026-10-04 | [direction-test](2026-10-04-direction-test-built-to-scale.md) | Brand world (test) | — | single | evergreen | — | Built to scale | Smoked glass panes, glow, deep slate | Subject lower-right; space top/left | — | F02, F04, F06, F11, F14 (captions) | DIR-C-dark-v1 | v1-C-dark | — | deferred (light first) |

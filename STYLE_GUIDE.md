@@ -335,7 +335,7 @@ item_schema:                          # trend items; evergreen numbers use the s
   published: "YYYY-MM-DD"
   retrieved: "YYYY-MM-DD"
   expires: "YYYY-MM-DD"
-  status: "checked | used | expired | rejected"
+  status: "pending-check | checked | used | expired | rejected"   # only checked items may be used in posts
   take_hint: "the founder-facing angle for our take"
 ```
 
