@@ -1,0 +1,268 @@
+<title>Round 2 Copy Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: sticky progress bar, then one section per lane pack; carousels as a horizontal strip of 4:5 slide cards, singles as one 4:5 card beside its captions. */
+:root{
+  --bg:#F5F9FD; --surface:#FFFFFF; --sunk:#E8F0F8; --ink:#050816; --muted:#42658A; --line:#C9DCEC;
+  --accent:#2457D6; --accent-2:#007A9E; --hl-a:#2457D6; --hl-b:#007A9E;
+  --keep:#00727F; --keep-bg:#E3F3F3; --kill:#B4233C; --kill-bg:#FBE9EC; --note-bg:#E9F7F6;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#050816; --surface:#0B1530; --sunk:#0A1030; --ink:#FFFFFF; --muted:#A6CAEC; --line:#1C2B4E;
+  --accent:#A6CAEC; --accent-2:#09CACC; --hl-a:#A6CAEC; --hl-b:#09CACC;
+  --keep:#34CCA4; --keep-bg:#0A2A2C; --kill:#FF8A9A; --kill-bg:#2A0E18; --note-bg:#08262F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#050816; --surface:#0B1530; --sunk:#0A1030; --ink:#FFFFFF; --muted:#A6CAEC; --line:#1C2B4E;
+  --accent:#A6CAEC; --accent-2:#09CACC; --hl-a:#A6CAEC; --hl-b:#09CACC;
+  --keep:#34CCA4; --keep-bg:#0A2A2C; --kill:#FF8A9A; --kill-bg:#2A0E18; --note-bg:#08262F; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+h1,h2,h3{text-wrap:balance;margin:0}
+.hl{background:linear-gradient(90deg,var(--hl-a),var(--hl-b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+.bar b{font-variant-numeric:tabular-nums}
+.meter{flex:1 1 160px;height:6px;border-radius:3px;background:var(--sunk);overflow:hidden;min-width:120px}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--hl-a),var(--hl-b));transition:width .3s}
+.bar label{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer}
+.save{font-size:12px;color:var(--muted)}
+header.intro{padding-block:36px 8px;display:grid;gap:14px;max-width:70ch}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+header.intro h1{font-size:clamp(28px,4.4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.08}
+header.intro p{margin:0;color:var(--muted)}
+.notice{border:1px solid var(--line);border-left:3px solid var(--accent-2);background:var(--surface);padding:12px 14px;border-radius:8px;font-size:14px}
+.nav{display:flex;flex-wrap:wrap;gap:6px;padding-block:18px 6px}
+.nav a{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--surface);font-variant-numeric:tabular-nums}
+.nav a:focus-visible,button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+section.pack{border-top:1px solid var(--line);padding-block:28px 8px;display:grid;gap:16px;scroll-margin-top:64px}
+.pack-head{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+.pack-head h2{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.meta{font-size:13px;color:var(--muted)}
+.tally{margin-left:auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--muted)}
+.chip.warn{border-color:var(--kill);color:var(--kill)}
+.strip{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.strip>.part{flex:0 0 min(300px,82vw);scroll-snap-align:start}
+.single{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:760px){.single{grid-template-columns:minmax(0,1fr)}}
+.captions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.captions{grid-template-columns:minmax(0,1fr)}}
+.part{display:grid;gap:8px;min-width:0}
+.part[data-v="keep"] .frame{box-shadow:0 0 0 2px var(--keep)}
+.part[data-v="kill"] .frame{box-shadow:0 0 0 2px var(--kill)}
+.frame{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.post{aspect-ratio:4/5;display:flex;flex-direction:column;gap:10px;overflow:auto}
+.post .top{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.post .pill{align-self:flex-start;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;color:#fff;background:linear-gradient(90deg,#2457D6,#007A9E)}
+.post .role{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.post h3{font-size:21px;line-height:1.15;font-weight:800;letter-spacing:-.01em}
+.post h3.quote{font-size:17px;font-weight:700;line-height:1.3}
+.post h3.big{font-size:64px;line-height:1}
+.post p{margin:0;font-size:13.5px;color:var(--ink)}
+.post .bridge{color:var(--accent-2);font-weight:600;font-size:13px}
+.post .src{margin-top:auto;font-size:11px;color:var(--muted)}
+.post ol{margin:0;padding-left:20px;font-size:13px;display:grid;gap:4px}
+.post .foot{margin-top:auto;display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+.cap h4{margin:0 0 6px;font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
+.cap h4 span{color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
+.cap pre{margin:0;white-space:pre-wrap;word-wrap:break-word;font-family:var(--sans);font-size:13.5px;line-height:1.55}
+.alts{margin:0;padding-left:20px;font-size:13px;display:grid;gap:4px}
+.ctrl{display:flex;gap:6px;align-items:center}
+.ctrl button{font:600 13px var(--sans);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 14px;cursor:pointer;min-height:36px}
+.ctrl button[aria-pressed="true"].k{background:var(--keep-bg);border-color:var(--keep);color:var(--keep)}
+.ctrl button[aria-pressed="true"].x{background:var(--kill-bg);border-color:var(--kill);color:var(--kill)}
+.ctrl .lbl{font-size:12px;color:var(--muted);margin-right:auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+textarea{width:100%;min-height:38px;resize:vertical;font:13px/1.45 var(--sans);color:var(--ink);background:var(--note-bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.part.done-hidden{display:none}
+.general{padding-block:28px 0;border-top:1px solid var(--line);display:grid;gap:10px;max-width:70ch}
+.general textarea{min-height:110px}
+@media (prefers-reduced-motion:reduce){.meter i{transition:none}}
+</style>
+
+<div class="bar" role="region" aria-label="Review progress">
+  <div class="bar-in">
+    <span><b id="marked">0</b> of <b id="total">0</b> marked</span>
+    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+    <span>Keep rate <b id="rate">–</b></span>
+    <label for="onlyOpen"><input type="checkbox" id="onlyOpen"> Show unmarked only</label>
+    <span class="save" id="saveState" aria-live="polite">Connecting…</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="intro">
+    <span class="eyebrow">Verdant Soft · Writing practice · Round 2 · 2026-10-06</span>
+    <h1>Nine lanes, one week of posts. <span class="hl">Keep or kill</span> each part.</h1>
+    <p>Mark every slide, on-image text, caption and the hashtags with alt text. Add a note when you kill something, or when something is close. Your marks save automatically and I read them in the next session.</p>
+    <p>The goal is two rounds in a row at 80% keep or better, with no truth or voice failures. Then these rules move into the style guide.</p>
+    <div class="notice"><b>Practice only:</b> Pack 1 uses three news items that are still pending a source check (this environment could only open anthropic.com). They show the roundup format and can't be published until their sources are read. The cards show the words only; visuals come at the visuals stage.</div>
+  </header>
+  <nav class="nav" id="nav" aria-label="Packs"></nav>
+  <main id="packs"></main>
+  <section class="general">
+    <h2 style="font-size:20px">Overall notes</h2>
+    <p class="meta">Anything that applies to every lane: tone, length, what you'd never post.</p>
+    <textarea id="note-general" aria-label="Overall notes" placeholder="e.g. LinkedIn captions feel long; I like the Our take lines"></textarea>
+  </section>
+</div>
+
+<script>
+const PACKS = [{"id": "P1", "day": "Mon", "lane": "trends", "series": "This Week in Tech", "format": "carousel", "variant": "roundup", "topic": "Week of 29 Sep to 5 Oct 2026", "sources": ["T-2026-10-06-05", "T-2026-10-06-01", "T-2026-10-06-03", "T-2026-10-06-06"], "status_note": "PRACTICE ONLY: items from OpenAI, Cloudflare and Google are pending-check", "headline_formula": "problem-curiosity", "question": true, "cta": "soft", "slides": [{"n": 1, "role": "cover", "pill": "This Week in Tech", "headline": "The part of AI [nobody budgets for]", "body": "Four updates from this week, and what they mean for you.", "extra": "Swipe"}, {"n": 2, "role": "item", "headline": "Agents that [keep working]", "body": "OpenAI's DevDay centred on agents that carry on with ongoing tasks, not one-off answers. For founders: design for delegating and checking, not just chatting.", "source_line": "Source: OpenAI, 2026 [PENDING CHECK]"}, {"n": 3, "role": "item", "headline": "The new gap is [deployment]", "body": "Anthropic is committing $100 million to train 10,000 engineers who deploy AI inside companies, by the end of 2027. The hard part is now the rollout.", "source_line": "Source: Anthropic, 2026"}, {"n": 4, "role": "item", "headline": "Small models for [narrow decisions]", "body": "Cloudflare released two open-weight 'decision' models built for quick, structured calls like routing or classifying a request. Not every feature needs the biggest model.", "source_line": "Source: Cloudflare, 2026 [PENDING CHECK]"}, {"n": 5, "role": "item", "headline": "Android starts [verifying developers]", "body": "Google now requires verified-developer registration for app installs and updates on certified Android devices in Brazil, Indonesia, Singapore and Thailand. Keep store accounts in your company's name.", "source_line": "Source: Google, 2026 [PENDING CHECK]"}, {"n": 6, "role": "our-take", "headline": "Our take: [own the rollout]", "body": "Models get cheaper and smarter every month. What decides success is who owns deployment, accounts and checks. Name that person before you buy the tool.", "extra": "Follow for next Monday's roundup."}, {"n": 7, "role": "receipt", "headline": "This week in [four lines]", "list": ["Agents that keep working on tasks (OpenAI)", "$100M for AI deployment skills (Anthropic)", "Small open models for quick decisions (Cloudflare)", "Android developer verification begins (Google)"], "extra": "Save this · verdant-soft.com"}], "linkedin": "The part of AI nobody budgets for isn't the model. It's the rollout.\n\nFour updates from this week, and what each one means if you're building a product:\n\n1. OpenAI's DevDay centred on agents that keep working on ongoing tasks. Expect to design for delegating and checking, not just chatting.\n2. Anthropic is committing $100 million to train 10,000 engineers who deploy AI inside companies, by the end of 2027. Deployment skill is now the scarce part.\n3. Cloudflare released two small open-weight models for quick, structured decisions. Not every feature needs the biggest model.\n4. Google now requires verified-developer registration for Android app installs and updates in Brazil, Indonesia, Singapore and Thailand.\n\nOur take: models will keep getting cheaper and better. What decides whether AI works in your business is who owns the rollout: the accounts, the limits and the checks. Name that person before you pick the tool.\n\nWho owns AI rollout in your company today?\n\nSources: OpenAI · [URL pending check]\nAnthropic · https://www.anthropic.com/news/claude-frontier-academy\nCloudflare · [URL pending check]\nGoogle · [URL pending check]\n#VerdantSoft #TechNews #ArtificialIntelligence", "instagram": "The part of AI nobody budgets for: the rollout.\n\nThis week brought agents that keep working, $100M for AI deployment skills, small models for quick decisions, and Android developer verification in four countries.\n\nOur take: name who owns the rollout before you pick the tool.\n\nSources: OpenAI, Anthropic, Cloudflare, Google. Follow for next Monday's roundup.\n\n#VerdantSoft #TechNews #ArtificialIntelligence #StartupFounder #SoftwareDevelopment", "alt_text": ["Cover reading: The part of AI nobody budgets for. Four updates from this week.", "OpenAI's DevDay focused on AI agents that keep working on ongoing tasks.", "Anthropic is committing 100 million dollars to train 10,000 engineers who deploy AI in companies.", "Cloudflare released two small open models for quick, structured decisions.", "Google now requires verified Android developers in Brazil, Indonesia, Singapore and Thailand.", "Our take: decide who owns the AI rollout before choosing a tool.", "A four-line summary of this week's updates, with verdant-soft.com."], "li_words": 173, "ig_words": 55}, {"id": "P2", "day": "Wed", "lane": "ai", "series": "AI, Explained", "format": "carousel", "variant": "external", "topic": "E-AI-01", "sources": [], "term": "hallucination", "headline_formula": "problem-curiosity", "question": false, "cta": "soft", "slides": [{"n": 1, "role": "cover", "pill": "AI, Explained", "headline": "Why AI [makes things up]", "body": "And how good products stop it.", "extra": "Swipe"}, {"n": 2, "role": "payoff", "headline": "It's predicting, [not looking up]", "body": "A language model writes the most likely next words, based on patterns it learned. When it doesn't know, it can still sound sure. That's called a hallucination."}, {"n": 3, "role": "step", "headline": "Fix 1: [give it sources]", "body": "Let the model look up your own documents first, then answer only from what it found.", "bridge": "But sources alone aren't enough."}, {"n": 4, "role": "step", "headline": "Fix 2: allow [I don't know]", "body": "Tell it to admit when the answer isn't in its sources. A clear 'not sure' serves your users better than a confident guess.", "bridge": "Then prove it works."}, {"n": 5, "role": "step", "headline": "Fix 3: [test before launch]", "body": "Keep a set of real questions with known answers. Run them on every change. If the score drops, the release waits.", "bridge": "So where do you start?"}, {"n": 6, "role": "our-take", "headline": "Our take: [design for doubt]", "body": "Don't only ask whether the AI is accurate. Ask what happens when it's wrong, and design that moment first: what the user sees, and who fixes it."}, {"n": 7, "role": "action", "headline": "Save this for [your AI build]", "body": "Follow AI, Explained: a new one every Wednesday."}, {"n": 8, "role": "receipt", "headline": "Stop AI [making things up]", "list": ["Know why: it predicts, it doesn't look up", "Give it sources to answer from", "Let it say 'I don't know'", "Test real questions on every change"], "extra": "Save this · verdant-soft.com"}], "linkedin": "AI doesn't lie. It predicts.\n\nA language model writes the most likely next words, based on patterns from its training. Most of the time that's useful. When it doesn't know something, it still produces likely-sounding words, and they can be wrong. That's a hallucination: a confident answer with nothing behind it.\n\nYou can't switch it off, but you can design around it:\n- Give it sources. Let it look up your own documents before it answers, and answer only from them.\n- Let it say \"I don't know.\" A clear \"not sure\" serves your users better than a confident guess.\n- Test before launch. Keep a set of real questions with known answers, and run them on every change.\n\nOur take: the useful question isn't only \"is the AI accurate?\" It's \"what happens when it's wrong?\" Design that moment first: what the user sees, who gets alerted, and how it gets fixed.\n\nSwipe through for the version you can save.\n#VerdantSoft #ArtificialIntelligence #LLM", "instagram": "AI doesn't lie. It predicts.\n\nWhen a model doesn't know something, it still writes likely-sounding words. That's a hallucination.\n\nThree fixes: give it sources, let it say \"I don't know\", and test with real questions before every release.\n\nOur take: design for the moment it's wrong, before it happens.\n\nSave this for your next AI build.\n\n#VerdantSoft #ArtificialIntelligence #LLM #MachineLearning #AIExplained", "alt_text": ["Cover reading: Why AI makes things up, and how good products stop it.", "AI predicts likely words instead of looking facts up, which causes hallucinations.", "Fix one: give the AI your own documents to answer from.", "Fix two: allow the AI to say it doesn't know.", "Fix three: test with real questions before every launch.", "Our take: design for the moment the AI is wrong.", "Save this and follow AI, Explained every Wednesday.", "A four-point checklist for stopping AI from making things up."], "li_words": 157, "ig_words": 56}, {"id": "P3", "day": "Tue", "lane": "how-we-work", "series": "Outsourcing, Decoded", "format": "single", "topic": "V-HWW-01", "sources": ["F12", "F11"], "headline_formula": "rhythm", "question": false, "cta": "direct", "on_image": {"pill": "Outsourcing, Decoded", "headline": "Kickoff. Key phases. Delivery. That's when [you pay].", "subline": "How payments work with us.", "source_line": null}, "linkedin": "Paying a remote team for work you can't see yet is the biggest leap in outsourcing. So here is exactly how payments work with us.\n\nVerdant Soft works on a milestone-based payment schedule. You pay at three points:\n\n1. Project initiation.\n2. Key development phases.\n3. Final delivery.\n\nEach payment lines up with a stage of the work. Your budget moves as the product moves, and you always know what the next payment is for.\n\nIt's one of the questions in our FAQ for a reason: a clear payment structure is part of a clear project. If a team can't tell you when and why you pay, ask how they plan the rest of the work.\n\nPlanning a build? Book a call at verdant-soft.com and bring your questions about scope and payments.\n\n#VerdantSoft #SoftwareOutsourcing #ProductDevelopment", "instagram": "Kickoff. Key phases. Delivery. That's when you pay.\n\nWe work on a milestone-based schedule: payments at project initiation, at key development phases and at final delivery. Each one lines up with a stage of the build.\n\nPlanning a product? Book a call at verdant-soft.com.\n\n#VerdantSoft #SoftwareOutsourcing #DedicatedTeam #ProductDevelopment #SoftwareHouse", "alt_text": ["Post reading: Kickoff. Key phases. Delivery. That's when you pay. How payments work with us."], "li_words": 132, "ig_words": 44}, {"id": "P4", "day": "Tue-B", "lane": "build-notes", "series": "Build Notes", "format": "single", "topic": "V-BN-01", "sources": ["F39"], "headline_formula": "imperative", "question": false, "cta": "soft", "on_image": {"pill": "Build Notes", "headline": "Isolate tenants [before you scale] them", "subline": "A lesson from multi-tenant data platforms.", "source_line": null}, "linkedin": "In a multi-tenant platform, every customer shares the same system. The one thing they must never share is data.\n\nThat sounds obvious until the platform grows. One missing filter in one query, and a customer sees a record that isn't theirs. One heavy sync job, and every other tenant waits.\n\nThat's why isolation is a day-one decision, not a later fix:\n- Every record carries its tenant, and every query is scoped to it by default, not by memory.\n- Each tenant's sync and ETL jobs run in their own lane, so one big import can't stall everyone else.\n- Credentials and connections are stored per tenant, never shared.\n\nVerdant Soft contributed to a scalable, multi-tenant integration platform for data synchronization and ETL workflows, built in Python. On platforms like that, the boundaries you draw early decide how safely you can add customers later.\n\nBuilding a multi-tenant product? Save this for your architecture review.\n\n#VerdantSoft #SoftwareEngineering #SystemDesign", "instagram": "Isolate tenants before you scale them.\n\nIn a multi-tenant platform, customers share the system but must never share data. Scope every query to its tenant by default, give each tenant's jobs their own lane, and store credentials per tenant.\n\nWe contributed to a scalable, multi-tenant platform for data sync and ETL workflows, built in Python.\n\nSave this for your next architecture review.\n\n#VerdantSoft #SoftwareEngineering #SystemDesign #BackendDevelopment #CloudComputing", "alt_text": ["Post reading: Isolate tenants before you scale them. A lesson from multi-tenant data platforms."], "li_words": 151, "ig_words": 62}, {"id": "P5", "day": "Thu", "lane": "proof", "series": "Client words", "format": "single", "topic": "V-PR-01", "sources": ["P07"], "headline_formula": "quote", "question": false, "cta": "direct", "on_image": {"pill": "Client words", "headline": "They quickly [understood our problem], collaborated effectively with our team, and delivered a solid solution.", "subline": "Isana Sebastian", "source_line": null}, "linkedin": "Before we write code, we work to understand the problem behind the brief. Here's how one client described working with us:\n\n\"They quickly understood our problem, collaborated effectively with our team, and delivered a solid solution.\"\nIsana Sebastian\n\nThat sentence covers three of the things founders worry about most when they hire a remote team: being understood, being included, and getting something that works.\n\nUnderstanding comes first in how we run projects. Our UI/UX process starts with research and discovery, before anything is designed or built. We'd rather ask one more question at the start than rebuild a feature at the end.\n\nIf that's the kind of partner you're looking for, book a call at verdant-soft.com. Bring the brief, or just the problem. We'll start with questions.\n\n#VerdantSoft #ClientStories #SoftwareDevelopment", "instagram": "\"They quickly understood our problem, collaborated effectively with our team, and delivered a solid solution.\"\nIsana Sebastian\n\nUnderstood, included, delivered: three of the things founders worry about when they hire a remote team.\n\nPlanning a build? Book a call at verdant-soft.com.\n\n#VerdantSoft #ClientStories #SoftwareDevelopment #SoftwareOutsourcing #ProductDevelopment", "alt_text": ["Client quote from Isana Sebastian: They quickly understood our problem, collaborated effectively with our team, and delivered a solid solution."], "li_words": 127, "ig_words": 41}, {"id": "P6", "day": "Thu-B", "lane": "grow-with-us", "series": "Grow at Verdant", "format": "single", "topic": "V-GW-01", "sources": ["F05"], "headline_formula": "plain", "question": true, "cta": "soft", "on_image": {"pill": "Grow at Verdant", "headline": "The stack [you'd work with] here", "subline": "React, Next.js, Node.js, Python, PostgreSQL and more.", "source_line": null}, "linkedin": "If you're starting out in software, the useful question isn't which language is best. It's which tools real products are built with.\n\nHere's the stack we list across our services and case studies:\n- Front end: React, Next.js and Vue.\n- Back end: Node.js with Express or NestJS, Python with Django, and PHP.\n- Data: MySQL, PostgreSQL, MongoDB, Amazon Aurora and SQLite.\n\nYou don't need all of it on day one. Pick one front end, one back end and one database, and build one thing end to end, from the first screen to the stored data. You'll learn more from that than from another tutorial.\n\nStudying computer science or just graduated? Follow Grow at Verdant for skills, tools and what software work actually looks like.\n\nWhich part of the stack are you learning right now?\n\n#VerdantSoft #CareersInTech #LahoreTech", "instagram": "The stack you'd work with here.\n\nFront end: React, Next.js, Vue. Back end: Node.js, NestJS, Express, Django, PHP. Data: PostgreSQL, MySQL, MongoDB and more.\n\nStarting out? Pick one of each and build something end to end. It beats another tutorial.\n\nWhich part are you learning right now? 💻\n\n#VerdantSoft #CareersInTech #LahoreTech #PakistanTech #SoftwareEngineer", "alt_text": ["Post reading: The stack you'd work with here. React, Next.js, Node.js, Python, PostgreSQL and more."], "li_words": 132, "ig_words": 47}, {"id": "P7", "day": "Fri", "lane": "startup", "series": "Founder Notes", "format": "single", "topic": "E-FN-01", "sources": [], "headline_formula": "problem-curiosity", "question": true, "cta": "soft", "on_image": {"pill": "Founder Notes", "headline": "When your MVP [stops being minimal]", "subline": "Scope it around one job.", "source_line": null}, "linkedin": "An MVP has one purpose: to prove that people want the thing. Every extra feature delays that proof.\n\nIt usually starts with reasonable requests. A dashboard, because investors like dashboards. Social login, because users expect it. An admin panel, just in case. Each one is small. Together they push your first real user further away.\n\nA simple test before anything goes in:\n- What is the one job a user hires this product to do?\n- Does this feature help that job get done, or measure whether it did?\n- If not, it waits for version two.\n\nOur take: write that one job on the first page of your brief. Every scope decision after it gets easier, for you and for whoever builds it.\n\nWhat's one feature you were glad you cut?\n\n#VerdantSoft #Startups #ProductDevelopment", "instagram": "When your MVP stops being minimal.\n\nAn MVP exists to prove people want the thing. Every extra feature delays that proof. Before adding one, ask: does it help the user's one job get done? If not, it waits for version two.\n\nOur take: write the one job on the first page of your brief.\n\nSave this for your next scoping call.\n\n#VerdantSoft #Startups #ProductDevelopment #StartupFounder #MVP", "alt_text": ["Post reading: When your MVP stops being minimal. Scope it around one job."], "li_words": 129, "ig_words": 61}, {"id": "P8", "day": "Sat", "lane": "numbers", "series": "By the Numbers", "format": "single", "topic": "Barclays' planned AI coding adoption", "sources": ["T-2026-10-06-02"], "headline_formula": "fact", "question": false, "cta": "soft", "on_image": {"pill": "By the Numbers", "headline": "[50%]", "subline": "of Barclays' developers expected to use Claude Code by end-2026", "source_line": "Source: Anthropic, 2026"}, "linkedin": "50%. That's the share of its developers Barclays expects to be using Claude Code by the end of 2026, rising to a majority of its software engineers in 2027.\n\nWhen a bank plans AI coding tools into its whole engineering workforce, they're no longer an experiment. They're part of how software gets made.\n\nFor founders, the question has changed. It isn't \"should our team use AI to write code?\" It's \"how do we keep quality and ownership when they do?\"\n\nThe tools change how fast code appears. They don't change who is responsible for it.\n\nOur take: AI makes code faster to write, not automatically safe to ship. Keep code review, automated tests and a clear owner for every change, however the code was written.\n\nSource: Anthropic · https://www.anthropic.com/news/barclays-scales-claude\n#VerdantSoft #TechTrends #Startups", "instagram": "50% of Barclays' developers are expected to be using Claude Code by the end of 2026.\n\nWhen a bank plans AI coding into its whole engineering team, it's past the experiment stage.\n\nOur take: AI makes code faster to write, not safe to ship. Keep review, tests and a clear owner.\n\nSource: Anthropic\n\n#VerdantSoft #TechTrends #Startups #SoftwareDevelopment #StartupFounder", "alt_text": ["Large figure 50 percent: the share of Barclays' developers expected to use Claude Code by the end of 2026. Source: Anthropic, 2026."], "li_words": 128, "ig_words": 53}, {"id": "P9", "day": "Sun", "lane": "concepts", "series": "Under the Hood", "format": "single", "topic": "E-CON-01", "sources": [], "term": "API", "headline_formula": "problem-curiosity", "question": false, "cta": "soft", "on_image": {"pill": "Under the Hood", "headline": "What an API [actually is]", "subline": "A menu for software, explained for founders.", "source_line": null}, "linkedin": "An API is a menu one piece of software offers another.\n\nThe menu lists what you can ask for (create an order, fetch a customer, send a message) and exactly how to ask. The kitchen behind it stays private. That's an API, or application programming interface: a defined way for one system to request things from another.\n\nWhy it matters when you plan a product:\n- An integration is only as good as the other side's menu. If a tool has no API for what you need, no developer can wish one into existence.\n- Your own product may need a menu too, for your mobile app, partners or future integrations.\n- Menus change. Good integrations plan for new versions and usage limits from the start.\n\nOur take: before you commit to a third-party tool, ask to see its API documentation. A short look now is cheaper than a workaround later.\n\nSave this for your next scoping session.\n#VerdantSoft #SoftwareEngineering #TechExplained", "instagram": "What an API actually is: a menu for software.\n\nIt lists what one system can ask another for, and exactly how to ask, while the kitchen stays private.\n\nPlanning a product that connects to other tools? Check each tool's API documentation before you commit.\n\nOur take: a short look now is cheaper than a workaround later.\n\nSave this for your next scoping call. 🧩\n\n#VerdantSoft #SoftwareEngineering #TechExplained #WebDevelopment #StartupFounder", "alt_text": ["Post reading: What an API actually is. A menu for software, explained for founders."], "li_words": 155, "ig_words": 63}];
+const NAMES = {trends:"Trends & news", ai:"AI & LLMs", startup:"Startup & product", numbers:"Facts & numbers", concepts:"Software concepts", "how-we-work":"How we work", "build-notes":"Build Notes", proof:"Proof", "grow-with-us":"Grow with us"};
+const parts = [];          // {key, pack}
+let marks = {};            // key -> {verdict, note}
+let db = null, local = false;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hl = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="hl">$1</span>');
+
+function control(key, label) {
+  parts.push({key, pack: key.split("-")[0]});
+  return `<div class="ctrl"><span class="lbl">${esc(label)}</span>
+    <button type="button" class="k" data-key="${key}" data-v="keep" aria-pressed="false">Keep</button>
+    <button type="button" class="x" data-key="${key}" data-v="kill" aria-pressed="false">Kill</button></div>
+    <textarea id="note-${key}" data-note="${key}" rows="1" aria-label="Note for ${esc(label)}" placeholder="Note (optional)"></textarea>`;
+}
+
+function slideCard(p, s, n) {
+  const key = `${p.id}-s${s.n}`;
+  const big = /^\[?\d+%?\]?$/.test(s.headline || "");
+  const list = s.list ? `<ol>${s.list.map(i => `<li>${esc(i)}</li>`).join("")}</ol>` : "";
+  return `<div class="part" data-key="${key}"><div class="frame post">
+      <div class="top"><span>Verdant Soft</span><span>${String(s.n).padStart(2,"0")} / ${String(n).padStart(2,"0")}</span></div>
+      ${s.pill ? `<span class="pill">${esc(s.pill)}</span>` : `<span class="role">${esc(s.role.replace("-", " "))}</span>`}
+      <h3 class="${big ? "big" : ""}">${hl(s.headline)}</h3>
+      ${s.body ? `<p>${esc(s.body)}</p>` : ""}${list}
+      ${s.bridge ? `<p class="bridge">${esc(s.bridge)}</p>` : ""}
+      ${s.extra ? `<p class="meta">${esc(s.extra)}</p>` : ""}
+      ${s.source_line ? `<p class="src">${esc(s.source_line)}</p>` : ""}
+    </div>${control(key, `Slide ${s.n} · ${s.role.replace("-", " ")}`)}</div>`;
+}
+
+function singleCard(p) {
+  const o = p.on_image, key = `${p.id}-img`;
+  const cls = p.headline_formula === "quote" ? "quote" : (/^\[?\d+%?\]?$/.test(o.headline) ? "big" : "");
+  return `<div class="part" data-key="${key}"><div class="frame post">
+      <div class="top"><span>Verdant Soft</span><span>4:5</span></div>
+      <span class="pill">${esc(o.pill)}</span>
+      <h3 class="${cls}">${hl(o.headline)}</h3>
+      ${o.subline ? `<p>${esc(o.subline)}</p>` : ""}
+      ${o.source_line ? `<p class="src">${esc(o.source_line)}</p>` : `<div class="foot"><span>verdant-soft.com</span></div>`}
+    </div>${control(key, "On-image text")}</div>`;
+}
+
+function captions(p) {
+  const cap = (k, title, text, n, range) => `<div class="part" data-key="${p.id}-${k}"><div class="frame cap">
+      <h4>${title}<span>${n} words · ${range}</span></h4><pre>${esc(text)}</pre></div>${control(`${p.id}-${k}`, title)}</div>`;
+  const alts = `<div class="part" data-key="${p.id}-alt"><div class="frame cap"><h4>Alt text<span>${p.alt_text.length} line${p.alt_text.length > 1 ? "s" : ""}</span></h4>
+      <ol class="alts">${p.alt_text.map(a => `<li>${esc(a)}</li>`).join("")}</ol></div>${control(`${p.id}-alt`, "Hashtags & alt text")}</div>`;
+  return `<div class="captions">${cap("li", "LinkedIn caption", p.linkedin, p.li_words, "120–220")}${cap("ig", "Instagram caption", p.instagram, p.ig_words, "40–100")}</div>${alts}`;
+}
+
+function render() {
+  const nav = [], out = [];
+  for (const p of PACKS) {
+    const pending = /PENDING/.test(JSON.stringify(p));
+    const chips = [`${p.format}${p.variant ? " · " + p.variant : ""}`, `headline: ${p.headline_formula}`, p.cta === "direct" ? "direct CTA" : "soft CTA", p.question ? "ends with a question" : null, p.term ? `term: ${p.term}` : null].filter(Boolean);
+    nav.push(`<a href="#${p.id}">${p.id} · ${esc(p.day)} · ${esc(p.series)}</a>`);
+    out.push(`<section class="pack" id="${p.id}">
+      <div class="pack-head"><h2>${p.id} · ${esc(p.series)}</h2><span class="meta">${esc(p.day)} · ${esc(NAMES[p.lane] || p.lane)}</span><span class="tally" data-tally="${p.id}"></span></div>
+      <div class="chips">${chips.map(c => `<span class="chip">${esc(c)}</span>`).join("")}${pending ? '<span class="chip warn">practice only: sources pending</span>' : ""}</div>
+      ${p.format === "carousel"
+        ? `<div class="strip" role="group" aria-label="${p.id} slides">${p.slides.map(s => slideCard(p, s, p.slides.length)).join("")}</div>${captions(p)}`
+        : `<div class="single">${singleCard(p)}<div class="part-stack" style="display:grid;gap:14px;min-width:0">${captions(p)}</div></div>`}
+    </section>`);
+  }
+  document.getElementById("nav").innerHTML = nav.join("");
+  document.getElementById("packs").innerHTML = out.join("");
+  document.getElementById("total").textContent = parts.length;
+}
+
+function paint() {
+  const only = document.getElementById("onlyOpen").checked;
+  let marked = 0, keep = 0;
+  const per = {};
+  for (const {key, pack} of parts) {
+    const m = marks[key] || {};
+    const el = document.querySelector(`.part[data-key="${key}"]`);
+    el.dataset.v = m.verdict || "";
+    el.querySelectorAll("button[data-v]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === m.verdict)));
+    const ta = document.getElementById("note-" + key);
+    if (document.activeElement !== ta) ta.value = m.note || "";
+    el.classList.toggle("done-hidden", only && !!m.verdict);
+    per[pack] = per[pack] || {n: 0, keep: 0, marked: 0};
+    per[pack].n++;
+    if (m.verdict) { marked++; per[pack].marked++; }
+    if (m.verdict === "keep") { keep++; per[pack].keep++; }
+  }
+  for (const [id, t] of Object.entries(per)) document.querySelector(`[data-tally="${id}"]`).textContent = `${t.keep} kept · ${t.marked}/${t.n} marked`;
+  document.getElementById("marked").textContent = marked;
+  document.getElementById("rate").textContent = marked ? Math.round(100 * keep / marked) + "%" : "–";
+  document.getElementById("meter").style.width = (100 * marked / parts.length) + "%";
+  const g = document.getElementById("note-general");
+  if (document.activeElement !== g) g.value = (marks.general || {}).note || "";
+}
+
+function setState(t) { document.getElementById("saveState").textContent = t; }
+
+async function save(key, patch) {
+  const pack = key === "general" ? "general" : key.split("-")[0];
+  const next = {...(marks[key] || {}), ...patch, pack, part: key, at: new Date().toISOString()};
+  marks[key] = next;
+  paint();
+  if (db) {
+    setState("Saving…");
+    try { await db.doc("marks/" + key).set(next); setState("Saved"); }
+    catch (e) {
+      if (e && e.code === "unavailable") { setTimeout(() => save(key, {}), 800 + Math.random() * 800); setState("Retrying…"); }
+      else setState("Couldn't save: " + (e && e.code || "error"));
+    }
+  } else if (local) {
+    try { localStorage.setItem("round02-marks", JSON.stringify(marks)); } catch (_) {}
+  }
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button[data-v]");
+  if (!b) return;
+  const key = b.dataset.key, cur = (marks[key] || {}).verdict;
+  save(key, {verdict: cur === b.dataset.v ? null : b.dataset.v});
+});
+const timers = {};
+document.addEventListener("input", e => {
+  const t = e.target;
+  const key = t.dataset.note || (t.id === "note-general" ? "general" : null);
+  if (!key) return;
+  clearTimeout(timers[key]);
+  timers[key] = setTimeout(() => save(key, {note: t.value}), 700);
+});
+document.getElementById("onlyOpen").addEventListener("change", paint);
+
+render();
+paint();
+
+(async () => {
+  try { db = window.claude ? await window.claude.use("db") : null; } catch (_) { db = null; }
+  if (!db) {
+    local = true;
+    try { marks = JSON.parse(localStorage.getItem("round02-marks") || "{}") || {}; } catch (_) { marks = {}; }
+    paint();
+    setState("Saving is off here: marks stay in this browser. Reply in chat with your notes.");
+    return;
+  }
+  setState("Saved marks load live");
+  db.collection("marks").onSnapshot(snap => {
+    const next = {};
+    snap.docs.forEach(d => { if (d.exists) next[d.id] = d.data(); });
+    marks = next;
+    paint();
+    setState(snap.metadata.hasPendingWrites ? "Saving…" : "All marks saved");
+  }, err => setState("Live sync stopped (" + err.code + "). Reload the page."));
+})();
+</script>

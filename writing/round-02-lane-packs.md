@@ -8,7 +8,9 @@
 - §2.3 `EXTERNAL-SOURCES-v1`
 - `brand/strategy.md` v2 §5
 
-**How to review:** on the review page, mark each part Keep or Kill, with an optional note.
+**How to review:** on the review page, https://claude.ai/artifact/7jm544QZvVC5MXqQ1XiqAu, mark each part Keep or Kill, with an optional note.
+- **Page:** built from this file with `python3 tools/build_review.py writing/round-02-lane-packs.md writing/review/round-02.html`.
+- **Where marks go:** the artifact's database (collection `marks`, doc `<pack>-<part>`, plus `general`). Claude reads them back with ArtifactData and copies them into the Feedback section below.
 - **Done** = two rounds in a row at ≥ 80% Keep, with no truth or voice failures. Then the rules move into §7.
 - **Checks:** run `python3 tools/check_packs.py writing/round-02-lane-packs.md` for word counts, emoji, hashtags, banned words and numbers.
 
