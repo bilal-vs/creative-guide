@@ -7,22 +7,66 @@
   1. **Writing practice** (now): headlines → captions (LinkedIn and Instagram) → carousel copy → alt text and hashtags. Codify the winners into `STYLE_GUIDE.md` §7. Files in `writing/`.
   2. **Visuals**: discuss and train. Templates and kit are in `brand/theme/` (7 templates × 4 moods). The prompts in `posts/2026-10-04-direction-test-built-to-scale.md` (v3, unsent) get rebuilt from the templates.
   3. **Revise the colour guide** from what the visuals teach (`brand/theme/colours.py` → `python3 brand/guidelines/build.py`).
-- **NOW:** two pieces wait for the user's notes: writing round 1 (headlines, `writing/round-01-headlines.md`) and the carousel playbook with example 01 (`writing/carousel-playbook.md`, `writing/carousel-01-before-the-code.md`).
+- **NOW:** the user reviews **writing round 2** on the review page, https://claude.ai/artifact/7jm544QZvVC5MXqQ1XiqAu: 9 lane packs, 49 parts, Keep/Kill plus notes.
+  - **Next session:** read the marks with ArtifactData (collection `marks`) and copy them into `writing/round-02-lane-packs.md` → Feedback. Then revise and run round 3.
+  - **Done criterion:** 2 rounds in a row at ≥ 80% keep, with no truth or voice failures. Then the rules move into §7.
+- **Content system (user, 2026-10-06):**
+  - **Mix:** 30% Verdant / 70% Tech, Explained (5 lanes as named series), with one third carousels on a 2-2-3 cycle (`STYLE_GUIDE.md` §3 `CONTENT-MIX-v1`, `brand/strategy.md` v2).
+  - **Research:** every post is researched **the day before** (D−1).
+  - **Routine "Weekly trend drop":** `trig_01Wrzh1wzUKNL3SFFVpNSNuf`, every Saturday at 09:59 PKT. It writes to `banks/trends.md`; daily runs start at launch.
+- **Blocked:** the cloud network only reaches anthropic.com among the primary sources. The user said they'll allow the source domains (title bar → cloud environment → Edit → Network access → Custom). Until then, research items stay `pending-check`.
 - **Done:**
   - audit
   - FACTS-v2 and PUBLIC-PROOF-v2
-  - strategy v1
+  - strategy v2
   - colour system v8 (PALETTE-v8 + THEMES-v1) and the 25-page colour book
   - LIGHT-THEME-v2 templates
   - post rules §5.0
+  - CAROUSEL-v2 (example 01 approved)
+  - headline style decided
+  - caption rules, HASHTAGS-v1, BANNED-WORDS-v1
+  - EXTERNAL-SOURCES-v1
+  - banks and inbox
 - **Still open:**
-  - `brand/strategy.md` §14 (numbers, Shervin Khanzadi's attribution, Elia Essen, founding year, markets, news-inbox owner, repo privacy)
+  - `brand/strategy.md` §14 (numbers, Shervin Khanzadi's attribution, Elia Essen, founding year, markets, Reels, calendar moments, repo privacy)
+  - lane → mood mapping (visuals stage)
   - Syne for headlines?
   - Flow outputs per run
 
 ---
 
 ## Log
+
+### 2026-10-06 · Content mix reset + writing system (plan mode, 11 rounds of questions)
+- **User decisions:**
+  - **Mix:** 30% Verdant / 70% external (per month, flexible; Verdant band 25–40%).
+  - **Formats:** one third carousels (2-2-3 cycle).
+  - **External pillar:** Tech, Explained, written for founders. Five lanes, each a named series: This Week in Tech (Mon roundup carousel), AI, Explained (Wed), Founder Notes (Fri), By the Numbers (Sat), Under the Hood (Sun).
+  - **Verdant days:** Tue (How we work / Build Notes) and Thu (Proof / Grow with us), alternating weekly.
+  - **Content:** half evergreen, half trending. Primary sources only, with the source on the image and in the caption. Companies named in text, neutral.
+  - **Tone:** a practical stance. A Verdant take on every external post. Plain language with one term defined.
+  - **No company numbers** until confirmed.
+  - **Captions:** same visual, separate captions. LinkedIn 120–220 / Instagram 40–100 words. English only. Emoji: LinkedIn none, Instagram ≤ 2. Hashtags: LinkedIn 3 / Instagram 5. "We" plus "you".
+  - **CTAs and endings:** direct CTA only on How we work and Proof. A question on about 1 in 3 posts.
+  - **Headlines:** problem/curiosity about 60%; keep the highlight. Carousel example 01 approved as the model.
+  - **Overrides:** inbox items and calendar moments replace the day's external post.
+  - **Research:** Saturday trend drop from now, daily runs at launch, optional human inbox.
+  - **Workflow:** practice uses one pack per lane on a keep/kill page; the done criterion is 2 rounds at ≥ 80% keep.
+- **Mid-session additions:**
+  - "decide what you think you can decide better": my calls are tagged `[decided · CD]` (no-repeat windows, link placement, take placement, hashtag sets, banned-word additions, run time).
+  - "make sure to do research about the post the day before": the **D−1 research** rule. Every post's sources are re-opened, newer developments and sensitivity are checked, and the result is logged in the post file. No research, no publish.
+- **Deliberate change, flagged:** v1 grounded insight in our own work, because generic posts did worst in the audit. Mitigation: the take line, the founder audience, the named series, and an 8-week review of the split after launch.
+- **Lesson (research):**
+  - **The search tool contradicted itself.** One search summary "confirmed" a Gemini 4 Argon launch on 30 Sep; a second found no official announcement. That's the case for primary-only sources. Logged as `T-2026-10-06-R1`, rejected.
+  - **Most primary sites are unreachable here.** The cloud egress proxy blocks most primary sites (only anthropic.com worked), so the first drop has 2 checked items and 4 `pending-check`.
+  - **Effect on practice:** pack 1 is practice-only. Being made by Anthropic, I flagged that the only checked items were Anthropic's, and capped the company at 2 a week.
+- **Self-correction:** my first variety rule (no formula on consecutive days) capped problem/curiosity below the user's 60%. Revised to "never three days running, never the same opening word twice in a row".
+- **Files:**
+  - `brand/strategy.md` v2
+  - `STYLE_GUIDE.md` §1, §2.3, §3, §4, §4.1 (v2), §7, §9, §11
+  - `banks/`, `inbox/`, `posts/index.md` and `posts/_template.md`
+  - `writing/round-02-lane-packs.md`, `writing/review/round-02.html`
+  - `tools/` (check_packs, build_review, check_yaml, sim_calendar)
 
 ### 2026-10-06 · Carousel playbook
 - **User:** shared *The Carousel Playbook* (@adarshxdesign: 25 hook formulas, cover checklist, slide jobs, 3-second test) and a 10-point checklist. Use it, or make it better.
