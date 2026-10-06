@@ -7,7 +7,7 @@
 - **Changed:** anything that would need invented numbers, a human replying in DMs, or creator-style bait.
 - **Added:** proof, fact-checking, and our theme system.
 
-The machine-readable version is `STYLE_GUIDE.md` §4.1 `CAROUSEL-v1`.
+The machine-readable version is `STYLE_GUIDE.md` §4.1 `CAROUSEL-v2` (v2 adds the external and roundup variants for Tech, Explained).
 
 ---
 

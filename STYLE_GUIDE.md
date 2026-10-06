@@ -11,9 +11,9 @@
 ## 1. How the pipeline uses this guide
 **TBD.** The daily procedure, in order:
 
-1. **Read memory:** the post history (`posts/index.md` schema, §11), the news inbox, and today's calendar moments
-2. **Decide today's post** using the priority from §3 (inbox > calendar > series episode > evergreen rotation), while respecting caps and no-repeat windows (§3, §9, §11)
-3. Pick the topic and its facts (only from §2 `FACTS` and `PUBLIC-PROOF`)
+1. **Read memory:** the post history (`posts/index.md` schema, §11), the news inbox (`inbox/`), the source banks (`banks/`), and today's calendar moments
+2. **Decide today's post** using `CONTENT-MIX-v1` (§3): today's slot, then the priority inbox > calendar > timely trend item > series episode > evergreen, while respecting the Verdant band, caps and no-repeat windows (§3, §9, §11)
+3. Pick the topic and its facts (Verdant facts only from §2 `FACTS` and `PUBLIC-PROOF`; external facts only from checked, unexpired bank items under §2.3 `EXTERNAL-SOURCES-v1`)
 4. Fill the pillar's template (§4, §6)
 5. Generate N images (§6 settings)
 6. Judge every output (§8)
@@ -29,7 +29,7 @@
 **Company:** Verdant Soft (verdant-soft.com), a software company in Lahore, Pakistan, serving international clients. Client evidence so far: Australia, the Netherlands and Algeria.
 **Service lines:** Custom Software Development · Cloud & DevOps · IT Team Outsourcing (dedicated teams) · UI/UX Design. Builds web and mobile applications.
 **Goals of the accounts (user decision):** both Instagram and LinkedIn serve **brand, clients and talent**.
-**Audiences, positioning, voice:** TBD, pending approval of `brand/strategy.md` §3–5.
+**Audiences and voice:** `[decided]` (user, 2026-10-06): `brand/strategy.md` v2 §4–5. External content (Tech, Explained) is written for founders and decision-makers; Grow with us is for talent. Caption-level rules are in §7. **Positioning** (strategy §3) is still a proposal.
 
 ### Fact bank
 The pipeline may state a company fact **only if it appears below with `status: confirmed`**. Anything else, including facts that are true but not listed, must not be stated.
@@ -283,55 +283,198 @@ User decision: clients and testimonials that are **publicly available** may be u
   status: pending-transcript
 ```
 
+### 2.3 External sources (Tech, Explained) `[decided]` (user, 2026-10-06)
+70% of posts are about the wider tech world, so the pipeline needs a second fact bank with its own rules. External facts come **only** from checked, unexpired items in `banks/trends.md` (timely) or `banks/topics.md` (evergreen). An item is `checked` only once its primary source page was opened and the claim was found on it. Items tagged `[decided · CD]` are calls the user delegated to the creative director.
+
+<!-- id: EXTERNAL-SOURCES-v1 -->
+```yaml
+scope: "every fact, number, quote or claim in a post that is not about Verdant Soft"
+allowed_sources:                     # primary only
+  - "the official blog, docs, changelog or press release of the organisation that made or measured the thing"
+  - "a research paper, read at the authors' own page or arXiv"
+  - "the original survey or report, on the publisher's own results page"
+  - "standards bodies and official statistics offices"
+not_allowed:
+  - "an article, newsletter or social post reporting someone else's number (second-hand)"
+  - "statistics roundup or aggregator sites"
+  - "AI-generated summaries, including search-result snippets"
+  - "any page the researcher could not open and read in full"
+stats_max_age_years: 2               # from the source's publication date
+checked_means: "the primary page was fetched and the claim appears on it, in substance; numbers exactly"
+claims:
+  - "say only what the source says; no extrapolation, no rounding up, no 'up to' unless the source says it"
+  - "attribute every number in the same sentence or on the same slide"
+citation:
+  image: "Source: {source_name}, {YYYY}"                     # meta line on any post or slide that states a sourced fact
+  linkedin_caption: "Source: {source_name} · {source_url}"   # last line before the hashtags  [decided · CD]
+  instagram_caption: "Source: {source_name}"                 # links aren't clickable on Instagram  [decided · CD]
+  roundup: "one source line on each item slide; every source listed in the LinkedIn caption"
+naming:
+  allowed: "name companies, products and models in text when they are the subject; neutral and factual"
+  banned:
+    - "third-party logos, trademarks or product UI in images"
+    - "verdicts or comparisons (X is better than Y)"
+    - "implying a partnership, endorsement or client relationship"
+    - "speculation about unreleased products or rumours"
+verdant_boundary:
+  - "never present a trend, a third-party result or a public case as Verdant Soft's experience"
+  - "'In our builds…' only when a FACTS entry with status: confirmed backs it; record the F-id in the post file"
+  - "the Verdant take is advice or opinion by default ('What we'd tell a founder: …')"
+expiry:
+  trend_item: "published + 14 days"
+  evergreen_number: "re-check the source every 12 months; retire it once older than stats_max_age_years"
+banks: { trends: banks/trends.md, evergreen: banks/topics.md, inbox: inbox/ }
+item_schema:                          # trend items; evergreen numbers use the same source fields
+  id: "T-YYYY-MM-DD-NN (date of the drop)"
+  lane: "trends | ai | concepts | numbers | startup"
+  claim: "one sentence, exactly what the source supports"
+  why_it_matters_to_founders: "one sentence"
+  source_name: "publisher as it should appear on the image"
+  source_url: "the primary page"
+  source_type: "official | paper | report | standards"
+  published: "YYYY-MM-DD"
+  retrieved: "YYYY-MM-DD"
+  expires: "YYYY-MM-DD"
+  status: "checked | used | expired | rejected"
+  take_hint: "the founder-facing angle for our take"
+```
+
 ## 3. Content strategy: pillars, rotation, series, inputs, calendar
-**TBD.** Pending approval of `brand/strategy.md` §6–9.
-- Pillar definitions: purpose and what qualifies
-- Weekly rotation (day → pillar)
-- Recurring series and episode order
-- Input priority: news inbox > calendar > series > evergreen
-- Topic bank per pillar, and how to generate new topics
-- No-repeat rules (window, and what counts as a repeat)
-- Calendar of moments, with the yearly table of movable dates
+`[decided]` (user, 2026-10-06). The reasoning is in `brand/strategy.md` v2 §6–9. Items tagged `[decided · CD]` were delegated to the creative director. The calendar of moments (strategy §9) still needs the user's pick of which moments get posts.
+
+<!-- id: CONTENT-MIX-v1 -->
+```yaml
+mix:
+  verdant_share: { target: 0.30, band: [0.25, 0.40], period: calendar-month }
+  external_pillar: "Tech, Explained"             # 5 lanes, ~70%
+  carousels: "7 of every 21 posts, fixed 3-week cycle; the rest are single posts"
+calendar:
+  anchor_monday: "2026-10-12"                    # practice anchor; reset to the launch Monday
+  week_index: "n = floor((date - anchor_monday) / 7 days)"
+  week_type: "A if n is even, else B"
+  cycle_week: "(n mod 3) + 1"
+  days:
+    Mon: { lane: trends,   series: "This Week in Tech", format: carousel, timely: always }
+    Tue: { A: how-we-work, B: build-notes,  format: "carousel in cycle week 2, else single" }
+    Wed: { lane: ai,       series: "AI, Explained",     format: "carousel in cycle week 1, else single" }
+    Thu: { A: proof,       B: grow-with-us, format: single }
+    Fri: { lane: startup,  series: "Founder Notes",     format: "carousel in cycle week 3, else single" }
+    Sat: { lane: numbers,  series: "By the Numbers",    format: single }
+    Sun: { lane: concepts, series: "Under the Hood",    format: "carousel in cycle week 3, else single" }
+  carousel_days: { 1: [Mon, Wed], 2: [Mon, Tue], 3: [Mon, Fri, Sun] }
+lanes:
+  trends:   { name: "Trends & news",            audience: founders, series: "This Week in Tech" }
+  ai:       { name: "AI & LLMs",                audience: founders, series: "AI, Explained" }
+  startup:  { name: "Startup & product advice", audience: founders, series: "Founder Notes" }
+  numbers:  { name: "Facts & numbers",          audience: founders, series: "By the Numbers" }
+  concepts: { name: "Software concepts",        audience: founders, series: "Under the Hood" }
+verdant_pillars:
+  how-we-work:  { series: ["Outsourcing, Decoded", "Wireframe → Production"], rule: "alternate by episode; on a carousel day use Wireframe → Production" }
+  build-notes:  { series: ["Build Notes"], source: "F05–F06, F30–F39 only" }
+  proof:        { series: ["Client words", "Project Spotlight"], rule: "alternate; same client_key not within 30 days" }
+  grow-with-us: { series: ["Grow at Verdant"], rule: "inbox first; otherwise conceptual, no AI-generated people" }
+  brand-world:  { slot: none, rule: "calendar moments and milestones only" }
+timely:
+  target: "about half of external posts: 2–3 a week"
+  rule: "Mon always uses trend items. Wed, Fri, Sat and Sun use a checked, unexpired trend item for their lane when one exists, at most 2 of them a week; otherwise evergreen"
+priority: [inbox, calendar_moment, timely_trend_item, series_episode, evergreen]
+overrides:
+  inbox_or_moment: "replaces that day's external post, never a Verdant slot"
+  bumped_evergreen: "moves to the next free external slot"
+  bumped_trend: "expires, unless the next Monday roundup can still use it"
+  verdant_band_guard: "if an inbox item would push the month's Verdant share above 0.40, it queues"
+  inbox_max_per_day: 1
+ctas:
+  direct: { text: "Book a call at verdant-soft.com", allowed_on: [how-we-work, proof], max_per_week: 2 }
+  soft:   { external: ["save this", "follow the series"], grow-with-us: ["follow", "see open roles (inbox roles only)"], build-notes: ["save this", "follow the series"] }
+endings:
+  question_share: "about 1 in 3 posts; a specific question a founder can answer from experience; never 'Thoughts?'"
+no_repeat:                                       # [decided · CD]
+  lane_topic_days: 90
+  trend_item: "never twice; one follow-up explainer in another lane is allowed"
+  company_as_main_subject_per_week: 2
+  headline_formula: "never the same formula on consecutive days"
+  proof_client_key_days: 30
+research:
+  saturday_run: "every Saturday 09:59 PKT: 3–5 checked trend items into banks/trends.md; marks expired items"
+  daily_run: "from launch: 1–3 items a day plus major breaking news; the Saturday run then picks the week's best 3–5 for Monday"
+  evergreen_refresh: monthly
+```
 
 ## 4. Post formats
-**TBD.** One recipe per pillar: the concept pattern, template ID, slot rules, and caption template.
+Copy recipes per lane, `[decided]` where the Decisions table in `learnings/log.md` (2026-10-06) says so. Structures are **draft v0** under test in writing round 2 (`writing/round-02-lane-packs.md`). Templates, moods and visuals are **TBD at the visuals stage**.
 
-### 4.1 Carousels (v1, 2026-10-06)
-Adapted from the user's carousel checklist and *The Carousel Playbook* (@adarshxdesign). The full reasoning is in `writing/carousel-playbook.md`; a worked example is in `writing/carousel-01-before-the-code.md`.
+| Lane / pillar | Series | Format | Headline default | On-image text | Take | CTA |
+|---|---|---|---|---|---|---|
+| trends | This Week in Tech | carousel (roundup variant) | curiosity ("What changed for founders this week") | pill, headline, one item per slide with its source line | "Our take" slide | soft: follow for next Monday |
+| ai | AI, Explained | carousel in cycle week 1, else single | problem/curiosity ("Why AI [makes things up]") | pill, headline, subline; one term defined | caption "Our take:" (single) or slide (carousel) | soft |
+| startup | Founder Notes | carousel in cycle week 3, else single | problem/curiosity or imperative | pill, headline, subline | as above | soft |
+| numbers | By the Numbers | single | plain fact: the number is the hero ("[N%] of {who} {do what}", number from a checked bank item) | pill, the number, one line of context, **source line** | caption "Our take:" | soft |
+| concepts | Under the Hood | carousel in cycle week 3, else single | problem/curiosity ("What an API [actually is]") | pill, headline, subline; one term defined | as above | soft |
+| how-we-work | Outsourcing, Decoded / Wireframe → Production | carousel in cycle week 2, else single | rhythm or plain benefit | pill, headline, subline | — | **direct** |
+| build-notes | Build Notes | carousel in cycle week 2, else single | imperative lesson or problem | pill, headline, subline | — | soft |
+| proof | Client words / Project Spotlight | single | the client's words are the headline (verbatim) | quote, attribution | — | **direct** |
+| grow-with-us | Grow at Verdant | single | warm opinion or imperative | pill, headline, subline | — | soft |
 
-<!-- id: CAROUSEL-v1 -->
+**Single-post anatomy (copy):**
+- series pill (2–4 words)
+- headline: ≤ 8 words, sentence case, one highlight of 1–3 words
+- optional subline: ≤ 12 words
+- source line if a sourced fact appears
+- the logo
+
+Nothing else goes on the image.
+
+### 4.1 Carousels (v2, 2026-10-06)
+Adapted from the user's carousel checklist and *The Carousel Playbook* (@adarshxdesign). The full reasoning is in `writing/carousel-playbook.md`. The worked example `writing/carousel-01-before-the-code.md` is **approved by the user as the model** for Verdant carousels.
+
+v2 adds two variants, **external** and **roundup**, for Tech, Explained. v1 is in git history (commit 740ca9f).
+
+<!-- id: CAROUSEL-v2 -->
 ```yaml
 length: { min: 6, max: 8 }
+variants:
+  verdant:   # how-we-work, build-notes, proof material
+    order: [cover, payoff, step x1-4, proof, cta, receipt]
+  external:  # ai, startup, concepts
+    order: [cover, payoff, step x1-3, our-take, action, receipt]
+  roundup:   # trends, every Monday ("This Week in Tech")
+    order: [cover, item x3-5, our-take, receipt]   # the our-take slide carries the soft action line
 slides:
-  - { role: cover,   job: "open a loop: claim + tension, never the answer", headline_max_words: 8, subline_max_words: 8, extras: [swipe-cue], drives: swipe-rate }
-  - { role: payoff,  job: "why it matters to the reader + first real answer; a second cover", headline_max_words: 6, body_max_words: 35, drives: dwell }
-  - { role: step,    repeat: "1–4", job: "one idea per slide; end with a bridge line", headline_max_words: 6, body_max_words: 30, bridge_max_words: 8, drives: completion }
-  - { role: proof,   job: "a fact (FACTS), case study (F30–F39) or verbatim client quote (PUBLIC-PROOF)", drives: trust }
-  - { role: cta,     job: "one action: book a call | follow the series | save", headline_max_words: 6, drives: action }
-  - { role: receipt, job: "the carousel in one savable frame + soft CTA line + logo", list_max_items: 6, drives: saves-and-shares }
+  - { role: cover,    job: "open a loop: claim + tension, never the answer", headline_max_words: 8, subline_max_words: 8, extras: [swipe-cue, series-pill], drives: swipe-rate }
+  - { role: payoff,   job: "why it matters to the reader + first real answer; a second cover", headline_max_words: 6, body_max_words: 35, drives: dwell }
+  - { role: step,     job: "one idea per slide; end with a bridge line", headline_max_words: 6, body_max_words: 30, bridge_max_words: 8, drives: completion }
+  - { role: item,     job: "one trend item: what happened + why it matters to founders + source line", headline_max_words: 8, body_max_words: 30, extras: [source-line], drives: completion }
+  - { role: proof,    job: "a fact (FACTS), case study (F30–F39) or verbatim client quote (PUBLIC-PROOF)", drives: trust }
+  - { role: our-take, job: "the Verdant take: what we'd tell a founder; experience only if FACTS backs it", headline_max_words: 6, body_max_words: 30, drives: trust }
+  - { role: cta,      job: "one direct action (verdant variant only)", headline_max_words: 6, drives: action }
+  - { role: action,   job: "one soft action: save this | follow the series", headline_max_words: 6, drives: follows-and-saves }
+  - { role: receipt,  job: "the carousel in one savable frame + soft CTA line + logo", list_max_items: 6, drives: saves-and-shares }
 copy:
   highlight: "1–3 words per slide"
   text_levels_max: 3
   body_min_px_at_1080: 32
-  numbers: "only as step counters, or from FACTS with status confirmed"
+  numbers: "only as step counters, from FACTS with status confirmed, or from a checked unexpired bank item with its source line on the same slide"
+  terms: "external variants define one technical term in one line, plain language"
   alt_text: "one plain sentence per slide (Instagram); LinkedIn document title = cover headline"
 cta:
-  allowed: [book a call at verdant-soft.com, follow the series, save this]
-  banned: ["comment KEYWORD for a DM (needs a human responder)", "engagement bait", "more than one action per slide"]
+  allowed: ["book a call at verdant-soft.com (how-we-work and proof material only)", "follow the series", "save this"]
+  banned: ["comment KEYWORD for a DM (needs a human responder)", "engagement bait", "more than one action per slide", "a direct sales CTA on Tech, Explained carousels"]
 hooks:
+  default: "problem/curiosity, about 60% of covers; other formulas fill the rest"
   rule: "a claim, not a topic; one tension word (costing, breaks, quietly, before, nobody, stop, wrong); must be true for us to say"
   banned: ["invented statistics or percentages", "fake experiments (I tested X for 30 days)", "creator bragging"]
   formulas: see writing/carousel-playbook.md §3 (25 formulas in 5 families)
 design:
-  mood: "one theme + mood for the whole carousel, chosen by pillar (THEMES-v1)"
+  mood: "one theme + mood for the whole carousel; lane → mood mapping TBD at the visuals stage (THEMES-v1 maps the old pillars)"
   cover: "carries the colour mass and hero visual"
   inner: "text-led, small motif"
-  fixed_positions: { logo: top-left, counter: top-right "02 / 08", dots: bottom-right, footer: bottom-left }
+  fixed_positions: { logo: top-left, counter: top-right "02 / 08", dots: bottom-right, footer: bottom-left, source_line: "above the footer" }
   format: "4:5, 1080x1350; LinkedIn = PDF document, Instagram = image carousel"
 checklist:   # all must pass; any fail = revise
   - "hook: slide 1 is a claim + tension, ≤8 words, makes you swipe"
   - "one clear idea, graspable in 3 seconds"
-  - "structure: cover, payoff, steps, proof, cta, receipt (6–8 slides)"
+  - "structure: the variant's order, 6–8 slides"
   - "every slide teaches, explains, proves or moves forward"
   - "every step slide ends with a bridge"
   - "readable: body ≥32 px, ≤30 words"
@@ -339,10 +482,10 @@ checklist:   # all must pass; any fail = revise
   - "minimal: nothing without a job; ≤1 visual per slide"
   - "consistent: one mood, one type scale, fixed positions"
   - "receipt slide worth saving on its own"
-  - "one clear CTA on the second-last slide, soft repeat on the last"
-  - "true: every claim in FACTS or PUBLIC-PROOF; quotes verbatim; no invented numbers"
+  - "one clear action on the second-last slide (roundup: on the our-take slide), soft repeat on the last"
+  - "true: every claim in FACTS, PUBLIC-PROOF or a checked unexpired bank item; quotes verbatim; sources on the slide; no invented numbers"
   - "voice: no buzzwords; engineer talking to a founder"
-  - "theme: mood matches pillar; contrast and automatic image checks pass"
+  - "theme: mood matches the lane; contrast and automatic image checks pass"
 three_second_test: [readable without trying, one focal point, a claim not decoration, "≤8 words", you would stop scrolling, true for us to say]
 ```
 
@@ -368,7 +511,7 @@ These are binary checks in the QA rubric (§8).
 - `[decided]` (user): **slate blue and sage teal stay exactly as they are**; the palette grew from the user's references (v6), then became a full theme system.
 - **v8 (2026-10-05) came from three independent designer proposals and Claude's synthesis.** Light posts stay light: their colour mass is a bright mid-tone (Royal Tide / Lagoon Tide), never a dark cobalt block.
 - **The highlight and pill colours were fixed** after the old Ocean end failed contrast: Ocean was 3.3:1 on the darkest light ground, and white text on it was 4.1:1.
-- **The pillar picks the mood.**
+- **The pillar picks the mood.** Note (2026-10-06): the pillar → mood mapping in THEMES-v1, `colours.py WEEK` and the colour book predates the 30/70 content mix and its five external lanes (§3). The lane → mood mapping is decided at the visuals stage; no colours change now.
 - **Source of truth:** `brand/theme/colours.py`. Book: `brand/guidelines/verdant-soft-colour-guidelines.pdf` (25 pages).
 
 <!-- id: PALETTE-v8 -->
@@ -626,12 +769,71 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 - Known model quirks and their workarounds
 
 ## 7. Caption system
-**TBD.**
-- Instagram template: hook (first line, before the "more" cut-off), length, structure, CTA, hashtags, emoji policy
-- LinkedIn template: hook (before "see more"), length, structure, CTA, link handling, hashtags
-- Alt text rules
-- Banned words and AI clichés (verbatim list)
-- Approved few-shot examples
+`[decided]` rules come from the user (2026-10-06); `[decided · CD]` were delegated to the creative director. **Templates and few-shot examples stay TBD** until writing practice passes two consecutive rounds at ≥ 80% keep, with no truth or voice failures. Round 2 is `writing/round-02-lane-packs.md`.
+
+**Decided rules:**
+- `[decided]` **Captions per platform:** the same visual on both platforms, separate captions. **English only.**
+- `[decided]` **Length:** LinkedIn 120–220 words, Instagram 40–100 words (hashtags excluded from the count).
+- `[decided]` **Emoji:** LinkedIn none. Instagram ≤ 2, never the first character, never as bullets.
+- `[decided]` **Hashtags:** LinkedIn 3, Instagram 5, at the very end, from `HASHTAGS-v1`. Both always include #VerdantSoft.
+- `[decided]` **Pronouns:** "we" for our experience, "you" for the advice. Never "I".
+- `[decided]` **The Verdant take** ends every external post.
+  - **Single posts:** the last body paragraph starts "Our take:" `[decided · CD]`.
+  - **Carousels:** the take is its own slide.
+  - **Content:** advice by default. "In our builds…" only with a confirmed FACTS id.
+- `[decided]` **CTA:**
+  - "Book a call at verdant-soft.com" only on How we work and Proof.
+  - External, Build Notes and Grow with us posts end with a soft action (save, follow the series).
+- `[decided]` **Questions:** about 1 in 3 posts end with a specific question. Never "Thoughts?" or "Agree?".
+- `[decided]` **Explainers:** plain language, with one technical term defined in one line.
+- `[decided]` **Sources:**
+  - LinkedIn ends with "Source: Name · URL" before the hashtags.
+  - Instagram gives "Source: Name" with no URL `[decided · CD]`.
+  - The URLs allowed in captions are source URLs and verdant-soft.com.
+- `[decided]` **Headlines:** problem/curiosity about 60%. Never the same formula on consecutive days `[decided · CD]`. One highlight.
+- **Alt text** `[decided · CD]`:
+  - **Single posts:** one or two plain sentences. Say what the image is, and quote the on-image headline exactly.
+  - **Carousels:** one sentence per slide.
+
+**Draft structure v0 (under test):**
+- **LinkedIn:**
+  1. a hook line before "see more" (≤ 15 words; it extends the headline, never repeats it word for word)
+  2. 2–4 short paragraphs of 1–3 sentences each, with line breaks
+  3. "Our take:" (external) or the direct CTA line (How we work, Proof)
+  4. an optional question
+  5. the source line
+  6. hashtags
+- **Instagram:**
+  1. a hook line (≤ 10 words)
+  2. 1–2 short paragraphs
+  3. "Our take:" in one sentence (external)
+  4. an optional question
+  5. "Source: Name" plus the soft action
+  6. a blank line, then hashtags
+
+<!-- id: HASHTAGS-v1 -->
+```yaml
+# [decided] counts: linkedin 3, instagram 5, #VerdantSoft always included.
+# [decided · CD] sets below; the LAST Instagram tag may be swapped for one topic tag (e.g. #RAG) when the topic has an established tag.
+trends:       { linkedin: ["#VerdantSoft", "#TechNews", "#ArtificialIntelligence"], instagram: ["#VerdantSoft", "#TechNews", "#ArtificialIntelligence", "#StartupFounder", "#SoftwareDevelopment"] }
+ai:           { linkedin: ["#VerdantSoft", "#ArtificialIntelligence", "#LLM"], instagram: ["#VerdantSoft", "#ArtificialIntelligence", "#LLM", "#MachineLearning", "#AIExplained"] }
+startup:      { linkedin: ["#VerdantSoft", "#Startups", "#ProductDevelopment"], instagram: ["#VerdantSoft", "#Startups", "#ProductDevelopment", "#StartupFounder", "#MVP"] }
+numbers:      { linkedin: ["#VerdantSoft", "#TechTrends", "#Startups"], instagram: ["#VerdantSoft", "#TechTrends", "#Startups", "#SoftwareDevelopment", "#StartupFounder"] }
+concepts:     { linkedin: ["#VerdantSoft", "#SoftwareEngineering", "#TechExplained"], instagram: ["#VerdantSoft", "#SoftwareEngineering", "#TechExplained", "#WebDevelopment", "#StartupFounder"] }
+how-we-work:  { linkedin: ["#VerdantSoft", "#SoftwareOutsourcing", "#ProductDevelopment"], instagram: ["#VerdantSoft", "#SoftwareOutsourcing", "#DedicatedTeam", "#ProductDevelopment", "#SoftwareHouse"] }
+build-notes:  { linkedin: ["#VerdantSoft", "#SoftwareEngineering", "#SystemDesign"], instagram: ["#VerdantSoft", "#SoftwareEngineering", "#SystemDesign", "#BackendDevelopment", "#CloudComputing"] }
+proof:        { linkedin: ["#VerdantSoft", "#ClientStories", "#SoftwareDevelopment"], instagram: ["#VerdantSoft", "#ClientStories", "#SoftwareDevelopment", "#SoftwareOutsourcing", "#ProductDevelopment"] }
+grow-with-us: { linkedin: ["#VerdantSoft", "#CareersInTech", "#LahoreTech"], instagram: ["#VerdantSoft", "#CareersInTech", "#LahoreTech", "#PakistanTech", "#SoftwareEngineer"] }
+```
+
+<!-- id: BANNED-WORDS-v1 -->
+```yaml
+# Case-insensitive; also blocks inflections (empowers, leveraging, unlocked …).
+# From brand/strategy.md §5 [decided]; AI clichés and recruiting clichés added [decided · CD].
+words: [innovative, cutting-edge, seamless, seamlessly, leverage, synergy, game-changer, game changer, unlock, revolutionise, revolutionize, delve, empower, top-tier, world-class, state-of-the-art, next-level, transformative, paradigm, supercharge, elevate, harness, ever-evolving, tapestry, rockstar, ninja, guru]
+phrases: ["in today's fast-paced world", "in the ever-evolving landscape", "navigate the complexities", "deep dive", "dive in", "buckle up", "let that sink in", "here's the kicker", "the future is here", "exciting news", "we are pleased to announce", "thoughts?", "agree?"]
+punctuation: { exclamation_marks_max: 1, unicode_bold: banned }
+```
 
 ## 8. QA rubric and selection policy
 **TBD.**
@@ -646,23 +848,49 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 
 - `[decided]` **Facts:** state company facts only from §2 `FACTS` with `status: confirmed`. Never invent metrics, client names, awards, years or team size.
 - `[decided]` **Public proof, used sparingly:** quote only `quote_verbatim` or `alt_quotes` text from §2 `PUBLIC-PROOF` with `status: quotable`, character for character. `[proposed]` caps: at most **1 proof post per week**, and the **same `client_key` not again within 30 days**.
-- `[proposed]` **No self-reported numbers:** project counts, client counts, satisfaction rates, user reach or savings percentages are stated only once they appear in §2 `FACTS` as `confirmed`. Today none do (F50–F52 are pending).
+- `[decided]` **No self-reported numbers** (user, 2026-10-06): project counts, client counts, satisfaction rates, user reach or savings percentages are stated only once they appear in §2 `FACTS` as `confirmed`, and that needs the user's written confirmation. Today none do (F50–F52 are pending).
 - `[proposed]` **No AI-generated people presented as Verdant Soft staff, clients or events.** Talent and culture visuals are conceptual, or show people who can't be identified (hands, silhouettes, shot from behind, out of focus). Real photos come only from the news inbox.
 - `[proposed]` **National and religious days:** use only the pre-approved templates. Never generate Arabic or Urdu script, religious figures, or sacred sites.
 - `[proposed]` **No third-party logos or trademarks** in images. Tech names in captions are fine.
 - `[proposed]` **Identity:** never confuse the company with other "Verdant" companies (Verdant YC, Verdant DevCore, Verdant TCS, Verdant Web Tech, …).
+- `[decided]` **External facts** (user, 2026-10-06):
+  - Primary sources only, stats ≤ 2 years old, never second-hand.
+  - The source goes on the image and in the caption.
+  - Only checked, unexpired bank items may be used (§2.3 `EXTERNAL-SOURCES-v1`).
+- `[decided]` **Other companies:** named in text only. Neutral and factual; no logos or product UI in images, no verdicts or comparisons, no implied partnership.
+- `[decided]` **Verdant boundary:** never present a trend or a third-party result as Verdant experience. "In our builds…" only with a confirmed FACTS id.
+- `[decided]` **Stance:** practical and balanced on AI and tech. No hype, no doom, no predictions presented as fact.
 - **TBD:** AI disclosure policy. Nano Banana outputs carry SynthID and C2PA metadata, so Meta platforms may label them as AI automatically.
 
 ## 10. Approved examples
 **TBD.** Each example records the post file, template ID, exact prompt and settings, a written description of the approved image, and both captions.
 
 ## 11. Memory and adaptation
-**TBD.** This is how the pipeline behaves like a handler: it keeps track of the past and decides the future.
-- **Post history schema:** the fields logged for every post (see the `posts/index.md` columns): pillar, series and episode, topic, visual subject, composition, client named, fact IDs used, template, outcome
-- **News inbox:** where the team drops real events and photos, and its format
-- **No-repeat windows and caps,** checked against the history before choosing
-- **Series continuity:** next episode, and when a series ends or gets refreshed
-- **After launch:** metrics loop, with pillar weights adjusted only within bounds; brand fundamentals never change automatically; monthly human summary
+This is how the pipeline behaves like a handler: it keeps track of the past and decides the future. **Partly decided (2026-10-06); the rest is TBD.**
+- **Post history schema:** one row per post in `posts/index.md`. The fields:
+  - date, file, pillar, lane/series and episode, format (single/carousel), timely (trend id or "evergreen"), sources (bank ids)
+  - topic, visual subject, composition, client named, fact IDs used, template, final prompt
+  - passed/total, verdict
+- **Source banks** (`[decided]`):
+  - `banks/trends.md`: timely items, 14-day expiry
+  - `banks/topics.md`: evergreen topics per lane
+
+  Both follow §2.3. When the pipeline uses an item, it sets `status: used` and records the post file.
+- **Research runs:**
+  - `[decided]` A **Saturday run** at 09:59 PKT, starting now: 3–5 checked trend items, and expired items get marked.
+  - `[decided]` A **daily run from launch:** 1–3 items plus major breaking news. The Saturday run then picks the week's best 3–5 for Monday's roundup.
+  - Runs commit to the repo, so the history is the audit trail.
+- **News inbox** (`[decided]`): optional, at `inbox/` (format in `inbox/README.md`).
+  - Items replace that day's external post.
+  - Max one per day; the rest queue.
+  - Real photos come only from here.
+- **No-repeat windows and caps:** `CONTENT-MIX-v1` → `no_repeat`, checked against the history before choosing.
+- **Series continuity:** next episode, and when a series ends or gets refreshed. **TBD.**
+- **After launch:** a metrics loop adjusts **lane** weights within bounds.
+  - Each lane stays at 5–20% of the month; the Verdant share at 25–40%.
+  - Weights move by at most ±5 percentage points a month.
+  - Brand fundamentals never change automatically.
+  - A monthly human summary, plus an **8-week review of the 30/70 split** `[decided · CD]`.
 
 ---
 
@@ -670,6 +898,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 | Date | Change | Evidence |
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
+| 2026-10-06 | Content mix reset (user): §2.3 EXTERNAL-SOURCES-v1; §3 CONTENT-MIX-v1 (30% Verdant / 70% Tech, Explained, five lanes as named series, Tue/Thu Verdant, 2-2-3 carousel cycle, overrides, no-repeat); §4 lane recipes; §4.1 CAROUSEL-v1 → v2 (external and roundup variants); §7 decided caption rules, HASHTAGS-v1, BANNED-WORDS-v1; §9 external-content guardrails and no company numbers decided; §11 banks, research runs, inbox | User answers in plan mode, `learnings/log.md` 2026-10-06; `brand/strategy.md` v2 |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |
 | 2026-10-06 | §4.1 CAROUSEL-v1: slide roles and limits, hook rules, CTA rules, 14-point checklist, 3-second test (adapted from the user's checklist + Carousel Playbook) | User-supplied playbook; `writing/carousel-playbook.md` |
 | 2026-10-05 | §5.1 → PALETTE-v8 + THEMES-v1: Electric Royal, Deep Ocean, Deep Lagoon, Teal Night, Mist added; Royal Deep retired; two themes × four moods by pillar; elevation; tinted shadows; automatic light/dark checks. Light colour mass is now bright (no cobalt) | Three-designer panel + synthesis; contrast computed; 25-page book |
