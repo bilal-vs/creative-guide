@@ -1,0 +1,581 @@
+id: VISUAL-SYSTEM-v1
+status: proposed
+date: 2026-10-06
+name: SCHEMATIC, editorial finish
+lineage: 'Base: SCHEMATIC-v1 (art director C), weighted panel score 7.25/10 (clients 40%, designer+engineer 35%, student 25%). Finish, plate geometry, counter-accent, dark-day choice and slot-library structure grafted from Luminous Report (A, 6.93). Progression object, carousel reference, copy hygiene and sameness controls grafted from Built Objects (B, 6.15).'
+big_idea: 'Every post is one page of a calm engineering report, set as premium Swiss editorial design. The information is the visual: one precise white diagram (a milestone rail, an isolation matrix, a decision tree, a system cutaway, a proportion bar) drawn on one saturated colour plate that bleeds off the edge of the page. Its labels are the post''s info block, so one element informs and decorates at once. Exactly one element of the diagram (the active node, the kept path, the interface) is a small tactile piece of sandblasted frosted glass in the other hue family: the one physical, premium moment on an otherwise flat, exact page. Near-black sentence-case headlines with one gradient highlight, a misty light page, monospace reference text and fine grain finish it. Royal days carry ideas, lagoon days carry practice and evidence, and one dark Saturday carries the week''s key figure. Each lane owns one diagram family, so the series is recognisable at thumbnail size and the pipeline only fills slots (family, node count, active node, labels).'
+canvas:
+  generate: 3:4 portrait in Flow and the API; every position below is a % of the 3:4 frame (reference grid 1080x1440)
+  publish_linkedin: '4:5, 1080x1350: keep the full width, trim 3.125% of the height from the top and 3.125% from the bottom, Lanczos to 1080 wide'
+  publish_instagram: 4:5 crop by default; native 3:4 (1080x1440) is an open user decision; every layout is safe in both
+  safe_zone:
+    sides_pct_of_width: 8
+    top_and_bottom_pct_of_height: 11
+  plate_coverage_pct_of_4x5_crop:
+    singles_and_covers:
+    - 25
+    - 40
+    inner_slides: exempt (CAROUSEL-v2 inner = text-led, small motif)
+  final_sizes_at_1080_wide:
+    headline: 84-100 px, extra bold (800), the largest text
+    quote: 56-62 px bold (Client words only)
+    figure: digit height about 14% of the image height, about two thirds of the content width (numbers only)
+    subline_and_context: 34-40 px
+    plate_labels: '>= 36 px, white, bold'
+    body: '>= 32 px (34 target)'
+    meta: '>= 28 px: URL, source line, slide counter'
+  logo: REF-PACK-v2 lockup, top-left on the plain page, about a quarter of the image width; never on the plate
+fixed_on_every_post:
+- misty light page (or teal night on Saturday) with a strict grid, 8%/11% margins, left-aligned text
+- logo top-left from the reference image
+- series pill (covers and singles) or slide counter (inner slides)
+- extra-bold sentence-case headline in near-black navy (white on dark), exactly one highlight span of 1-3 words in the mood's gradient
+- 'accent bar under the headline in the brand gradient #416D95 -> #74AFAD (both core colours on every post)'
+- exactly one saturated colour plate, crisp edges, bleeding off at least two image edges
+- one flat white diagram in the line language, plus exactly one frosted-glass piece in the counter-accent hue
+- verdant-soft.com bottom-left on the plain page
+- matte surfaces, fine print grain, glow only inside the plate
+variable_daily:
+- 'diagram family (fixed per lane) and its configuration: node count, active index, modifier'
+- labels, headline, subline, figure, source line
+- mood and layout come from the day map, never chosen freely
+day_map:
+  Mon:
+    lane: trends
+    mood: light-royal
+    layout: WINDOW
+    family: SIGNAL-BOARD
+  Tue:
+    lane: how-we-work (A) | build-notes (B)
+    mood: light-lagoon
+    layout: BAND
+    family: RAIL | MATRIX
+  Wed:
+    lane: ai
+    mood: light-royal
+    layout: COLUMN
+    family: FAN
+  Thu:
+    lane: proof (A) | grow-with-us (B)
+    mood: light-lagoon
+    layout: WINDOW
+    family: QUOTE-MARK or MODULE-MAP | STACK or FRAME
+  Fri:
+    lane: startup
+    mood: light-royal
+    layout: BAND
+    family: TREE
+  Sat:
+    lane: numbers
+    mood: dark-lagoon
+    layout: CORNER
+    family: FIGURE-BAR | FIGURE-RATIO | FIGURE-SIGNATURE
+  Sun:
+    lane: concepts
+    mood: light-lagoon
+    layout: COLUMN
+    family: CUTAWAY
+day_map_properties:
+- no two consecutive days share mood or layout, Sun -> Mon included
+- every day has a unique mood x layout pair, so each day is recognisable in the grid
+- 6 of 7 days light; the one dark day is a single-only lane, so the dark theme needs one template and no dark carousel
+- 'royal 3 days, lagoon 3 days + dark lagoon 1: teal-led 4 of 7, the fix for ''too much blue'''
+- Verdant's own days (Tue, Thu) are lagoon, the hue family nearest the logo's sage teal
+- Dark Royal has no weekly slot in v1; it stays in PALETTE-v8 unused
+moods:
+  light-royal:
+    from: THEMES-v1 light-royal; plate glow now sits only behind the glass piece
+    ground:
+    - '#F5F9FD'
+    - '#E8F0F8'
+    - '#DAE6F2'
+    plate:
+    - '#2457D6'
+    - '#3C6EB7'
+    plate_light: '#09CACC'
+    glass_piece: '#00ACB3'
+    shadow: '#2457D6 tinted, soft'
+    rule: '#C9DCEC'
+    prompt_block: 'Colour: the page is a calm misty white with a hint of blue, a soft vertical gradient from mist white (#F5F9FD) to pale ice blue (#DAE6F2), with a faint polar-white glow at the top left. The plate is a smooth gradient from vivid electric royal blue (#2457D6) to softer royal blue (#3C6EB7), with a soft blue-tinted shadow on the page along its inner edge. The drawing and labels on it are white. The glass piece is lagoon-teal frosted glass (#00ACB3) with a faint cyan (#09CACC) light directly behind it, never behind a label. Hairline rules are pale blue-grey (#C9DCEC).'
+    slots:
+      pill_fill: a smooth gradient from electric royal blue (#2457D6) to deep ocean teal (#007A9E)
+      pill_text: white
+      ink: near-black navy (#050816)
+      ink_short: near-black navy
+      support: steel navy (#42658A)
+      highlight: a smooth gradient from electric royal blue (#2457D6) to deep ocean teal (#007A9E)
+      rail_ink: electric royal blue (#2457D6)
+      logo_colours: slate-blue to sage-teal gradient colours
+      ref_pack: REF-PACK-v2-light
+  light-lagoon:
+    from: 'THEMES-v1 light-lagoon; plate uses the text-safe stops only (the #00ACB3 stop under white text is 2.78:1)'
+    ground:
+    - '#F2FAFA'
+    - '#E3F3F3'
+    - '#D2EBEC'
+    plate:
+    - '#00727F'
+    - '#0088AA'
+    plate_light: '#34CCA4'
+    glass_piece: '#A6CAEC'
+    shadow: '#062A33 tinted, soft'
+    rule: '#BFDDE0'
+    prompt_block: 'Colour: the page is a calm polar white with a cool sea tint, a soft vertical gradient from pale polar white (#F2FAFA) to pale misty aqua (#D2EBEC), with a faint polar-white glow at the top left. The plate is a smooth gradient from deep lagoon teal (#00727F) to ocean teal (#0088AA), with a soft deep-teal-tinted shadow on the page along its inner edge. The drawing and labels on it are white. The glass piece is pale sky-blue frosted glass (#A6CAEC) with a faint mint-jade (#34CCA4) light directly behind it, never behind a label. Hairline rules are pale sea-grey (#BFDDE0).'
+    slots:
+      pill_fill: a smooth gradient from deep lagoon teal (#00727F) to deep ocean teal (#007A9E)
+      pill_text: white
+      ink: near-black navy (#050816)
+      ink_short: near-black navy
+      support: steel navy (#42658A)
+      highlight: a smooth gradient from deep ocean teal (#007A9E) to deep lagoon teal (#00727F)
+      rail_ink: deep lagoon teal (#00727F)
+      logo_colours: slate-blue to sage-teal gradient colours
+      ref_pack: REF-PACK-v2-light
+  dark-lagoon:
+    from: THEMES-v1 dark-lagoon, unchanged; Saturday only; tested last
+    ground:
+    - '#040C12'
+    - '#061A22'
+    - '#08262F'
+    plate:
+    - '#062A33'
+    - '#00727F'
+    - '#0088AA'
+    plate_edge: '#E9FFFC'
+    glass_piece: '#A6CAEC'
+    glass_light: '#09CACC'
+    rule: '#163A42'
+    prompt_block: 'Colour: this is the dark version. The page is a deep teal night, a soft vertical gradient from almost-black teal (#040C12) to dark teal (#08262F), with a faint ocean-teal (#0088AA) haze at the top left. The plate is a smooth gradient from dark teal (#062A33) through deep lagoon teal (#00727F) to ocean teal (#0088AA), outlined by a thin pale polar (#E9FFFC) edge light; nothing casts a drop shadow. The drawing on it is white. The glass piece is pale sky-blue frosted glass (#A6CAEC) that glows faintly from within with cyan (#09CACC) light and catches a thin pale rim light. Hairline rules are dark sea-grey (#163A42).'
+    slots:
+      pill_fill: solid mint jade (#34CCA4)
+      pill_text: near-black navy (#050816)
+      ink: white
+      ink_short: white
+      support: soft sage teal (#74AFAD)
+      highlight: a smooth gradient from cyan (#09CACC) to mint jade (#34CCA4)
+      rail_ink: cyan (#09CACC)
+      logo_colours: all-white colours
+      ref_pack: REF-PACK-v2-dark
+  counter_accent_rule: 'Every post shows both hue families: royal plates carry lagoon glass, lagoon plates (light and dark) carry sky-blue glass, and every highlight gradient ends in a teal (#007A9E, #00727F or #34CCA4). No post is ever single-hue blue or single-hue teal.'
+  reserve_mood_blocks:
+    light-royal-tide-b: 'if royal days still read too blue after the counter-accent: plate #007A9E (top) -> #2457D6 (bottom); new version MOOD-light-royal-v2'
+    light-mist: 'only if the user vetoes any dark day: Saturday on the Mist page with a brand-gradient plate #416D95 -> #74AFAD; FIGURE layouts carry no white text on that plate (white on #74AFAD fails); needs its own test against the v4 ''dull'' risk'
+layouts:
+  BAND:
+    id: LAYOUT-BAND-v1
+    used_by:
+    - how-we-work
+    - build-notes
+    - startup
+    zones:
+      logo_and_pill_row: 11-15%
+      hairline: 16%
+      headline: 20-41%
+      accent_bar_and_subline: to 51%
+      plate: 55-81% full width, bleeds left and right
+      source_line: 84%
+      url: 87%
+    plate_coverage_4x5: about 28%
+    prompt_block: a strict editorial grid read from top to bottom, with margins of about 8% of the width at the sides and 11% of the height at the top and bottom that only the page and the plate reach into. The logo sits at the top left with its top edge about 11% down and the series pill on the same line at the top right, with a thin hairline rule across the content width just below them. The headline starts at about 20% of the height, followed by the accent bar and the subline, all left-aligned and ending by about 51%. The colour plate is a full-bleed horizontal band from about 55% to about 81% of the height, running off the left and right edges and covering about 28% of the image; the diagram sits on it inside the side margins. {footer_clause}
+    footer_clause:
+      plain: Below the band, on the plain page, the website address sits at the bottom left at about 87% of the height.
+      with_source: Below the band, on the plain page, the source line sits at the left at about 84% of the height and the website address at the bottom left at about 87%.
+      cover_suffix: Small progress dots and a short arrow line sit at the bottom right at about 87% of the height, in {support}.
+  WINDOW:
+    id: LAYOUT-WINDOW-v1
+    used_by:
+    - trends-cover
+    - proof
+    - grow-with-us
+    zones:
+      logo: 11%
+      plate: x 46-100%, y 0-51%, bleeds top and right
+      pill: left column at 45%
+      lead_text: 55-83% full width
+      url: 87%
+    plate_coverage_4x5: about 27%
+    prompt_block: a strict editorial grid with a large colour window, with margins of about 8% of the width at the sides and 11% of the height at the top and bottom that only the page and the plate reach into. The colour plate is a window in the top-right corner, from about 46% of the width to the right edge and from the top edge down to about 51% of the height, running off the top and right edges with one generously rounded lower-left corner and covering about 27% of the image; it holds the {visual_noun} inside the margins. The logo sits at the top left with its top edge about 11% down, and the series pill sits in the same left column at about 45% of the height, level with the bottom of the window; the space between them stays calm and empty. Below the window, the {lead_role} runs across the full content width from about 55% of the height, followed by the accent bar and the {second_role}, all left-aligned and ending by about 83%. {footer_clause}
+    footer_clause:
+      plain: The website address sits at the bottom left at about 87% of the height.
+      cover_suffix: Small progress dots and a short arrow line sit at the bottom right at about 87% of the height, in {support}.
+  COLUMN:
+    id: LAYOUT-COLUMN-v1
+    used_by:
+    - ai
+    - concepts
+    zones:
+      plate: x 65-100%, full height, bleeds top, right and bottom
+      text_column: x 8-59%
+      logo: 11%
+      pill: 30%
+      headline: 34%
+      text_ends: 72%
+      url: 87%
+    plate_coverage_4x5: about 35% (kept under 36% so the light gate's mean luminance stays >= 0.55)
+    prompt_block: 'a strict editorial grid with a tall colour column, with margins of about 8% of the width at the sides and 11% of the height at the top and bottom that only the page and the plate reach into. The colour plate is a full-height column down the right side, from about 65% of the width to the right edge, running off the top, right and bottom edges and covering about 35% of the image; it holds the diagram, stacked from top to bottom, inside the margins. Everything else sits in the left column, from the left margin to about 59% of the width: the logo at the top left with its top edge about 11% down, a calm empty space, the series pill at about 30% of the height, then the headline from about 34%, the accent bar and the subline, all left-aligned and ending by about 72%. {footer_clause}'
+    footer_clause:
+      plain: The website address sits at the bottom left at about 87% of the height.
+      with_source: The source line sits at the left at about 84% of the height and the website address at the bottom left at about 87%.
+      cover_suffix: Small progress dots and a short arrow line sit at the bottom of the left column, at about 87% of the height, right-aligned to it, in {support}.
+  CORNER:
+    id: LAYOUT-CORNER-v1
+    used_by:
+    - numbers
+    zones:
+      logo_and_pill_row: 11-15%
+      hairline: 16%
+      figure: 20-36%
+      context: 39-48%
+      plate: x 46-100%, y 51-100%, bleeds right and bottom
+      source_line: 84% left of the plate
+      url: 87%
+    plate_coverage_4x5: about 26%
+    prompt_block: a strict editorial grid built around one huge figure, with margins of about 8% of the width at the sides and 11% of the height at the top and bottom that only the page and the plate reach into. The logo sits at the top left with its top edge about 11% down and the series pill on the same line at the top right, with a thin hairline rule across the content width just below them. The figure starts at about 20% of the height, flush left, about two thirds of the content width wide, its digits about 14% of the image height tall. The context line sits below it from about 39% of the height, left-aligned on one or two lines, ending by about 48%. The colour plate fills the lower-right corner, from about 46% of the width to the right edge and from about 51% of the height to the bottom edge, running off the right and bottom edges with one generously rounded upper-left corner and covering about 26% of the image. To the left of the plate, on the plain page, the source line sits at about 84% of the height and the website address at the bottom left at about 87%.
+  SLIDE:
+    id: LAYOUT-SLIDE-v1
+    used_by: every carousel slide after the cover (modes BODY, ITEM, RECEIPT)
+    zones:
+      logo_and_counter_row: 11%
+      headline: 18-29%
+      body: 31-58%
+      band: 63-75% full width (receipt 74-84%)
+      source_line: 84%
+      url: 87%
+    prompt_block_body: a calm, text-led reading page on a strict grid, with margins of about 8% of the width at the sides and 11% of the height at the top and bottom that only the page and the band reach into. The logo sits at the top left with its top edge about 11% down and the slide counter on the same line at the top right. The headline starts at about 18% of the height, left-aligned on one or two lines; the body text follows from about 31% and, with the {after_body} just below it, ends by about 58%. A slim full-bleed colour band runs across the image from about 63% to about 75% of the height, off the left and right edges, and holds the progress line inside the side margins. {footer_clause}
+    prompt_block_receipt: a calm, text-led summary page on a strict grid, with margins of about 8% of the width at the sides and 11% of the height at the top and bottom that only the page and the band reach into. The logo sits at the top left with its top edge about 11% down and the slide counter on the same line at the top right. The headline starts at about 18% of the height, left-aligned on one or two lines; the checklist follows from about 29% and ends by about 70%. A slim full-bleed colour band runs across the image from about 74% to about 84% of the height, off the left and right edges, holding a short white line of text at its left and the completed progress line at its right. The website address sits at the bottom left at about 87% of the height.
+    footer_clause:
+      plain: Below the band, on the plain page, the website address sits at the bottom left at about 87% of the height.
+      with_source: Below the band, on the plain page, the source line sits at the left at about 84% of the height and the website address at the bottom left at about 87%.
+    band_fill: 'the day mood''s plate gradient (royal #2457D6 -> #3C6EB7; lagoon #00727F -> #0088AA)'
+diagram:
+  line_language: White, even strokes with rounded ends; lines only horizontal or vertical, turning at right angles with small rounded corners; nodes are small rings (hollow = not yet / parked), white dots (done / solid) or the glass piece (active); a faint grid of tiny dots on the plate only. Every node carries a label or is a counted progress marker. No diagonal connectors, no free-floating networks, no icons, no screens, no logos.
+  glass_piece: 'Exactly one per post: a piece of sandblasted frosted glass in the mood''s counter-accent hue, matte and softly lit, the only dimensional object in the image. It marks the active element: the finished milestone, the isolated tenant, the chosen output, the kept path, the interface, the end of the fill. Lane variants: a small puck (default), a slab (MATRIX), a keycap (STACK, FRAME), a sculpted quotation mark (QUOTE-MARK), a block glowing from within (CUTAWAY, FIGURE-SIGNATURE). Never text on it.'
+  families:
+    SIGNAL-BOARD:
+      id: DIAGRAM-SIGNAL-BOARD-v1
+      lane: trends (cover)
+      config: tracks = item count (3-5); one label per track, 1-2 words, <= 18 characters; the first track's ring is the glass piece
+      prompt_block: a signal board. {n_word} parallel horizontal white tracks are stacked with even gaps across the plate. Each track starts with a small solid white dot at its left end and carries one outlined white ring at a different point along it, staggered from track to track. The ring on the first track is the glass piece, a small softly rounded puck of frosted glass. Just above the left end of each track sits its label in white bold sans-serif, about the subline's size.
+    RAIL:
+      id: DIAGRAM-RAIL-v1
+      lane: how-we-work
+      config: nodes = labels = 3 or 4, taken verbatim from FACTS; labels <= 4 words, <= 24 characters, 1-2 lines; progression unfinished -> finished (the Wireframe -> Production signature)
+      prompt_block: 'a horizontal milestone rail: one straight white line across the plate at about two fifths of its height, from the left margin to about four fifths of the image width, carrying exactly {n_word} evenly spaced nodes, the first at its left end and the last at its right end. The nodes go from unfinished to finished: the first is a thin white ring, {middle_phrase}, and the last is the glass piece, a small rounded puck of frosted glass. Under each node, left-aligned with it, is its label in white bold sans-serif, about the subline''s size, on one or two lines.'
+      middle_phrase:
+        '3': the middle one a white ring with a solid centre
+        '4': the two middle ones white rings with solid centres
+    MATRIX:
+      id: DIAGRAM-MATRIX-v1
+      lane: build-notes
+      config: 3 rows x 3 columns; 3 row labels (what is isolated), <= 2 words each; the isolated column (1st, 2nd or 3rd) is the glass slab
+      prompt_block: 'an isolation matrix. A grid of three rows and three columns of rounded cells drawn in thin white outlines fills the right two thirds of the plate, with clear vertical gaps between the columns running the full height of the grid. The {ordinal} column is the glass piece: a slim slab of frosted glass standing behind its three cells, which are drawn in solid white outlines. At the left of the plate, level with each row, sits that row''s label in white bold sans-serif, about the subline''s size.'
+      variant_BLOCKS: an architecture diagram of {n_word} rounded blocks drawn in thin white outlines, {arrangement}, joined only by right-angle white connector lines. The {focus} block is the glass piece, a rounded block of frosted glass. Under each block sits its label in white bold sans-serif, about the subline's size.
+    FAN:
+      id: DIAGRAM-FAN-v1
+      lane: ai
+      config: 3 end nodes = 3 labels, <= 12 characters each (COLUMN width); at most one modifier per post
+      prompt_block: a prediction diagram that runs from top to bottom down the plate. Near the top, three small rounded chips drawn in white outlines sit side by side, like tokens. One vertical white line joins them to a plain rounded-square core in the middle of the plate. Below the core the line splits at right angles into three branches of different stroke weights, each turning right and ending in a node, the three nodes stacked one above another. The heaviest branch ends in the glass piece, a small softly rounded puck of frosted glass; the other two end in thin outlined rings. {modifier_sentence} To the right of each end node sits its label in white bold sans-serif, about the subline's size.
+      modifiers:
+        none: ''
+        retrieval: A small outlined box beside the core, like a stack of index cards, feeds into it through one short right-angle line.
+        agents: A thin white return line runs from the glass piece back up to the chips, turning at right angles.
+        evals: A short horizontal gate bar crosses the three branches just above their end nodes.
+        hallucination: The heaviest branch has a clear gap in it just below the core, so the most confident answer is connected to nothing.
+    QUOTE-MARK:
+      id: DIAGRAM-QUOTE-MARK-v1
+      lane: proof (Client words)
+      config: no labels on the plate; the verbatim quote is the lead text
+      prompt_block: one large opening quotation mark sculpted from frosted glass, the glass piece, standing on the plate slightly left of its centre, about a third of the window's height tall, resting on a thin white baseline that runs off the plate's right edge, with a few faint dots of the plate grid around it.
+    MODULE-MAP:
+      id: DIAGRAM-MODULE-MAP-v1
+      lane: proof (Project Spotlight)
+      config: 3-4 tiles named verbatim from one FACTS entry (F30-F39), <= 16 characters each; the scope word (built / developed / contributed to) goes in the headline or subline
+      prompt_block: a module map. One larger rounded core block of frosted glass, the glass piece, sits at the left of the plate. Thin white connector lines leave it at right angles and lead to {n_word} smaller rounded tiles drawn in white outlines, stacked one above another on the right. Inside each tile sits its label in white bold sans-serif, about the subline's size.
+    STACK:
+      id: DIAGRAM-STACK-v1
+      lane: grow-with-us (conceptual)
+      config: '3 bars; each label is one string ''Layer: tool, tool, tool'' set on two lines, <= 20 characters per line, names only, never logos'
+      prompt_block: 'a layer stack. Three wide rounded bars drawn in thin white outlines are stacked one above another with even gaps. A vertical white connector runs down their left side and threads one small solid white node through each bar. At the top of the connector sits the glass piece: a single blank keycap of frosted glass. Inside each bar sits its label in white bold sans-serif, about the subline''s size, on two lines that break after the colon.'
+    FRAME:
+      id: DIAGRAM-FRAME-v1
+      lane: grow-with-us (inbox photo)
+      config: the real inbox photo is composited into the frame after generation; people are never generated and a staff photo is never sent to the model
+      prompt_block: 'an empty picture frame: an upright rectangle with a thin white border, standing on the plate, filled with flat, plain pale polar white (#E9FFFC) and nothing else. A small blank keycap of frosted glass, the glass piece, rests against its lower-right corner.'
+    TREE:
+      id: DIAGRAM-TREE-v1
+      lane: startup
+      config: 3 end nodes = 3 labels (the kept one + 2 parked), <= 20 characters each; FORK variant = 2 branches for trade-offs
+      prompt_block: a decision tree that reads from left to right. A root ring sits near the left edge of the plate at mid-height. From it one white line runs right and splits at right angles into {n_word} branches that end in {n_word} nodes stacked one above another on the right half of the plate. Exactly one branch, the kept path, is a thick solid white line ending in the glass piece, a small softly rounded puck of frosted glass; the other branches are thin dashed white lines ending in small hollow rings. To the right of each end node sits its label in white bold sans-serif, about the subline's size.
+    CUTAWAY:
+      id: DIAGRAM-CUTAWAY-v1
+      lane: concepts
+      config: '3 blocks = 3 labels, <= 12 characters each (COLUMN width); variants: cache (a small lit chamber beside a long channel), queue (single-file tokens), index (a column of thin shelves, one lit)'
+      prompt_block: 'a system cutaway that runs from top to bottom down the plate. Three rounded blocks are stacked one above another with even gaps. The top block is a plain white outline. The middle block is the glass piece: a block of frosted glass glowing softly from within, with three short white lines of different lengths on its face, like lines on a menu card. The bottom block is a white outline with a thin dashed inner boundary, like a private inside. A request line with a small arrowhead runs down the left half from the top block into the middle block, and from the middle block into the bottom block; a response line with a small arrowhead runs back up the right half the same way, through the middle block. No line skips the middle block. Directly under each block sits its label in white bold sans-serif, about the subline''s size.'
+    FIGURE-BAR:
+      id: DIAGRAM-FIGURE-BAR-v1
+      lane: numbers
+      config: only when the figure is a share that is a multiple of 10%, or 25% or 75%; fill checked by pixels within +-3% of the track length
+      prompt_block: a proportion bar. One long horizontal track with rounded ends, drawn as a thin white outline, lies across the middle of the plate inside the margins, with ten faint white tick marks evenly spaced along it. The track is filled with solid white from its left end to exactly {fill_words}, and the rest of the track is empty. A small softly rounded bead of frosted glass, the glass piece, sits at the end of the fill.
+      fill_words_examples:
+        '50': half its length, at the fifth tick mark
+        '25': a quarter of its length, halfway between the second and third tick marks
+        '70': seven tenths of its length, at the seventh tick mark
+    FIGURE-RATIO:
+      id: DIAGRAM-FIGURE-RATIO-v1
+      lane: numbers
+      config: only for 'N in M' with M <= 10
+      prompt_block: a row of {m_word} small white rings evenly spaced across the plate inside the margins; the first {k_word} are filled solid white and the rest stay outlined, and the last filled ring is the glass piece, a small softly rounded bead of frosted glass.
+    FIGURE-SIGNATURE:
+      id: DIAGRAM-FIGURE-SIGNATURE-v1
+      lane: numbers
+      config: 'every other figure (amounts, counts, dates, shares that are not multiples of 10%): no proportion is drawn, so nothing can misstate the number'
+      prompt_block: a single softly rounded block of frosted glass, the glass piece, standing on a thin white baseline in the middle of the plate and glowing faintly from within.
+    PROGRESS-LINE:
+      id: DIAGRAM-PROGRESS-LINE-v1
+      lane: all carousel inner slides
+      config: nodes = total slides; node n = this slide; earlier = solid, later = rings; receipt = all solid with the glass piece last
+      prompt_block: 'a progress line: one thin white line runs across the band inside the side margins, carrying {N_word} small nodes evenly spaced. Node {n_word} is the glass piece, a small softly rounded puck of frosted glass; the nodes before it are solid white dots and the nodes after it are thin outlined white rings.'
+lanes:
+  trends:
+    series: This Week in Tech
+    day: Mon
+    mood: light-royal
+    template: TPL-trends-v1
+    cover: LAYOUT-WINDOW-v1 + DIAGRAM-SIGNAL-BOARD-v1; track labels are the week's item topics (1-2 words); with 5 items the subline is dropped
+    inner: LAYOUT-SLIDE-v1 ITEM mode (headline <= 8 words, body <= 30 words, source line) and BODY mode for our-take; receipt in RECEIPT mode on Nano Banana Pro
+  how-we-work:
+    series:
+    - Outsourcing, Decoded
+    - Wireframe → Production
+    day: Tue (week A)
+    mood: light-lagoon
+    template: TPL-how-we-work-v1
+    single: 'LAYOUT-BAND-v1 + DIAGRAM-RAIL-v1; labels = the stages, verbatim from FACTS (P3: F12)'
+    carousel: 'cycle week 2: BAND cover with the rail''s first stages, SLIDE inner slides, receipt'
+  build-notes:
+    series: Build Notes
+    day: Tue (week B)
+    mood: light-lagoon
+    template: TPL-build-notes-v1
+    single: LAYOUT-BAND-v1 + DIAGRAM-MATRIX-v1 (or its BLOCKS variant); labels = what the lesson isolates or connects, from F05-F06, F30-F39
+    carousel: 'cycle week 2 (when Build Notes takes the Tuesday carousel): BAND cover, SLIDE inner slides'
+  ai:
+    series: AI, Explained
+    day: Wed
+    mood: light-royal
+    template: TPL-ai-v1
+    single: LAYOUT-COLUMN-v1 + DIAGRAM-FAN-v1 with at most one modifier; labels = the three candidate outputs or roles
+    carousel: 'cycle week 1: COLUMN cover, SLIDE inner slides, receipt'
+  proof:
+    series:
+    - Client words
+    - Project Spotlight
+    day: Thu (week A)
+    mood: light-lagoon
+    template: TPL-proof-v1
+    client_words: LAYOUT-WINDOW-v1 + DIAGRAM-QUOTE-MARK-v1; lead = the verbatim quote (<= 25 words); second line = the attribution exactly as in PUBLIC-PROOF; prefer entries whose attribution carries a role and company
+    project_spotlight: LAYOUT-WINDOW-v1 + DIAGRAM-MODULE-MAP-v1; tiles verbatim from one FACTS entry
+  grow-with-us:
+    series: Grow at Verdant
+    day: Thu (week B)
+    mood: light-lagoon
+    template: TPL-grow-with-us-v1 (conceptual) | TPL-grow-with-us-photo-v1 (default whenever an inbox photo exists)
+    conceptual: LAYOUT-WINDOW-v1 + DIAGRAM-STACK-v1; tools named in text, never as logos
+    photo: LAYOUT-WINDOW-v1 + DIAGRAM-FRAME-v1; second line = name, labels none, real photo composited after generation
+  startup:
+    series: Founder Notes
+    day: Fri
+    mood: light-royal
+    template: TPL-startup-v1
+    single: LAYOUT-BAND-v1 + DIAGRAM-TREE-v1 (FORK variant for two-way trade-offs); labels = the kept job and two parked items
+    carousel: 'cycle week 3: BAND cover, SLIDE inner slides, receipt'
+  numbers:
+    series: By the Numbers
+    day: Sat
+    mood: dark-lagoon
+    template: TPL-numbers-v1
+    single: LAYOUT-CORNER-v1 + FIGURE-BAR | FIGURE-RATIO | FIGURE-SIGNATURE (chosen by the figure's type); lead = the figure, second line = context (<= 14 words), source line required
+  concepts:
+    series: Under the Hood
+    day: Sun
+    mood: light-lagoon
+    template: TPL-concepts-v1
+    single: LAYOUT-COLUMN-v1 + DIAGRAM-CUTAWAY-v1 (or its cache, queue, index variants); labels = the parts of the system, plain words
+    carousel: 'cycle week 3: COLUMN cover, SLIDE inner slides, receipt'
+  overrides: inbox items and calendar moments take the replaced day's mood and layout, and the family of their own lane
+text_lines:
+  PILL: '{pill_position}, a small, fully rounded pill label filled with {pill_fill}: "{pill}", in {pill_text} semi-bold.'
+  pill_position:
+    BAND: At the top right, on the same line as the logo
+    CORNER: At the top right, on the same line as the logo
+    WINDOW: In the left column, level with the bottom of the window
+    COLUMN: In the left column, below the empty space
+  COUNTER: 'At the top right, the slide counter: "{nn} / {NN}", in a neat monospace, {support}, small.'
+  highlight_grammar: '{highlight_position} is a plural phrase such as ''final three words'' or ''second and third words''; for one word use ''final word, which stays on its line and is filled with'', keeping the sentence grammatical'
+  LEAD_headline: 'The headline: "{headline}", in extra-bold {ink}, left-aligned on up to {max_lines} lines; the {highlight_position} stay together on one line and are filled with {highlight}. It is by far the largest text.'
+  LEAD_quote: 'The client''s quote: "{quote}", in bold {ink}, left-aligned on up to six lines; the {highlight_position} are filled with {highlight}. It is the largest text.'
+  LEAD_figure: 'The figure: "{figure}", in extra-bold sans-serif filled with {highlight}, by far the largest element in the image.'
+  ACCENT: Directly under the {lead_role}, a short accent bar about a tenth of the image width, in a gradient from muted slate blue (#416D95) to soft sage teal (#74AFAD).
+  SUBLINE: 'The subline: "{subline}", in regular {support}, about two fifths of the headline''s height.'
+  ATTRIBUTION: 'Below the accent bar, the attribution: "{attribution}", in semi-bold {support}, about half the quote''s size.'
+  CONTEXT: 'The context line: "{context}", in semi-bold {ink}, about two fifths of a normal headline''s size.'
+  BODY: 'The body text: "{body}", in regular {ink}, about a third of the headline''s size, on up to six lines.'
+  AFTER_BODY: 'Just below the body, the {after_body}: "{line}", in semi-bold {ink}, the same size as the body.'
+  CHECKLIST_INTRO: 'The checklist: a thin vertical line in {rail_ink} runs down the left with one small solid dot per row, and beside each dot one row of text in semi-bold {ink}, about the body''s size:'
+  CHECKLIST_ROW: '- Row {k_word}: "{item}"'
+  SAVE: 'On the band, at its left: "Save this", in white bold, about the body''s size.'
+  LABEL: '- {label_anchor}: "{label}"'
+  label_anchors:
+    SIGNAL-BOARD:
+    - Above the first track
+    - Above the second track
+    - Above the third track
+    - Above the fourth track
+    - Above the fifth track
+    RAIL:
+    - Under the first node
+    - Under the second node
+    - Under the third node
+    - Under the fourth node
+    MATRIX:
+    - Beside the top row
+    - Beside the middle row
+    - Beside the bottom row
+    FAN:
+    - Beside the top end node
+    - Beside the middle end node
+    - Beside the bottom end node
+    TREE:
+    - Beside the top end node
+    - Beside the middle end node
+    - Beside the bottom end node
+    CUTAWAY:
+    - Under the top block
+    - Under the middle block
+    - Under the bottom block
+    STACK:
+    - Inside the top bar
+    - Inside the middle bar
+    - Inside the bottom bar
+    MODULE-MAP:
+    - Inside the top tile
+    - Inside the second tile
+    - Inside the third tile
+    - Inside the fourth tile
+  SOURCE: 'The source line: "Source: {source_name}, {YYYY}", in a neat regular monospace, {support}, the same small size as the website address.'
+  URL: 'The website address: "verdant-soft.com", in semi-bold {support}, small but sharp.'
+  COUNT: Apart from the logo, the image contains exactly {n_strings_word} pieces of text, the ones quoted above, each appearing once and spelled exactly as given. Every other area is clean page, plate, lines and shapes.
+  LOGO: 'Logo: use the attached image as the Verdant Soft logo. Place it unchanged at the top left on the plain page, inside the margins, about a quarter of the image width, keeping its shape, letters and {logo_colours} exactly as in the attached image.'
+carousels:
+  mood: one mood for every slide, from the day map
+  cover: the lane's single layout and diagram in its start state, at most 4 labelled nodes, every node labelled; pill = series; subline = the swipe line; progress dots and a short arrow line as graphics
+  inner: 'LAYOUT-SLIDE-v1: counter top-right (monospace), headline, body (>= 32 px, <= 30 words), bridge or action line on the page, source line above the URL, a slim full-bleed band holding DIAGRAM-PROGRESS-LINE-v1'
+  receipt: 'LAYOUT-SLIDE-v1 RECEIPT mode: up to 6 rows on a vertical checklist rail in {rail_ink} on the page, ''Save this'' in white bold on the band, verdant-soft.com as its own string; up to 10 strings, so Nano Banana Pro by default'
+  fixed_positions:
+    logo: top-left
+    counter: top-right
+    progress: the band (replaces CAROUSEL-v2 dots on inner slides)
+    url: bottom-left
+    source_line: above the URL, on the page
+  consistency: same mood, type scale and positions on every slide; optional REF-CAROUSEL (the selected cover) as a second reference, only after the user approves a principle-4 amendment
+text_budget:
+  on_image_v1_hard_limits:
+    subline_words_max: 12
+    info_items_min: 2
+    info_items_max: 4
+    words_per_item_max: 5
+    info_title_words_max: 1
+    image_total_words_max: 35
+  info_exempt:
+  - numbers (figure + context + source line are the information)
+  - proof Client words (the quote is the information)
+  strings_per_single_max: 8
+  strings_per_inner_slide_max: 6
+  strings_receipt_max: 10
+  headline_words_max: 8
+  quote_words_max: 25
+  context_words_max: 14
+  label_characters_max:
+    BAND: 24
+    WINDOW: 18
+    COLUMN: 12
+    per_line_STACK: 20
+  labels_add_information: labels never restate the headline; if half or more of a label's content words appear in the headline, rewrite the headline as the claim and keep the labels as the facts
+gates:
+  light_v2:
+  - mean luminance of the 4:5 crop >= 0.55
+  - <= 6% of pixels darker than luminance 0.10, counted outside OCR text boxes (a three-line near-black headline alone is about 3.5-5%)
+  - no fill darker than the mood's darkest plate stop, except text
+  dark_v2:
+  - mean luminance <= 0.15
+  - pixels brighter than luminance 0.50 (text, drawing, edge light, glass) cover 2-25% of the frame; the plate counts as mass, not glow
+  - no drop shadows
+  layout:
+  - output ratio 3:4 within 1%
+  - plate coverage 25-40% of the 4:5 crop on singles and covers (layouts target 26-35%, leaving room for drift)
+  - no text or logo outside the safe zone
+feed_rhythm:
+  grid_example: 'Nine newest tiles, Mon to the following Tue, newest top-left. Row 1: Tue lagoon BAND (rail) | Mon royal WINDOW (signal board) | Sun lagoon COLUMN (cutaway). Row 2: Sat DARK CORNER (figure) | Fri royal BAND (tree) | Thu lagoon WINDOW (quote). Row 3: Wed royal COLUMN (fan) | Tue lagoon BAND (matrix) | Mon royal WINDOW (signal board).'
+  reading: Royal and lagoon alternate into a loose checkerboard. Plates sit low (band), high (window), tall (column) and in the corner, so no shape repeats on neighbouring tiles. The one dark tile walks one column a week (7 mod 3 = 1), a planned anchor that makes the light tiles look brighter. The misty page, top-left logo and near-black headlines repeat on every tile, so the grid reads as one publication.
+variety_rules:
+- mood and layout come from the day map; never chosen freely
+- no two consecutive posts share mood or layout (checked again when an override lands)
+- any 9 consecutive tiles hold 1-2 dark tiles, never adjacent
+- any 9 consecutive tiles hold at most 2 type-led heroes (Client words quote, numbers figure)
+- within a lane, the same configuration (family + node count + active index + modifier) may not repeat within 28 days; the next post changes at least one of them
+- exactly one glass piece and one highlight span per post; at most one plate light, behind the glass piece only
+- a carousel keeps one mood, one family and one type scale from cover to receipt
+- before selection, render the candidate with the last 8 published posts as a 3x3; reject if 3 tiles in any row or column share a mood
+- 'thumbnail test at 360 px wide: the first headline line is legible and the day family is clear from colour alone'
+ledger_fields:
+- mood
+- layout
+- family
+- node_count
+- active_index
+- modifier
+- glass_variant
+- visual_logic
+- model
+- ref_pack
+- outputs
+- download_px
+- passed_of_total
+- failure_classes
+current_not_dated:
+  current:
+  - 'Swiss editorial grid: oversized, extra-bold, sentence-case headlines, wide margins, left-aligned type'
+  - 'information as the visual: labelled diagrams in the dot-grid, right-angle, ringed-node language of current dev-tool docs and Figma/FigJam canvases'
+  - 'report-grade detail: hairline rules, monospace reference text, source lines as footnotes'
+  - 'proof-first, data-forward: real stages, real modules, real stacks, sourced numbers, no invented charts'
+  - 'one restrained physical moment: a single frosted-glass piece, glass as a material rather than a UI panel (the post-Liquid-Glass reading)'
+  - analogous blue-to-teal colour held inside one crisp, full-bleed plate
+  - matte surfaces and fine grain against the glossy, symmetrical AI-render look
+  - light-first with one dark page, like current product UI
+  retired:
+  - glossy rising bar charts (too close to growth arrows) and the kit's hard-coded teal heroes
+  - glassmorphism card stacks and glass list rows (L-GLASS, L-LIST, L-SLIDE)
+  - 'free-floating node networks and constellations: every node here is counted, labelled and on the grid'
+  - 'aurora blobs and the coral-violet-cyan mesh ''SaaS aura'': glow lives only inside the plate, behind one piece'
+  - isometric and Corporate Memphis illustration, neon on navy, all-caps navy-and-yellow templates
+  - 'inset rounded slide cards: plates bleed off the page edge'
+  - AI-generated people of any kind
+  test: if a post would still look right with its diagram redrawn by hand in Figma, it is not dated
+deliberate_changes:
+- 'THEMES-v1 week map replaced by day_map: Mon and Wed Dark Royal -> Light Royal; Tue How we work and Thu Proof Light Royal -> Light Lagoon; Sun Light Royal -> Light Lagoon; Fri Light Lagoon (Grow) -> Light Royal (Founder Notes); Sat stays Dark Lagoon (Brand world -> By the Numbers); Grow stays Light Lagoon (now Thu B)'
+- Dark Royal has no weekly slot
+- 'Light Lagoon plate drops the #00ACB3 stop wherever white text sits on it (#00727F -> #0088AA)'
+- plate glows move from fixed positions to 'behind the glass piece only'
+- LIGHT-THEME-v2 templates and heroes superseded by 4 layouts + SLIDE and 14 diagram families; the colour mass now bleeds off at least two edges
+- carousel inner slides exempt from the 25-40% mass rule; CAROUSEL-v2 dots on inner slides move into the band's progress line
+- 'monospace becomes a brand element for reference text only (proposed: IBM Plex Mono or JetBrains Mono; fallback Inter tabular figures)'
+- 'TYPE-v1 is stale: its heading says overlays only and weight 700; complete posts and weight 800 are current'
+- single posts carry an info block as diagram labels (ON-IMAGE-v1), replacing §4's 'nothing else goes on the image'
+- light gate v2 excludes OCR text boxes from the dark-pixel count; dark gate v2 counts the plate as mass, not glow
+open_decisions:
+- 'approve the day map, including one dark Saturday (fallback: light-mist)'
+- 'Instagram: 4:5 crop or native 3:4'
+- monospace face for reference text
+- '''Wireframe → Production'' keeps the arrow only if an isolated test renders it cleanly; otherwise the user chooses ''Wireframe to Production'''
+- REF-CAROUSEL second reference for inner slides (principle-4 amendment)
+- 'AI disclosure (§9): the crop and re-encode probably strip C2PA while SynthID survives'
