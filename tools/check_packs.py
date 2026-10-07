@@ -25,6 +25,18 @@ def block_or_none(block_id):
 
 ON_IMAGE = block_or_none('ON-IMAGE-v1') or {}
 OI_LIMITS = ON_IMAGE.get('hard_limits', {})
+VS = block_or_none('VISUAL-SYSTEM-v1') or {}
+FAMILY_LAYOUT_OVERRIDE = {'grow-with-us': 'STACK'}
+
+
+def layout_for(p):
+    """Layout of a single post from the VISUAL-SYSTEM-v1 day map (STACK labels are checked per line)."""
+    if p.get('lane') in FAMILY_LAYOUT_OVERRIDE:
+        return FAMILY_LAYOUT_OVERRIDE[p['lane']]
+    day = str(p.get('day', '')).split('-')[0]
+    return (VS.get('day_map', {}).get(day) or {}).get('layout')
+
+
 HASHTAGS = block('HASHTAGS-v1')
 BANNED = block('BANNED-WORDS-v1')
 CAROUSEL = block('CAROUSEL-v2')
@@ -117,25 +129,38 @@ def check_pack(p):
         if oi.get('subline') and len(words(oi['subline'])) > smax and p['headline_formula'] != 'quote':
             errs.append(f'subline > {smax} words')
         if lane == 'numbers' and not oi.get('source_line'): errs.append('numbers post without source line')
-        info = oi.get('info')
+        info = oi.get('info') or {}
+        items = [x for x in (info.get('items') or []) if str(x).strip()]
         if OI_LIMITS:
-            if not info:
-                errs.append('single post without an on-image info block (ON-IMAGE-v1)')
-            else:
-                items = info.get('items', [])
-                lo, hi = OI_LIMITS.get('info_items_min', 1), OI_LIMITS.get('info_items_max', 99)
-                if not lo <= len(items) <= hi: errs.append(f'info block has {len(items)} items ({lo}-{hi})')
-                wmax = OI_LIMITS.get('words_per_item_max')
-                for it in items:
-                    if wmax and len(words(it)) > wmax: errs.append(f'info item over {wmax} words: "{it}"')
-                tmax = OI_LIMITS.get('info_title_words_max')
-                if tmax and info.get('title') and len(words(info['title'])) > tmax: errs.append('info title too long')
+            exempt = lane in ('proof', 'numbers')
+            if not exempt:
+                lo, hi = OI_LIMITS.get('info_items_min', 2), OI_LIMITS.get('info_items_max', 4)
+                if not lo <= len(items) <= hi:
+                    errs.append(f'needs {lo}-{hi} diagram labels (ON-IMAGE-v1), has {len(items)}')
+            wmax = OI_LIMITS.get('words_per_item_max')
+            layout = layout_for(p)
+            caps = OI_LIMITS.get('label_characters_max', {})
+            for it in items:
+                if wmax and len(words(it)) > wmax: errs.append(f'label over {wmax} words: "{it}"')
+                if layout == 'STACK':
+                    head, _, tail = str(it).partition(':')
+                    for part in ([head + ':', tail.strip()] if tail else [head]):
+                        if len(part) > caps.get('STACK_per_line', 20):
+                            errs.append(f'STACK label line over {caps.get("STACK_per_line", 20)} characters: "{part}"')
+                elif layout in caps and len(str(it)) > caps[layout]:
+                    errs.append(f'label over {caps[layout]} characters for {layout}: "{it}"')
+            strings = 2 + bool((oi.get('subline') or '').strip()) + len(items) + bool((oi.get('source_line') or '').strip()) + 1
+            smax = OI_LIMITS.get('strings_max', 8)
+            if strings > smax: errs.append(f'{strings} on-image strings > {smax}')
             total = sum(len(words(strip_hl(str(oi.get(k) or '')))) for k in ('pill', 'headline', 'subline', 'source_line'))
-            if info:
-                total += sum(len(words(str(x))) for x in [info.get('title') or '', info.get('footer') or ''] + list(info.get('items', [])))
+            total += sum(len(words(str(x))) for x in items) + 1  # + the URL
             tw = OI_LIMITS.get('image_total_words_max')
-            if tw and total > tw: errs.append(f'image text {total} words > {tw}')
-            warns.append(f'image words: {total}')
+            if tw and total > tw and lane != 'proof': errs.append(f'image text {total} words > {tw}')
+            if lane == 'proof' and len(words(strip_hl(oi.get('headline', '')))) > 25: errs.append('proof quote over 25 words')
+            for v in [oi.get('pill'), oi.get('headline'), oi.get('subline'), oi.get('source_line')] + items:
+                if v and re.search('[\u00b7\u2192\u2013\u2014\u2026\u201c\u201d\u2018\u2019]', str(v)):
+                    errs.append(f'non-keyboard character on the image: "{v}"')
+            warns.append(f'image: {strings} strings, {total} words')
     else:
         slides = p['slides']
         if not 6 <= len(slides) <= 8: errs.append(f'{len(slides)} slides (6-8)')

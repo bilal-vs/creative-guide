@@ -1269,7 +1269,7 @@ text_lines:
     - Beside the middle end node
     - Beside the bottom end node
     TREE:
-    - Beside the top end node
+    - Beside the top end node, at the end of the kept path
     - Beside the middle end node
     - Beside the bottom end node
     CUTAWAY:

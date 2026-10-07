@@ -176,13 +176,14 @@ function slideCard(p, s, n) {
 }
 
 function infoBlock(i) {
-  const numbered = /step|timeline|sequence|process|numbered|checklist|test/i.test(i.type || "");
+  const numbered = /rail|step|timeline/i.test(i.type || "");
   const items = (i.items || []).map((t, n) => {
     const m = String(t).match(/^([^:]{1,24}):\s*(.+)$/);
     const body = m ? `<b>${esc(m[1])}</b> ${esc(m[2])}` : esc(t);
     return `<li><span class="n">${numbered ? String(n + 1).padStart(2, "0") : "•"}</span><span>${body}</span></li>`;
   }).join("");
-  return `<div class="info">${i.title ? `<span class="info-t">${esc(i.title)}</span>` : ""}<ul>${items}</ul>${i.footer ? `<p class="info-f">${esc(i.footer)}</p>` : ""}</div>`;
+  if (!(i.items || []).length) return "";
+  return `<div class="info"><span class="info-t">${esc(i.title || ("Diagram labels · " + (i.type || "").toLowerCase()))}</span>`<ul>${items}</ul>${i.footer ? `<p class="info-f">${esc(i.footer)}</p>` : ""}</div>`;
 }
 
 function singleCard(p) {
