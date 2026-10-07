@@ -146,7 +146,8 @@ textarea{width:100%;min-height:40px;resize:vertical;font:13px/1.45 var(--sans);c
       <span class="mono">Images · Nano Banana 2 · 3:4 · 4 outputs</span>
       <span class="mono">One ingredient: this logo file</span>
       <img id="refImg" alt="Verdant Soft logo reference to attach in Flow">
-      <span class="status">Long-press or right-click the logo to save it, or use the file sent in chat.</span>
+      <button type="button" class="btn primary" id="saveLogo" hidden>Save logo file</button>
+      <span class="status" id="logoHelp">Tap Save logo file, or download the logo file sent in the chat.</span>
     </aside>
   </section>
   <div class="tabs" id="tabs" role="tablist" aria-label="Rounds" hidden></div>
@@ -164,7 +165,7 @@ textarea{width:100%;min-height:40px;resize:vertical;font:13px/1.45 var(--sans);c
 const ROUNDS = __ROUNDS__;
 const TAGS = __TAGS__;
 let round = ROUNDS[0];
-let db = null, assets = null;
+let db = null, assets = null, downloads = null;
 let images = {};            // asset id -> doc data
 let roundDocs = {};         // round id -> {favorite, note}
 const queues = {};          // per-doc write chains
@@ -330,6 +331,20 @@ function render() {
 document.addEventListener('focusin', e => { if (e.target.tagName === 'TEXTAREA') editing = true; });
 document.addEventListener('focusout', e => { if (e.target.tagName === 'TEXTAREA') { editing = false; setTimeout(() => { if (!editing && dirty) render(); }, 0); } });
 
+$('#saveLogo').addEventListener('click', async () => {
+  const help = $('#logoHelp');
+  try {
+    const blob = await (await fetch(round.ref_file)).blob();
+    await downloads.save({ filename: round.ref_file.replace('ref-pack-v2', 'verdant-logo-reference'), data: blob });
+    help.textContent = 'Saved. Attach this file in Flow as the one ingredient.';
+  } catch (e) {
+    const code = e && e.code;
+    if (code === 'declined') help.textContent = 'Not saved. Tap Save logo file again when you are ready.';
+    else if (code === 'rate_limited') help.textContent = 'A save prompt is already open. Finish it first.';
+    else { help.textContent = 'Saving is not available here. Download the logo file sent in the chat instead.'; $('#saveLogo').hidden = true; }
+  }
+});
+
 let favTimer;
 $('#favNote').addEventListener('input', e => { clearTimeout(favTimer); favTimer = setTimeout(() => {
   const cur = roundDocs[round.id] = { ...(roundDocs[round.id] || {}) }; cur.note = e.target.value;
@@ -339,6 +354,8 @@ render();
 (async () => {
   try { db = window.claude ? await window.claude.use('db') : null; } catch (_) { db = null; }
   try { assets = window.claude ? await window.claude.use('assets') : null; } catch (_) { assets = null; }
+  try { downloads = window.claude ? await window.claude.use('downloads') : null; } catch (_) { downloads = null; }
+  $('#saveLogo').hidden = !downloads;
   if (!db) { state('Saving is off in this view. Open the page in Claude to upload and rate.'); render(); return; }
   state(assets ? 'Ready' : 'View only: uploading needs edit access');
   render();
