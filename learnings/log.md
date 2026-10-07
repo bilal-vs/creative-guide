@@ -7,7 +7,10 @@
   1. **Writing practice** (now): headlines → captions (LinkedIn and Instagram) → carousel copy → alt text and hashtags. Codify the winners into `STYLE_GUIDE.md` §7. Files in `writing/`.
   2. **Visuals**: discuss and train. Templates and kit are in `brand/theme/` (7 templates × 4 moods). The prompts in `posts/2026-10-04-direction-test-built-to-scale.md` (v3, unsent) get rebuilt from the templates.
   3. **Revise the colour guide** from what the visuals teach (`brand/theme/colours.py` → `python3 brand/guidelines/build.py`).
-- **NOW:** the user reviews **writing round 2** on the review page, https://claude.ai/artifact/7jm544QZvVC5MXqQ1XiqAu: 9 lane packs, 49 parts, Keep/Kill plus notes.
+- **NOW (2026-10-07):**
+  - **Visual taste round L1 (light):** the user runs 4 prompts in Flow and rates the outputs on the Taste Lab page, https://claude.ai/artifact/Rbi98WmtVZB12QcBn7edrT.
+  - **Persona writing loop:** running as a workflow; it will produce `writing/round-03-lane-packs.md` and `writing/persona-reviews.md`.
+  - **Earlier review page:** round 2, https://claude.ai/artifact/7jm544QZvVC5MXqQ1XiqAu.
   - **Next session:** read the marks with ArtifactData (collection `marks`) and copy them into `writing/round-02-lane-packs.md` → Feedback. Then revise and run round 3.
   - **Done criterion:** 2 rounds in a row at ≥ 80% keep, with no truth or voice failures. Then the rules move into §7.
 - **Content system (user, 2026-10-06):**
@@ -36,6 +39,14 @@
 ---
 
 ## Log
+
+### 2026-10-07 · Visual taste training starts (round L1, light)
+- **User:** train single posts first and carousels later, light first and then dark. For each round: 4 prompts of the same post with different visuals; the user uploads the outputs to a page and rates each 1–10.
+- **Built:**
+  - `posts/2026-10-07-taste-light-p3.md`: P3 in 4 directions with identical text. A Report (the current VISUAL-SYSTEM-v1), B Luminous (aqua gradient field plus glass discs), C Studio 3D (porcelain and glass plinths), D Swiss type (huge type on off-white paper).
+  - The Taste Lab page (https://claude.ai/artifact/Rbi98WmtVZB12QcBn7edrT): upload, rate 1–10, tap-tags, pick a favourite. It uses the assets and db capabilities.
+  - `learnings/taste.md`: the method, plus my blind prediction recorded before any ratings (B > C > A > D).
+- **Next:** read the ratings with ArtifactData and view the images (Artifact read, path = asset id). Score agreement, write the taste rules with evidence, then run round D1 (dark) the same way.
 
 ### 2026-10-06 · Content mix reset + writing system (plan mode, 11 rounds of questions)
 - **User decisions:**

@@ -1,0 +1,331 @@
+<title>Verdant Taste Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an engineering-report page. Sticky score bar, then one section per visual direction (letter, prompt, uploads, rating cards), then the favourite pick. */
+:root{
+  --page:#F5F9FD; --surface:#FFFFFF; --sunk:#E8F0F8; --ink:#050816; --muted:#42658A; --line:#C9DCEC;
+  --lagoon:#00727F; --ocean:#007A9E; --royal:#2457D6; --on-accent:#FFFFFF;
+  --good:#00727F; --good-bg:#E3F3F3; --bad:#B4233C; --bad-bg:#FBE9EC;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#050816; --surface:#0B1530; --sunk:#0A1030; --ink:#FFFFFF; --muted:#A6CAEC; --line:#1C2B4E;
+  --lagoon:#34CCA4; --ocean:#09CACC; --royal:#A6CAEC; --on-accent:#050816;
+  --good:#34CCA4; --good-bg:#0A2A2C; --bad:#FF8A9A; --bad-bg:#2A0E18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --page:#050816; --surface:#0B1530; --sunk:#0A1030; --ink:#FFFFFF; --muted:#A6CAEC; --line:#1C2B4E;
+  --lagoon:#34CCA4; --ocean:#09CACC; --royal:#A6CAEC; --on-accent:#050816;
+  --good:#34CCA4; --good-bg:#0A2A2C; --bad:#FF8A9A; --bad-bg:#2A0E18; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.55 var(--sans)}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:0 72px}
+h1,h2,h3{margin:0;text-wrap:balance}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ocean);outline-offset:2px}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.01em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--page) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.bar b{font-variant-numeric:tabular-nums}
+.minis{display:flex;gap:10px;flex-wrap:wrap}
+.mini{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mini i{display:block;width:44px;height:6px;border-radius:3px;background:var(--sunk);overflow:hidden;position:relative}
+.mini i::after{content:"";position:absolute;inset:0;width:var(--w,0%);background:linear-gradient(90deg,var(--royal),var(--ocean))}
+.save{margin-left:auto;font-size:12px;color:var(--muted)}
+.intro{display:grid;gap:14px;padding-block:36px 10px;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:start}
+@media (max-width:820px){.intro{grid-template-columns:minmax(0,1fr)}}
+.intro h1{font-size:clamp(30px,4.6vw,46px);font-weight:800;letter-spacing:-.025em;line-height:1.05}
+.intro p{margin:0;color:var(--muted);max-width:62ch}
+.steps{margin:0;padding-left:20px;display:grid;gap:4px;max-width:62ch}
+.settings{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:14px;display:grid;gap:10px}
+.settings img{width:120px;border:1px solid var(--line);border-radius:6px;background:var(--sunk)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;padding-block:8px}
+.tabs button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:13px}
+.tabs button[aria-selected="true"]{border-color:var(--ocean);color:var(--ocean);font-weight:600}
+section.variant{border-top:1px solid var(--line);padding-block:30px 10px;display:grid;gap:14px;scroll-margin-top:70px}
+.v-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:start}
+@media (max-width:640px){.v-head{grid-template-columns:auto minmax(0,1fr)}.v-score{grid-column:1/-1}}
+.letter{font-size:56px;font-weight:800;line-height:.9;letter-spacing:-.04em;background:linear-gradient(160deg,var(--royal),var(--ocean));-webkit-background-clip:text;background-clip:text;color:transparent}
+.v-head h2{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.v-head p{margin:2px 0 0;max-width:70ch}
+.v-head .tests{color:var(--muted);font-size:13.5px}
+.v-score{text-align:right;font-family:var(--mono);font-size:13px;color:var(--muted);white-space:nowrap}
+.v-score b{display:block;font-family:var(--sans);font-size:30px;color:var(--ink);font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:8px 14px;min-height:40px;cursor:pointer;font-weight:600;font-size:14px}
+.btn.primary{background:var(--ocean);border-color:var(--ocean);color:var(--on-accent)}
+.btn input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+label.btn{position:relative;display:inline-flex;align-items:center}
+.status{font-size:13px;color:var(--muted)}
+details{width:100%}
+details summary{cursor:pointer;color:var(--muted);font-size:13px}
+details pre{white-space:pre-wrap;word-wrap:break-word;font:12.5px/1.55 var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;max-height:340px;overflow:auto;margin:8px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.empty{margin:0;padding:22px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);text-align:center}
+.drop{outline:2px dashed var(--ocean);outline-offset:6px;border-radius:12px}
+figure.shot{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:10px;min-width:0}
+.shot-img{aspect-ratio:3/4;background:var(--sunk);border-radius:8px;overflow:hidden;display:grid;place-items:center}
+.shot-img img{width:100%;height:100%;object-fit:contain;display:block}
+.rate{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.rate button{min-height:38px;border:1px solid var(--line);background:var(--page);border-radius:7px;cursor:pointer;font-weight:700;font-variant-numeric:tabular-nums}
+.rate button[aria-pressed="true"]{background:linear-gradient(135deg,var(--royal),var(--ocean));border-color:transparent;color:var(--on-accent)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags button{border:1px solid var(--line);background:var(--page);border-radius:999px;padding:4px 10px;font-size:12.5px;cursor:pointer;min-height:30px}
+.tags button.good[aria-pressed="true"]{background:var(--good-bg);border-color:var(--good);color:var(--good);font-weight:600}
+.tags button.bad[aria-pressed="true"]{background:var(--bad-bg);border-color:var(--bad);color:var(--bad);font-weight:600}
+textarea{width:100%;min-height:40px;resize:vertical;font:13px/1.45 var(--sans);color:var(--ink);background:var(--page);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.shot-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.shot-foot .mono{color:var(--muted)}
+.link{background:none;border:0;padding:4px 0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:13px}
+.confirm{display:inline-flex;gap:8px;align-items:center;font-size:13px}
+.confirm .yes{color:var(--bad);font-weight:600}
+.fav{border-top:1px solid var(--line);padding-block:30px 0;display:grid;gap:12px;max-width:760px}
+.fav h2{font-size:24px;font-weight:700}
+.fav-pick{display:flex;gap:10px;flex-wrap:wrap}
+.fav-pick button{min-width:110px;min-height:56px;border:1px solid var(--line);background:var(--surface);border-radius:10px;cursor:pointer;text-align:left;padding:8px 12px;display:grid}
+.fav-pick button b{font-size:22px;font-weight:800;line-height:1}
+.fav-pick button span{font-size:12.5px;color:var(--muted)}
+.fav-pick button[aria-pressed="true"]{border-color:var(--ocean);box-shadow:0 0 0 2px var(--ocean)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="bar" role="region" aria-label="Progress">
+  <div class="bar-in">
+    <span class="mono">Round <b id="roundId"></b></span>
+    <span><b id="nImages">0</b> images · <b id="nRated">0</b> rated</span>
+    <div class="minis" id="minis" aria-label="Average rating per direction"></div>
+    <span class="save" id="saveState" aria-live="polite">Connecting…</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="intro">
+    <div style="display:grid;gap:14px;min-width:0">
+      <span class="eyebrow">Verdant Soft · visual training · light first, then dark</span>
+      <h1>Which look feels like Verdant?</h1>
+      <p>One post, four visual directions. The text is the same in every version, so only the look changes. Your scores teach Claude your taste before we train the rest of the feed.</p>
+      <ol class="steps">
+        <li>Copy a prompt and paste it into Google Flow exactly as written.</li>
+        <li>Upload all of its outputs under the same letter.</li>
+        <li>Rate every image from 1 to 10 and tap what you feel.</li>
+        <li>Pick your favourite direction at the bottom.</li>
+      </ol>
+    </div>
+    <aside class="settings" aria-label="Flow settings">
+      <span class="eyebrow">Flow settings</span>
+      <span class="mono">Images · Nano Banana 2 · 3:4 · 4 outputs</span>
+      <span class="mono">One ingredient: this logo file</span>
+      <img id="refImg" alt="Verdant Soft logo reference to attach in Flow">
+      <span class="status">Long-press or right-click the logo to save it, or use the file sent in chat.</span>
+    </aside>
+  </section>
+  <div class="tabs" id="tabs" role="tablist" aria-label="Rounds" hidden></div>
+  <main id="variants"></main>
+  <section class="fav" id="fav">
+    <span class="eyebrow">Last step</span>
+    <h2>Your favourite direction</h2>
+    <div class="fav-pick" id="favPick" role="group" aria-label="Favourite direction"></div>
+    <label for="favNote" class="status">What should we keep from the others? (optional)</label>
+    <textarea id="favNote" placeholder="e.g. B's colours with A's clean layout"></textarea>
+  </section>
+</div>
+
+<script>
+const ROUNDS = [{"id": "L1", "title": "Light · P3 milestone payments", "theme": "light", "post_file": "posts/2026-10-07-taste-light-p3.md", "ref_file": "ref-pack-v2-light.png", "variants": [{"key": "A", "name": "Report", "look": "Calm engineering-report page: misty white page, a full-bleed lagoon colour band, a flat white milestone diagram and one frosted-glass piece.", "tests": "Baseline: the current VISUAL-SYSTEM-v1 look. Flat and calm, with the least colour.", "prompt": "Create an image: a finished, ready-to-publish social media post for Instagram and LinkedIn, designed by a senior brand design team for Verdant Soft, a B2B software company that designs and builds custom software for international clients. It is a single image post in a recurring series that explains plainly how working with an outsourcing partner works, and this post shows startup founders the three points in a project at which they pay.\n\nLayout: a strict editorial grid read from top to bottom, with margins of about 8% of the width at the sides and 11% of the height at the top and bottom that only the page and the plate reach into. The logo sits at the top left with its top edge about 11% down and the series pill on the same line at the top right, with a thin hairline rule across the content width just below them. The headline starts at about 20% of the height, followed by the accent bar and the subline, all left-aligned and ending by about 51%. The colour plate is a full-bleed horizontal band from about 55% to about 81% of the height, running off the left and right edges and covering about 28% of the image; the diagram sits on it inside the side margins. Below the band, on the plain page, the website address sits at the bottom left at about 87% of the height.\n\nColour: the page is a calm polar white with a cool sea tint, a soft vertical gradient from pale polar white (#F2FAFA) to pale misty aqua (#D2EBEC), with a faint polar-white glow at the top left. The plate is a smooth gradient from deep lagoon teal (#00727F) to ocean teal (#0088AA), with a soft deep-teal-tinted shadow on the page along its inner edge. The drawing and labels on it are white. The glass piece is pale sky-blue frosted glass (#A6CAEC) with a faint mint-jade (#34CCA4) light directly behind it, never behind a label. Hairline rules are pale sea-grey (#BFDDE0).\n\nOn the plate, a horizontal milestone rail: one straight white line across the plate at about two fifths of its height, from the left margin to about four fifths of the image width, carrying exactly three evenly spaced nodes, the first at its left end and the last at its right end. The nodes go from unfinished to finished: the first is a thin white ring, the middle one a white ring with a solid centre, and the last is the glass piece, a small rounded puck of frosted glass. Under each node, left-aligned with it, is its label in white bold sans-serif, about the subline's size, on one or two lines. The plate, the drawing and the glass piece carry no other words.\n\nText, each piece exactly as written between the double quotes:\n- At the top right, on the same line as the logo, a small, fully rounded pill label filled with a smooth gradient from deep lagoon teal (#00727F) to deep ocean teal (#007A9E): \"Outsourcing, Decoded\", in white semi-bold.\n- The headline: \"Your payments follow the project\", in extra-bold near-black navy (#050816), left-aligned on up to three lines; the final two words stay together on one line and are filled with a smooth gradient from deep ocean teal (#007A9E) to deep lagoon teal (#00727F). It is by far the largest text.\n- Directly under the headline, a short accent bar about a tenth of the image width, in a gradient from muted slate blue (#416D95) to soft sage teal (#74AFAD).\n- The subline: \"Milestone-based, from kickoff to delivery.\", in regular steel navy (#42658A), about two fifths of the headline's height.\n- Under the first node: \"Project initiation\"\n- Under the second node: \"Key development phases\"\n- Under the third node: \"Final delivery\"\n- The website address: \"verdant-soft.com\", in semi-bold steel navy (#42658A), small but sharp.\nApart from the logo, the image contains exactly seven pieces of text, the ones quoted above, each appearing once and spelled exactly as given. Every other area is clean page, plate, lines and shapes.\n\nLogo: use the attached image as the Verdant Soft logo. Place it unchanged at the top left on the plain page, inside the margins, about a quarter of the image width, keeping its shape, letters and slate-blue to sage-teal gradient colours exactly as in the attached image.\n\nDesign finish: a premium, minimal editorial page by a senior brand design team, calm and exact like a beautifully designed engineering report: a strict grid, generous empty space, asymmetric and uncluttered. Type is a crisp neo-grotesque sans-serif in the style of Inter, with extra-bold, tightly spaced sentence-case headlines and a neat monospace for small reference text; every letter is sharp and easy to read on a phone. The plate is a crisp-edged, full-bleed printed panel that keeps any glow inside itself. The drawing on it is flat and white, with even rounded strokes, only horizontal and vertical lines meeting at right angles, and a faint grid of tiny dots. The frosted glass piece is the only dimensional object, softly lit and matte. Everything is matte, with a very fine print grain over the whole image. Pure graphic design in cool blues and teals with near-black navy and white.\n\nPortrait image, 3:4 aspect ratio."}, {"key": "B", "name": "Luminous", "look": "Colour-led: one silky aqua-to-lagoon gradient fills the background, with three floating frosted-glass discs on a white line.", "tests": "More colour and softness: does a gradient field beat a calm page with one band?", "prompt": "Create an image: a finished, ready-to-publish social media post for Instagram and LinkedIn, designed by a senior brand design team for Verdant Soft, a B2B software company that designs and builds custom software for international clients. It is a single image post in a recurring series that explains plainly how working with an outsourcing partner works, and this post shows startup founders the three points in a project at which they pay.\n\nLayout: a calm, airy portrait composition with margins of about 8% of the width at the sides and 11% of the height at the top and bottom. The logo sits at the top left with its top edge about 11% down, and the series pill on the same line at the top right. The headline starts at about 20% of the height, followed by the accent bar and the subline, all left-aligned and ending by about 50%. The milestone diagram floats across the lower half, from about 58% to about 80% of the height, inside the side margins. The website address sits at the bottom left at about 88% of the height.\n\nColour: the whole background is one luminous, silky gradient field that stays light and bright. Pale polar white (#F2FAFA) fills the top left behind all the text, then the colour flows diagonally down to the right through soft aqua (#D2EBEC), bright aqua (#09CACC) and mint jade (#34CCA4) into a glowing lagoon teal (#00ACB3) and ocean teal (#0088AA) in the bottom right corner, with a faint touch of sky blue (#A6CAEC) along the right edge. The blend is smooth, like light through tinted glass, with a very fine print grain, and the top half stays almost white.\n\nThe diagram: a thin white line runs straight across the lower half at about 66% of the height, from the left margin to the right margin, carrying exactly three evenly spaced frosted-glass discs. Each disc is a softly rounded, translucent puck of sandblasted glass with a bright white rim, picking up the colours of the gradient behind it; the discs grow slightly larger from left to right, and the last one glows softly from within. Directly under each disc sits a small white rounded tag holding its label in near-black navy bold sans-serif. The discs, the line and the tags carry no other words.\n\nText, each piece exactly as written between the double quotes:\n- At the top right, on the same line as the logo, a small, fully rounded white pill label with a hairline deep lagoon teal (#00727F) outline: \"Outsourcing, Decoded\", in deep lagoon teal (#00727F) semi-bold.\n- The headline: \"Your payments follow the project\", in extra-bold near-black navy (#050816), left-aligned on up to three lines; the final two words stay together on one line and are filled with a smooth gradient from deep ocean teal (#007A9E) to deep lagoon teal (#00727F). It is by far the largest text.\n- Directly under the headline, a short accent bar about a tenth of the image width, in a gradient from muted slate blue (#416D95) to soft sage teal (#74AFAD).\n- The subline: \"Milestone-based, from kickoff to delivery.\", in regular steel navy (#42658A), about two fifths of the headline's height.\n- On the tag under the first disc: \"Project initiation\"\n- On the tag under the second disc: \"Key development phases\"\n- On the tag under the third disc: \"Final delivery\"\n- The website address: \"verdant-soft.com\", in semi-bold steel navy (#42658A), small but sharp.\nApart from the logo, the image contains exactly seven pieces of text, the ones quoted above, each appearing once and spelled exactly as given. Every other area is clean gradient, glass and line.\n\nLogo: use the attached image as the Verdant Soft logo. Place it unchanged at the top left on the plain page, inside the margins, about a quarter of the image width, keeping its shape, letters and slate-blue to sage-teal gradient colours exactly as in the attached image.\n\nDesign finish: a premium, modern brand graphic by a senior design team: luminous and colour-led, with one silky gradient, a few pieces of soft frosted glass and crisp editorial typography. Type is a crisp neo-grotesque sans-serif in the style of Inter, with extra-bold, tightly spaced sentence-case headlines; every letter is sharp and easy to read on a phone. Generous empty space, nothing cluttered, a matte finish with a very fine grain, in fresh aquas and teals with near-black navy and white.\n\nPortrait image, 3:4 aspect ratio."}, {"key": "C", "name": "Studio 3D", "look": "Product-photography still life: porcelain and frosted-glass plinths rising like steps on a pale aqua tabletop.", "tests": "Dimensional, tactile objects versus flat graphics.", "prompt": "Create an image: a finished, ready-to-publish social media post for Instagram and LinkedIn, designed by a senior brand design team for Verdant Soft, a B2B software company that designs and builds custom software for international clients. It is a single image post in a recurring series that explains plainly how working with an outsourcing partner works, and this post shows startup founders the three points in a project at which they pay.\n\nLayout: a premium editorial portrait layout with margins of about 8% of the width at the sides and 11% of the height at the top and bottom. The logo sits at the top left with its top edge about 11% down and the series pill on the same line at the top right, with a thin hairline rule across the content width just below them. The headline starts at about 18% of the height, followed by the accent bar and the subline, all left-aligned and ending by about 44%. The lower half is a calm still-life scene that runs off the left, right and bottom edges, and the website address sits at the bottom left at about 88% of the height, on the pale tabletop.\n\nScene: the whole image is one seamless pale studio set, photographed like premium product photography. The upper part is a smooth misty white backdrop (#F5F9FD) that curves softly into a pale aqua tabletop (#E3F3F3) across the lower half, lit by soft, diffuse daylight from the upper left that casts gentle, soft-edged shadows to the right. On the tabletop stand exactly three rounded plinths in a row from left to right, each one taller than the one before, like steps rising: the first is matte pale porcelain, the second is matte pale porcelain with a deep lagoon teal (#00727F) top, and the third and tallest is made of frosted lagoon-teal glass (#00ACB3) that glows softly from within. A slim white line runs along the tabletop in front of the three plinths, linking them. In front of each plinth stands a small upright white card facing the camera, holding its label in near-black navy bold sans-serif. The camera looks straight on from plinth height with a 50mm lens, and everything is in crisp focus. The plinths, the line and the cards carry no other words.\n\nText, each piece exactly as written between the double quotes:\n- At the top right, on the same line as the logo, a small, fully rounded pill label filled with a smooth gradient from deep lagoon teal (#00727F) to deep ocean teal (#007A9E): \"Outsourcing, Decoded\", in white semi-bold.\n- The headline: \"Your payments follow the project\", in extra-bold near-black navy (#050816), left-aligned on up to three lines; the final two words stay together on one line and are filled with a smooth gradient from deep ocean teal (#007A9E) to deep lagoon teal (#00727F). It is by far the largest text.\n- Directly under the headline, a short accent bar about a tenth of the image width, in a gradient from muted slate blue (#416D95) to soft sage teal (#74AFAD).\n- The subline: \"Milestone-based, from kickoff to delivery.\", in regular steel navy (#42658A), about two fifths of the headline's height.\n- On the card in front of the first plinth: \"Project initiation\"\n- On the card in front of the second plinth: \"Key development phases\"\n- On the card in front of the third plinth: \"Final delivery\"\n- The website address: \"verdant-soft.com\", in semi-bold steel navy (#42658A), small but sharp.\nApart from the logo, the image contains exactly seven pieces of text, the ones quoted above, each appearing once and spelled exactly as given. Every other area is clean backdrop, tabletop and objects.\n\nLogo: use the attached image as the Verdant Soft logo. Place it unchanged at the top left on the plain page, inside the margins, about a quarter of the image width, keeping its shape, letters and slate-blue to sage-teal gradient colours exactly as in the attached image.\n\nDesign finish: premium product photography meets editorial graphic design: tactile, calm and precise, like a launch image from a top product company. Matte porcelain and sandblasted frosted glass, soft daylight and gentle shadows, in a restrained palette of misty whites, pale aquas and lagoon teal with near-black navy type. Type is a crisp neo-grotesque sans-serif in the style of Inter, with extra-bold, tightly spaced sentence-case headlines; every letter is sharp and easy to read on a phone. Generous empty space above the objects, nothing cluttered, a very fine grain.\n\nPortrait image, 3:4 aspect ratio."}, {"key": "D", "name": "Swiss type", "look": "Type-led poster: a huge headline on off-white paper, one vertical brand-gradient bar and a thin minimal timeline.", "tests": "Typography as the hero, with the least imagery.", "prompt": "Create an image: a finished, ready-to-publish social media post for Instagram and LinkedIn, designed by a senior brand design team for Verdant Soft, a B2B software company that designs and builds custom software for international clients. It is a single image post in a recurring series that explains plainly how working with an outsourcing partner works, and this post shows startup founders the three points in a project at which they pay.\n\nLayout: a bold Swiss typographic poster on a strict grid, with margins of about 8% of the width at the sides and 11% of the height at the top and bottom. A slim vertical colour bar, about 3% of the image width, runs the full height of the image along the left edge. The logo sits at the top left inside the margin with its top edge about 11% down, and the series pill on the same line at the top right. The headline is set very large, starting at about 22% of the height and filling most of the content width, followed by the accent bar and the subline, all left-aligned and ending by about 60%. Below it, from about 66% to about 80% of the height, sits a minimal timeline, and the website address sits at the bottom left at about 88% of the height.\n\nColour: the page is clean off-white paper (#F9F9F9) with a very fine print grain. The vertical bar is a smooth gradient from electric royal blue (#2457D6) at the top through deep ocean teal (#007A9E) to soft sage teal (#74AFAD) at the bottom. Almost everything else is near-black navy (#050816) on the paper; the only other colour is in the highlighted headline words, the accent bar and the last timeline marker.\n\nThe timeline: one thin near-black navy line runs straight across the content width, carrying exactly three evenly spaced small circles. The first two are thin near-black navy outlines, and the third is solid, filled with a smooth gradient from electric royal blue (#2457D6) to deep ocean teal (#007A9E). Under each circle, left-aligned with it, sits its label in near-black navy bold sans-serif. The line and the circles carry no other words.\n\nText, each piece exactly as written between the double quotes:\n- At the top right, on the same line as the logo, a small, fully rounded pill label drawn as a thin near-black navy (#050816) outline on the paper: \"Outsourcing, Decoded\", in near-black navy semi-bold.\n- The headline: \"Your payments follow the project\", in extra-bold near-black navy (#050816), very large and very tightly spaced, left-aligned on up to three lines; the final two words stay together on one line and are filled with a smooth gradient from electric royal blue (#2457D6) to deep ocean teal (#007A9E). It is by far the largest text, filling most of the width.\n- Directly under the headline, a short accent bar about a tenth of the image width, in a gradient from muted slate blue (#416D95) to soft sage teal (#74AFAD).\n- The subline: \"Milestone-based, from kickoff to delivery.\", in regular steel navy (#42658A), about two fifths of the headline's height.\n- Under the first circle: \"Project initiation\"\n- Under the second circle: \"Key development phases\"\n- Under the third circle: \"Final delivery\"\n- The website address: \"verdant-soft.com\", in semi-bold steel navy (#42658A), small but sharp.\nApart from the logo, the image contains exactly seven pieces of text, the ones quoted above, each appearing once and spelled exactly as given. Every other area is clean paper.\n\nLogo: use the attached image as the Verdant Soft logo. Place it unchanged at the top left on the plain page, inside the margins, about a quarter of the image width, keeping its shape, letters and slate-blue to sage-teal gradient colours exactly as in the attached image.\n\nDesign finish: a bold, minimal Swiss editorial poster by a senior typographer: type-led, with a huge confident headline, a strict grid, vast calm white space and precise thin lines, nothing decorative. Type is a crisp neo-grotesque sans-serif in the style of Inter, with extra-bold, very tightly spaced sentence-case headlines; every letter is sharp and easy to read on a phone. Flat print design on matte paper with a very fine grain.\n\nPortrait image, 3:4 aspect ratio."}]}];
+const TAGS = {"good": ["Love the colours", "Premium", "Modern", "Clear to read", "Stops my scroll", "On brand"], "bad": ["Too dull", "Too busy", "Too blue", "Text hard to read", "Looks AI", "Old-fashioned", "Text wrong", "Logo wrong"]};
+let round = ROUNDS[0];
+let db = null, assets = null;
+let images = {};            // asset id -> doc data
+let roundDocs = {};         // round id -> {favorite, note}
+const queues = {};          // per-doc write chains
+let editing = false, dirty = false;
+const pendingNotes = {};    // asset id -> unsaved note text
+const noteTimers = {};
+
+const $ = s => document.querySelector(s);
+const el = (tag, attrs = {}, kids = []) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') n.className = v; else if (k === 'text') n.textContent = v;
+    else if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else if (v !== null && v !== undefined) n.setAttribute(k, v);
+  }
+  for (const c of [].concat(kids)) if (c) n.append(c);
+  return n;
+};
+const state = t => { $('#saveState').textContent = t; };
+
+function write(path, op, data) {
+  if (!db) return Promise.resolve();
+  const run = () => (op === 'delete' ? db.doc(path).delete() : op === 'update' ? db.doc(path).update(data) : db.doc(path).set(data));
+  queues[path] = (queues[path] || Promise.resolve()).then(() => { state('Saving…'); return run(); })
+    .then(() => state('All changes saved'))
+    .catch(e => state(e && e.code === 'unavailable' ? 'Connection hiccup. Try that again.' : "Couldn't save (" + (e && e.code || 'error') + ')'));
+  return queues[path];
+}
+
+function roundImages(v) {
+  return Object.entries(images).filter(([, d]) => d.round === round.id && (!v || d.variant === v))
+    .sort((a, b) => String(a[1].createdAt).localeCompare(String(b[1].createdAt)));
+}
+function avg(v) {
+  const r = roundImages(v).map(([, d]) => d.rating).filter(x => typeof x === 'number');
+  return r.length ? (r.reduce((a, b) => a + b, 0) / r.length) : null;
+}
+
+async function downscale(file) {
+  const bmp = await createImageBitmap(file);
+  const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+  const c = document.createElement('canvas');
+  c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+  c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+  return await new Promise(res => c.toBlob(b => res(b), 'image/jpeg', 0.9));
+}
+const UPLOAD_ERRORS = {
+  too_large: 'That file is over 20 MB. Export a smaller size from Flow and try again.',
+  unsupported_type: 'Only PNG, JPEG, WEBP or GIF images can be uploaded.',
+  quota_or_state: "This page's storage is full. Remove a few images, then try again.",
+  rate_limited: 'Too many uploads at once. Wait a moment, then try again.',
+};
+async function upload(variant, files, statusEl) {
+  if (!assets || !db) { statusEl.textContent = 'Uploading needs edit access to this page.'; return; }
+  const list = [...files].filter(f => /^image\//.test(f.type) || /\.(png|jpe?g|webp|gif)$/i.test(f.name));
+  for (let i = 0; i < list.length; i++) {
+    statusEl.textContent = `Uploading ${i + 1} of ${list.length}…`;
+    let blob = list[i];
+    try { blob = await downscale(list[i]) || list[i]; } catch (_) { blob = list[i]; }
+    try {
+      const r = await assets.upload(blob, { type: blob.type || 'image/jpeg' });
+      images[r.id] = { round: round.id, variant, assetId: r.id, rating: null, tags: [], note: '', name: list[i].name, createdAt: new Date().toISOString() };
+      render();
+      await write('images/' + r.id, 'set', images[r.id]);
+    } catch (e) {
+      statusEl.textContent = UPLOAD_ERRORS[e && e.code] || `Upload failed (${e && e.code || 'error'}). Try again.`;
+      return;
+    }
+  }
+  statusEl.textContent = list.length ? `Uploaded ${list.length}. Now rate them.` : 'No images in that selection.';
+}
+
+function shotCard(id, d, n) {
+  const fig = el('figure', { class: 'shot', 'data-id': id });
+  fig.append(el('div', { class: 'shot-img' }, el('img', { src: '/_blob/' + d.assetId, alt: `Direction ${d.variant}, output ${n}`, loading: 'lazy' })));
+  const rate = el('div', { class: 'rate', role: 'group', 'aria-label': 'Rating from 1 to 10' });
+  for (let i = 1; i <= 10; i++) rate.append(el('button', { type: 'button', id: `r-${id}-${i}`, 'aria-pressed': String(d.rating === i), 'aria-label': `Rate ${i} out of 10`, text: String(i),
+    onclick: () => { const cur = images[id]; cur.rating = cur.rating === i ? null : i; render(); write('images/' + id, 'update', { rating: cur.rating }); } }));
+  fig.append(rate);
+  const tags = el('div', { class: 'tags', role: 'group', 'aria-label': 'What you feel' });
+  for (const [kind, list] of Object.entries(TAGS)) for (const t of list)
+    tags.append(el('button', { type: 'button', id: `t-${id}-${kind}-${list.indexOf(t)}`, class: kind, 'aria-pressed': String((d.tags || []).includes(t)), text: t,
+      onclick: () => { const cur = images[id]; const s = new Set(cur.tags || []); s.has(t) ? s.delete(t) : s.add(t); cur.tags = [...s]; render(); write('images/' + id, 'update', { tags: cur.tags }); } }));
+  fig.append(tags);
+  const ta = el('textarea', { id: 'note-' + id, 'aria-label': `Note for direction ${d.variant} output ${n}`, placeholder: 'Note (optional)' });
+  ta.value = pendingNotes[id] ?? (d.note || '');
+  const flush = () => { if (!(id in pendingNotes)) return; clearTimeout(noteTimers[id]); const v = pendingNotes[id]; delete pendingNotes[id]; if (images[id]) images[id].note = v; write('images/' + id, 'update', { note: v }); };
+  ta.addEventListener('input', () => { pendingNotes[id] = ta.value; if (images[id]) images[id].note = ta.value; clearTimeout(noteTimers[id]); noteTimers[id] = setTimeout(flush, 700); });
+  ta.addEventListener('blur', flush);
+  fig.append(ta);
+  const confirm = el('span', { class: 'confirm', hidden: '' }, [
+    el('span', { text: 'Remove this image?' }),
+    el('button', { type: 'button', class: 'link yes', text: 'Yes, remove', onclick: async () => {
+      try { if (assets) await assets.delete(d.assetId); } catch (_) {}
+      delete images[id]; render(); write('images/' + id, 'delete'); } }),
+    el('button', { type: 'button', class: 'link', text: 'Keep', onclick: () => { confirm.hidden = true; rm.hidden = false; } }),
+  ]);
+  const rm = el('button', { type: 'button', class: 'link', text: 'Remove', onclick: () => { rm.hidden = true; confirm.hidden = false; } });
+  fig.append(el('div', { class: 'shot-foot' }, [el('span', { class: 'mono', text: `${d.variant}${n}${d.rating ? ' · ' + d.rating + '/10' : ''}` }), rm, confirm]));
+  return fig;
+}
+
+function variantSection(v) {
+  const sec = el('section', { class: 'variant', id: 'v-' + v.key, 'aria-labelledby': 'h-' + v.key });
+  const a = avg(v.key), rated = roundImages(v.key).filter(([, d]) => typeof d.rating === 'number').length;
+  sec.append(el('div', { class: 'v-head' }, [
+    el('span', { class: 'letter', 'aria-hidden': 'true', text: v.key }),
+    el('div', {}, [el('h2', { id: 'h-' + v.key, text: `${v.key} · ${v.name}` }), el('p', { text: v.look }), el('p', { class: 'tests', text: 'What it tests: ' + v.tests })]),
+    el('div', { class: 'v-score' }, [el('b', { text: a === null ? '–' : a.toFixed(1) }), el('span', { text: rated ? `average of ${rated} rated` : 'not rated yet' })]),
+  ]));
+  const status = el('span', { class: 'status', 'aria-live': 'polite' });
+  const copyBtn = el('button', { type: 'button', class: 'btn', text: 'Copy prompt ' + v.key });
+  const pre = el('pre', { text: v.prompt });
+  const det = el('details', {}, [el('summary', { text: 'Show prompt ' + v.key }), pre]);
+  copyBtn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(v.prompt); copyBtn.textContent = 'Copied'; setTimeout(() => (copyBtn.textContent = 'Copy prompt ' + v.key), 2000); }
+    catch (_) { det.open = true; const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); status.textContent = 'Copy blocked here: the prompt is selected, so copy it with your keyboard or menu.'; }
+  });
+  const input = el('input', { type: 'file', id: 'file-' + v.key, accept: 'image/png,image/jpeg,image/webp,image/gif', multiple: '' });
+  input.addEventListener('change', () => { upload(v.key, input.files, status); input.value = ''; });
+  const uploadBtn = el('label', { class: 'btn primary', for: 'file-' + v.key }, ['Upload images', input]);
+  if (!assets) uploadBtn.hidden = true;
+  sec.append(el('div', { class: 'actions' }, [copyBtn, uploadBtn, status]), det);
+  const grid = el('div', { class: 'grid', 'data-variant': v.key });
+  const rows = roundImages(v.key);
+  rows.forEach(([id, d], i) => grid.append(shotCard(id, d, i + 1)));
+  sec.append(rows.length ? grid : el('p', { class: 'empty', text: assets
+    ? `No images yet. Run prompt ${v.key} in Flow, then upload all its outputs here, or drop them on this section.`
+    : 'No images yet.' }));
+  sec.addEventListener('dragover', e => { if (assets) { e.preventDefault(); sec.classList.add('drop'); } });
+  sec.addEventListener('dragleave', () => sec.classList.remove('drop'));
+  sec.addEventListener('drop', e => { e.preventDefault(); sec.classList.remove('drop'); if (e.dataTransfer && e.dataTransfer.files.length) upload(v.key, e.dataTransfer.files, status); });
+  return sec;
+}
+
+function renderBar() {
+  $('#roundId').textContent = `${round.id} · ${round.theme}`;
+  const all = roundImages();
+  $('#nImages').textContent = all.length;
+  $('#nRated').textContent = all.filter(([, d]) => typeof d.rating === 'number').length;
+  $('#minis').replaceChildren(...round.variants.map(v => { const a = avg(v.key); const i = el('i'); i.style.setProperty('--w', a === null ? '0%' : (a * 10) + '%');
+    return el('span', { class: 'mini', title: `Direction ${v.key} average` }, [document.createTextNode(v.key), i, document.createTextNode(a === null ? '–' : a.toFixed(1))]); }));
+}
+
+function render() {
+  renderBar();
+  if (editing) { dirty = true; return; }
+  dirty = false;
+  const focused = document.activeElement && document.activeElement.id;
+  const main = $('#variants'); main.replaceChildren(...round.variants.map(variantSection));
+  const rd = roundDocs[round.id] || {};
+  $('#favPick').replaceChildren(...round.variants.map(v => el('button', { type: 'button', 'aria-pressed': String(rd.favorite === v.key),
+    onclick: () => { const cur = roundDocs[round.id] = { ...(roundDocs[round.id] || {}) }; cur.favorite = cur.favorite === v.key ? null : v.key; render();
+      write('rounds/' + round.id, 'set', { favorite: cur.favorite, note: cur.note || '', updatedAt: new Date().toISOString() }); } },
+    [el('b', { text: v.key }), el('span', { text: v.name })])));
+  const fn = $('#favNote'); if (document.activeElement !== fn) fn.value = rd.note || '';
+  $('#refImg').src = round.ref_file;
+  const tabs = $('#tabs'); tabs.hidden = ROUNDS.length < 2;
+  tabs.replaceChildren(...ROUNDS.map(r => el('button', { type: 'button', role: 'tab', 'aria-selected': String(r.id === round.id), text: r.title,
+    onclick: () => { round = r; render(); } })));
+  if (focused && document.getElementById(focused)) document.getElementById(focused).focus();
+}
+
+document.addEventListener('focusin', e => { if (e.target.tagName === 'TEXTAREA') editing = true; });
+document.addEventListener('focusout', e => { if (e.target.tagName === 'TEXTAREA') { editing = false; setTimeout(() => { if (!editing && dirty) render(); }, 0); } });
+
+let favTimer;
+$('#favNote').addEventListener('input', e => { clearTimeout(favTimer); favTimer = setTimeout(() => {
+  const cur = roundDocs[round.id] = { ...(roundDocs[round.id] || {}) }; cur.note = e.target.value;
+  write('rounds/' + round.id, 'set', { favorite: cur.favorite || null, note: cur.note, updatedAt: new Date().toISOString() }); }, 700); });
+
+render();
+(async () => {
+  try { db = window.claude ? await window.claude.use('db') : null; } catch (_) { db = null; }
+  try { assets = window.claude ? await window.claude.use('assets') : null; } catch (_) { assets = null; }
+  if (!db) { state('Saving is off in this view. Open the page in Claude to upload and rate.'); render(); return; }
+  state(assets ? 'Ready' : 'View only: uploading needs edit access');
+  render();
+  db.collection('images').onSnapshot(snap => {
+    const next = {};
+    snap.docs.forEach(d => { if (d.exists) next[d.id] = { ...d.data() }; });
+    for (const [id, v] of Object.entries(pendingNotes)) if (next[id]) next[id].note = v;
+    images = next; render();
+  }, err => state('Live sync stopped (' + err.code + '). Reload the page.'));
+  db.collection('rounds').onSnapshot(snap => {
+    const next = {};
+    snap.docs.forEach(d => { if (d.exists) next[d.id] = { ...d.data() }; });
+    roundDocs = next; render();
+  }, () => {});
+})();
+</script>

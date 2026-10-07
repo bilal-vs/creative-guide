@@ -1,0 +1,35 @@
+[
+ {
+  "id": "L1",
+  "title": "Light · P3 milestone payments",
+  "theme": "light",
+  "post_file": "posts/2026-10-07-taste-light-p3.md",
+  "ref_file": "ref-pack-v2-light.png",
+  "variants": [
+   {
+    "key": "A",
+    "name": "Report",
+    "look": "Calm engineering-report page: misty white page, a full-bleed lagoon colour band, a flat white milestone diagram and one frosted-glass piece.",
+    "tests": "Baseline: the current VISUAL-SYSTEM-v1 look. Flat and calm, with the least colour."
+   },
+   {
+    "key": "B",
+    "name": "Luminous",
+    "look": "Colour-led: one silky aqua-to-lagoon gradient fills the background, with three floating frosted-glass discs on a white line.",
+    "tests": "More colour and softness: does a gradient field beat a calm page with one band?"
+   },
+   {
+    "key": "C",
+    "name": "Studio 3D",
+    "look": "Product-photography still life: porcelain and frosted-glass plinths rising like steps on a pale aqua tabletop.",
+    "tests": "Dimensional, tactile objects versus flat graphics."
+   },
+   {
+    "key": "D",
+    "name": "Swiss type",
+    "look": "Type-led poster: a huge headline on off-white paper, one vertical brand-gradient bar and a thin minimal timeline.",
+    "tests": "Typography as the hero, with the least imagery."
+   }
+  ]
+ }
+]
