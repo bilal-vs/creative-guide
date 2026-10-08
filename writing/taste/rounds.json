@@ -1,7 +1,7 @@
 [
  {
   "id": "L1",
-  "title": "Light · P3 milestone payments",
+  "title": "Light · L1 four looks",
   "theme": "light",
   "post_file": "posts/2026-10-07-taste-light-p3.md",
   "ref_file": "ref-pack-v2-light.png",
@@ -29,6 +29,39 @@
     "name": "Swiss type",
     "look": "Type-led poster: a huge headline on off-white paper, one vertical brand-gradient bar and a thin minimal timeline.",
     "tests": "Typography as the hero, with the least imagery."
+   }
+  ]
+ },
+ {
+  "id": "L2",
+  "title": "Light · L2 fonts and depth",
+  "theme": "light",
+  "post_file": "posts/2026-10-08-taste-light-l2-brief.md",
+  "ref_file": "ref-pack-v2-light.png",
+  "variants": [
+   {
+    "key": "A",
+    "name": "Display font",
+    "look": "L1's winner D, with a characterful wide geometric display headline (Syne ExtraBold style), a refined sans subline and monospace checklist.",
+    "tests": "Font only: does a headline face with character fix \"font too basic\"?"
+   },
+   {
+    "key": "B",
+    "name": "Editorial serif",
+    "look": "The same layout with a high-contrast modern serif headline (Instrument Serif style) and an italic highlight.",
+    "tests": "Font only: an elegant magazine serif instead of a display sans."
+   },
+   {
+    "key": "C",
+    "name": "Embossed paper",
+    "look": "A with real depth: the headline blind-embossed into cotton paper, paper-cut checkboxes and soft daylight.",
+    "tests": "Depth with a purpose: does tactile print fix \"too flat\"?"
+   },
+   {
+    "key": "D",
+    "name": "Colour block",
+    "look": "A with one bold, flat deep-teal block holding the headline in white, and the highlight words in a white box.",
+    "tests": "Bold flat colour versus paper only (no soft glow)."
    }
   ]
  }

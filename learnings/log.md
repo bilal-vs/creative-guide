@@ -8,7 +8,7 @@
   2. **Visuals**: discuss and train. Templates and kit are in `brand/theme/` (7 templates × 4 moods). The prompts in `posts/2026-10-04-direction-test-built-to-scale.md` (v3, unsent) get rebuilt from the templates.
   3. **Revise the colour guide** from what the visuals teach (`brand/theme/colours.py` → `python3 brand/guidelines/build.py`).
 - **NOW (2026-10-07):**
-  - **Visual taste round L1 (light):** the user runs 4 prompts in Flow and rates the outputs on the Taste Lab page, https://claude.ai/artifact/Rbi98WmtVZB12QcBn7edrT.
+  - **Visual taste round L2 (light):** the user runs 4 prompts (fonts and depth on the checklist post) and rates them on the Taste Lab, https://claude.ai/artifact/Rbi98WmtVZB12QcBn7edrT. L1 is done: D won at 7/10 and SCHEMATIC is paused.
   - **Persona writing loop:** running as a workflow; it will produce `writing/round-03-lane-packs.md` and `writing/persona-reviews.md`.
   - **Earlier review page:** round 2, https://claude.ai/artifact/7jm544QZvVC5MXqQ1XiqAu.
   - **Next session:** read the marks with ArtifactData (collection `marks`) and copy them into `writing/round-02-lane-packs.md` → Feedback. Then revise and run round 3.
@@ -39,6 +39,24 @@
 ---
 
 ## Log
+
+### 2026-10-08 · Taste round L1 results → SCHEMATIC paused; no pricing content; round L2
+- **L1 scores (user, Taste Lab):** D Swiss type 7, C Studio 3D 4, A Report 2 (the current VISUAL-SYSTEM-v1), B Luminous 1.
+  - "Font too basic" appeared in 3 image notes and the round note.
+  - Soft gradients and glass were tagged "Looks AI", "Old-fashioned".
+  - D: "looks good but text needs improvement, too flat".
+  - Nano Banana 2 rendered all 7 strings exactly in every image.
+- **My blind prediction failed:** predicted B > C > A > D, actual D > C > A > B (extremes swapped). Lesson: in this user's eyes, "creativity with colour and gradients" does **not** mean soft gradient fields.
+- **User:** "the data is not useful, don't include pricing type of thing in any… it's a single slide, this doesn't even serve purpose."
+  - **Decided:** no pricing, payment-terms or engagement-terms content in any post; the on-image information must be useful on its own (`STYLE_GUIDE.md` §9).
+  - **Dropped:** P3 (milestone payments).
+  - **Excluded** in the topic bank: V-HWW-01, V-HWW-03, E-FN-04 and E-FN-06.
+- **Paused:** VISUAL-SYSTEM-v1 (§5.7) and the 3 SCHEMATIC prompts already sent (P3, P7, P9), marked "don't generate".
+- **Round L2** (`posts/2026-10-08-taste-light-l2-brief.md`; L2 tab on https://claude.ai/artifact/Rbi98WmtVZB12QcBn7edrT):
+  - **Copy:** the useful checklist "What your dev brief is missing" (E-FN-02), the same 8 strings in every version.
+  - **Versions:** A display font (Syne style), B editorial serif, C embossed paper (display font plus depth), D flat colour block.
+  - **Blind prediction** recorded first: C > A > D > B.
+- **Persona writing loop:** resumed after the session-limit failure (run wf_11be7077-103). Patched so a round with fewer than 3 personas returned is invalid; the failed run had reported "100% keep" from 0 personas.
 
 ### 2026-10-07 · Visual taste training starts (round L1, light)
 - **User:** train single posts first and carousels later, light first and then dark. For each round: 4 prompts of the same post with different visuals; the user uploads the outputs to a page and rates each 1–10.

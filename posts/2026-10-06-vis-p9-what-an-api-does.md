@@ -7,7 +7,7 @@ format: single
 topic: round-02 pack P9
 sources: [none (explainer, no numbers)]
 template: TPL-concepts-v1
-status: iterating
+status: paused
 ---
 
 # Visual training · P9 · Under the Hood
@@ -52,4 +52,4 @@ Portrait image, 3:4 aspect ratio.
 ```
 
 ### Review v1
-_Waiting for outputs._
+_Paused 2026-10-08: don't generate. This look (SCHEMATIC) scored 2/10 in taste round L1. The copy stays; the prompt is rebuilt once VISUAL-SYSTEM-v2 exists._

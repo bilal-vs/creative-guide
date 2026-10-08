@@ -809,7 +809,11 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 - Every output is checked for exact spelling and logo fidelity.
 - If text or logo accuracy fails repeatedly, fall back to generating the background and overlaying the text and logo (principle 5).
 
-### 5.7 Visual system v1: "SCHEMATIC, editorial finish" `[decided · CD]` (2026-10-07)
+### 5.7 Visual system v1: "SCHEMATIC, editorial finish" (**PAUSED 2026-10-08, under revision**)
+> **Paused by user taste data.** In round L1 the SCHEMATIC look scored 2/10 ("nothing useful, font too basic"), and the type-led Swiss poster scored 7/10 ("modern, premium, clear to read", but "font too basic" and "too flat").
+> - **Kept:** its mechanics (day map, text budget, quote-once prompting, the prompt tools).
+> - **Being replaced:** its look, via taste rounds L2 (fonts, depth) and D1 (dark), then VISUAL-SYSTEM-v2.
+
 - **Source:** the visual workflow (3 art directors; judges for clients, a student, a designer and the pipeline engineer).
 - **The idea:** every post is one page of a calm engineering report: a misty light page, a strict grid and a near-black headline with one gradient highlight. One saturated plate bleeds off the edges and carries a flat white diagram, whose labels are the info block. One small frosted-glass piece in the other hue family is the only dimensional object.
 - **Week:** six light days and one dark Saturday. Royal and lagoon alternate, and no two consecutive days share a mood or layout.
@@ -820,7 +824,7 @@ Gap: there are no vector lockup files. Ask the team for source files (SVG, AI or
 <!-- id: VISUAL-SYSTEM-v1 -->
 ```yaml
 id: VISUAL-SYSTEM-v1
-status: 'decided 2026-10-07 by the creative director (user delegated: ''decide by yourself''); first Flow calibration results may revise it'
+status: 'PAUSED 2026-10-08: under revision. In taste round L1 this look (direction A, Report) scored 2/10 and the type-led Swiss poster (D) won at 7/10. See learnings/taste.md. Do not generate posts with it.'
 date: 2026-10-06
 name: SCHEMATIC, editorial finish
 lineage: 'Base: SCHEMATIC-v1 (art director C), weighted panel score 7.25/10 (clients 40%, designer+engineer 35%, student 25%). Finish, plate geometry, counter-accent, dark-day choice and slot-library structure grafted from Luminous Report (A, 6.93). Progression object, carousel reference, copy hygiene and sameness controls grafted from Built Objects (B, 6.15).'
@@ -1826,6 +1830,8 @@ failure_classes:
 - `[decided]` **Other companies:** named in text only. Neutral and factual; no logos or product UI in images, no verdicts or comparisons, no implied partnership.
 - `[decided]` **Verdant boundary:** never present a trend or a third-party result as Verdant experience. "In our builds…" only with a confirmed FACTS id.
 - `[decided]` **Stance:** practical and balanced on AI and tech. No hype, no doom, no predictions presented as fact.
+- `[decided]` **No pricing-type content** (user, 2026-10-08): no prices, rates, payment terms or schedules, milestone payments, estimates, costs or engagement-model commercial terms in any post. F12 and F13 stay true facts but are never post topics.
+- `[decided]` **The information on a single post must be useful on its own** (user, 2026-10-08: "the data should be more useful… this doesn't even serve purpose"). The payload is something a founder (or a student, on Grow posts) would save: a checklist, steps, a definition with a concrete example, a decision rule, or a sourced number with its meaning. Company-process trivia never qualifies.
 - **TBD:** AI disclosure policy. Nano Banana outputs carry SynthID and C2PA metadata, so Meta platforms may label them as AI automatically.
 
 ## 10. Approved examples
@@ -1865,6 +1871,7 @@ This is how the pipeline behaves like a handler: it keeps track of the past and 
 | Date | Change | Evidence |
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
+| 2026-10-08 | §5.7 VISUAL-SYSTEM-v1 PAUSED: the taste round L1 user ratings put the SCHEMATIC look at 2/10 and the type-led Swiss poster at 7/10. §9: no pricing-type content; on-image information must be useful on its own (user) | Taste Lab ratings and notes; `learnings/taste.md`; user message 2026-10-08 |
 | 2026-10-07 | §4 ON-IMAGE-v1 (single posts carry a labelled diagram; caption-complement rules C1–C7); §5.7 VISUAL-SYSTEM-v1 "SCHEMATIC, editorial finish" (day map with one dark Saturday, 4 layouts + slide, a diagram family per lane, counter-accent glass) supersedes the THEMES-v1 week map; §6 STYLE-BLOCK-v1, PROMPT-SKELETON-v1, PROMPT-RULES-v1, GENERATION-v1, REF-PACK-v2; §8 VISUAL-RUBRIC-v1; §7 done criterion via the 5-persona writing panel | User feedback on round 2; visual workflow (3 art directors, 4 judges); `brand/visual/visual-system-v1-draft.yaml` |
 | 2026-10-06 | Content mix reset (user): §2.3 EXTERNAL-SOURCES-v1; §3 CONTENT-MIX-v1 (30% Verdant / 70% Tech, Explained, five lanes as named series, Tue/Thu Verdant, 2-2-3 carousel cycle, overrides, no-repeat); §4 lane recipes; §4.1 CAROUSEL-v1 → v2 (external and roundup variants); §7 decided caption rules, HASHTAGS-v1, BANNED-WORDS-v1; §9 external-content guardrails and no company numbers decided; §11 banks, research runs, inbox | User answers in plan mode, `learnings/log.md` 2026-10-06; `brand/strategy.md` v2 |
 | 2026-10-04 | §2 draft with FACTS-v1 and PUBLIC-PROOF-v1; §3 widened to content strategy; §9 guardrails; §11 added | `brand/research.md` |

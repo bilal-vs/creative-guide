@@ -7,7 +7,7 @@ format: single
 topic: round-02 pack P3
 sources: [F12]
 template: TPL-how-we-work-v1
-status: iterating
+status: paused
 ---
 
 # Visual training · P3 · Outsourcing, Decoded
@@ -52,4 +52,4 @@ Portrait image, 3:4 aspect ratio.
 ```
 
 ### Review v1
-_Waiting for outputs._
+_Paused and dropped 2026-10-08: don't generate. This look (SCHEMATIC) scored 2/10 in taste round L1, and the user ruled out pricing and payment content entirely._

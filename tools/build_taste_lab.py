@@ -164,7 +164,7 @@ textarea{width:100%;min-height:40px;resize:vertical;font:13px/1.45 var(--sans);c
 <script>
 const ROUNDS = __ROUNDS__;
 const TAGS = __TAGS__;
-let round = ROUNDS[0];
+let round = ROUNDS[ROUNDS.length - 1];   // newest round first
 let db = null, assets = null, downloads = null;
 let images = {};            // asset id -> doc data
 let roundDocs = {};         // round id -> {favorite, note}

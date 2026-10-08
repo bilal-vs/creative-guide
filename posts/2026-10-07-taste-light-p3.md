@@ -145,5 +145,15 @@ Design finish: a bold, minimal Swiss editorial poster by a senior typographer: t
 Portrait image, 3:4 aspect ratio.
 ```
 
-## Results
-_Waiting for the user's uploads and ratings on the Taste Lab page._
+## Results (2026-10-08)
+| Variant | Score | Note |
+|---|---|---|
+| D Swiss type | **7/10** | "looks good but text needs improvement too flat also" (Modern, Premium, Clear to read) |
+| C Studio 3D | 4/10 | "serves no purpose font too basic" |
+| A Report | 2/10 | "Nothing useful font too basic" (Looks AI, Old-fashioned) |
+| B Luminous | 1/10 | "font too basic" (Looks AI, Too dull, Old-fashioned) |
+
+- **Round note:** "font too basic use some attractive but visually good font".
+- **Text:** all 7 strings rendered exactly in every variant.
+- **Analysis:** in `learnings/taste.md`.
+- **Decision:** D wins. VISUAL-SYSTEM-v1 (A) is paused. Round L2 explores typefaces and depth on D's layout.

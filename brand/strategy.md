@@ -201,7 +201,7 @@ It's written the way a social media handler thinks: **past** (what the brand has
 | # | Pillar | Goal | What it covers | Cadence |
 |---|---|---|---|---|
 | 1 | **Tech, Explained** (external) | Reach, plus trust with buyers | Five lanes, each a named series: Trends & news, AI & LLMs, Software concepts, Facts & numbers, Startup & product advice. Primary sources only. Ends with a Verdant take | 5 a week (~70%) |
-| 2 | **How we work** | Clients | Takes the risk out of outsourcing: milestone payments (F12), engagement models (F13), single-service requests (F15), the six-step processes, communication, handover, ownership | Every 2 weeks |
+| 2 | **How we work** | Clients | Takes the risk out of outsourcing with useful process knowledge: the six-step processes (F04), single-service requests (F15), communication, handover, code ownership. **No pricing-type topics** (payments, rates, estimates, engagement terms; user, 2026-10-08) | Every 2 weeks |
 | 3 | **Build Notes** (was Engineering insight) | Brand, CTO trust | One real engineering decision **from our own work**: a case study (F30–F39) or the stack (F05–F06). No generic listicles; generic content now lives in Tech, Explained | Every 2 weeks |
 | 4 | **Proof** | Clients | Alternates **Client words** (verbatim, `PUBLIC-PROOF-v2`) and **Project spotlight** (F30–F39, no client named). The same `client_key` not again within 30 days | Every 2 weeks |
 | 5 | **Grow with us** | Talent | **Inbox first:** real hires, events, campus drives, culture days (real photos). Otherwise conceptual posts on learning, stack and what the work is like. **No AI-generated "employees"** | Every 2 weeks |
@@ -240,7 +240,7 @@ Series give the feed a rhythm, give followers a reason to come back, and give th
 | Series | Pillar | Idea | Length |
 |---|---|---|---|
 | **Build Notes** | Build Notes | One real engineering decision per episode, from a case study or the stack (F05–F06, F30–F39): the problem, the choice, the trade-off | Open-ended |
-| **Outsourcing, Decoded** | How we work | One buyer fear per episode, answered with real facts: how payments work (F12), what if I don't know what I need, can I hire for one service (F15), changes after launch, time zones, code ownership, handover | ~12 episodes, then refreshed |
+| **Outsourcing, Decoded** | How we work | One buyer fear per episode, answered with real facts and useful advice: what if I don't know what I need, can I hire for one service (F15), changes after launch, time zones, code ownership, handover. Never pricing or payment terms | ~12 episodes, then refreshed |
 | **Wireframe → Production** | How we work | Their real processes, one step per episode: UI/UX six steps (F04), then the custom-software and DevOps steps | Finite (~12–18), can re-run yearly |
 | **Project Spotlight** | Proof | One case study per episode (F30–F39), no client named | 10 episodes, then refreshed as new case studies arrive |
 | **Grow at Verdant** | Grow with us | Skills, stack, intern advice, what the work is like | Open-ended |

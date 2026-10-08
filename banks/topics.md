@@ -11,6 +11,7 @@
 
 **Status:**
 - `ready`: usable
+- `excluded`: never used (reason given)
 - `needs-source`: a numbers topic whose primary source has not been read yet; not usable
 - `used`: add the post file
 
@@ -49,9 +50,9 @@
 - { id: E-FN-01, topic: "Scope your MVP around one job, not ten features", term: null, angle: "The smallest product that proves one thing", status: ready }
 - { id: E-FN-02, topic: "What to have ready before you brief a dev team", term: null, angle: "Users, the one job, must-haves, constraints, examples you like", status: ready }
 - { id: E-FN-03, topic: "Buy, build or integrate", term: null, angle: "Build only what makes you different", status: ready }
-- { id: E-FN-04, topic: "Fixed scope or a dedicated team", term: null, angle: "Which fits which stage; our take may cite F13", facts: [F13], status: ready }
+- { id: E-FN-04, topic: "Fixed scope or a dedicated team", term: null, angle: "Which fits which stage; our take may cite F13", facts: [F13], status: excluded, reason: "pricing-type topic; user 2026-10-08" }
 - { id: E-FN-05, topic: "Why 'small changes' after launch aren't small", term: null, angle: "Every change touches data, tests and users", status: ready }
-- { id: E-FN-06, topic: "How to read a development estimate", term: null, angle: "Ask what's included, what's assumed and what's excluded", status: ready }
+- { id: E-FN-06, topic: "How to read a development estimate", term: null, angle: "Ask what's included, what's assumed and what's excluded", status: excluded, reason: "pricing-type topic; user 2026-10-08" }
 - { id: E-FN-07, topic: "Who should own your code, domains and cloud accounts", term: null, angle: "An ownership checklist before you sign anything", status: ready }
 - { id: E-FN-08, topic: "Rebuild or refactor", term: null, angle: "Signs you need a rewrite, and signs you don't", status: ready }
 ```
@@ -76,9 +77,9 @@ Always timely; there is no evergreen bank. It draws from `banks/trends.md`.
 
 ### How we work: Outsourcing, Decoded / Wireframe to Production (`how-we-work`)
 ```yaml
-- { id: V-HWW-01, series: "Outsourcing, Decoded", topic: "How payments work: milestones you can see", facts: [F12], status: ready }
+- { id: V-HWW-01, series: "Outsourcing, Decoded", topic: "How payments work: milestones you can see", facts: [F12], status: excluded, reason: "pricing-type topic; user 2026-10-08" }
 - { id: V-HWW-02, series: "Outsourcing, Decoded", topic: "Can I hire you for just one service?", facts: [F15, F02], status: ready }
-- { id: V-HWW-03, series: "Outsourcing, Decoded", topic: "Four ways to work with an outsourced team", facts: [F13], status: ready }
+- { id: V-HWW-03, series: "Outsourcing, Decoded", topic: "Four ways to work with an outsourced team", facts: [F13], status: excluded, reason: "pricing-type topic; user 2026-10-08" }
 - { id: V-HWW-04, series: "Outsourcing, Decoded", topic: "Strategy to deployment under one roof", facts: [F14, F02], status: ready }
 - { id: V-HWW-05, series: "Outsourcing, Decoded", topic: "How to start: book a call or send a brief", facts: [F11], status: ready }
 - { id: V-HWW-06, series: "Wireframe → Production", topic: "UI/UX steps 1–2: research and personas", facts: [F04], status: ready }

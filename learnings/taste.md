@@ -21,4 +21,39 @@
 - The user's "minimal" rule could favour A or D.
 
 ## Results
-_Waiting._
+### Round L1 (light · P3), rated 2026-10-08
+Ratings come from the Taste Lab db; Claude viewed all 4 uploads. The user uploaded 1 output per direction. Nano Banana 2 rendered all 7 strings exactly in all 4, with the logo correct.
+
+| Dir | Score | User note | Tags | What the image actually showed |
+|---|---|---|---|---|
+| D Swiss type | **7** | "looks good but text needs improvement too flat also" | Modern, Premium, Clear to read | Off-white paper; slim royal-to-teal vertical bar at the left edge; huge 4-line headline with "the project" in a royal-to-sage gradient; accent bar; subline; thin navy timeline with 2 outline circles and a gradient-filled third; labels in regular weight (the prompt asked for bold); URL. Strong hierarchy, very plain. |
+| C Studio 3D | 4 | "serves no purpose font too basic" | — | Misty page and 2-line headline; the still life sits in an inset rounded card (not full-bleed): porcelain cylinder, porcelain with a lagoon top, a frosted teal glass cylinder, and tent cards with labels. Polished render, but the objects mean nothing. |
+| A Report | 2 | "Nothing useful font too basic" | Looks AI, Old-fashioned | The current VISUAL-SYSTEM-v1 look: aqua page, full-bleed lagoon band, white rail with ring, dot and glass puck, white labels. Reads as a stock SaaS infographic. |
+| B Luminous | 1 | "font too basic" | Looks AI, Too dull, Old-fashioned | A pale page washing into a mint/teal glow at the bottom right (reads greenish); three big frosted discs; white tags. Generic glassmorphism. |
+
+**Round note (user):** "font too basic use some attractive but visually good font". No favourite was tapped; D wins by score.
+
+**Prediction vs actual:**
+- **Predicted** B > C > A > D; **actual** D > C > A > B.
+- **Top pick:** wrong. The middle two were right, and the extremes were swapped.
+- **Agreement:** 0/1 on the top pick and 2/4 on positions.
+- **Why I was wrong:** I took "full creativity with colours and gradients" (2026-10-04) to mean soft gradient fields. In images, the user reads soft glows, pastel gradients and frosted glass as **AI-looking and old-fashioned**.
+
+**Candidate rules** (one round only; promote after a second round confirms):
+1. **Typography is the biggest lever.** "Font too basic" appeared in 3 image notes and the round note. A plain neo-grotesque (Inter style) everywhere reads as basic. Headlines need a typeface with character.
+2. **Type-led beats illustration-led.** Big confident type with strict hierarchy (D) wins on modern, premium and clear.
+3. **Visuals must mean something.** Decorative objects or diagrams that don't add meaning score low ("serves no purpose", "nothing useful").
+4. **No soft-glow gradients, no glassmorphism, no pastel haze.** These are the "AI look".
+5. **Flat is a weakness.** The winner was called "too flat", so the user wants depth, but depth with a purpose (not C's random objects).
+
+**Next:** round L2 tests rules 1 and 5 on D's layout: display font, editorial serif, dimensional type, bold colour block.
+
+## Round L2 (light · "What your dev brief is missing"): Claude's blind prediction, recorded 2026-10-08 before any images or ratings
+**Predicted ranking:**
+1. **C Embossed paper.** It answers both complaints at once: a characterful font and depth with a purpose (the depth is the print itself, not random objects).
+2. **A Display font.** It fixes "font too basic" but stays flat.
+3. **D Colour block.** Bold and modern, but more blue/teal mass, and the user disliked colour-led B in L1.
+4. **B Editorial serif.** Elegant, but may read as "old-fashioned", the user's own tag on L1's losers.
+
+**Risk:** the embossing may soften the text, or read as "mockup / AI".
+
