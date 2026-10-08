@@ -57,3 +57,16 @@ Ratings come from the Taste Lab db; Claude viewed all 4 uploads. The user upload
 
 **Risk:** the embossing may soften the text, or read as "mockup / AI".
 
+**Withdrawn, never generated (2026-10-08).** The user called the four L2 prompts "completely useless" and, in the same messages, set the main rule (70% Verdant, 30% other, other = carousels only) and the design bar ("a group of graphic designers on a high budget… visually attractive with some functionality, not useless"). Lesson for me: a taste round must use a post the feed will really run. L2 trained single posts on generic advice, which is now carousel-only, and its four versions only swapped the font or the depth instead of offering four real design ideas. The prediction above is void.
+
+## Round L3 (light · Verdant single, Project Spotlight F30): Claude's blind prediction, recorded 2026-10-08 before any images or ratings
+**What changed from L2:** a real Verdant single (four modules we built for a clinic, plus the stack), and four different agency-grade ideas in which the visual carries the information. Each uses a different characterful typeface.
+
+**Predicted ranking:**
+1. **B Interface.** The most literal "functionality" (it shows the software) and the most "high-budget launch" look. Risk: wordless UI may sprout fake text (variance).
+2. **A Module cards.** It is L1's 7/10 winner with both complaints fixed (a sharper display font; raised cards for depth). Risk: still reads as "a poster", not agency-grade.
+3. **C Patient file.** Premium and tactile, with a clear metaphor. Risk: the tabs' text may be small or garbled, and a folder may feel ordinary.
+4. **D System map.** It explains the system best, but isometric infographics often read as "looks AI / generic".
+
+**What I'll learn:** whether "functionality" means showing the product (B), structured information (A, D) or a physical metaphor (C), and which typeface family wins (Clash, Instrument Serif, Syne, Unbounded styles).
+

@@ -7,14 +7,15 @@
   1. **Writing practice** (now): headlines → captions (LinkedIn and Instagram) → carousel copy → alt text and hashtags. Codify the winners into `STYLE_GUIDE.md` §7. Files in `writing/`.
   2. **Visuals**: discuss and train. Templates and kit are in `brand/theme/` (7 templates × 4 moods). The prompts in `posts/2026-10-04-direction-test-built-to-scale.md` (v3, unsent) get rebuilt from the templates.
   3. **Revise the colour guide** from what the visuals teach (`brand/theme/colours.py` → `python3 brand/guidelines/build.py`).
-- **NOW (2026-10-07):**
-  - **Visual taste round L2 (light):** the user runs 4 prompts (fonts and depth on the checklist post) and rates them on the Taste Lab, https://claude.ai/artifact/Rbi98WmtVZB12QcBn7edrT. L1 is done: D won at 7/10 and SCHEMATIC is paused.
-  - **Persona writing loop:** running as a workflow; it will produce `writing/round-03-lane-packs.md` and `writing/persona-reviews.md`.
-  - **Earlier review page:** round 2, https://claude.ai/artifact/7jm544QZvVC5MXqQ1XiqAu.
-  - **Next session:** read the marks with ArtifactData (collection `marks`) and copy them into `writing/round-02-lane-packs.md` → Feedback. Then revise and run round 3.
-  - **Done criterion:** 2 rounds in a row at ≥ 80% keep, with no truth or voice failures. Then the rules move into §7.
+- **NOW (2026-10-08):**
+  - **Main rule (user):** 70% Verdant / 30% external. External is carousels only; Verdant is 3 singles + 2 carousels a week (`STYLE_GUIDE.md` §3 `CONTENT-MIX-v2`).
+  - **Visual taste round L3 (light, Verdant single):** the user runs 4 prompts (Project Spotlight F30) and rates them on the Taste Lab, https://claude.ai/artifact/Rbi98WmtVZB12QcBn7edrT (tab L3). L1 is done (D won at 7/10). L2 was withdrawn.
+  - **Design bar (user):** "a group of graphic designers on a high budget… visually attractive with some functionality, not useless."
+  - **Persona writing loop:** running as a workflow. When it lands, integrate it into `writing/round-03-lane-packs.md` and recast the external packs as carousel covers.
+  - **Next after L3:** dark round D1 from the L3 winner, then VISUAL-SYSTEM-v2 for Verdant singles, then carousels.
+  - **Done criterion (writing):** 2 rounds in a row at ≥ 80% keep, with no truth or voice failures.
 - **Content system (user, 2026-10-06):**
-  - **Mix:** 30% Verdant / 70% Tech, Explained (5 lanes as named series), with one third carousels on a 2-2-3 cycle (`STYLE_GUIDE.md` §3 `CONTENT-MIX-v1`, `brand/strategy.md` v2).
+  - **Mix:** superseded on 2026-10-08 by the main rule above (`CONTENT-MIX-v2`, `brand/strategy.md` v3).
   - **Research:** every post is researched **the day before** (D−1).
   - **Routine "Weekly trend drop":** `trig_01Wrzh1wzUKNL3SFFVpNSNuf`, every Saturday at 09:59 PKT. It writes to `banks/trends.md`; daily runs start at launch.
 - **Blocked:** the cloud network only reaches anthropic.com among the primary sources. The user said they'll allow the source domains (title bar → cloud environment → Edit → Network access → Custom). Until then, research items stay `pending-check`.
@@ -39,6 +40,38 @@
 ---
 
 ## Log
+
+### 2026-10-08 · The main rule: 70% Verdant, external = carousels only; L2 withdrawn; round L3 (Verdant single)
+**User:**
+- "one main rule for overall posts 70% verdant soft 30% other the 30% other should be completely for carousel and out of the 70% 60% posts 40% carousel… the prompts you gave me are all completely useless"
+- "the visuals should look like a group of graphic designers on a high budget designed a single post and it should be visually attractive with some functionality, not useless"
+
+**Decided (user):** the mix flips back to Verdant-first. Every week now has 5 Verdant posts (3 singles + 2 carousels) and 2 external carousels, so it's 3 singles and 4 carousels overall. A single post is always Verdant. Written into `STYLE_GUIDE.md` §3 `CONTENT-MIX-v2`, §4 lane table, §9, §11; `brand/strategy.md` v3; `tools/sim_calendar.py` (8 weeks: 71.4% Verdant, 60% of Verdant singles, all external carousels: ALL OK).
+
+**Decided · CD (days):**
+- **Mon:** This Week in Tech (external carousel)
+- **Tue:** How we work (wk A) or Build Notes (wk B), carousel
+- **Wed:** Proof single: Project Spotlight (wk A) or Client words (wk B)
+- **Thu:** external carousel, rotating AI, Explained → Under the Hood → Founder Notes → By the Numbers
+- **Fri:** the carousel pillar Tuesday didn't run
+- **Sat:** Grow at Verdant single
+- **Sun:** new **Verdant Toolkit** single (one service or stack area; F02–F06, F14, F15)
+- **Why:** carousels go on weekdays for LinkedIn buyers; singles spread to mid-week and the weekend for Instagram and talent.
+- **Overrides:** inbox items and moments now take Verdant single slots, never external ones. The direct-CTA cap rises to 3 a week.
+
+**Why L2 was useless (my reading):**
+1. It trained single posts on a generic Founder Notes checklist. That's "other" content, which is now carousel-only, and it isn't about Verdant.
+2. The four versions only swapped the font or the depth, not four real design ideas, and none had a visual that does a job.
+
+L2 is withdrawn (never generated) and removed from the Taste Lab.
+
+**Round L3** (`posts/2026-10-08-taste-light-l3-spotlight.md`, all 4 lint PASS, 8 strings / 27 words):
+- **The post:** a real Verdant single, Project Spotlight F30, "Four modules a clinic can't get wrong", with the four modules and the stack.
+- **Four agency-grade ideas** where the visual carries the information: A Module cards (Swiss, raised cards, Clash style), B Interface (a floating clinic app in perspective, Instrument Serif), C Patient file (a top-down photo with four coloured index tabs, Syne), D System map (isometric module blocks on a stack slab, Unbounded).
+- **Blind prediction:** B > A > C > D (`learnings/taste.md`).
+- **Taste Lab** republished (v4) with tabs L1 and L3. Checked at 390 and 1280 px: no script errors and no horizontal scroll.
+
+**Open risk (told to the user):** five Verdant posts a week use up the confirmed Verdant facts in about 10–12 weeks. From launch the team must feed `inbox/` (projects, photos, reviews, process notes). The persona writing loop (round 3) was built on the old lane packs. Its writing lessons still apply, but its external singles become carousel covers.
 
 ### 2026-10-08 · Taste round L1 results → SCHEMATIC paused; no pricing content; round L2
 - **L1 scores (user, Taste Lab):** D Swiss type 7, C Studio 3D 4, A Report 2 (the current VISUAL-SYSTEM-v1), B Luminous 1.

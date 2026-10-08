@@ -1,6 +1,6 @@
 # Trend bank (timely items)
 
-**What it's for:** timely facts for Tech, Explained. The Monday roundup ("This Week in Tech") draws from it, and other lanes use it when a trend item fits (`STYLE_GUIDE.md` §3 `CONTENT-MIX-v1` → `timely`).
+**What it's for:** timely facts for Tech, Explained. The Monday roundup ("This Week in Tech") draws from it, and the Thursday carousel uses it when a trend item fits its lane (`STYLE_GUIDE.md` §3 `CONTENT-MIX-v2` → `timely`).
 
 **Rules:** `STYLE_GUIDE.md` §2.3 `EXTERNAL-SOURCES-v1`.
 - **Primary sources only.** An item is `checked` only after its primary page was opened and the claim found on it.
@@ -24,7 +24,7 @@ That's why this drop is lopsided:
 - **checked:** only the items whose primary page could be read (both Anthropic announcements)
 - **pending-check:** everything else
 
-**Balance:** a real roundup should not lean on one company. `CONTENT-MIX-v1` caps one company as the main subject at 2 posts a week. The Saturday run should rebalance once the user allows the source domains.
+**Balance:** a real roundup should not lean on one company. `CONTENT-MIX-v2` → `no_repeat.one_company_per_week` caps one outside company at 2 items across the week's two external carousels. The Saturday run should rebalance once the user allows the source domains.
 
 ```yaml
 - id: T-2026-10-06-01

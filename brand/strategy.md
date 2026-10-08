@@ -1,10 +1,18 @@
 # Verdant Soft: social strategy (handler's view)
 
-> **Status: v2, 2026-10-06.** The user set the content mix, lanes, calendar, sources, voice, captions and carousel rules in a planning session (`learnings/log.md`, 2026-10-06). Those decisions are binding and are written into `STYLE_GUIDE.md` §2.3, §3, §4, §7, §9 and §11. Calls the user delegated to me are tagged `[decided · CD]`. v1 (2026-10-04) was revised after the audit (`brand/research.md` → "Audit results"; raw evidence in `brand/audit-raw.md`).
+> **Status: v3, 2026-10-08.** The user replaced the mix with one main rule (see "What changed from v2"). v2, 2026-10-06: The user set the content mix, lanes, calendar, sources, voice, captions and carousel rules in a planning session (`learnings/log.md`, 2026-10-06). Those decisions are binding and are written into `STYLE_GUIDE.md` §2.3, §3, §4, §7, §9 and §11. Calls the user delegated to me are tagged `[decided · CD]`. v1 (2026-10-04) was revised after the audit (`brand/research.md` → "Audit results"; raw evidence in `brand/audit-raw.md`).
 
 It's written the way a social media handler thinks: **past** (what the brand has already said and shown), **present** (where it stands and what's holding it back), **future** (what to post, why, and how it grows).
 
-### What changed from v1 (user, 2026-10-06)
+### What changed from v2 (user, 2026-10-08): the main rule
+1. **70% Verdant Soft, 30% other.** The user's words (spelling tidied): "one main rule for overall posts: 70% Verdant Soft, 30% other; the 30% other should be completely carousels; out of the 70%, 60% posts and 40% carousels." This reverses the 30/70 split of v2.
+2. **External content is carousels only.** Tech, Explained keeps its five series, but it now runs twice a week, and always as a carousel: This Week in Tech every Monday, plus one Thursday carousel that rotates AI, Explained → Under the Hood → Founder Notes → By the Numbers.
+3. **A single post is always about Verdant.** Each week has 3 Verdant singles (Wed proof, Sat Grow at Verdant, Sun Verdant Toolkit) and 2 Verdant carousels (Tue and Fri, How we work and Build Notes, swapping days each week).
+4. **Overall: 3 singles and 4 carousels a week** (43% / 57%).
+5. **Design bar** (user, same day): "the visuals should look like a group of graphic designers on a high budget designed a single post… visually attractive with some functionality, not useless." Every single post shows something concrete about Verdant's work, and its visual carries information.
+6. **New risk: Verdant material.** Five Verdant posts a week use up the confirmed facts (10 case studies, 6 process steps, services, stack, 6 quotable reviews) in about 10–12 weeks. From launch, the team needs to feed the inbox (projects, photos, reviews, process notes). Evergreen Verdant episodes may re-run after 90 days with a new angle.
+
+### What changed from v1 (user, 2026-10-06; mix and formats superseded by v3)
 1. **Content mix flipped on purpose: 30% Verdant Soft, 70% external.** External means industry facts, trends, "how AI works" explainers, software concepts and startup advice, under a new pillar, **Tech, Explained** (§6).
    - **Why it's a risk:** v1 said insight must come from our own projects, because generic insight posts got the least engagement (4–11 reactions; §1).
    - **Why we're doing it anyway:** the user chose reach and relevance.
@@ -139,7 +147,7 @@ It's written the way a social media handler thinks: **past** (what the brand has
 | **Network** | Partners, peers, past clients, referrers | "Verdant Soft is established, active and good at what it does." | Consistency, quality, milestones | Both |
 
 **Who each kind of post is for (v2):**
-- **Tech, Explained** (70%): written for **buyers**, the founders and decision-makers. Every explainer should leave a founder better equipped to make a software decision. That's how external content still sells Verdant.
+- **Tech, Explained** (30%, carousels only): written for **buyers**, the founders and decision-makers. Every explainer should leave a founder better equipped to make a software decision. That's how external content still sells Verdant.
 - **Grow with us:** for **talent**.
 - Everything else: for buyers first, network second.
 
@@ -194,33 +202,32 @@ It's written the way a social media handler thinks: **past** (what the brand has
 (Exact caption templates are decided in `STYLE_GUIDE.md` §7 after testing.)
 
 ## 6. Content pillars
-**Mix (user, 2026-10-06):**
-- **30% Verdant Soft, 70% Tech, Explained,** counted per month and flexible. The Verdant share stays between **25% and 40%** in any calendar month.
-- **One third carousels** (7 of every 21 posts); the rest are single posts.
+**Mix (user, 2026-10-08, the main rule; replaces the v2 mix):**
+- **70% Verdant Soft, 30% Tech, Explained.** Every week: 5 Verdant posts and 2 external posts.
+- **External is carousels only.** A single post is always Verdant.
+- **Verdant is 60% singles, 40% carousels:** 3 singles and 2 carousels a week.
 
 | # | Pillar | Goal | What it covers | Cadence |
 |---|---|---|---|---|
-| 1 | **Tech, Explained** (external) | Reach, plus trust with buyers | Five lanes, each a named series: Trends & news, AI & LLMs, Software concepts, Facts & numbers, Startup & product advice. Primary sources only. Ends with a Verdant take | 5 a week (~70%) |
-| 2 | **How we work** | Clients | Takes the risk out of outsourcing with useful process knowledge: the six-step processes (F04), single-service requests (F15), communication, handover, code ownership. **No pricing-type topics** (payments, rates, estimates, engagement terms; user, 2026-10-08) | Every 2 weeks |
-| 3 | **Build Notes** (was Engineering insight) | Brand, CTO trust | One real engineering decision **from our own work**: a case study (F30–F39) or the stack (F05–F06). No generic listicles; generic content now lives in Tech, Explained | Every 2 weeks |
-| 4 | **Proof** | Clients | Alternates **Client words** (verbatim, `PUBLIC-PROOF-v2`) and **Project spotlight** (F30–F39, no client named). The same `client_key` not again within 30 days | Every 2 weeks |
-| 5 | **Grow with us** | Talent | **Inbox first:** real hires, events, campus drives, culture days (real photos). Otherwise conceptual posts on learning, stack and what the work is like. **No AI-generated "employees"** | Every 2 weeks |
+| 1 | **Tech, Explained** (external) | Reach, plus trust with buyers | Five lanes, each a named series: Trends & news, AI & LLMs, Software concepts, Facts & numbers, Startup & product advice. Primary sources only. Ends with a Verdant take. **Carousels only** | 2 a week (~30%): Mon roundup + Thu rotating lane |
+| 2 | **How we work** | Clients | Takes the risk out of outsourcing with useful process knowledge: the six-step processes (F04), single-service requests (F15), communication, handover, code ownership. **No pricing-type topics** (payments, rates, estimates, engagement terms; user, 2026-10-08) | A carousel every week (Tue or Fri) + the Sunday **Verdant Toolkit** single |
+| 3 | **Build Notes** (was Engineering insight) | Brand, CTO trust | One real engineering decision **from our own work**: a case study (F30–F39) or the stack (F05–F06). No generic listicles; generic content now lives in Tech, Explained | A carousel every week (Tue or Fri) |
+| 4 | **Proof** | Clients | Alternates **Client words** (verbatim, `PUBLIC-PROOF-v2`) and **Project spotlight** (F30–F39, no client named). The same `client_key` not again within 30 days | A single every Wednesday (Spotlight wk A, Client words wk B) |
+| 5 | **Grow with us** | Talent | **Inbox first:** real hires, events, campus drives, culture days (real photos). Otherwise conceptual posts on learning, stack and what the work is like. **No AI-generated "employees"** | A single every Saturday |
 | — | **Brand world / Moments** | Brand | Calendar moments (§9) and company milestones only. No weekly slot | As the calendar says |
 
 **Format:** one post per day, cross-posted. The same visual goes to both platforms, with **separate captions** per platform.
 
-**Weekly rhythm:**
+**Weekly rhythm (v3, 2026-10-08):**
 
 | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
 |---|---|---|---|---|---|---|
-| **This Week in Tech** (roundup carousel) | wk A: **How we work** · wk B: **Build Notes** | **AI, Explained** | wk A: **Proof** · wk B: **Grow with us** | **Founder Notes** | **By the Numbers** | **Under the Hood** |
+| **This Week in Tech** · external · carousel | wk A **How we work** · wk B **Build Notes** · carousel | **Proof:** wk A Project Spotlight · wk B Client words · single | **Tech, Explained** rotating lane · external · carousel | wk A **Build Notes** · wk B **How we work** · carousel | **Grow at Verdant** · single | **Verdant Toolkit** · single |
 
 - **Week A and week B:** count whole weeks from an anchor Monday (the launch Monday; practice uses 2026-10-12). Even-numbered weeks are A, so the alternation survives the new year.
-- **Carousel cycle:** the same week count mod 3.
-  - Cycle week 1: Mon + Wed
-  - Cycle week 2: Mon + Tue
-  - Cycle week 3: Mon + Fri + Sun
-- **Timeliness:** half the external posts ride a current trend. Monday always does. In a typical week, 1–2 of Wed, Fri, Sat and Sun do too, but only when a checked trend item fits the lane. Otherwise the lane runs an evergreen topic.
+- **Thursday rotation:** week count mod 4 → AI, Explained · Under the Hood · Founder Notes · By the Numbers.
+- **Why these days `[decided · CD]`:** carousels (the heaviest, most-saved format, and LinkedIn's best reach as PDF documents) sit on weekdays, when buyers are on LinkedIn. The three Verdant singles are spread mid-week and over the weekend, when Instagram and the talent audience are most active.
+- **Timeliness:** Monday always rides the week's trend items. Thursday does when a checked trend item fits its lane; otherwise it runs an evergreen topic.
 
 ## 7. Recurring series (memory and continuity)
 Series give the feed a rhythm, give followers a reason to come back, and give the automation a clear "what's next". Episodes are numbered and tracked in `posts/index.md`. Every post carries its series name as a small pill on the image.
@@ -230,10 +237,10 @@ Series give the feed a rhythm, give followers a reason to come back, and give th
 | Series | Day | Lane | Idea | Format |
 |---|---|---|---|---|
 | **This Week in Tech** | Mon | Trends & news | 3–5 checked items from the week's trend drop, each with its source, then our take on the one that matters most to founders | Carousel, every week |
-| **AI, Explained** | Wed | AI & LLMs | How it actually works: next-word prediction, context windows, RAG, agents, evals, hallucination, cost per call. One term defined per post | Carousel in cycle week 1, otherwise single |
-| **Founder Notes** | Fri | Startup & product advice | Decisions founders face: scoping an MVP, what to build first, working with a dev team, buy vs build | Carousel in cycle week 3, otherwise single |
-| **By the Numbers** | Sat | Facts & numbers | One sourced number, what it means, and what a founder should do about it. The source sits on the image | Single |
-| **Under the Hood** | Sun | Software concepts | One concept a founder keeps hearing (API, caching, multi-tenancy, CI/CD, tech debt), explained plainly | Carousel in cycle week 3, otherwise single |
+| **AI, Explained** | Thu (rotation) | AI & LLMs | How it actually works: next-word prediction, context windows, RAG, agents, evals, hallucination, cost per call. One term defined per post | Carousel |
+| **Founder Notes** | Thu (rotation) | Startup & product advice | Decisions founders face: scoping an MVP, what to build first, working with a dev team, buy vs build | Carousel |
+| **By the Numbers** | Thu (rotation) | Facts & numbers | One sourced number on the cover, then what it means and what a founder should do about it. The source sits on the slides | Carousel |
+| **Under the Hood** | Thu (rotation) | Software concepts | One concept a founder keeps hearing (API, caching, multi-tenancy, CI/CD, tech debt), explained plainly | Carousel |
 
 **Verdant Soft:**
 
@@ -243,26 +250,27 @@ Series give the feed a rhythm, give followers a reason to come back, and give th
 | **Outsourcing, Decoded** | How we work | One buyer fear per episode, answered with real facts and useful advice: what if I don't know what I need, can I hire for one service (F15), changes after launch, time zones, code ownership, handover. Never pricing or payment terms | ~12 episodes, then refreshed |
 | **Wireframe → Production** | How we work | Their real processes, one step per episode: UI/UX six steps (F04), then the custom-software and DevOps steps | Finite (~12–18), can re-run yearly |
 | **Project Spotlight** | Proof | One case study per episode (F30–F39), no client named | 10 episodes, then refreshed as new case studies arrive |
-| **Grow at Verdant** | Grow with us | Skills, stack, intern advice, what the work is like | Open-ended |
+| **Grow at Verdant** | Grow with us | Skills, stack, intern advice, what the work is like (single, Sat) | Open-ended |
+| **Verdant Toolkit** (new, v3) | How we work | One service or stack area per episode: what it covers and what we use (F02–F06, F14, F15). Single, Sun | ~12 episodes, then refreshed |
 
-How we work alternates its two series by episode. A How we work post that lands on a carousel day uses Wireframe → Production, because process steps suit slides.
+How we work's two carousel series alternate by episode. Project Spotlight is a single (Wed, wk A); its deeper story can return as a Build Notes carousel, but not within 30 days.
 
 ## 8. Inputs: how the handler decides what to post today
 Priority order. The first one that applies wins.
 1. **News inbox:** real things the team supplies, such as a launch, a new hire, a campus drive, a culture day (Mango Day), an expo, a new review, or a milestone.
    - **Optional.** Nothing breaks if it's empty. The format is in `inbox/README.md`.
    - **Real photos** are allowed only from here.
-   - **Inbox items take the day,** replacing **that day's external post** (never a Verdant slot). Max one per day; the rest queue.
-2. **Calendar moment** for today (§9). It also replaces that day's external post.
+   - **Inbox items take the next Verdant single slot of their kind** (v3): people and culture → Saturday; projects, launches and reviews → Wednesday; anything else → Sunday. Max one per day; the rest queue. External slots are never replaced.
+2. **Calendar moment** (§9). It takes that week's Sunday single.
 3. **Timely trend item** that fits today's lane (`banks/trends.md`, checked and unexpired).
 4. **Series episode** due for today's slot.
 5. **Evergreen** topic from the lane's topic bank (`banks/topics.md`), respecting no-repeat windows.
 
 **Bumped posts:**
-- An evergreen post moves to the next free external slot.
+- A bumped episode moves to the next free slot of its pillar and format.
 - A trend post expires, unless the Monday roundup can still use it.
 
-**Verdant share:** the band is 25–40% a month. When inbox items would push it over 40%, they queue.
+**The weekly counts never change:** 5 Verdant (3 singles, 2 carousels) and 2 external carousels. Overrides move posts inside those counts.
 
 **Research that feeds the banks:**
 - **Now:** a scheduled run every Saturday (09:59 PKT) adds 3–5 checked trend items from primary sources. Trend items expire after 14 days.
@@ -274,7 +282,7 @@ Priority order. The first one that applies wins.
 Hiring posts use **only roles supplied through the news inbox.** The careers page's job list was broken during the audit, and the pipeline never invents roles.
 
 ## 9. Calendar (draft; approve which ones get posts)
-Moments replace that day's external post (§8). This is the only home of Brand world now.
+Moments take that week's Sunday single (§8, v3). This is the only home of Brand world now.
 
 | Date | Moment | Audience | Treatment |
 |---|---|---|---|
@@ -320,11 +328,11 @@ The buyers are abroad, so optimise for **their** mornings, not Lahore's:
 ## 12. Roadmap
 | Version | Adds |
 |---|---|
-| **v1** (this guide) | 4:5 posts, cross-posted, separate captions, daily. **One third carousels** (LinkedIn as a PDF document, Instagram as an image carousel) |
+| **v1** (this guide) | 4:5 posts, cross-posted, separate captions, daily. **4 carousels and 3 singles a week** (LinkedIn as a PDF document, Instagram as an image carousel) |
 | v2 | Platform-specific posts where they earn it |
 | v3 | Short video and Reels via Veo in Flow |
 | **At launch** | **Daily research run** (trend items + breaking news) alongside the Saturday run. **Employee repost kit:** company-page reach is low (a typical post gets about 17 reactions on 10K followers), and staff reshares with a personal line multiply it |
-| Add-on | **Metrics loop after launch:** weekly metrics nudge **lane** weights within bounds. Each lane stays at 5–20% of the month; the Verdant share stays at 25–40%; weights move by at most ±5 percentage points a month. Brand fundamentals never change automatically. A monthly summary goes to a human. **8-week review of the 30/70 split** `[decided · CD]` |
+| Add-on | **Metrics loop after launch:** weekly metrics nudge **lane** weights within bounds. Lane weights move only inside the Thursday rotation; the user's main rule (70/30, external carousels only, Verdant 60/40) never changes automatically. Brand fundamentals never change automatically. A monthly summary goes to a human |
 
 ## 13. KPIs (after launch only; nothing is published during the build)
 **Baseline from the audit (2026-10-04):**
@@ -335,7 +343,7 @@ The buyers are abroad, so optimise for **their** mornings, not Lahore's:
 - **LinkedIn:** follower growth, engagement rate, page and website visits, inbound messages and leads
 - **Instagram:** saves, shares, reach, follows
 - **Carousels:** completion (last-slide views where available), saves, document opens on LinkedIn
-- **The 30/70 check (8 weeks):** for Tech, Explained vs Verdant posts, compare reach, followers gained, profile and website visits, and inbound
+- **The Verdant vs external check (8 weeks):** compare reach, followers gained, profile and website visits, and inbound for Verdant posts vs Tech, Explained carousels. It informs topics and the Thursday rotation only; the 70/30 rule is the user's and doesn't change automatically.
 - **Talent:** applications mentioning social, campus-drive turnout
 
 ## 14. Open questions for the user

@@ -1,6 +1,8 @@
 # Topic bank (evergreen)
 
-**What it's for:** evergreen topics for every lane. The pipeline uses one when no inbox item, calendar moment, timely trend item or due series episode claims the slot (`STYLE_GUIDE.md` §3 `CONTENT-MIX-v1` → `priority`).
+**What it's for:** evergreen topics for every lane. The pipeline uses one when no inbox item, calendar moment, timely trend item or due series episode claims the slot (`STYLE_GUIDE.md` §3 `CONTENT-MIX-v2` → `priority`).
+
+**Formats (user's main rule, 2026-10-08):** every external topic (trends, ai, concepts, startup, numbers) runs as a **carousel**, never a single. Single posts are Verdant only: Project Spotlight and Client words (Wed), Grow at Verdant (Sat), Verdant Toolkit (Sun). Verdant Toolkit topics: one service or stack area each, from F02–F06, F14 and F15.
 
 **Rules:**
 - **No-repeat:** a lane topic is not reused within 90 days (`no_repeat`).

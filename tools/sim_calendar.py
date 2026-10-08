@@ -1,37 +1,40 @@
-"""Simulate 6 weeks of STYLE_GUIDE.md CONTENT-MIX-v1 and assert the mix, carousel cycle and CTA caps. Run from the repo root."""
+"""Simulate 8 weeks of STYLE_GUIDE.md CONTENT-MIX-v2 and assert the user's main rule (70% Verdant, 30% external; external = carousels only; Verdant = 60% singles, 40% carousels), the Thursday lane rotation and the CTA cap. Run from the repo root."""
 import re,yaml,datetime as dt
 s=open('STYLE_GUIDE.md').read()
-m=re.search(r'<!-- id: CONTENT-MIX-v1 -->\n```yaml\n(.*?)```', s, re.S)
+m=re.search(r'<!-- id: CONTENT-MIX-v2 -->\n```yaml\n(.*?)```', s, re.S)
 cfg=yaml.safe_load(m.group(1))
 cal=cfg['calendar']; anchor=dt.date.fromisoformat(cal['anchor_monday'])
 days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
-verdant=set(cfg['verdant_pillars'])
 direct=set(cfg['ctas']['direct']['allowed_on'])
-tot=ver=car=0; pill_dates={}
-for n in range(6):
-    wtype='A' if n%2==0 else 'B'; cyc=n%3+1
-    wk_car=0; wk_direct=0
+mix=cfg['mix']
+tot=0; count={('verdant','single'):0,('verdant','carousel'):0,('external','single'):0,('external','carousel'):0}
+thu_seen=[]
+for n in range(8):
+    wtype='A' if n%2==0 else 'B'
+    wk={k:0 for k in count}; wk_direct=0; wk_pillars=[]
     row=[]
     for i,d in enumerate(days):
-        date=anchor+dt.timedelta(days=7*n+i)
         spec=cal['days'][d]
-        slot=spec.get('lane') or spec[wtype]
-        is_car = d in cal['carousel_days'][cyc]
-        fmt_rule=spec['format']
-        # consistency check between per-day format text and carousel_days
-        if fmt_rule=='carousel': assert is_car
-        elif fmt_rule=='single': assert not is_car,(d,cyc)
-        else:
-            assert (f'cycle week {cyc}' in fmt_rule)==is_car,(d,cyc,fmt_rule)
-        tot+=1; car+=is_car; wk_car+=is_car
-        if slot in verdant: ver+=1; pill_dates.setdefault(slot,[]).append(date)
+        side=spec['side']; fmt=spec['format']
+        if d=='Thu': slot=cal['thu_lanes'][n%4]; thu_seen.append(slot)
+        else: slot=spec.get('lane') or spec.get('pillar') or spec[wtype]
+        if side=='external': assert fmt=='carousel',(d,fmt)          # hard rule 1
+        if fmt=='single': assert side=='verdant',(d,side)
+        if side=='verdant': assert slot in cfg['verdant_pillars'],(d,slot); wk_pillars.append((slot,fmt))
+        else: assert slot in cfg['lanes'],(d,slot)
         if slot in direct: wk_direct+=1
-        row.append(f"{d}:{slot}{'*' if is_car else ''}")
-    assert wk_direct<=cfg['ctas']['direct']['max_per_week']
-    assert wk_car==[2,2,3][n%3]
-    print(f"wk{n} {wtype} c{cyc} | "+'  '.join(row))
-print('verdant share',ver,'/',tot,'=',round(ver/tot,3)); print('carousels',car,'/',tot)
-assert ver*7==tot*2 and car*3==tot
-for p,ds in pill_dates.items():
-    gaps={(b-a).days for a,b in zip(ds,ds[1:])}; print(p,'gaps',gaps); assert gaps=={14}
+        wk[(side,fmt)]+=1; count[(side,fmt)]+=1; tot+=1
+        row.append(f"{d}:{slot}{'*' if fmt=='carousel' else ''}")
+    v,e=mix['verdant'],mix['external']
+    assert wk[('verdant','single')]==v['singles'] and wk[('verdant','carousel')]==v['carousels'],wk
+    assert wk[('external','carousel')]==e['carousels'] and wk[('external','single')]==0,wk
+    assert wk_direct<=cfg['ctas']['direct']['max_per_week'],wk_direct
+    # one How we work carousel and one Build Notes carousel every week
+    assert sorted(p for p,f in wk_pillars if f=='carousel')==['build-notes','how-we-work'],wk_pillars
+    print(f"wk{n} {wtype} | "+'  '.join(row))
+ver=count[('verdant','single')]+count[('verdant','carousel')]
+print('verdant',ver,'/',tot,'=',round(ver/tot,3),'| verdant singles',count[('verdant','single')],'/',ver,'=',round(count[('verdant','single')]/ver,3))
+assert abs(ver/tot-mix['verdant']['share'])<0.02
+assert abs(count[('verdant','single')]/ver-0.60)<0.001
+assert set(thu_seen)==set(cal['thu_lanes'])
 print('ALL OK')

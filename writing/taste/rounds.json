@@ -33,35 +33,35 @@
   ]
  },
  {
-  "id": "L2",
-  "title": "Light · L2 fonts and depth",
+  "id": "L3",
+  "title": "Light · L3 Verdant single",
   "theme": "light",
-  "post_file": "posts/2026-10-08-taste-light-l2-brief.md",
+  "post_file": "posts/2026-10-08-taste-light-l3-spotlight.md",
   "ref_file": "ref-pack-v2-light.png",
   "variants": [
    {
     "key": "A",
-    "name": "Display font",
-    "look": "L1's winner D, with a characterful wide geometric display headline (Syne ExtraBold style), a refined sans subline and monospace checklist.",
-    "tests": "Font only: does a headline face with character fix \"font too basic\"?"
+    "name": "Module cards",
+    "look": "L1's winning Swiss poster, upgraded: a sharp display grotesk (Clash Display style) and a 2x2 grid of slightly raised module cards with pictograms; the Allergies card in the brand gradient.",
+    "tests": "Does the L1 winner, fixed for \"font too basic\" and \"too flat\", reach agency level?"
    },
    {
     "key": "B",
-    "name": "Editorial serif",
-    "look": "The same layout with a high-contrast modern serif headline (Instrument Serif style) and an italic highlight.",
-    "tests": "Font only: an elegant magazine serif instead of a display sans."
+    "name": "Interface",
+    "look": "A premium software-launch visual: a believable light-mode clinic app floating in perspective, the four modules as its sidebar; an editorial serif headline (Instrument Serif style).",
+    "tests": "Showing the software itself as the functional visual."
    },
    {
     "key": "C",
-    "name": "Embossed paper",
-    "look": "A with real depth: the headline blind-embossed into cotton paper, paper-cut checkboxes and soft daylight.",
-    "tests": "Depth with a purpose: does tactile print fix \"too flat\"?"
+    "name": "Patient file",
+    "look": "An art-directed top-down photo: a white patient file with four coloured index tabs, one per module; the headline printed on the cover (Syne style).",
+    "tests": "A real, tactile object as the metaphor, with depth from real light."
    },
    {
     "key": "D",
-    "name": "Colour block",
-    "look": "A with one bold, flat deep-teal block holding the headline in white, and the highlight words in a white box.",
-    "tests": "Bold flat colour versus paper only (no soft glow)."
+    "name": "System map",
+    "look": "An isometric 3D diagram: four coloured module blocks with pictograms on a base slab that carries the stack; a wide rounded display face (Unbounded style).",
+    "tests": "An infographic that explains the system at a glance."
    }
   ]
  }

@@ -19,7 +19,7 @@
    - Record the results in the post file's **Research** section (`posts/_template.md`).
    - Decide: go / update / swap to evergreen / hold. A post with no D−1 research is not published.
 1. **Read memory:** the post history (`posts/index.md` schema, §11), the news inbox (`inbox/`), the source banks (`banks/`), and today's calendar moments
-2. **Decide today's post** using `CONTENT-MIX-v1` (§3): today's slot, then the priority inbox > calendar > timely trend item > series episode > evergreen, while respecting the Verdant band, caps and no-repeat windows (§3, §9, §11)
+2. **Decide today's post** using `CONTENT-MIX-v2` (§3): today's slot (its side, format and pillar or lane), then the priority inbox > calendar > timely trend item > series episode > evergreen, while keeping the weekly counts (5 Verdant: 3 singles + 2 carousels; 2 external carousels), caps and no-repeat windows (§3, §9, §11)
 3. Pick the topic and its facts (Verdant facts only from §2 `FACTS` and `PUBLIC-PROOF`; external facts only from checked, unexpired bank items under §2.3 `EXTERNAL-SOURCES-v1`)
 4. Fill the pillar's template (§4, §6)
 5. Generate N images (§6 settings)
@@ -291,7 +291,7 @@ User decision: clients and testimonials that are **publicly available** may be u
 ```
 
 ### 2.3 External sources (Tech, Explained) `[decided]` (user, 2026-10-06)
-70% of posts are about the wider tech world, so the pipeline needs a second fact bank with its own rules. External facts come **only** from checked, unexpired items in `banks/trends.md` (timely) or `banks/topics.md` (evergreen). An item is `checked` only once its primary source page was opened and the claim was found on it. Items tagged `[decided · CD]` are calls the user delegated to the creative director.
+30% of posts (all of them carousels) are about the wider tech world, so the pipeline needs a second fact bank with its own rules. External facts come **only** from checked, unexpired items in `banks/trends.md` (timely) or `banks/topics.md` (evergreen). An item is `checked` only once its primary source page was opened and the claim was found on it. Items tagged `[decided · CD]` are calls the user delegated to the creative director.
 
 <!-- id: EXTERNAL-SOURCES-v1 -->
 ```yaml
@@ -347,61 +347,67 @@ item_schema:                          # trend items; evergreen numbers use the s
 ```
 
 ## 3. Content strategy: pillars, rotation, series, inputs, calendar
-`[decided]` (user, 2026-10-06). The reasoning is in `brand/strategy.md` v2 §6–9. Items tagged `[decided · CD]` were delegated to the creative director. The calendar of moments (strategy §9) still needs the user's pick of which moments get posts.
+`[decided]` (user, 2026-10-06; **mix and formats replaced by the user's main rule on 2026-10-08**: 70% Verdant Soft, 30% other; other = carousels only; Verdant = 60% singles, 40% carousels). The reasoning is in `brand/strategy.md` v3 §6–9. CONTENT-MIX-v1 (30% Verdant, 2-2-3 carousel cycle) is in git history. Items tagged `[decided · CD]` were delegated to the creative director. The calendar of moments (strategy §9) still needs the user's pick of which moments get posts.
 
-<!-- id: CONTENT-MIX-v1 -->
+<!-- id: CONTENT-MIX-v2 -->
 ```yaml
-mix:
-  verdant_share: { target: 0.30, band: [0.25, 0.40], period: calendar-month }
-  external_pillar: "Tech, Explained"             # 5 lanes, ~70%
-  carousels: "7 of every 21 posts, fixed 3-week cycle; the rest are single posts"
+mix:                                             # [decided] user, 2026-10-08: "one main rule"
+  rule: "70% Verdant Soft, 30% other. The other 30% is carousels only. Of the Verdant 70%: 60% single posts, 40% carousels."
+  verdant:  { share: 0.70, per_week: 5, singles: 3, carousels: 2 }
+  external: { share: 0.30, per_week: 2, singles: 0, carousels: 2, pillar: "Tech, Explained" }
+  overall_per_week: "7 posts = 3 singles (all Verdant) + 4 carousels (2 Verdant, 2 external)"
+  hard_rules:
+    - "an external post is always a carousel; a single post is always Verdant"
+    - "every week has exactly 5 Verdant posts (3 singles, 2 carousels) and 2 external carousels"
+    - "overrides may move a post inside the week but never change these counts"
 calendar:
   anchor_monday: "2026-10-12"                    # practice anchor; reset to the launch Monday
   week_index: "n = floor((date - anchor_monday) / 7 days)"
   week_type: "A if n is even, else B"
-  cycle_week: "(n mod 3) + 1"
   days:
-    Mon: { lane: trends,   series: "This Week in Tech", format: carousel, timely: always }
-    Tue: { A: how-we-work, B: build-notes,  format: "carousel in cycle week 2, else single" }
-    Wed: { lane: ai,       series: "AI, Explained",     format: "carousel in cycle week 1, else single" }
-    Thu: { A: proof,       B: grow-with-us, format: single }
-    Fri: { lane: startup,  series: "Founder Notes",     format: "carousel in cycle week 3, else single" }
-    Sat: { lane: numbers,  series: "By the Numbers",    format: single }
-    Sun: { lane: concepts, series: "Under the Hood",    format: "carousel in cycle week 3, else single" }
-  carousel_days: { 1: [Mon, Wed], 2: [Mon, Tue], 3: [Mon, Fri, Sun] }
-lanes:
+    Mon: { side: external, format: carousel, lane: trends, series: "This Week in Tech", timely: always }
+    Tue: { side: verdant,  format: carousel, A: how-we-work, B: build-notes }
+    Wed: { side: verdant,  format: single,   pillar: proof, A: "Project Spotlight", B: "Client words" }
+    Thu: { side: external, format: carousel, lane: "by n mod 4: 0 ai, 1 concepts, 2 startup, 3 numbers" }
+    Fri: { side: verdant,  format: carousel, A: build-notes, B: how-we-work }   # the pillar Tuesday didn't run
+    Sat: { side: verdant,  format: single,   pillar: grow-with-us, series: "Grow at Verdant" }
+    Sun: { side: verdant,  format: single,   pillar: how-we-work, series: "Verdant Toolkit" }
+  thu_lanes: [ai, concepts, startup, numbers]
+lanes:                                           # external: carousels only
   trends:   { name: "Trends & news",            audience: founders, series: "This Week in Tech" }
   ai:       { name: "AI & LLMs",                audience: founders, series: "AI, Explained" }
+  concepts: { name: "Software concepts",        audience: founders, series: "Under the Hood" }
   startup:  { name: "Startup & product advice", audience: founders, series: "Founder Notes" }
   numbers:  { name: "Facts & numbers",          audience: founders, series: "By the Numbers" }
-  concepts: { name: "Software concepts",        audience: founders, series: "Under the Hood" }
 verdant_pillars:
-  how-we-work:  { series: ["Outsourcing, Decoded", "Wireframe → Production"], rule: "alternate by episode; on a carousel day use Wireframe → Production" }
-  build-notes:  { series: ["Build Notes"], source: "F05–F06, F30–F39 only" }
-  proof:        { series: ["Client words", "Project Spotlight"], rule: "alternate; same client_key not within 30 days" }
-  grow-with-us: { series: ["Grow at Verdant"], rule: "inbox first; otherwise conceptual, no AI-generated people" }
-  brand-world:  { slot: none, rule: "calendar moments and milestones only" }
+  how-we-work:  { carousel: ["Wireframe → Production", "Outsourcing, Decoded"], single: ["Verdant Toolkit"], rule: "carousel series alternate by episode; Toolkit = one service or stack area per episode: what it covers and what we use (F02–F06, F14, F15)" }
+  build-notes:  { carousel: ["Build Notes"], source: "F05–F06, F30–F39 only" }
+  proof:        { single: ["Project Spotlight", "Client words"], rule: "alternate by week type; same client_key not within 30 days" }
+  grow-with-us: { single: ["Grow at Verdant"], rule: "inbox first; otherwise conceptual, no AI-generated people" }
+  brand-world:  { slot: none, rule: "calendar moments and milestones only; takes the Sunday single" }
 timely:
-  target: "about half of external posts: 2–3 a week"
-  rule: "Mon always uses trend items. Wed, Fri, Sat and Sun use a checked, unexpired trend item for their lane when one exists, at most 2 of them a week; otherwise evergreen"
+  rule: "Mon always uses trend items. Thu uses a checked, unexpired trend item for its lane when one exists; otherwise evergreen"
 priority: [inbox, calendar_moment, timely_trend_item, series_episode, evergreen]
 overrides:
-  inbox_or_moment: "replaces that day's external post, never a Verdant slot"
-  bumped_evergreen: "moves to the next free external slot"
+  inbox: "takes the next Verdant single slot of its kind: people and culture → Sat; projects, launches, reviews → Wed; anything else → Sun. Max 1 a day; the rest queue"
+  calendar_moment: "takes the Sunday single of its week"
+  bumped_episode: "moves to the next free slot of its pillar and format"
   bumped_trend: "expires, unless the next Monday roundup can still use it"
-  verdant_band_guard: "if an inbox item would push the month's Verdant share above 0.40, it queues"
-  inbox_max_per_day: 1
+  never: "an override never turns an external slot into a single or a Verdant slot into an external post"
 ctas:
-  direct: { text: "Book a call at verdant-soft.com", allowed_on: [how-we-work, proof], max_per_week: 2 }
+  direct: { text: "Book a call at verdant-soft.com", allowed_on: [how-we-work, proof], max_per_week: 3 }
   soft:   { external: ["save this", "follow the series"], grow-with-us: ["follow", "see open roles (inbox roles only)"], build-notes: ["save this", "follow the series"] }
 endings:
   question_share: "about 1 in 3 posts; a specific question a founder can answer from experience; never 'Thoughts?'"
 no_repeat:                                       # [decided · CD]
   lane_topic_days: 90
   trend_item: "never twice; one follow-up explainer in another lane is allowed"
-  company_as_main_subject_per_week: 2
-  headline_formula: "never the same formula three days running; never the same opening word two days running"   # revised 2026-10-06: the stricter version capped problem/curiosity below the user's 60%
+  case_study_days: 30                            # the same F30–F39 entry is not the main subject again within 30 days, in any format
+  one_company_per_week: 2                        # an outside company (e.g. one AI lab) is the main subject of at most 2 items across the week's two external carousels
+  headline_formula: "never the same formula three days running; never the same opening word two days running"
   proof_client_key_days: 30
+supply:                                          # [decided · CD] 70% Verdant needs a steady flow of Verdant material
+  rule: "FACTS covers about 10–12 weeks of Verdant episodes without repeats. From launch, the team adds material through inbox/ (projects, photos, reviews, process notes); evergreen Verdant episodes may re-run after 90 days with a new angle and a new visual"
 research:
   saturday_run: "every Saturday 09:59 PKT: 3–5 checked trend items into banks/trends.md; marks expired items"
   daily_run: "from launch: 1–3 items a day plus major breaking news; the Saturday run then picks the week's best 3–5 for Monday"
@@ -414,15 +420,17 @@ Copy recipes per lane, `[decided]` where the Decisions table in `learnings/log.m
 
 | Lane / pillar | Series | Format | Headline default | On-image text | Take | CTA |
 |---|---|---|---|---|---|---|
-| trends | This Week in Tech | carousel (roundup variant) | curiosity ("What changed for founders this week") | pill, headline, one item per slide with its source line | "Our take" slide | soft: follow for next Monday |
-| ai | AI, Explained | carousel in cycle week 1, else single | problem/curiosity ("Why AI [makes things up]") | pill, headline, subline; one term defined | caption "Our take:" (single) or slide (carousel) | soft |
-| startup | Founder Notes | carousel in cycle week 3, else single | problem/curiosity or imperative | pill, headline, subline | as above | soft |
-| numbers | By the Numbers | single | plain fact: the number is the hero ("[N%] of {who} {do what}", number from a checked bank item) | pill, the number, one line of context, **source line** | caption "Our take:" | soft |
-| concepts | Under the Hood | carousel in cycle week 3, else single | problem/curiosity ("What an API [actually is]") | pill, headline, subline; one term defined | as above | soft |
-| how-we-work | Outsourcing, Decoded / Wireframe → Production | carousel in cycle week 2, else single | rhythm or plain benefit | pill, headline, subline | — | **direct** |
-| build-notes | Build Notes | carousel in cycle week 2, else single | imperative lesson or problem | pill, headline, subline | — | soft |
-| proof | Client words / Project Spotlight | single | the client's words are the headline (verbatim) | quote, attribution | — | **direct** |
-| grow-with-us | Grow at Verdant | single | warm opinion or imperative | pill, headline, subline | — | soft |
+| trends | This Week in Tech | carousel (roundup variant, Mon) | curiosity ("What changed for founders this week") | pill, headline, one item per slide with its source line | "Our take" slide | soft: follow for next Monday |
+| ai | AI, Explained | carousel (Thu, rotation) | problem/curiosity ("Why AI [makes things up]") | pill, headline, subline; one term defined | caption "Our take:" (single) or slide (carousel) | soft |
+| startup | Founder Notes | carousel (Thu, rotation) | problem/curiosity or imperative | pill, headline, subline | as above | soft |
+| numbers | By the Numbers | carousel (Thu, rotation); the number is the cover | plain fact: the number is the hero ("[N%] of {who} {do what}", number from a checked bank item) | pill, the number, one line of context, **source line** | caption "Our take:" | soft |
+| concepts | Under the Hood | carousel (Thu, rotation) | problem/curiosity ("What an API [actually is]") | pill, headline, subline; one term defined | as above | soft |
+| how-we-work | Outsourcing, Decoded / Wireframe → Production (carousels); Verdant Toolkit (single) | carousel (Tue wk A, Fri wk B); single (Sun) | rhythm or plain benefit | pill, headline, subline | — | **direct** |
+| build-notes | Build Notes | carousel (Tue wk B, Fri wk A) | imperative lesson or problem | pill, headline, subline | — | soft |
+| proof | Project Spotlight (wk A) / Client words (wk B) | single (Wed) | the client's words are the headline (verbatim) | quote, attribution | — | **direct** |
+| grow-with-us | Grow at Verdant | single (Sat) | warm opinion or imperative | pill, headline, subline | — | soft |
+
+**Formats follow `CONTENT-MIX-v2`** (user, 2026-10-08): every external lane is a carousel; single posts are Verdant only (Wed proof, Sat grow, Sun Toolkit). For external lanes, read "On-image text" above as the carousel cover.
 
 **Single posts carry information on the image** (`ON-IMAGE-v1`, user 2026-10-06). The old copy-only anatomy is superseded. In the lane table above, read "On-image text" for single posts as "plus the lane's labelled diagram".
 
@@ -1831,7 +1839,9 @@ failure_classes:
 - `[decided]` **Verdant boundary:** never present a trend or a third-party result as Verdant experience. "In our builds…" only with a confirmed FACTS id.
 - `[decided]` **Stance:** practical and balanced on AI and tech. No hype, no doom, no predictions presented as fact.
 - `[decided]` **No pricing-type content** (user, 2026-10-08): no prices, rates, payment terms or schedules, milestone payments, estimates, costs or engagement-model commercial terms in any post. F12 and F13 stay true facts but are never post topics.
-- `[decided]` **The information on a single post must be useful on its own** (user, 2026-10-08: "the data should be more useful… this doesn't even serve purpose"). The payload is something a founder (or a student, on Grow posts) would save: a checklist, steps, a definition with a concrete example, a decision rule, or a sourced number with its meaning. Company-process trivia never qualifies.
+- `[decided]` **The mix is the main rule** (user, 2026-10-08): 70% Verdant Soft, 30% other. The other 30% is **carousels only**. Verdant is 60% single posts, 40% carousels. So a single post is always about Verdant Soft (`CONTENT-MIX-v2`).
+- `[decided]` **A single post must be useful on its own** (user, 2026-10-08: "the data should be more useful… this doesn't even serve purpose"; "it should be visually attractive with some functionality, not useless"). It shows something concrete about Verdant's work that a buyer (or a student, on Grow posts) can use: what we built, for whom and with what; how one of our steps works; what a service covers and the tools behind it. Its visual does a job too: a module map, an interface, a process, a diagram or an object that carries the information. Decoration and generic advice never qualify; generic advice belongs in an external carousel.
+- `[decided]` **Design bar** (user, 2026-10-08): every post must look like a high-budget team of graphic designers made it: visually attractive, characterful type, deliberate depth, and a visual with a function. Taste evidence: `learnings/taste.md`.
 - **TBD:** AI disclosure policy. Nano Banana outputs carry SynthID and C2PA metadata, so Meta platforms may label them as AI automatically.
 
 ## 10. Approved examples
@@ -1857,13 +1867,12 @@ This is how the pipeline behaves like a handler: it keeps track of the past and 
   - Items replace that day's external post.
   - Max one per day; the rest queue.
   - Real photos come only from here.
-- **No-repeat windows and caps:** `CONTENT-MIX-v1` → `no_repeat`, checked against the history before choosing.
+- **No-repeat windows and caps:** `CONTENT-MIX-v2` → `no_repeat`, checked against the history before choosing.
 - **Series continuity:** next episode, and when a series ends or gets refreshed. **TBD.**
-- **After launch:** a metrics loop adjusts **lane** weights within bounds.
-  - Each lane stays at 5–20% of the month; the Verdant share at 25–40%.
-  - Weights move by at most ±5 percentage points a month.
+- **After launch:** a metrics loop informs topic choice and the Thursday lane rotation only.
+  - The user's main rule never changes automatically: 70% Verdant / 30% external, external = carousels only, Verdant = 60% singles / 40% carousels (`CONTENT-MIX-v2`).
   - Brand fundamentals never change automatically.
-  - A monthly human summary, plus an **8-week review of the 30/70 split** `[decided · CD]`.
+  - A monthly human summary, plus an 8-week Verdant vs external comparison `[decided · CD]`.
 
 ---
 
@@ -1871,6 +1880,7 @@ This is how the pipeline behaves like a handler: it keeps track of the past and 
 | Date | Change | Evidence |
 |---|---|---|
 | 2026-10-04 | Skeleton created | — |
+| 2026-10-08 | **Main rule (user):** §3 CONTENT-MIX-v1 → **v2**: 70% Verdant / 30% external; external = carousels only (Mon This Week in Tech + Thu rotating lane); Verdant = 3 singles (Wed proof, Sat Grow, Sun new Verdant Toolkit) + 2 carousels (Tue/Fri How we work and Build Notes); inbox and moments now take Verdant single slots; direct-CTA cap 3/week. §4 lane formats; §2.3 share; §9 the mix rule, single-post usefulness rewritten for Verdant singles, and the design bar ("high-budget team of graphic designers… functionality, not useless"). Taste round L2 withdrawn; L3 (Verdant Project Spotlight) on the Taste Lab | User messages 2026-10-08; `brand/strategy.md` v3; `tools/sim_calendar.py` passes; `learnings/log.md` 2026-10-08 |
 | 2026-10-08 | §5.7 VISUAL-SYSTEM-v1 PAUSED: the taste round L1 user ratings put the SCHEMATIC look at 2/10 and the type-led Swiss poster at 7/10. §9: no pricing-type content; on-image information must be useful on its own (user) | Taste Lab ratings and notes; `learnings/taste.md`; user message 2026-10-08 |
 | 2026-10-07 | §4 ON-IMAGE-v1 (single posts carry a labelled diagram; caption-complement rules C1–C7); §5.7 VISUAL-SYSTEM-v1 "SCHEMATIC, editorial finish" (day map with one dark Saturday, 4 layouts + slide, a diagram family per lane, counter-accent glass) supersedes the THEMES-v1 week map; §6 STYLE-BLOCK-v1, PROMPT-SKELETON-v1, PROMPT-RULES-v1, GENERATION-v1, REF-PACK-v2; §8 VISUAL-RUBRIC-v1; §7 done criterion via the 5-persona writing panel | User feedback on round 2; visual workflow (3 art directors, 4 judges); `brand/visual/visual-system-v1-draft.yaml` |
 | 2026-10-06 | Content mix reset (user): §2.3 EXTERNAL-SOURCES-v1; §3 CONTENT-MIX-v1 (30% Verdant / 70% Tech, Explained, five lanes as named series, Tue/Thu Verdant, 2-2-3 carousel cycle, overrides, no-repeat); §4 lane recipes; §4.1 CAROUSEL-v1 → v2 (external and roundup variants); §7 decided caption rules, HASHTAGS-v1, BANNED-WORDS-v1; §9 external-content guardrails and no company numbers decided; §11 banks, research runs, inbox | User answers in plan mode, `learnings/log.md` 2026-10-06; `brand/strategy.md` v2 |

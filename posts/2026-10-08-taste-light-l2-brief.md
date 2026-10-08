@@ -3,7 +3,7 @@ date: 2026-10-08
 pillar: startup
 type: taste-probe
 round: L2
-status: waiting for outputs
+status: withdrawn (never generated)
 ---
 
 # Taste probe L2 · light · "What your dev brief is missing"
@@ -148,4 +148,4 @@ Portrait image, 3:4 aspect ratio.
 ```
 
 ## Results
-_Waiting for the user's uploads and ratings on the Taste Lab page._
+**Withdrawn 2026-10-08, never generated.** The user called these prompts "completely useless". Single posts are now always Verdant (main rule: 70% Verdant, 30% other, other = carousels only), so a Founder Notes checklist is the wrong post to train singles on. The four versions also differed only in font or depth. Replaced by round L3, `posts/2026-10-08-taste-light-l3-spotlight.md`.
